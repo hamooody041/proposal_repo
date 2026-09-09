@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Dot Coffee Roasters | Specialty Coffee & Roastery in Saar</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Plus Jakarta Sans & Cairo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- FontAwesome Icons CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            amber: {
+              50: '#fffbeb',
+              100: '#fef3c7',
+              600: '#d97706',
+              700: '#b45309',
+              900: '#78350f',
+              950: '#451a03',
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            arabic: ['Cairo', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .bg-grid-pattern {
+      background-image: radial-gradient(rgba(217, 119, 6, 0.15) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+  </style>
+</head>
+<body
+ class="bg-amber-50 text-amber-950 font-sans antialiased selection:bg-amber-600 selection:text-white">
+
+  <!-- TOP ANNOUNCEMENT BAR -->
+  <div class="bg-amber-950 text-amber-100 text-xs sm:text-sm py-2 px-4 text-center font-medium border-b border-amber-900/50 flex justify-center items-center gap-2">
+    <span class="inline-block w-2 h-2 rounded-full bg-amber-600 animate-pulse"></span>
+    <span>Fresh batch roasted today in Saar • Order via WhatsApp for instant pickup or delivery</span>
+  </div>
+
+  <!-- NAVIGATION HEADER -->
+  <header class="sticky top-0 z-50 bg-amber-50/90 backdrop-blur-md border-b border-amber-950/10 transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-full bg-amber-950 flex items-center justify-center text-amber-50 font-black text-xl group-hover:bg-amber-600 transition-colors">
+          .<span class="text-amber-600 group-hover:text-amber-950">.</span>
+        </div>
+        <div>
+          <span class="block font-extrabold text-xl leading-none tracking-tight text-amber-950">THE DOT</span>
+          <span class="text-[10px] tracking-widest uppercase font-semibold text-amber-600 block mt-0.5">Coffee Roasters</span>
+        </div>
+      </a>
+
+      <!-- Desktop Links -->
+      <nav class="hidden md:flex items-center space-x-8 font-semibold text-sm text-amber-900">
+        <a href="#about" class="hover:text-amber-600 transition-colors">About Us</a>
+        <a href="#featured" class="hover:text-amber-600 transition-colors">Our Menu</a>
+        <a href="#reviews" class="hover:text-amber-600 transition-colors">Reviews</a>
+        <a href="#location" class="hover:text-amber-600 transition-colors">Location & Hours</a>
+      </nav>
+
+      <!-- Header CTA -->
+      <div class="flex items-center gap-3">
+        <a href="https://wa.me/97330000000?text=Hello%20The%20Dot%20Coffee%20Roasters%2C%20I%20would%20like%20to%20order!" 
+           target="_blank"
+           class="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold text-sm px-5 py-2.5 rounded-full shadow-md shadow-green-600/20 hover:shadow-lg hover:shadow-green-600/30 transition-all transform hover:-translate-y-0.5">
+          <i class="fa-brands fa-whatsapp text-lg"></i>
+          <span class="hidden sm:inline">Order via WhatsApp</span>
+          <span class="sm:hidden">Order</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="relative bg-amber-950 text-white overflow-hidden py-16 sm:py-24 lg:py-32">
+    <!-- Background Overlay Image with Gradient -->
+    <div class="absolute inset-0 z-0 opacity-25 bg-cover bg-center mix-blend-luminosity"
+         style="background-image: url('https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=1920&q=80');"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-amber-950 via-amber-950/80 to-transparent z-0"></div>
+    
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <!-- Location Badge -->
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-900/60 border border-amber-600/40 text-amber-200 text-xs sm:text-sm font-medium mb-6 backdrop-blur-sm">
+        <i class="fa-solid fa-location-dot text-amber-600"></i> Saar, Kingdom of Bahrain
+      </div>
+      
+      <!-- Main Headlines (EN & AR) -->
+      <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight max-w-4xl mx-auto mb-4">
+        Freshly Roasted Specialty Beans & Artisanal Coffee in Saar
+      </h1>
+      
+      <h2 dir="rtl" class="font-arabic text-2xl sm:text-4xl font-bold text-amber-200/90 leading-relaxed max-w-3xl mx-auto mb-8">
+        قهوة مختصة ومحامص حرفية طازجة في السار
+      </h2>
+
+      <p class="text-amber-200/80 text-base sm:text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
+        Experience micro-batch perfection. Locally roasted single-origin beans, precision espresso, and handcrafted brews served daily.
+      </p>
+
+      <!-- CTAs -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto">
+        <a href="https://wa.me/97330000000?text=Hello%20The%20Dot%20Coffee%20Roasters%2C%20I%20would%20like%20to%20order!" 
+           target="_blank"
+           class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-green-600 hover:bg-green-500 text-white text-lg font-bold px-8 py-4 rounded-xl shadow-xl shadow-green-950/50 hover:shadow-green-600/30 transition-all transform hover:-translate-y-1">
+          <i class="fa-brands fa-whatsapp text-2xl"></i>
+          <span>Order via WhatsApp</span>
+        </a>
+        <a href="#featured" 
+           class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-amber-900/50 hover:bg-amber-900 text-amber-100 border border-amber-700/50 text-lg font-semibold px-8 py-4 rounded-xl transition-all">
+          <span>Explore Menu</span>
+          <i class="fa-solid fa-arrow-down text-sm"></i>
+        </a>
+      </div>
+
+      <!-- Key Value Highlights -->
+      <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 text-left border-t border-amber-900/60 pt-10">
+        <div class="p-3 rounded-lg bg-amber-900/20 border border-amber-800/30">
+          <div class="text-amber-600 font-bold text-xl sm:text-2xl mb-1">100% Arabica</div>
+          <div class="text-xs sm:text-sm text-amber-200/70">Ethically sourced specialty green beans</div>
+        </div>
+        <div class="p-3 rounded-lg bg-amber-900/20 border border-amber-800/30">
+          <div class="text-amber-600 font-bold text-xl sm:text-2xl mb-1">Fresh Roasted</div>
+          <div class="text-xs sm:text-sm text-amber-200/70">In-house micro-batches weekly</div>
+        </div>
+        <div class="p-3 rounded-lg bg-amber-900/20 border border-amber-800/30">
+          <div class="text-amber-600 font-bold text-xl sm:text-2xl mb-1">Barista Craft</div>
+          <div class="text-xs sm:text-sm text-amber-200/70">Precision pour-overs & classic espresso</div>
+        </div>
+        <div class="p-3 rounded-lg bg-amber-900/20 border border-amber-800/30">
+          <div class="text-amber-600 font-bold text-xl sm:text-2xl mb-1">Fast Direct</div>
+          <div class="text-xs sm:text-sm text-amber-200/70">Instant WhatsApp pickup ordering</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT & VALUE PROPOSITION SECTION -->
+  <section id="about" class="py-20 bg-amber-50 relative overflow-hidden bg-grid-pattern">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        
+        <!-- Image Grid -->
+        <div class="relative">
+          <div class="grid grid-cols-2 gap-4">
+            <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=80" 
+                 alt="Pour over coffee" 
+                 class="rounded-2xl shadow-lg object-cover h-64 sm:h-80 w-full transform -rotate-1 hover:rotate-0 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=800&q=80" 
+                 alt="Specialty Coffee Beans" 
+                 class="rounded-2xl shadow-lg object-cover h-64 sm:h-80 w-full transform rotate-2 hover:rotate-0 transition-transform duration-300 mt-8">
+          </div>
+          <!-- Badge Decorative -->
+          <div class="absolute -bottom-6 -left-6 bg-amber-950 text-amber-100 p-6 rounded-2xl shadow-2xl hidden sm:block border border-amber-800">
+            <div class="text-3xl font-extrabold text-amber-600">4.9 ★</div>
+            <div class="text-xs font-medium text-amber-200">Top Rated Roastery in Saar</div>
+          </div>
+        </div>
+
+        <!-- Content -->
+        <div>
+          <span class="text-amber-600 font-extrabold text-sm uppercase tracking-wider block mb-2">Crafting Perfection</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-amber-950 mb-6 leading-tight">
+            Where passion for origin meets precision roasting.
+          </h2>
+          <p class="text-amber-900/80 text-lg mb-6 leading-relaxed">
+            At <strong class="text-amber-950">The Dot Coffee Roasters</strong>, we believe every cup starts with a commitment to clarity, flavor, and roast craftsmanship. Based in the heart of Saar, we curate single-origin coffees from world-renowned estates.
+          </p>
+          
+          <!-- Arabic Brief -->
+          <div dir="rtl" class="font-arabic bg-amber-100/60 p-4 rounded-xl border-right-4 border-amber-600 mb-8 text-amber-950 text-base leading-relaxed">
+            نحرص في محمصة ذا دوت على تقديم أجود سلالات القهوة المختصة المحمصة بإتقان محلياً في السار، لنوفر لك تجربة قهوة فريدة لا تُنسى.
+          </div>
+
+          <!-- Feature Bullet List -->
+          <ul class="space-y-4 font-semibold text-amber-950 mb-8">
+            <li class="flex items-center gap-3">
+              <span class="w-6 h-6 rounded-full bg-amber-600/20 text-amber-600 flex items-center justify-center text-sm"><i class="fa-solid fa-check"></i></span>
+              Direct Trade Specialty Beans (SCA Score 85+)
+            </li>
+            <li class="flex items-center gap-3">
+              <span class="w-6 h-6 rounded-full bg-amber-600/20 text-amber-600 flex items-center justify-center text-sm"><i class="fa-solid fa-check"></i></span>
+              Custom Roasting Profiles Tailored for Filter & Espresso
+            </li>
+            <li class="flex items-center gap-3">
+              <span class="w-6 h-6 rounded-full bg-amber-600/20 text-amber-600 flex items-center justify-center text-sm"><i class="fa-solid fa-check"></i></span>
+              Fresh Baked Artisanal Pastries & Signature Drinks
+            </li>
+          </ul>
+
+          <a href="https://wa.me/97330000000?text=Hello%20The%20Dot%20Coffee%20Roasters%2C%20I%20have%20a%20question%20about%20your%20beans!" 
+             target="_blank"
+             class="inline-flex items-center gap-2 text-amber-950 font-extrabold hover:text-amber-600 transition-colors border-b-2 border-amber-600 pb-1">
+            <span>Ask our head roaster on WhatsApp</span>
+            <i class="fa-solid fa-arrow-right text-xs"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED MENU / BEANS GRID SECTION -->
+  <section id="featured" class="py-20 bg-amber-100/40 border-y border-amber-950/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-amber-600 font-extrabold text-sm uppercase tracking-wider block mb-2">Our Selection</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-amber-950 mb-4">Featured Roasted Beans & Menu</h2>
+        <p class="text-amber-900/80 text-base sm:text-lg">Select your items and order directly via WhatsApp for fast pickup or delivery in Saar.</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        
+        <!-- Card 1: Ethiopian Single Origin -->
+        <div class="bg-white rounded-2xl overflow-hidden border border-amber-950/10 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group">
+          <div class="relative h-48 overflow-hidden bg-amber-950">
+            <img src="https://images.unsplash.com/photo-1587734195503-904fca47e0e9?auto=format&fit=crop&w=600&q=80" 
+                 alt="Ethiopian Coffee Beans" 
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
+            <span class="absolute top-3 right-3 bg-amber-950 text-amber-100 text-xs font-bold px-3 py-1 rounded-full">Whole Beans</span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="font-extrabold text-lg text-amber-950">Ethiopia Yirgacheffe</h3>
+                <span class="font-black text-amber-600 text-base">6.500 BHD</span>
+              </div>
+              <p class="text-xs text-amber-700 font-semibold mb-3">Notes: Jasmine, Bergamot, Peach</p>
+              <p class="text-xs text-amber-900/70 mb-4 leading-relaxed">Light roast profile. Elegant floral aroma with clean citrus acidity. Ideal for V60 pour-over.</p>
+            </div>
+            <a href="https://wa.me/97330000000?text=I%20would%20like%20to%20order%3A%20Ethiopia%20Yirgacheffe%20Beans" 
+               target="_blank"
+               class="w-full py-2.5 px-4 rounded-xl bg-amber-50 hover:bg-green-600 text-amber-950 hover:text-white font-bold text-xs flex items-center justify-center gap-2 border border-amber-950/10 transition-colors">
+              <i class="fa-brands fa-whatsapp text-sm"></i> Order via WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 2: Colombia Reserve -->
+        <div class="bg-white rounded-2xl overflow-hidden border border-amber-950/10 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group">
+          <div class="relative h-48 overflow-hidden bg-amber-950">
+            <img src="https://images.unsplash.com/photo-1611854779393-1b2da9d400fe?auto=format&fit=crop&w=600&q=80" 
+                 alt="Colombia Coffee Beans" 
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
+            <span class="absolute top-3 right-3 bg-amber-950 text-amber-100 text-xs font-bold px-3 py-1 rounded-full">Whole Beans</span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="font-extrabold text-lg text-amber-950">Colombia Huila</h3>
+                <span class="font-black text-amber-600 text-base">6.000 BHD</span>
+              </div>
+              <p class="text-xs text-amber-700 font-semibold mb-3">Notes: Milk Chocolate, Caramel, Red Apple</p>
+              <p class="text-xs text-amber-900/70 mb-4 leading-relaxed">Medium roast. Rich balanced body with smooth sweetness. Excellent for espresso and milk drinks.</p>
+            </div>
+            <a href="https://wa.me/97330000000?text=I%20would%20like%20to%20order%3A%20Colombia%20Huila%20Beans" 
+               target="_blank"
+               class="w-full py-2.5 px-4 rounded-xl bg-amber-50 hover:bg-green-600 text-amber-950 hover:text-white font-bold text-xs flex items-center justify-center gap-2 border border-amber-950/10 transition-colors">
+              <i class="fa-brands fa-whatsapp text-sm"></i> Order via WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 3: Signature Spanish Latte -->
+        <div class="bg-white rounded-2xl overflow-hidden border border-amber-950/10 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group">
+          <div class="relative h-48 overflow-hidden bg-amber-950">
+            <img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=600&q=80" 
+                 alt="Signature Spanish Latte" 
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
+            <span class="absolute top-3 right-3 bg-amber-600 text-white text-xs font-bold px-3 py-1 rounded-full">Popular</span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="font-extrabold text-lg text-amber-950">The Dot Iced Latte</h3>
+                <span class="font-black text-amber-600 text-base">2.200 BHD</span>
+              </div>
+              <p class="text-xs text-amber-700 font-semibold mb-3">Fresh Espresso & Sweet Milk</p>
+              <p class="text-xs text-amber-900/70 mb-4 leading-relaxed">Our signature double-shot specialty espresso blended with chilled milk and artisanal house sweetener.</p>
+            </div>
+            <a href="https://wa.me/97330000000?text=I%20would%20like%20to%20order%3A%20The%20Dot%20Iced%20Latte" 
+               target="_blank"
+               class="w-full py-2.5 px-4 rounded-xl bg-amber-50 hover:bg-green-600 text-amber-950 hover:text-white font-bold text-xs flex items-center justify-center gap-2 border border-amber-950/10 transition-colors">
+              <i class="fa-brands fa-whatsapp text-sm"></i> Order via WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 4: Cold Brew Reserve -->
+        <div class="bg-white rounded-2xl overflow-hidden border border-amber-950/10 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group">
+          <div class="relative h-48 overflow-hidden bg-amber-950">
+            <img src="https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=600&q=80" 
+                 alt="Cold Brew Coffee" 
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
+            <span class="absolute top-3 right-3 bg-amber-950 text-amber-100 text-xs font-bold px-3 py-1 rounded-full">24h Steeped</span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="font-extrabold text-lg text-amber-950">Nitro Cold Brew</h3>
+                <span class="font-black text-amber-600 text-base">2.500 BHD</span>
+              </div>
+              <p class="text-xs text-amber-700 font-semibold mb-3">Velvety & Naturally Sweet</p>
+              <p class="text-xs text-amber-900/70 mb-4 leading-relaxed">Slow-steeped micro-batch cold brew infused with nitrogen for a silky, creamy head without dairy.</p>
+            </div>
+            <a href="https://wa.me/97330000000?text=I%20would%20like%20to%20order%3A%20Nitro%20Cold%20Brew" 
+               target="_blank"
+               class="w-full py-2.5 px-4 rounded-xl bg-amber-50 hover:bg-green-600 text-amber-950 hover:text-white font-bold text-xs flex items-center justify-center gap-2 border border-amber-950/10 transition-colors">
+              <i class="fa-brands fa-whatsapp text-sm"></i> Order via WhatsApp
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF / GOOGLE REVIEWS SECTION -->
+  <section id="reviews" class="py-20 bg-amber-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Google Badge Banner Header -->
+      <div class="flex flex-col md:flex-row items-center justify-between bg-white p-8 rounded-3xl border border-amber-950/10 shadow-sm mb-12 gap-6">
+        <div class="flex items-center gap-4">
+          <div class="w-14 h-14 bg-amber-100 rounded-2xl flex items-center justify-center text-amber-600 text-2xl font-black">
+            <i class="fa-brands fa-google"></i>
+          </div>
+          <div>
+            <div class="flex items-center gap-2 mb-1">
+              <span class="font-black text-2xl text-amber-950">4.9</span>
+              <div class="flex text-amber-500 text-sm">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+            </div>
+            <p class="text-xs text-amber-800 font-semibold">Based on 250+ Verified Google Customer Reviews</p>
+          </div>
+        </div>
+        <a href="https://wa.me/97330000000?text=Hi!%20I%20saw%20your%20great%20reviews%20and%20want%20to%20order!" 
+           target="_blank"
+           class="inline-flex items-center gap-2 bg-amber-950 text-amber-100 hover:bg-amber-900 font-bold text-sm px-6 py-3 rounded-xl transition-colors">
+          <span>Experience It Yourself</span>
+          <i class="fa-solid fa-arrow-right text-xs"></i>
+        </a>
+      </div>
+
+      <!-- Testimonials Grid -->
+      <div class="grid md:grid-cols-3 gap-8">
+        
+        <!-- Review 1 -->
+        <div class="bg-white p-6 rounded-2xl border border-amber-950/10 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex text-amber-500 text-xs mb-3">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="text-amber-900 text-sm leading-relaxed mb-4">"Hands down the best specialty roastery in Saar. The Ethiopian beans for V60 have amazing floral notes. Ordering via WhatsApp for quick pickup is super convenient!"</p>
+          </div>
+          <div class="flex items-center gap-3 pt-4 border-t border-amber-50">
+            <div class="w-9 h-9 bg-amber-200 text-amber-950 rounded-full flex items-center justify-center font-bold text-xs">AH</div>
+            <div>
+              <div class="font-bold text-xs text-amber-950">Ali H.</div>
+              <div class="text-[10px] text-amber-600">Local Guide • Saar</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 2 (Arabic) -->
+        <div class="bg-white p-6 rounded-2xl border border-amber-950/10 shadow-sm flex flex-col justify-between" dir="rtl">
+          <div>
+            <div class="flex text-amber-500 text-xs mb-3">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="font-arabic text-amber-900 text-sm leading-relaxed mb-4">"أفضل محمصة قهوة مختصة في منطقة السار بلا منازع! الحمص طازج والمذاق رائع جداً، والخدمة السريعة عبر الواتساب ممتازة."</p>
+          </div>
+          <div class="flex items-center gap-3 pt-4 border-t border-amber-50">
+            <div class="w-9 h-9 bg-amber-200 text-amber-950 rounded-full flex items-center justify-center font-bold text-xs">فM</div>
+            <div>
+              <div class="font-bold text-xs text-amber-950 font-arabic">فاطمة M.</div>
+              <div class="text-[10px] text-amber-600 font-arabic">عميل زائر</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="bg-white p-6 rounded-2xl border border-amber-950/10 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex text-amber-500 text-xs mb-3">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="text-amber-900 text-sm leading-relaxed mb-4">"The Dot Iced Latte is addictive! Friendly baristas who genuinely understand coffee profiles and bean origin stories."</p>
+          </div>
+          <div class="flex items-center gap-3 pt-4 border-t border-amber-50">
+            <div class="w-9 h-9 bg-amber-200 text-amber-950 rounded-full flex items-center justify-center font-bold text-xs">SJ</div>
+            <div>
+              <div class="font-bold text-xs text-amber-950">Sarah Jenkins</div>
+              <div class="text-[10px] text-amber-600">Verified Customer</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATION & CONTACT SECTION -->
+  <section id="location" class="py-20 bg-amber-950 text-white relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        
+        <!-- Hours & Contact Info -->
+        <div>
+          <span class="text-amber-600 font-extrabold text-sm uppercase tracking-wider block mb-2">Visit Our Roastery</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold mb-6">Located in Saar, Bahrain</h2>
+          <p class="text-amber-200/80 text-base mb-8 leading-relaxed">
+            Stop by for your daily brew or order ahead via WhatsApp for effortless drive-by pickup.
+          </p>
+
+          <div class="space-y-6 mb-8">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl bg-amber-900/60 border border-amber-800 flex items-center justify-center text-amber-600 shrink-0 mt-1">
+                <i class="fa-solid fa-location-dot text-lg"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-amber-100 text-base">Address</h4>
+                <p class="text-amber-200/70 text-sm mt-0.5">Avenue 27, Block 527, Saar, Kingdom of Bahrain</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl bg-amber-900/60 border border-amber-800 flex items-center justify-center text-amber-600 shrink-0 mt-1">
+                <i class="fa-solid fa-clock text-lg"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-amber-100 text-base">Opening Hours</h4>
+                <p class="text-amber-200/70 text-sm mt-0.5">Saturday – Thursday: 7:00 AM – 11:00 PM</p>
+                <p class="text-amber-200/70 text-sm">Friday: 8:00 AM – 11:30 PM</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl bg-amber-900/60 border border-amber-800 flex items-center justify-center text-amber-600 shrink-0 mt-1">
+                <i class="fa-brands fa-whatsapp text-lg"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-amber-100 text-base">Direct WhatsApp Order</h4>
+                <p class="text-amber-200/70 text-sm mt-0.5">+973 3000 0000</p>
+              </div>
+            </div>
+          </div>
+
+          <a href="https://wa.me/97330000000?text=Hello%20The%20Dot%20Coffee%20Roasters%2C%20I%20am%20outside%20for%20pickup!" 
+             target="_blank"
+             class="inline-flex items-center gap-3 bg-green-600 hover:bg-green-500 text-white font-bold px-8 py-4 rounded-xl shadow-lg transition-all">
+            <i class="fa-brands fa-whatsapp text-2xl"></i>
+            <span>WhatsApp Fast Pickup</span>
+          </a>
+        </div>
+
+        <!-- Map / Card Visual -->
+        <div class="bg-amber-900/30 p-4 sm:p-6 rounded-3xl border border-amber-800/40 relative">
+          <div class="w-full h-80 rounded-2xl overflow-hidden bg-amber-900 relative flex items-center justify-center text-center p-6">
+            <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=800&q=80" 
+                 alt="The Dot Roastery Storefront" 
+                 class="absolute inset-0 w-full h-full object-cover opacity-40">
+            <div class="relative z-10 bg-amber-950/80 p-6 rounded-2xl backdrop-blur-md border border-amber-800 max-w-xs">
+              <div class="w-12 h-12 bg-amber-600 text-amber-950 rounded-full flex items-center justify-center mx-auto mb-3 font-black text-xl">
+                .<span class="text-white">.</span>
+              </div>
+              <h3 class="font-extrabold text-amber-100 text-lg mb-1">The Dot Roastery</h3>
+              <p class="text-xs text-amber-200/80 mb-4">Saar Branch • Fresh Beans & Specialty Bar</p>
+              <a href="https://maps.google.com" 
+                 target="_blank"
+                 class="inline-flex items-center gap-2 text-xs font-bold text-amber-600 hover:text-amber-500">
+                <span>Open in Google Maps</span>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-amber-950 text-amber-200/60 text-xs py-8 border-t border-amber-900/60">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <div class="w-6 h-6 rounded-full bg-amber-600 text-amber-950 font-black flex items-center justify-center text-xs">..</div>
+        <span class="font-bold text-amber-100">The Dot Coffee Roasters</span>
+        <span>• Saar, Bahrain</span>
+      </div>
+      <p>© 2025 The Dot Coffee Roasters. All rights reserved.</p>
+      <div class="flex items-center gap-4 text-base text-amber-200/80">
+        <a href="#" class="hover:text-amber-600 transition-colors"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" class="hover:text-amber-600 transition-colors"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
