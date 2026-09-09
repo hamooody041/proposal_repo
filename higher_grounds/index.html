@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Higher Grounds | Specialty Coffee & Elevated Dining Saar</title>
+    <meta name="description" content="Artisanal specialty coffee, chef-crafted brunch, and elevated dining in Saar, Bahrain. Reserve your table via WhatsApp.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        coffee: {
+                            950: '#23120b',
+                            900: '#381c10',
+                            800: '#4e2817',
+                            700: '#854222',
+                            600: '#b45309',
+                            100: '#f7f1eb',
+                            50: '#fdfbf9'
+                        },
+                        accent: {
+                            amber: '#d97706',
+                            gold: '#ca8a04'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        cairo: ['Cairo', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .font-arabic {
+            font-family: 'Cairo', sans-serif;
+        }
+        .hero-overlay {
+            background: linear-gradient(180deg, rgba(35, 18, 11, 0.75) 0%, rgba(35, 18, 11, 0.90) 100%);
+        }
+        .amber-glow {
+            box-shadow: 0 0 25px -5px rgba(217, 119, 6, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-coffee-50 text-stone-800 font-sans antialiased selection:bg-amber-700 selection:text-white">
+
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-50 bg-coffee-950/95 backdrop-blur-md border-b border-white/10 text-stone-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-full bg-amber-700 flex items-center justify-center text-white text-xl font-bold transition-transform group-hover:scale-105">
+                    <i class="fa-solid font-bold fa-mug-hot"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xl font-extrabold tracking-wider uppercase font-sans text-stone-100">Higher Grounds</span>
+                    <span class="text-[10px] tracking-widest text-amber-500 uppercase -mt-1 font-semibold">Saar • Bahrain</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-stone-300">
+                <a href="#about" class="hover:text-amber-500 transition-colors">About</a>
+                <a href="#menu" class="hover:text-amber-500 transition-colors">Menu Highlights</a>
+                <a href="#reviews" class="hover:text-amber-500 transition-colors">Reviews</a>
+                <a href="#location" class="hover:text-amber-500 transition-colors">Location & Hours</a>
+            </nav>
+
+            <!-- CTA Button -->
+            <div class="flex items-center gap-3">
+                <a href="https://wa.me/97317000000?text=Hello%20Higher%20Grounds,%20I%20would%20like%20to%20reserve%20a%20table."
+                   target="_blank"
+                   class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-medium px-4 py-2.5 rounded-full text-sm transition-all transform hover:-translate-y-0.5 shadow-md shadow-emerald-950/30">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span class="hidden sm:inline">Reserve Table</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[90vh] flex items-center justify-center bg-coffee-950 text-white overflow-hidden py-20">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=1920&auto=format&fit=crop" 
+                 alt="Higher Grounds Specialty Coffee Interior" 
+                 class="w-full h-full object-cover object-center opacity-40 scale-105 transition-transform duration-10000 hover:scale-100">
+            <div class="absolute inset-0 hero-overlay"></div>
+        </div>
+
+        <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <!-- Location Pill -->
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-700/30 border border-amber-500/40 text-amber-300 text-xs font-semibold tracking-wide uppercase mb-8 backdrop-blur-sm">
+                <i class="fa-solid fa-location-dot text-amber-400"></i>
+                <span>Saar, Kingdom of Bahrain</span>
+            </div>
+
+            <!-- Headlines (EN / AR) -->
+            <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-stone-100 mb-4 leading-tight sm:leading-none">
+                Artisanal Specialty Coffee &amp; Elevated Dining in Saar
+            </h1>
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold font-arabic text-amber-400 mb-8 leading-relaxed dir-rtl" dir="rtl">
+                تجربة القهوة المختصة والمأكولات المبتكرة في سار
+            </h2>
+
+            <p class="max-w-2xl mx-auto text-base sm:text-lg text-stone-300 mb-10 leading-relaxed font-light">
+                Immerse yourself in precision pour-overs, chef-crafted sourdough brunches, and handcrafted desserts served in an architecturally inspiring atmosphere.
+            </p>
+
+            <!-- Actions -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto">
+                <a href="https://wa.me/97317000000?text=Hello%20Higher%20Grounds,%20I%20would%20like%20to%20reserve%20a%20table."
+                   target="_blank"
+                   class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-emerald-600 hover:bg-emerald-500 text-white text-base font-semibold px-8 py-4 rounded-xl shadow-lg transition-all transform hover:-translate-y-0.5 amber-glow">
+                    <i class="fa-brands fa-whatsapp text-2xl"></i>
+                    <span>Reserve Table via WhatsApp</span>
+                </a>
+                <a href="#menu"
+                   class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-stone-900/80 hover:bg-stone-800 text-stone-200 border border-stone-700 text-base font-semibold px-8 py-4 rounded-xl transition-all">
+                    <span>Explore Menu</span>
+                    <i class="fa-solid fa-arrow-down text-sm text-amber-500"></i>
+                </a>
+            </div>
+
+            <!-- Quick Features -->
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 border-t border-white/10 pt-8 text-xs sm:text-sm text-stone-400">
+                <div class="flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-award text-amber-500"></i>
+                    <span>100% Arabica Specialty</span>
+                </div>
+                <div class="flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-utensils text-amber-500"></i>
+                    <span>Chef-Crafted Brunch</span>
+                </div>
+                <div class="flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-bread-slice text-amber-500"></i>
+                    <span>Fresh Daily Bakery</span>
+                </div>
+                <div class="flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-wifi text-amber-500"></i>
+                    <span>Work-Friendly Space</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-stone-50 border-b border-stone-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Image Gallery Grid -->
+                <div class="grid grid-cols-2 gap-4 relative">
+                    <div class="space-y-4">
+                        <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=800&auto=format&fit=crop" 
+                             alt="Specialty Coffee Barista Pour" 
+                             class="rounded-2xl shadow-md object-cover h-64 w-full transform transition-transform hover:scale-[1.02]">
+                        <img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?q=80&w=800&auto=format&fit=crop" 
+                             alt="Gourmet Brunch Toast" 
+                             class="rounded-2xl shadow-md object-cover h-48 w-full transform transition-transform hover:scale-[1.02]">
+                    </div>
+                    <div class="space-y-4 pt-8">
+                        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=800&auto=format&fit=crop" 
+                             alt="Cafe Atmosphere" 
+                             class="rounded-2xl shadow-md object-cover h-48 w-full transform transition-transform hover:scale-[1.02]">
+                        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=800&auto=format&fit=crop" 
+                             alt="Fresh Specialty Pastry" 
+                             class="rounded-2xl shadow-md object-cover h-64 w-full transform transition-transform hover:scale-[1.02]">
+                    </div>
+                </div>
+
+                <!-- Text Content -->
+                <div class="space-y-6">
+                    <div class="inline-flex items-center gap-2 text-amber-700 font-semibold text-sm tracking-wider uppercase">
+                        <span class="w-8 h-0.5 bg-amber-700"></span>
+                        <span>The Higher Grounds Experience</span>
+                    </div>
+                    
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-coffee-950 leading-tight">
+                        Where Artisanal Coffee Meets Culinary Perfection
+                    </h2>
+                    
+                    <p class="text-stone-600 leading-relaxed">
+                        Located in the heart of Saar, Higher Grounds was created for coffee aficionados and culinary lovers alike. We source ethically farmed, high-scoring single-origin beans, roasted with precision to bring out complex flavor profiles in every cup.
+                    </p>
+
+                    <p class="text-stone-600 leading-relaxed font-arabic text-right dir-rtl border-r-2 border-amber-600 pr-4 bg-amber-50/50 py-2 rounded-r-lg" dir="rtl">
+                        نسعى في هاير جراوندز إلى تقديم تجربة فريدة تجمع بين أجود أنواع القهوة المختصة والمأكولات المبتكرة المُعدة بشغف في قلب منطقة سار.
+                    </p>
+
+                    <!-- Key Value Pillars -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+                        <div class="p-4 rounded-xl bg-white border border-stone-200/80 shadow-sm">
+                            <div class="text-amber-700 text-xl mb-2"><i class="fa-solid fa-leaf"></i></div>
+                            <h3 class="font-bold text-coffee-950 text-base">Single Origin Beans</h3>
+                            <p class="text-stone-500 text-xs mt-1">Direct trade sourcing from Ethiopia, Colombia, and Panama.</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-white border border-stone-200/80 shadow-sm">
+                            <div class="text-amber-700 text-xl mb-2"><i class="fa-solid fa-egg"></i></div>
+                            <h3 class="font-bold text-coffee-950 text-base">Elevated Dining</h3>
+                            <p class="text-stone-500 text-xs mt-1">All-day elevated brunch prepared with fresh local ingredients.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Items Section -->
+    <section id="menu" class="py-20 bg-coffee-100/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-amber-700 font-semibold text-sm tracking-widest uppercase">Handcrafted Selection</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-coffee-950 mt-2">Featured Menu Highlights</h2>
+                <p class="text-stone-600 mt-3">A curated preview of our guests' absolute favorites.</p>
+            </div>
+
+            <!-- Menu Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Item 1 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-md border border-stone-200/60 transition-transform duration-300 hover:-translate-y-1 flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-52 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=800&auto=format&fit=crop" 
+                                 alt="Spanish Saffron Latte" 
+                                 class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                            <span class="absolute top-3 right-3 bg-amber-700 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Signature</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold text-coffee-950">Spanish Saffron Latte</h3>
+                                <span class="text-lg font-extrabold text-amber-700">BHD 2.800</span>
+                            </div>
+                            <p class="text-stone-600 text-sm mb-4">Espresso infused with pure saffron threads, silky textured milk, and subtle organic blossom honey.</p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6">
+                        <a href="https://wa.me/97317000000?text=I%20would%20like%20to%20order/reserve:%20Spanish%20Saffron%20Latte" 
+                           target="_blank"
+                           class="w-full inline-flex items-center justify-center gap-2 bg-stone-100 hover:bg-amber-700 hover:text-white text-stone-800 font-semibold py-2.5 rounded-lg text-sm transition-colors">
+                            <i class="fa-brands fa-whatsapp text-emerald-600 text-base"></i>
+                            <span>Order via WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-md border border-stone-200/60 transition-transform duration-300 hover:-translate-y-1 flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-52 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?q=80&w=800&auto=format&fit=crop" 
+                                 alt="Truffle Scramble Sourdough" 
+                                 class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                            <span class="absolute top-3 right-3 bg-coffee-950 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Chef's Special</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold text-coffee-950">Truffle Scramble Sourdough</h3>
+                                <span class="text-lg font-extrabold text-amber-700">BHD 4.200</span>
+                            </div>
+                            <p class="text-stone-600 text-sm mb-4">Soft organic scrambled eggs, black truffle cream, aged parmesan shavings on artisanal toasted sourdough.</p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6">
+                        <a href="https://wa.me/97317000000?text=I%20would%20like%20to%20order/reserve:%20Truffle%20Scramble%20Sourdough" 
+                           target="_blank"
+                           class="w-full inline-flex items-center justify-center gap-2 bg-stone-100 hover:bg-amber-700 hover:text-white text-stone-800 font-semibold py-2.5 rounded-lg text-sm transition-colors">
+                            <i class="fa-brands fa-whatsapp text-emerald-600 text-base"></i>
+                            <span>Order via WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-md border border-stone-200/60 transition-transform duration-300 hover:-translate-y-1 flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-52 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=800&auto=format&fit=crop" 
+                                 alt="V60 Ethiopian Yirgacheffe" 
+                                 class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold text-coffee-950">V60 Single Origin Pour</h3>
+                                <span class="text-lg font-extrabold text-amber-700">BHD 2.500</span>
+                            </div>
+                            <p class="text-stone-600 text-sm mb-4">Ethiopian Yirgacheffe with distinctive notes of bergamot, floral jasmine, and ripe peach sweetness.</p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6">
+                        <a href="https://wa.me/97317000000?text=I%20would%20like%20to%20order/reserve:%20V60%20Single%20Origin" 
+                           target="_blank"
+                           class="w-full inline-flex items-center justify-center gap-2 bg-stone-100 hover:bg-amber-700 hover:text-white text-stone-800 font-semibold py-2.5 rounded-lg text-sm transition-colors">
+                            <i class="fa-brands fa-whatsapp text-emerald-600 text-base"></i>
+                            <span>Order via WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-md border border-stone-200/60 transition-transform duration-300 hover:-translate-y-1 flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-52 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1484723091499-aa3822749356?q=80&w=800&auto=format&fit=crop" 
+                                 alt="Brioche French Toast" 
+                                 class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                            <span class="absolute top-3 right-3 bg-amber-700 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Popular</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold text-coffee-950">Brioche French Toast</h3>
+                                <span class="text-lg font-extrabold text-amber-700">BHD 3.800</span>
+                            </div>
+                            <p class="text-stone-600 text-sm mb-4">Thick-cut brioche, caramelized bananas, whipped mascarpone, pistachio praline, and maple drizzle.</p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6">
+                        <a href="https://wa.me/97317000000?text=I%20would%20like%20to%20order/reserve:%20Brioche%20French%20Toast" 
+                           target="_blank"
+                           class="w-full inline-flex items-center justify-center gap-2 bg-stone-100 hover:bg-amber-700 hover:text-white text-stone-800 font-semibold py-2.5 rounded-lg text-sm transition-colors">
+                            <i class="fa-brands fa-whatsapp text-emerald-600 text-base"></i>
+                            <span>Order via WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Item 5 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-md border border-stone-200/60 transition-transform duration-300 hover:-translate-y-1 flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-52 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=800&auto=format&fit=crop" 
+                                 alt="Wagyu Smashed Sliders" 
+                                 class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold text-coffee-950">Wagyu Smashed Sliders</h3>
+                                <span class="text-lg font-extrabold text-amber-700">BHD 4.900</span>
+                            </div>
+                            <p class="text-stone-600 text-sm mb-4">Dual Wagyu beef patties, aged sharp cheddar, caramelized onion jam, truffle mayo in toasted potato buns.</p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6">
+                        <a href="https://wa.me/97317000000?text=I%20would%20like%20to%20order/reserve:%20Wagyu%20Smashed%20Sliders" 
+                           target="_blank"
+                           class="w-full inline-flex items-center justify-center gap-2 bg-stone-100 hover:bg-amber-700 hover:text-white text-stone-800 font-semibold py-2.5 rounded-lg text-sm transition-colors">
+                            <i class="fa-brands fa-whatsapp text-emerald-600 text-base"></i>
+                            <span>Order via WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Item 6 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-md border border-stone-200/60 transition-transform duration-300 hover:-translate-y-1 flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-52 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1533134242443-d4fd215305ad?q=80&w=800&auto=format&fit=crop" 
+                                 alt="Pistachio San Sebastian" 
+                                 class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold text-coffee-950">Pistachio San Sebastian</h3>
+                                <span class="text-lg font-extrabold text-amber-700">BHD 3.200</span>
+                            </div>
+                            <p class="text-stone-600 text-sm mb-4">Creamy Basque burnt cheesecake drizzled with rich house-made pistachio paste.</p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6">
+                        <a href="https://wa.me/97317000000?text=I%20would%20like%20to%20order/reserve:%20Pistachio%20San%20Sebastian" 
+                           target="_blank"
+                           class="w-full inline-flex items-center justify-center gap-2 bg-stone-100 hover:bg-amber-700 hover:text-white text-stone-800 font-semibold py-2.5 rounded-lg text-sm transition-colors">
+                            <i class="fa-brands fa-whatsapp text-emerald-600 text-base"></i>
+                            <span>Order via WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Full Menu Callout -->
+            <div class="mt-12 text-center bg-white p-8 rounded-2xl border border-stone-200 shadow-sm max-w-2xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="text-left">
+                    <h4 class="font-bold text-coffee-950 text-lg">Looking for our full seasonal menu?</h4>
+                    <p class="text-stone-500 text-sm">Contact us directly on WhatsApp to receive the complete digital menu.</p>
+                </div>
+                <a href="https://wa.me/97317000000?text=Hello,%20please%20send%20me%20the%20full%20Higher%20Grounds%20menu." 
+                   target="_blank"
+                   class="whitespace-nowrap bg-coffee-950 hover:bg-coffee-900 text-white font-semibold px-6 py-3 rounded-xl text-sm transition-colors">
+                    Request Full Menu
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof / Reviews Section -->
+    <section id="reviews" class="py-20 bg-coffee-950 text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            
+            <!-- Header & Badge -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <span class="text-amber-500 font-semibold text-sm tracking-widest uppercase">Guest Feedback</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-stone-100 mt-2">Loved by Coffee Enthusiasts</h2>
+                </div>
+                
+                <!-- Google Review Counter Card -->
+                <div class="mt-6 md:mt-0 inline-flex items-center gap-4 bg-white/10 backdrop-blur-md px-6 py-3 rounded-2xl border border-white/10">
+                    <i class="fa-brands fa-google text-2xl text-amber-400"></i>
+                    <div>
+                        <div class="flex items-center gap-1 text-amber-400 text-sm">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <span class="font-bold text-white ml-2 text-base">4.9 / 5.0</span>
+                        </div>
+                        <p class="text-xs text-stone-300 mt-0.5">Based on 520+ verified Google Reviews</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Review Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Review 1 -->
+                <div class="bg-stone-900/80 border border-white/10 p-6 rounded-2xl backdrop-blur-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <div class="flex text-amber-400 text-xs gap-1">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <span class="text-xs text-stone-400">2 days ago</span>
+                        </div>
+                        <p class="text-stone-300 text-sm leading-relaxed mb-6">"The best V60 specialty coffee in Saar without a doubt. The atmosphere is 10/10 and the truffle scrambled eggs on sourdough are to die for. Extremely welcoming staff!"</p>
+                    </div>
+                    <div class="flex items-center gap-3 border-t border-white/10 pt-4">
+                        <div class="w-9 h-9 rounded-full bg-amber-700 flex items-center justify-center font-bold text-xs">SM</div>
+                        <div>
+                            <h4 class="font-semibold text-sm text-stone-200">Sarah M.</h4>
+                            <span class="text-xs text-stone-400">Local Guide • Google Review</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 (Arabic) -->
+                <div class="bg-stone-900/80 border border-white/10 p-6 rounded-2xl backdrop-blur-sm flex flex-col justify-between dir-rtl" dir="rtl">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <div class="flex text-amber-400 text-xs gap-1">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <span class="text-xs text-stone-400">منذ أسبوع</span>
+                        </div>
+                        <p class="text-stone-300 text-sm leading-relaxed font-arabic mb-6">"مكان رائع جداً، القهوة ممتازة والديكور راقي للغاية. أفضل فرينش توست في البحرين والخدمة ممتازة وسريعة."</p>
+                    </div>
+                    <div class="flex items-center gap-3 border-t border-white/10 pt-4">
+                        <div class="w-9 h-9 rounded-full bg-coffee-700 flex items-center justify-center font-bold text-xs font-arabic">ع</div>
+                        <div>
+                            <h4 class="font-semibold text-sm text-stone-200 font-arabic">علي الكعبي</h4>
+                            <span class="text-xs text-stone-400 font-arabic">تقييم قوقل</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="bg-stone-900/80 border border-white/10 p-6 rounded-2xl backdrop-blur-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <div class="flex text-amber-400 text-xs gap-1">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <span class="text-xs text-stone-400">3 weeks ago</span>
+                        </div>
+                        <p class="text-stone-300 text-sm leading-relaxed mb-6">"Higher Grounds sets the standard for café culture in Saar. Perfect lighting, calm vibes, and phenomenal Spanish Saffron Latte. Highly recommended for meetings or quiet reading."</p>
+                    </div>
+                    <div class="flex items-center gap-3 border-t border-white/10 pt-4">
+                        <div class="w-9 h-9 rounded-full bg-amber-600 flex items-center justify-center font-bold text-xs">JP</div>
+                        <div>
+                            <h4 class="font-semibold text-sm text-stone-200">James P.</h4>
+                            <span class="text-xs text-stone-400">Verified Customer</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Location & Hours Section -->
+    <section id="location" class="py-20 bg-stone-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Info Column -->
+                <div class="lg:col-span-5 space-y-8">
+                    <div>
+                        <span class="text-amber-700 font-semibold text-sm tracking-widest uppercase">Visit Us</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-coffee-950 mt-2">Location &amp; Hours</h2>
+                        <p class="text-stone-600 mt-2">Join us for breakfast, late lunch, or an evening brew in Saar.</p>
+                    </div>
+
+                    <!-- Info Cards -->
+                    <div class="space-y-4">
+                        <!-- Address Card -->
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-white border border-stone-200 shadow-sm">
+                            <div class="w-12 h-12 rounded-lg bg-amber-100 flex items-center justify-center text-amber-700 text-xl flex-shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-coffee-950 text-base">Address</h3>
+                                <p class="text-stone-600 text-sm mt-0.5">Building 123, Road 3302, Block 533</p>
+                                <p class="text-stone-500 text-xs font-semibold mt-1">Saar, Kingdom of Bahrain</p>
+                            </div>
+                        </div>
+
+                        <!-- Hours Card -->
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-white border border-stone-200 shadow-sm">
+                            <div class="w-12 h-12 rounded-lg bg-amber-100 flex items-center justify-center text-amber-700 text-xl flex-shrink-0">
+                                <i class="fa-solid fa-clock"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-coffee-950 text-base">Opening Hours</h3>
+                                <p class="text-stone-600 text-sm mt-0.5">Everyday: <span class="font-semibold text-stone-800">7:00 AM – 11:00 PM</span></p>
+                                <p class="text-stone-500 text-xs mt-1">Kitchen closes at 10:30 PM</p>
+                            </div>
+                        </div>
+
+                        <!-- Direct Contact Card -->
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-white border border-stone-200 shadow-sm">
+                            <div class="w-12 h-12 rounded-lg bg-emerald-100 flex items-center justify-center text-emerald-700 text-xl flex-shrink-0">
+                                <i class="fa-brands fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-coffee-950 text-base">Direct WhatsApp Reservations</h3>
+                                <p class="text-stone-600 text-sm mt-0.5">Instant table bookings &amp; inquiries</p>
+                                <a href="https://wa.me/97317000000?text=Hello%20Higher%20Grounds,%20I%20have%20an%20inquiry."
+                                   target="_blank"
+                                   class="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-700 hover:text-emerald-800 mt-2">
+                                    <span>Start WhatsApp Chat</span>
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Visual Map/Card Column -->
+                <div class="lg:col-span-7">
+                    <div class="relative bg-coffee-950 text-white p-8 sm:p-12 rounded-3xl shadow-xl overflow-hidden border border-amber-900/30">
+                        <!-- Decorative pattern -->
+                        <div class="absolute -right-16 -bottom-16 w-64 h-64 bg-amber-700/20 rounded-full blur-3xl"></div>
+                        
+                        <div class="relative z-10">
+                            <span class="text-amber-400 font-semibold text-xs tracking-widest uppercase">Interactive Directions</span>
+                            <h3 class="text-2xl sm:text-3xl font-extrabold mt-2 mb-4">Plan Your Visit to Saar</h3>
+                            <p class="text-stone-300 text-sm mb-8 leading-relaxed max-w-lg">
+                                Conveniently located in Saar with ample valet and self-parking options available for all guests.
+                            </p>
+
+                            <!-- Styled Map CTA Box -->
+                            <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/10 mb-8">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-12 h-12 rounded-full bg-amber-600 flex items-center justify-center text-white text-xl flex-shrink-0">
+                                        <i class="fa-solid fa-map-location-dot"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-stone-100">Higher Grounds Saar</h4>
+                                        <p class="text-stone-400 text-xs mt-0.5">Click below to open exact location in Google Maps</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-col sm:flex-row gap-4">
+                                <a href="https://maps.google.com" 
+                                   target="_blank" 
+                                   class="inline-flex items-center justify-center gap-2 bg-amber-600 hover:bg-amber-500 text-white font-semibold px-6 py-3.5 rounded-xl transition-all shadow-md text-sm">
+                                    <i class="fa-solid fa-diamond-turn-right"></i>
+                                    <span>Open in Google Maps</span>
+                                </a>
+                                <a href="https://wa.me/97317000000?text=Hello%20Higher%20Grounds,%20I%20would%20like%20to%20reserve%20a%20table."
+                                   target="_blank"
+                                   class="inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold px-6 py-3.5 rounded-xl transition-all shadow-md text-sm">
+                                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                                    <span>Reserve via WhatsApp</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-coffee-950 text-stone-400 border-t border-white/10 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                
+                <!-- Logo -->
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-amber-700 flex items-center justify-center text-white font-bold text-sm">
+                        <i class="fa-solid fa-mug-hot"></i>
+                    </div>
+                    <span class="text-lg font-extrabold text-stone-200 tracking-wider uppercase">Higher Grounds</span>
+                </div>
+
+                <!-- Arabic Tagline -->
+                <p class="text-sm font-arabic text-stone-400 text-center dir-rtl" dir="rtl">
+                    أعلى معايير الجودة في كل فنجان طبق وملاحظة
+                </p>
+
+                <!-- Social Links -->
+                <div class="flex items-center gap-4 text-stone-300 text-lg">
+                    <a href="https://instagram.com" target="_blank" class="w-9 h-9 rounded-full bg-white/5 hover:bg-amber-700 flex items-center justify-center transition-colors">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="https://wa.me/97317000000" target="_blank" class="w-9 h-9 rounded-full bg-white/5 hover:bg-emerald-600 flex items-center justify-center transition-colors">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                    <a href="https://maps.google.com" target="_blank" class="w-9 h-9 rounded-full bg-white/5 hover:bg-amber-700 flex items-center justify-center transition-colors">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="mt-8 pt-8 border-t border-white/5 text-center text-xs text-stone-500">
+                <p>&copy; 2025 Higher Grounds Specialty Coffee &amp; Dining. All rights reserved. Saar, Bahrain.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
