@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grill City Restaurant | Seef Bahrain</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts: Plus Jakarta Sans & Cairo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandRed: '#b91c1c',
+            brandRedHover: '#991b1b',
+            brandDark: '#18181b',
+            brandAmber: '#f59e0b',
+            brandAmberHover: '#d97706',
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            cairo: ['Cairo', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .font-cairo { font-family: 'Cairo', sans-serif; }
+    .glow-amber {
+      box-shadow: 0 0 25px -5px rgba(245, 158, 11, 0.4);
+    }
+    .glow-red {
+      box-shadow: 0 0 25px -5px rgba(185, 28, 28, 0.5);
+    }
+  </style>
+</head>
+<body class="bg-zinc-950 text-zinc-100 font-sans antialiased selection:bg-amber-500 selection:text-zinc-950">
+
+  <!-- HEADER / NAVBAR -->
+  <header class="sticky top-0 z-50 bg-zinc-900/90 backdrop-blur-md border-b border-zinc-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-red-600 to-amber-500 flex items-center justify-center text-white text-xl shadow-lg shadow-red-900/40 group-hover:scale-105 transition-transform">
+          <i class="fa-solid fa-fire-flame-curved"></i>
+        </div>
+        <div>
+          <span class="text-xl font-extrabold tracking-tight text-white block leading-none">GRILL CITY</span>
+          <span class="text-xs font-semibold text-amber-500 tracking-wider uppercase font-cairo block mt-1">مطعم مدينة المشويات</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-300">
+        <a href="#about" class="hover:text-amber-500 transition-colors">About Us</a>
+        <a href="#featured" class="hover:text-amber-500 transition-colors">Featured Menu</a>
+        <a href="#reviews" class="hover:text-amber-500 transition-colors">Reviews</a>
+        <a href="#location" class="hover:text-amber-500 transition-colors">Location & Hours</a>
+      </nav>
+
+      <!-- Quick WhatsApp CTA -->
+      <a href="https://wa.me/97312345678?text=Hello%20Grill%20City!%20I%20would%20like%20to%20reserve%20a%20table%20/%20place%20an%20order."
+         target="_blank"
+         class="hidden sm:inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm px-5 py-2.5 rounded-full shadow-md shadow-emerald-900/30 transition-all hover:scale-105">
+        <i class="fa-brands fa-whatsapp text-lg"></i>
+        <span>WhatsApp Order</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="relative min-h-[88vh] flex items-center justify-center overflow-hidden py-20">
+    <!-- Background Image with Dark Overlay -->
+    <div class="absolute inset-0 z-0">
+      <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1920&q=80" alt="Flame Grilled BBQ" class="w-full h-full object-cover object-center opacity-30 brightness-75 scale-105 animate-pulse transition-all duration-10000">
+      <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/80 to-transparent"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-zinc-950/90 via-transparent to-zinc-950/90"></div>
+    </div>
+
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <!-- Location Badge -->
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-950/80 border border-red-700/50 text-red-300 text-xs sm:text-sm font-semibold mb-8 backdrop-blur-sm shadow-xl">
+        <span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
+        <i class="fa-solid fa-location-dot text-amber-500"></i>
+        <span>Seef District, Bahrain | ضاحية السيف</span>
+      </div>
+
+      <!-- English Headline -->
+      <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-none mb-4">
+        Authentic Flame-Grilled Specialties in the Heart of Seef
+      </h1>
+
+      <!-- Arabic Headline -->
+      <h2 class="text-2xl sm:text-4xl font-bold text-amber-400 font-cairo mb-8 leading-snug">
+        أشهى المشويات على الفحم في قلب ضاحية السيف
+      </h2>
+
+      <p class="text-zinc-300 text-base sm:text-xl max-w-3xl mx-auto mb-10 font-normal leading-relaxed">
+        Savor the smoky, tender perfection of premium marinated meats, freshly prepared on open charcoal flames daily. Experience Bahrain’s finest grill traditions.
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+        <a href="https://wa.me/97312345678?text=Hello%20Grill%20City!%20I%20would%20like%20to%20reserve%20a%20table%20/%20place%20an%20order."
+           target="_blank"
+           class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-red-700 hover:bg-red-600 text-white font-bold text-lg px-8 py-4 rounded-xl glow-red hover:scale-105 transition-all">
+          <i class="fa-brands fa-whatsapp text-2xl text-emerald-400"></i>
+          <span>Reserve & Order via WhatsApp</span>
+        </a>
+        <a href="#featured"
+           class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-zinc-800/80 hover:bg-zinc-700 text-zinc-200 font-semibold text-lg px-8 py-4 rounded-xl border border-zinc-700 backdrop-blur-sm transition-all">
+          <i class="fa-solid fa-utensils text-amber-500"></i>
+          <span>Explore Menu</span>
+        </a>
+      </div>
+
+      <!-- Trust Indicators -->
+      <div class="mt-14 grid grid-cols-2 sm:grid-cols-3 gap-6 pt-8 border-t border-zinc-800/60 max-w-3xl mx-auto text-zinc-400 text-sm">
+        <div class="flex items-center justify-center gap-2">
+          <i class="fa-solid fa-shield-halved text-amber-500 text-lg"></i>
+          <span>100% Fresh Halal Meat</span>
+        </div>
+        <div class="flex items-center justify-center gap-2">
+          <i class="fa-solid fa-fire text-red-500 text-lg"></i>
+          <span>Traditional Charcoal Flame</span>
+        </div>
+        <div class="col-span-2 sm:col-span-1 flex items-center justify-center gap-2">
+          <i class="fa-solid fa-star text-amber-400 text-lg"></i>
+          <span>4.9 Rated on Google</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT & VALUE PROPOSITION -->
+  <section id="about" class="py-20 bg-zinc-900 border-y border-zinc-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        
+        <!-- Left: Image Collage -->
+        <div class="relative">
+          <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-zinc-800 aspect-[4/3]">
+            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=80" alt="Grilled Meat Platter" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent opacity-60"></div>
+          </div>
+          <!-- Floating Card -->
+          <div class="absolute -bottom-6 -right-2 sm:-right-6 bg-zinc-950 border border-zinc-800 p-6 rounded-2xl shadow-2xl max-w-xs backdrop-blur-md">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="w-10 h-10 rounded-full bg-amber-500/20 text-amber-500 flex items-center justify-center text-xl font-bold">
+                🔥
+              </div>
+              <div>
+                <p class="text-xs text-zinc-400 uppercase font-semibold">Secret Recipe</p>
+                <p class="text-sm font-bold text-white">Authentic Spice Blends</p>
+              </div>
+            </div>
+            <p class="text-xs text-zinc-400 font-cairo">خلطة بهارات خاصة وتتبيلة عريقة تحضر يومياً</p>
+          </div>
+        </div>
+
+        <!-- Right: Text Content -->
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-amber-500/10 text-amber-500 text-xs font-bold uppercase tracking-wider mb-4 border border-amber-500/20">
+            Why Grill City?
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-2 leading-tight">
+            The Secret to Our Flame-Seared Greatness
+          </h2>
+          <h3 class="text-xl font-bold text-amber-400 font-cairo mb-6">
+            طعم لا يُنسى ورائحة الفحم الأصيل
+          </h3>
+          <p class="text-zinc-300 mb-8 leading-relaxed">
+            Located conveniently in the bustling Seef District, Grill City Restaurant brings you the passion of real barbecue. We source only prime grade tender meats, marinate them in our secret house blends, and slow-grill them over white-hot hardwood coals for maximum juiciness and rich smoky flavor.
+          </p>
+
+          <!-- Features Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div class="flex gap-4">
+              <div class="w-12 h-12 shrink-0 rounded-xl bg-red-950/60 border border-red-800/50 flex items-center justify-center text-red-500 text-xl">
+                <i class="fa-solid fa-drumstick-bite"></i>
+              </div>
+              <div>
+                <h4 class="text-white font-bold mb-1">Fresh Daily Cuts</h4>
+                <p class="text-xs text-zinc-400">Never frozen. Tenderized naturally and spiced to perfection.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="w-12 h-12 shrink-0 rounded-xl bg-amber-950/60 border border-amber-800/50 flex items-center justify-center text-amber-500 text-xl">
+                <i class="fa-solid fa-cloud-meatball"></i>
+              </div>
+              <div>
+                <h4 class="text-white font-bold mb-1">Charcoal Grill Art</h4>
+                <p class="text-xs text-zinc-400">Authentic Arabic & Mediterranean charcoal grilling techniques.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="w-12 h-12 shrink-0 rounded-xl bg-amber-950/60 border border-amber-800/50 flex items-center justify-center text-amber-500 text-xl">
+                <i class="fa-solid fa-utensils"></i>
+              </div>
+              <div>
+                <h4 class="text-white font-bold mb-1">Cozy Seef Ambiance</h4>
+                <p class="text-xs text-zinc-400">Perfect for family gatherings, group feasts, or quick lunch breaks.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="w-12 h-12 shrink-0 rounded-xl bg-red-950/60 border border-red-800/50 flex items-center justify-center text-red-500 text-xl">
+                <i class="fa-solid fa-truck-fast"></i>
+              </div>
+              <div>
+                <h4 class="text-white font-bold mb-1">Fast Delivery</h4>
+                <p class="text-xs text-zinc-400">Piping hot meals delivered straight to your door in Seef & nearby.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED ITEMS / MENU GRID -->
+  <section id="featured" class="py-20 bg-zinc-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-red-500/10 text-red-500 text-xs font-bold uppercase tracking-wider mb-3 border border-red-500/20">
+          Signature Selections
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-3 tracking-tight">
+          Our Sizzling Grill Favorites
+        </h2>
+        <h3 class="text-2xl font-bold text-amber-400 font-cairo">
+          أطباقنا المميزة الأكثر طلباً
+        </h3>
+      </div>
+
+      <!-- Menu Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Item 1 -->
+        <div class="bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden hover:border-amber-500/50 transition-all group flex flex-col justify-between">
+          <div>
+            <div class="relative h-56 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=600&q=80" alt="Royal Mix Grill Platter" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+              <span class="absolute top-3 right-3 bg-red-700 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
+                BESTSELLER
+              </span>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-2">
+                <h4 class="text-xl font-bold text-white group-hover:text-amber-400 transition-colors">Royal Mixed Grill Platter</h4>
+                <span class="text-amber-400 font-extrabold text-lg shrink-0 ml-2">BHD 6.800</span>
+              </div>
+              <h5 class="text-sm font-semibold text-zinc-400 font-cairo mb-3">مشاوي مشكلة فخمة</h5>
+              <p class="text-zinc-400 text-sm mb-4 leading-relaxed">
+                A feast of Lamb Tikka, Sheesh Tawook, Lamb Kebab, and Grilled Ribs served with freshly baked bread, hummus, and grilled tomatoes.
+              </p>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <a href="https://wa.me/97312345678?text=I%20would%20like%20to%20order%3A%20Royal%20Mixed%20Grill%20Platter"
+               target="_blank"
+               class="w-full py-3 bg-zinc-800 hover:bg-emerald-600 text-zinc-200 hover:text-white font-semibold text-sm rounded-xl flex items-center justify-center gap-2 transition-all">
+              <i class="fa-brands fa-whatsapp text-lg"></i>
+              <span>Order via WhatsApp</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden hover:border-amber-500/50 transition-all group flex flex-col justify-between">
+          <div>
+            <div class="relative h-56 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?auto=format&fit=crop&w=600&q=80" alt="Bahraini Lamb Tikka" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+              <span class="absolute top-3 right-3 bg-amber-500 text-zinc-950 text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
+                POPULAR
+              </span>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-2">
+                <h4 class="text-xl font-bold text-white group-hover:text-amber-400 transition-colors">Bahraini Lamb Tikka</h4>
+                <span class="text-amber-400 font-extrabold text-lg shrink-0 ml-2">BHD 3.800</span>
+              </div>
+              <h5 class="text-sm font-semibold text-zinc-400 font-cairo mb-3">تكة لحم بحرينية باللومي</h5>
+              <p class="text-zinc-400 text-sm mb-4 leading-relaxed">
+                Tender lamb cubes marinated in black lime, Bahraini spices, and olive oil, charred over glowing embers.
+              </p>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <a href="https://wa.me/97312345678?text=I%20would%20like%20to%20order%3A%20Bahraini%20Lamb%20Tikka"
+               target="_blank"
+               class="w-full py-3 bg-zinc-800 hover:bg-emerald-600 text-zinc-200 hover:text-white font-semibold text-sm rounded-xl flex items-center justify-center gap-2 transition-all">
+              <i class="fa-brands fa-whatsapp text-lg"></i>
+              <span>Order via WhatsApp</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden hover:border-amber-500/50 transition-all group flex flex-col justify-between">
+          <div>
+            <div class="relative h-56 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?auto=format&fit=crop&w=600&q=80" alt="Smoked Charcoal Chicken" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-2">
+                <h4 class="text-xl font-bold text-white group-hover:text-amber-400 transition-colors">Smoked Half Chicken</h4>
+                <span class="text-amber-400 font-extrabold text-lg shrink-0 ml-2">BHD 3.200</span>
+              </div>
+              <h5 class="text-sm font-semibold text-zinc-400 font-cairo mb-3">نصف دجاجة على الفحم</h5>
+              <p class="text-zinc-400 text-sm mb-4 leading-relaxed">
+                Juicy bone-in half chicken slow-grilled with garlic herb butter, served with spicy fries and garlic sauce.
+              </p>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <a href="https://wa.me/97312345678?text=I%20would%20like%20to%20order%3A%20Smoked%20Half%20Chicken"
+               target="_blank"
+               class="w-full py-3 bg-zinc-800 hover:bg-emerald-600 text-zinc-200 hover:text-white font-semibold text-sm rounded-xl flex items-center justify-center gap-2 transition-all">
+              <i class="fa-brands fa-whatsapp text-lg"></i>
+              <span>Order via WhatsApp</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden hover:border-amber-500/50 transition-all group flex flex-col justify-between">
+          <div>
+            <div class="relative h-56 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=600&q=80" alt="Cheese Stuffed Kofta" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-2">
+                <h4 class="text-xl font-bold text-white group-hover:text-amber-400 transition-colors">Cheese-Stuffed Kofta</h4>
+                <span class="text-amber-400 font-extrabold text-lg shrink-0 ml-2">BHD 4.200</span>
+              </div>
+              <h5 class="text-sm font-semibold text-zinc-400 font-cairo mb-3">كفتة لحم محشوة بالجبنة</h5>
+              <p class="text-zinc-400 text-sm mb-4 leading-relaxed">
+                Minced spiced lamb skewers packed with oozing melted mozzarella and fresh parsley herbs.
+              </p>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <a href="https://wa.me/97312345678?text=I%20would%20like%20to%20order%3A%20Cheese-Stuffed%20Kofta"
+               target="_blank"
+               class="w-full py-3 bg-zinc-800 hover:bg-emerald-600 text-zinc-200 hover:text-white font-semibold text-sm rounded-xl flex items-center justify-center gap-2 transition-all">
+              <i class="fa-brands fa-whatsapp text-lg"></i>
+              <span>Order via WhatsApp</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Item 5 -->
+        <div class="bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden hover:border-amber-500/50 transition-all group flex flex-col justify-between">
+          <div>
+            <div class="relative h-56 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80" alt="Angus Flame Ribeye Steak" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+              <span class="absolute top-3 right-3 bg-red-700 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
+                CHEF'S CUT
+              </span>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-2">
+                <h4 class="text-xl font-bold text-white group-hover:text-amber-400 transition-colors">Flame Ribeye Steak</h4>
+                <span class="text-amber-400 font-extrabold text-lg shrink-0 ml-2">BHD 8.900</span>
+              </div>
+              <h5 class="text-sm font-semibold text-zinc-400 font-cairo mb-3">ستيك ريب آي مشوي على الفحم</h5>
+              <p class="text-zinc-400 text-sm mb-4 leading-relaxed">
+                300g Prime Angus Ribeye, flame-seared to your perfection, served with garlic mashed potatoes and pepper sauce.
+              </p>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <a href="https://wa.me/97312345678?text=I%20would%20like%20to%20order%3A%20Flame%20Ribeye%20Steak"
+               target="_blank"
+               class="w-full py-3 bg-zinc-800 hover:bg-emerald-600 text-zinc-200 hover:text-white font-semibold text-sm rounded-xl flex items-center justify-center gap-2 transition-all">
+              <i class="fa-brands fa-whatsapp text-lg"></i>
+              <span>Order via WhatsApp</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Item 6 -->
+        <div class="bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden hover:border-amber-500/50 transition-all group flex flex-col justify-between">
+          <div>
+            <div class="relative h-56 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&w=600&q=80" alt="Charcoal Chicken Wings Basket" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-2">
+                <h4 class="text-xl font-bold text-white group-hover:text-amber-400 transition-colors">Charcoal Wings Basket</h4>
+                <span class="text-amber-400 font-extrabold text-lg shrink-0 ml-2">BHD 2.800</span>
+              </div>
+              <h5 class="text-sm font-semibold text-zinc-400 font-cairo mb-3">أجنحة دجاج مشوية بالبهارات</h5>
+              <p class="text-zinc-400 text-sm mb-4 leading-relaxed">
+                10 pieces of crispy flame-kissed jumbo wings tossed in your choice of spicy lemon garlic or smoky barbecue glaze.
+              </p>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <a href="https://wa.me/97312345678?text=I%20would%20like%20to%20order%3A%20Charcoal%20Wings%20Basket"
+               target="_blank"
+               class="w-full py-3 bg-zinc-800 hover:bg-emerald-600 text-zinc-200 hover:text-white font-semibold text-sm rounded-xl flex items-center justify-center gap-2 transition-all">
+              <i class="fa-brands fa-whatsapp text-lg"></i>
+              <span>Order via WhatsApp</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+      
+      <!-- WhatsApp Custom Order Banner -->
+      <div class="mt-12 bg-gradient-to-r from-red-950 via-zinc-900 to-amber-950 border border-red-800/40 rounded-2xl p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div>
+          <h3 class="text-2xl font-bold text-white mb-1">Planning a Gathering or Family Dinner?</h3>
+          <p class="text-zinc-300 text-sm font-cairo">اطلب وجباتك المخصصة والعائلية مباشرة عبر الواتساب مع خدمة التوصيل السريع</p>
+        </div>
+        <a href="https://wa.me/97312345678?text=Hello!%20I%20would%20like%20to%20inquire%20about%20a%20family%20catering%20/%20special%20order."
+           target="_blank"
+           class="shrink-0 bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-6 py-3.5 rounded-xl flex items-center gap-3 shadow-xl transition-all">
+          <i class="fa-brands fa-whatsapp text-2xl"></i>
+          <span>Custom Catering Order</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- GOOGLE REVIEWS SECTION -->
+  <section id="reviews" class="py-20 bg-zinc-900 border-t border-zinc-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Google Rating Summary Header -->
+      <div class="flex flex-col md:flex-row items-center justify-between mb-16 gap-6 bg-zinc-950 p-8 rounded-2xl border border-zinc-800">
+        <div class="flex items-center gap-5">
+          <div class="w-16 h-16 rounded-2xl bg-white flex items-center justify-center text-3xl shadow-md">
+            <i class="fa-brands fa-google text-blue-500"></i>
+          </div>
+          <div>
+            <div class="flex items-center gap-2 mb-1">
+              <span class="text-2xl font-extrabold text-white">4.9</span>
+              <div class="flex text-amber-400 text-sm gap-1">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+            </div>
+            <p class="text-xs text-zinc-400">Based on <span class="text-white font-semibold">380+ Google Customer Reviews</span> in Seef</p>
+          </div>
+        </div>
+        <div class="text-center md:text-right">
+          <span class="inline-flex items-center gap-2 text-xs font-bold bg-emerald-950/80 text-emerald-400 border border-emerald-800/50 px-4 py-2 rounded-full">
+            <i class="fa-solid fa-circle-check"></i> Verified Customer Feedback
+          </span>
+        </div>
+      </div>
+
+      <!-- Testimonials Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Review 1 -->
+        <div class="bg-zinc-950 p-6 rounded-2xl border border-zinc-800/80 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-red-700 text-white font-bold flex items-center justify-center text-sm">
+                  AH
+                </div>
+                <div>
+                  <h5 class="text-white text-sm font-bold">Ali Hasan</h5>
+                  <p class="text-xs text-zinc-500">Local Guide • Seef</p>
+                </div>
+              </div>
+              <i class="fa-brands fa-google text-zinc-600"></i>
+            </div>
+            <div class="flex text-amber-400 text-xs mb-3 gap-1">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="text-zinc-300 text-sm leading-relaxed mb-4">
+              "Without a doubt the best lamb tikka in Seef! The meat was juicy, tender, and seasoned to perfection. Fast WhatsApp delivery service too!"
+            </p>
+          </div>
+          <p class="text-xs font-cairo text-amber-500 font-semibold">أفضل تكة لحم في السيف بدون منازع، طازجة وممتازة جداً</p>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="bg-zinc-950 p-6 rounded-2xl border border-zinc-800/80 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-amber-600 text-white font-bold flex items-center justify-center text-sm">
+                  SJ
+                </div>
+                <div>
+                  <h5 class="text-white text-sm font-bold">Sarah Johnson</h5>
+                  <p class="text-xs text-zinc-500">2 weeks ago</p>
+                </div>
+              </div>
+              <i class="fa-brands fa-google text-zinc-600"></i>
+            </div>
+            <div class="flex text-amber-400 text-xs mb-3 gap-1">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="text-zinc-300 text-sm leading-relaxed mb-4">
+              "The Royal Mix Grill platter fed our entire family of 4 comfortably. The charcoal aroma is authentic and the garlic sauce is addicting. 10/10!"
+            </p>
+          </div>
+          <p class="text-xs font-cairo text-amber-500 font-semibold">طبق المشاوي المشكلة راهي ويكفي العائلة ورائحة الشواء ممتازة</p>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="bg-zinc-950 p-6 rounded-2xl border border-zinc-800/80 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-emerald-700 text-white font-bold flex items-center justify-center text-sm">
+                  MK
+                </div>
+                <div>
+                  <h5 class="text-white text-sm font-bold">Mohammed K.</h5>
+                  <p class="text-xs text-zinc-500">1 month ago</p>
+                </div>
+              </div>
+              <i class="fa-brands fa-google text-zinc-600"></i>
+            </div>
+            <div class="flex text-amber-400 text-xs mb-3 gap-1">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="text-zinc-300 text-sm leading-relaxed mb-4">
+              "Great location near Seef Mall. Friendly staff and fast preparation time. The cheese-stuffed kofta is a game changer!"
+            </p>
+          </div>
+          <p class="text-xs font-cairo text-amber-500 font-semibold">موقع ممتاز بالقرب من مجمع السيف والكفتة بالجبن لذيذة جداً</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATION & CONTACT SECTION -->
+  <section id="location" class="py-20 bg-zinc-950 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
+        
+        <!-- Left Details Card -->
+        <div class="lg:col-span-5 bg-zinc-900 border border-zinc-800 rounded-3xl p-8 flex flex-col justify-between">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-amber-500/10 text-amber-500 text-xs font-bold uppercase tracking-wider mb-4 border border-amber-500/20">
+              Visit Us in Seef
+            </div>
+            <h2 class="text-3xl font-extrabold text-white mb-2">Location & Hours</h2>
+            <h3 class="text-xl font-bold text-amber-400 font-cairo mb-8">الموقع وساعات العمل</h3>
+
+            <!-- Info Rows -->
+            <div class="space-y-6 text-zinc-300">
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-xl bg-red-950/80 border border-red-800/50 flex items-center justify-center text-red-500 shrink-0 text-lg">
+                  <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div>
+                  <h4 class="text-white font-bold text-sm mb-1">Address</h4>
+                  <p class="text-sm text-zinc-400">Building 1024, Road 2831, Block 428</p>
+                  <p class="text-sm text-zinc-400">Seef District (Near Seef Mall), Kingdom of Bahrain</p>
+                  <p class="text-xs text-amber-500 font-cairo mt-1">ضاحية السيف - مملكة البحرين</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-xl bg-amber-950/80 border border-amber-800/50 flex items-center justify-center text-amber-500 shrink-0 text-lg">
+                  <i class="fa-solid fa-clock"></i>
+                </div>
+                <div>
+                  <h4 class="text-white font-bold text-sm mb-1">Opening Hours</h4>
+                  <p class="text-sm text-zinc-400">Monday – Sunday: <span class="text-white font-semibold">12:00 PM – 1:00 AM</span></p>
+                  <p class="text-xs text-zinc-500 font-cairo mt-0.5">يومياً من الساعة ١٢ مساءً حتى ١ صباحاً</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-xl bg-emerald-950/80 border border-emerald-800/50 flex items-center justify-center text-emerald-500 shrink-0 text-lg">
+                  <i class="fa-brands fa-whatsapp"></i>
+                </div>
+                <div>
+                  <h4 class="text-white font-bold text-sm mb-1">Direct Contact</h4>
+                  <p class="text-sm text-zinc-400">Phone / WhatsApp: <span class="text-white font-semibold">+973 1234 5678</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Button -->
+          <div class="mt-8 pt-6 border-t border-zinc-800">
+            <a href="https://wa.me/97312345678?text=Hello!%20I%20am%20looking%20for%20directions%20/%20reservation%20at%20Grill%20City%20Seef."
+               target="_blank"
+               class="w-full py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl flex items-center justify-center gap-3 shadow-xl hover:scale-[1.02] transition-all">
+              <i class="fa-brands fa-whatsapp text-2xl"></i>
+              <span>Chat / Contact on WhatsApp</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Visual Map Representation -->
+        <div class="lg:col-span-7 bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden relative min-h-[350px] flex items-center justify-center p-8">
+          <!-- Map Background Graphic Visual -->
+          <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#3f3f46_1px,transparent_1px)] [background-size:16px_16px]"></div>
+          
+          <div class="relative z-10 text-center max-w-md bg-zinc-950/90 border border-zinc-800 p-8 rounded-2xl shadow-2xl backdrop-blur-md">
+            <div class="w-16 h-16 rounded-full bg-red-700/20 text-red-500 flex items-center justify-center text-3xl mx-auto mb-4 animate-bounce">
+              <i class="fa-solid fa-location-dot"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">Grill City Seef Branch</h3>
+            <p class="text-zinc-400 text-sm mb-6">
+              Located right in the prime dining hub of Seef District, easily accessible with ample parking available.
+            </p>
+            <a href="https://maps.google.com"
+               target="_blank"
+               class="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-zinc-950 font-bold px-6 py-3 rounded-xl text-sm transition-all">
+              <i class="fa-solid fa-map-location-dot"></i>
+              <span>Open in Google Maps</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-zinc-950 border-t border-zinc-900 py-12 text-zinc-500 text-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+      
+      <!-- Logo & Copyright -->
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-lg bg-red-700 flex items-center justify-center text-white text-sm font-bold">
+          <i class="fa-solid fa-fire"></i>
+        </div>
+        <div>
+          <p class="text-zinc-300 font-bold text-base leading-none">Grill City Restaurant</p>
+          <p class="text-xs text-zinc-600 mt-0.5">© 2025 All Rights Reserved. Seef District, Bahrain.</p>
+        </div>
+      </div>
+
+      <!-- Social Links -->
+      <div class="flex items-center gap-4 text-lg text-zinc-400">
+        <a href="#" class="hover:text-amber-500 transition-colors"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" class="hover:text-amber-500 transition-colors"><i class="fa-brands fa-facebook"></i></a>
+        <a href="https://wa.me/97312345678" target="_blank" class="hover:text-emerald-500 transition-colors"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING WHATSAPP BUTTON -->
+  <a href="https://wa.me/97312345678?text=Hello%20Grill%20City!%20I%20would%20like%20to%20place%20an%20order."
+     target="_blank"
+     class="fixed bottom-6 right-6 z-50 bg-emerald-600 hover:bg-emerald-500 text-white p-4 rounded-full shadow-2xl glow-amber flex items-center justify-center hover:scale-110 transition-transform group"
+     aria-label="Contact on WhatsApp">
+    <i class="fa-brands fa-whatsapp text-3xl"></i>
+    <span class="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs group-hover:ml-3 transition-all duration-300 text-sm font-bold">
+      Order Now
+    </span>
+  </a>
+
+</body>
+</html>
