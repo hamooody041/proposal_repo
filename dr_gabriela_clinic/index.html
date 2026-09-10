@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dr. Gabriela Clinic - Advanced Aesthetic & Dermatological Excellence</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              950: '#042f2e',
+              900: '#134e4a',
+              800: '#115e59',
+              700: '#0f766e',
+              100: '#ccfbf1',
+              50: '#f0fdfa',
+            },
+            accent: {
+              300: '#fca5a5',
+              400: '#fb7185',
+              500: '#f43f5e',
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            arabic: ['"Alexandria"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .font-arabic { font-family: 'Alexandria', sans-serif; }
+    .gradient-hero { background: linear-gradient(135deg, #042f2e 0%, #134e4a 60%, #115e59 100%); }
+    .glass-card { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); }
+  </style>
+</head>
+<body class="font-sans bg-slate-50 text-slate-800 antialiased selection:bg-rose-400 selection:text-white transition-colors duration-300">
+
+  <!-- TOP BAR -->
+  <div class="bg-brand-950 text-slate-300 text-xs py-2 px-4 text-center border-b border-brand-800 flex justify-between items-center max-w-7xl mx-auto rounded-b-md shadow-inner">
+    <div class="flex items-center space-x-4 rtl:space-x-reverse mx-auto md:mx-0">
+      <span><i class="fa-solid fa-location-dot text-rose-400 mr-1.5 rtl:ml-1.5"></i><span data-en="Seef District, Manama, Bahrain" data-ar="ضاحية السيف، المنامة، البحرين">Seef District, Manama, Bahrain</span></span>
+      <span class="hidden sm:inline">|</span>
+      <span class="hidden sm:inline"><i class="fa-regular fa-clock text-rose-400 mr-1.5 rtl:ml-1.5"></i><span data-en="Sat - Thu: 9:00 AM - 8:00 PM" data-ar="السبت - الخميس: 9:00 ص - 8:00 م">Sat - Thu: 9:00 AM - 8:00 PM</span></span>
+    </div>
+    <div class="hidden md:flex items-center space-x-3 rtl:space-x-reverse">
+      <a href="https://wa.me/97339000000" target="_blank" class="hover:text-rose-400 transition-colors"><i class="fa-brands fa-whatsapp text-sm mr-1 rtl:ml-1 text-emerald-400"></i>+973 3900 0000</a>
+    </div>
+  </div>
+
+  <!-- NAVIGATION -->
+  <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-100 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <!-- Logo -->
+      <div class="flex items-center space-x-3 rtl:space-x-reverse">
+        <div class="w-11 h-11 rounded-full bg-brand-900 text-white flex items-center justify-center font-bold text-xl shadow-md border-2 border-rose-300">
+          G
+        </div>
+        <div>
+          <span class="text-xl font-bold tracking-tight text-brand-950 block leading-tight">Dr. Gabriela</span>
+          <span class="text-xs tracking-wider uppercase text-rose-500 font-semibold block" data-en="Aesthetic Clinic" data-ar="عيادة التجميل والجلدية">Aesthetic Clinic</span>
+        </div>
+      </div>
+
+      <!-- Nav Links -->
+      <div class="hidden lg:flex items-center space-x-8 rtl:space-x-reverse text-sm font-medium text-slate-700">
+        <a href="#hero" class="hover:text-brand-900 transition-colors" data-en="Home" data-ar="الرئيسية">Home</a>
+        <a href="#about" class="hover:text-brand-900 transition-colors" data-en="About Dr. Gabriela" data-ar="عن الدكتورة">About Dr. Gabriela</a>
+        <a href="#treatments" class="hover:text-brand-900 transition-colors" data-en="Treatments" data-ar="العلاجات والخدمات">Treatments</a>
+        <a href="#reviews" class="hover:text-brand-900 transition-colors" data-en="Patient Reviews" data-ar="آراء المرضى">Patient Reviews</a>
+        <a href="#contact" class="hover:text-brand-900 transition-colors" data-en="Location & Hours" data-ar="الموقع والمواعيد">Location & Hours</a>
+      </div>
+
+      <!-- Language Switcher & Quick CTA -->
+      <div class="flex items-center space-x-3 rtl:space-x-reverse">
+        <!-- Lang Switcher Toggle -->
+        <div class="bg-slate-100 p-1 rounded-full border border-slate-200 flex items-center text-xs font-semibold">
+          <button id="lang-btn-en" onclick="setLanguage('en')" class="px-3 py-1.5 rounded-full transition-all duration-200 bg-brand-900 text-white shadow-sm">EN</button>
+          <button id="lang-btn-ar" onclick="setLanguage('ar')" class="px-3 py-1.5 rounded-full transition-all duration-200 text-slate-600 hover:text-brand-900">عربي</button>
+        </div>
+
+        <a href="https://wa.me/97339000000?text=Hello%20Dr.%20Gabriela%20Clinic,%20I%20would%20like%20to%20book%20a%20consultation." target="_blank" class="hidden sm:inline-flex items-center px-4 py-2.5 rounded-full text-xs font-semibold bg-emerald-600 hover:bg-emerald-700 text-white shadow-md hover:shadow-lg transition-all duration-200 transform hover:-translate-y-0.5">
+          <i class="fa-brands fa-whatsapp text-base mr-2 rtl:ml-2 rtl:mr-0"></i>
+          <span data-en="Book via WhatsApp" data-ar="احجز عبر واتساب">Book via WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section id="hero" class="relative gradient-hero text-white overflow-hidden py-16 lg:py-24">
+    <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fb7185_1px,transparent_1px)] [background-size:16px_16px]"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Content -->
+        <div class="lg:col-span-7 space-y-6 text-center lg:text-left rtl:lg:text-right">
+          <div class="inline-flex items-center space-x-2 rtl:space-x-reverse bg-white/10 backdrop-blur-md px-3.5 py-1.5 rounded-full text-rose-200 text-xs font-medium border border-white/20">
+            <i class="fa-solid fa-award text-rose-300"></i>
+            <span data-en="Premier Cosmetic Clinic in Seef District" data-ar="عيادة التجميل الرائدة في ضاحية السيف">Premier Cosmetic Clinic in Seef District</span>
+          </div>
+          
+          <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight text-white" data-en="Advanced Aesthetic & Dermatological Excellence in Seef" data-ar="التميز المتقدم في الطب التجميلي والعناية بالبشرة في ضاحية السيف">
+            Advanced Aesthetic & Dermatological Excellence in Seef
+          </h1>
+          
+          <p class="text-slate-200 text-base sm:text-lg max-w-2xl leading-relaxed font-light mx-auto lg:mx-0" data-en="Experience personalized, world-class medical aesthetics, skin rejuvenation, and bespoke anti-aging treatments tailored to highlight your natural beauty in absolute comfort." data-ar="اختبري التجميل الطبي المخصص والعناية الفائقة بالبشرة مع أحدث تقنيات تجديد الشباب المصممة لإبراز جمالك الطبيعي في أجواء من الخصوصية والرفاهية.">
+            Experience personalized, world-class medical aesthetics, skin rejuvenation, and bespoke anti-aging treatments tailored to highlight your natural beauty in absolute comfort.
+          </p>
+
+          <!-- Action Buttons -->
+          <div class="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+            <a href="https://wa.me/97339000000?text=Hello%20Dr.%20Gabriela%20Clinic,%20I%20would%20like%20to%20book%20a%20consultation." target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-full text-base font-bold bg-emerald-500 hover:bg-emerald-600 text-white shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 group">
+              <i class="fa-brands fa-whatsapp text-2xl mr-3 rtl:ml-3 rtl:mr-0 group-hover:scale-110 transition-transform"></i>
+              <span data-en="Book Consultation via WhatsApp" data-ar="احجز استشارة عبر واتساب">Book Consultation via WhatsApp</span>
+            </a>
+            <a href="#treatments" class="w-full sm:w-auto inline-flex items-center justify-center px-6 py-4 rounded-full text-base font-medium bg-white/10 hover:bg-white/20 text-white border border-white/30 backdrop-blur-md transition-all duration-200">
+              <span data-en="Explore Treatments" data-ar="استكشف العلاجات">Explore Treatments</span>
+            </a>
+          </div>
+
+          <!-- Trust Badges -->
+          <div class="pt-8 border-t border-white/10 grid grid-cols-3 gap-4 text-center">
+            <div>
+              <span class="block text-2xl font-bold text-rose-300">15+</span>
+              <span class="text-xs text-slate-300" data-en="Years Experience" data-ar="سنوات خبرة">Years Experience</span>
+            </div>
+            <div>
+              <span class="block text-2xl font-bold text-rose-300">10k+</span>
+              <span class="text-xs text-slate-300" data-en="Satisfied Patients" data-ar="عميل سعيد">Satisfied Patients</span>
+            </div>
+            <div>
+              <span class="block text-2xl font-bold text-rose-300">4.9 ★</span>
+              <span class="text-xs text-slate-300" data-en="Google Rating" data-ar="تقييم جوجل">Google Rating</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Image Frame -->
+        <div class="lg:col-span-5 relative">
+          <div class="relative mx-auto max-w-md lg:max-w-none">
+            <div class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-rose-400 to-teal-400 blur-lg opacity-40 animate-pulse"></div>
+            <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white/20 bg-brand-900">
+              <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80" alt="Dr. Gabriela Clinic Interior" class="w-full h-[450px] object-cover object-center transform hover:scale-105 transition-transform duration-700">
+              <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-brand-950/90 via-brand-950/40 to-transparent p-6 text-white">
+                <p class="font-bold text-lg">Dr. Gabriela Clinic</p>
+                <p class="text-xs text-rose-200" data-en="Luxury Clinical Environment • Seef District" data-ar="بيئة طبية فاخرة • ضاحية السيف">Luxury Clinical Environment • Seef District</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section id="about" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <!-- Image Gallery Side -->
+        <div class="relative">
+          <div class="grid grid-cols-2 gap-4">
+            <img class="rounded-2xl shadow-lg object-cover h-64 w-full border border-slate-100" src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&q=80" alt="Clinical Consultation">
+            <img class="rounded-2xl shadow-lg object-cover h-64 w-full mt-8 border border-slate-100" src="https://images.unsplash.com/photo-1512290900676-26c2a48f4134?auto=format&fit=crop&w=600&q=80" alt="Aesthetic Treatment">
+          </div>
+          <div class="absolute -bottom-6 -right-6 bg-brand-900 text-white p-6 rounded-2xl shadow-xl hidden sm:block max-w-xs border border-brand-800">
+            <i class="fa-solid fa-user-doctor text-3xl text-rose-400 mb-2"></i>
+            <p class="text-xs leading-relaxed" data-en="Board Certified Dermatologist committed to safety, elegance, and natural enhancements." data-ar="طبيبة جلدية معتمدة ملتزمة بالأمان والجمال الطبيعي والنتائج المتقنة.">Board Certified Dermatologist committed to safety, elegance, and natural enhancements.</p>
+          </div>
+        </div>
+
+        <!-- Text Content -->
+        <div class="space-y-6">
+          <div class="inline-block text-xs font-extrabold uppercase tracking-widest text-rose-500 bg-rose-50 px-3 py-1 rounded-md border border-rose-100" data-en="About the Clinic" data-ar="عن العيادة">About the Clinic</div>
+          <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 leading-tight" data-en="Where Science Meets Artistic Natural Beauty" data-ar="حيث يلتقي العلم الطبي بلمسات الجمال الطبيعي">Where Science Meets Artistic Natural Beauty</h2>
+          <p class="text-slate-600 leading-relaxed font-light text-base" data-en="Led by Dr. Gabriela, a renowned dermatologist with over 15 years of international experience, our Seef clinic combines medical precision with aesthetic art. We prioritize individual facial harmony, patient safety, and cutting-edge FDA-approved technology to deliver subtle, rejuvenating results." data-ar="تقود العيادة الدكتورة غابرييلا، أخصائية الجلدية والتجميل بخبرة عالمية تتجاوز 15 عاماً. نجمع في عيادتنا بمنطقة السيف بين الدقة الطبية واللمسة الفنية لنقدم لك نتائج طبيعية وآمنة تماماً تحافظ على تناسق ملامحك.">
+            Led by Dr. Gabriela, a renowned dermatologist with over 15 years of international experience, our Seef clinic combines medical precision with aesthetic art. We prioritize individual facial harmony, patient safety, and cutting-edge FDA-approved technology to deliver subtle, rejuvenating results.
+          </p>
+
+          <div class="space-y-3 pt-2">
+            <div class="flex items-start space-x-3 rtl:space-x-reverse">
+              <div class="mt-1 bg-emerald-100 text-emerald-600 rounded-full p-1.5 text-xs"><i class="fa-solid fa-check"></i></div>
+              <div>
+                <h4 class="text-sm font-semibold text-slate-900" data-en="Bespoke Treatment Plans" data-ar="خطة علاجية مخصصة">Bespoke Treatment Plans</h4>
+                <p class="text-xs text-slate-500" data-en="Customized strictly according to your unique skin type & goals." data-ar="مصممة بدقة وفقاً لنوع بشرتك واحتياجاتك الخاصة.">Customized strictly according to your unique skin type & goals.</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-3 rtl:space-x-reverse">
+              <div class="mt-1 bg-emerald-100 text-emerald-600 rounded-full p-1.5 text-xs"><i class="fa-solid fa-check"></i></div>
+              <div>
+                <h4 class="text-sm font-semibold text-slate-900" data-en="FDA & CE Approved Tech" data-ar="تقنيات معتمدة دولياً (FDA & CE)">FDA & CE Approved Tech</h4>
+                <p class="text-xs text-slate-500" data-en="Only using top tier, globally proven aesthetic equipment." data-ar="نستخدم فقط أحدث الأجهزة والمعدات الطبية المعتمدة عالمياً.">Only using top tier, globally proven aesthetic equipment.</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-3 rtl:space-x-reverse">
+              <div class="mt-1 bg-emerald-100 text-emerald-600 rounded-full p-1.5 text-xs"><i class="fa-solid fa-check"></i></div>
+              <div>
+                <h4 class="text-sm font-semibold text-slate-900" data-en="Private & Discreet Facility" data-ar="خصوصية تامة وبيئة مريحة">Private & Discreet Facility</h4>
+                <p class="text-xs text-slate-500" data-en="Exclusive environment located conveniently in Seef District." data-ar="موقع متميز وخدمة راقية تضمن لك الخصوصية التامة.">Exclusive environment located conveniently in Seef District.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-4">
+            <a href="https://wa.me/97339000000?text=Hello%20Dr.%20Gabriela%20Clinic,%20I%20have%20a%20question%20about%20your%20treatments." target="_blank" class="inline-flex items-center text-sm font-bold text-brand-900 hover:text-rose-500 transition-colors">
+              <span data-en="Speak Directly with Our Medical Team" data-ar="تحدث المباشر مع الفريق الطبي">Speak Directly with Our Medical Team</span>
+              <i class="fa-solid fa-arrow-right ml-2 rtl:mr-2 rtl:ml-0 rtl:rotate-180"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED SERVICES GRID -->
+  <section id="treatments" class="py-20 bg-slate-50 border-y border-slate-200/60">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-rose-500 bg-rose-50 px-3 py-1 rounded-md border border-rose-100" data-en="Tailored Aesthetics" data-ar="خدمات تجميل متخصصة">Tailored Aesthetics</span>
+        <h2 class="text-3xl sm:text-4xl font-bold text-slate-900" data-en="Signature Treatments & Dermatology Services" data-ar="أبرز العلاجات والخدمات التجميلية">Signature Treatments & Dermatology Services</h2>
+        <p class="text-slate-600 text-sm sm:text-base font-light" data-en="Comprehensive non-surgical enhancements designed to revitalize, lift, and enhance your clinical skin health." data-ar="علاجات غير جراحية متكاملة مصممة لتجديد شباب البشرة واستعادة النضارة والصحة.">Comprehensive non-surgical enhancements designed to revitalize, lift, and enhance your clinical skin health.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Service Card 1 -->
+        <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col justify-between group">
+          <div>
+            <div class="w-14 h-14 rounded-xl bg-brand-50 text-brand-900 flex items-center justify-center text-2xl mb-5 group-hover:bg-brand-900 group-hover:text-white transition-colors duration-300">
+              <i class="fa-solid fa-syringe"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2" data-en="Botox & Dermal Fillers" data-ar="حقن البوتوكس والفيلر">Botox & Dermal Fillers</h3>
+            <p class="text-slate-600 text-sm leading-relaxed mb-4 font-light" data-en="Smooth dynamic wrinkles, restore lost volume, and accentuate facial contours with precise, natural-looking technique." data-ar="نعومة البشرة والتخلص من التجاعيد واستعادة حجم الخدين والشفتين بأسلوب متقن ونتائج طبيعية جداً.">Smooth dynamic wrinkles, restore lost volume, and accentuate facial contours with precise, natural-looking technique.</p>
+          </div>
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-xs text-slate-400 font-medium"><i class="fa-regular fa-clock mr-1 rtl:ml-1"></i> 30 - 45 Min</span>
+            <a href="https://wa.me/97339000000?text=Hello,%20I'm%20interested%20in%20Botox%20%26%20Fillers%20consultation." target="_blank" class="text-xs font-bold text-brand-900 hover:text-rose-500 flex items-center">
+              <span data-en="Book Now" data-ar="احجز الآن">Book Now</span>
+              <i class="fa-solid fa-chevron-right text-[10px] ml-1 rtl:mr-1 rtl:rotate-180"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Service Card 2 -->
+        <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col justify-between group">
+          <div>
+            <div class="w-14 h-14 rounded-xl bg-brand-50 text-brand-900 flex items-center justify-center text-2xl mb-5 group-hover:bg-brand-900 group-hover:text-white transition-colors duration-300">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2" data-en="Laser Skin Resurfacing" data-ar="تجديد البشرة بالليزر">Laser Skin Resurfacing</h3>
+            <p class="text-slate-600 text-sm leading-relaxed mb-4 font-light" data-en="Target pigmentation, acne scars, fine lines, and uneven texture with advanced clinical laser resurfacing technology." data-ar="علاج التصبغات وآثار حب الشباب والتجاعيد الدقيقة لتحسين ملمس البشرة وإعادتها لإشراقتها.">Target pigmentation, acne scars, fine lines, and uneven texture with advanced clinical laser resurfacing technology.</p>
+          </div>
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-xs text-slate-400 font-medium"><i class="fa-regular fa-clock mr-1 rtl:ml-1"></i> 45 - 60 Min</span>
+            <a href="https://wa.me/97339000000?text=Hello,%20I'm%20interested%20in%20Laser%20Skin%20Resurfacing." target="_blank" class="text-xs font-bold text-brand-900 hover:text-rose-500 flex items-center">
+              <span data-en="Book Now" data-ar="احجز الآن">Book Now</span>
+              <i class="fa-solid fa-chevron-right text-[10px] ml-1 rtl:mr-1 rtl:rotate-180"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Service Card 3 -->
+        <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col justify-between group">
+          <div>
+            <div class="w-14 h-14 rounded-xl bg-brand-50 text-brand-900 flex items-center justify-center text-2xl mb-5 group-hover:bg-brand-900 group-hover:text-white transition-colors duration-300">
+              <i class="fa-solid fa-[#042f2e] fa-face-smile"></i>
+              <i class="fa-solid fa-spa"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2" data-en="HIFU Non-Surgical Facelift" data-ar="شد الوجه بدون جراحة (HIFU)">HIFU Non-Surgical Facelift</h3>
+            <p class="text-slate-600 text-sm leading-relaxed mb-4 font-light" data-en="High-Intensity Focused Ultrasound for non-invasive jawline contouring, skin tightening, and collagen synthesis." data-ar="شد الوجه وتحديد فك الهايفو بدون جراحة بفرط الموجات فوق الصوتية التي تحفز إنتاج الكولاجين الطبيعي.">High-Intensity Focused Ultrasound for non-invasive jawline contouring, skin tightening, and collagen synthesis.</p>
+          </div>
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-xs text-slate-400 font-medium"><i class="fa-regular fa-clock mr-1 rtl:ml-1"></i> 60 Min</span>
+            <a href="https://wa.me/97339000000?text=Hello,%20I'm%20interested%20in%20HIFU%20Facelift." target="_blank" class="text-xs font-bold text-brand-900 hover:text-rose-500 flex items-center">
+              <span data-en="Book Now" data-ar="احجز الآن">Book Now</span>
+              <i class="fa-solid fa-chevron-right text-[10px] ml-1 rtl:mr-1 rtl:rotate-180"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Service Card 4 -->
+        <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col justify-between group">
+          <div>
+            <div class="w-14 h-14 rounded-xl bg-brand-50 text-brand-900 flex items-center justify-center text-2xl mb-5 group-hover:bg-brand-900 group-hover:text-white transition-colors duration-300">
+              <i class="fa-solid fa-droplet"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2" data-en="Medical Hydrafacial & Glow" data-ar="جلسات الهيدرافايشل والنضارة">Medical Hydrafacial & Glow</h3>
+            <p class="text-slate-600 text-sm leading-relaxed mb-4 font-light" data-en="Deep vortex cleansing, exfoliation, hydration, and medical serum infusions for instant glass-skin radiance." data-ar="تنظيف عميق وتقشير وترطيب للبشرة مع ضخ السيرومات الطبية المغذية للحصول على نضارة فورية.">Deep vortex cleansing, exfoliation, hydration, and medical serum infusions for instant glass-skin radiance.</p>
+          </div>
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-xs text-slate-400 font-medium"><i class="fa-regular fa-clock mr-1 rtl:ml-1"></i> 45 Min</span>
+            <a href="https://wa.me/97339000000?text=Hello,%20I'm%20interested%20in%20Hydrafacial%20treatment." target="_blank" class="text-xs font-bold text-brand-900 hover:text-rose-500 flex items-center">
+              <span data-en="Book Now" data-ar="احجز الآن">Book Now</span>
+              <i class="fa-solid fa-chevron-right text-[10px] ml-1 rtl:mr-1 rtl:rotate-180"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Service Card 5 -->
+        <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col justify-between group">
+          <div>
+            <div class="w-14 h-14 rounded-xl bg-brand-50 text-brand-900 flex items-center justify-center text-2xl mb-5 group-hover:bg-brand-900 group-hover:text-white transition-colors duration-300">
+              <i class="fa-solid fa-heart-pulse"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2" data-en="Clinical Dermatology & Acne" data-ar="العلاج الطبي للأمراض الجلدية">Clinical Dermatology & Acne</h3>
+            <p class="text-slate-600 text-sm leading-relaxed mb-4 font-light" data-en="Comprehensive diagnosis and treatment for acne, rosacea, eczema, melasma, and general dermatological conditions." data-ar="تشخيص وعلاج متخصص لحالات حب الشباب، الوردية، الكلف، الأكزيما ومختلف مشاكل البشرة الصحية.">Comprehensive diagnosis and treatment for acne, rosacea, eczema, melasma, and general dermatological conditions.</p>
+          </div>
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-xs text-slate-400 font-medium"><i class="fa-regular fa-clock mr-1 rtl:ml-1"></i> 30 Min</span>
+            <a href="https://wa.me/97339000000?text=Hello,%20I'm%20interested%20in%20Clinical%20Dermatology%20consultation." target="_blank" class="text-xs font-bold text-brand-900 hover:text-rose-500 flex items-center">
+              <span data-en="Book Now" data-ar="احجز الآن">Book Now</span>
+              <i class="fa-solid fa-chevron-right text-[10px] ml-1 rtl:mr-1 rtl:rotate-180"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Service Card 6 -->
+        <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col justify-between group">
+          <div>
+            <div class="w-14 h-14 rounded-xl bg-brand-50 text-brand-900 flex items-center justify-center text-2xl mb-5 group-hover:bg-brand-900 group-hover:text-white transition-colors duration-300">
+              <i class="fa-solid fa-[#042f2e] fa-gem"></i>
+              <i class="fa-solid fa-gem"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2" data-en="Non-Surgical Body Sculpting" data-ar="نحت الجسم وبشرة الجسم">Non-Surgical Body Sculpting</h3>
+            <p class="text-slate-600 text-sm leading-relaxed mb-4 font-light" data-en="Target localized fat, improve skin elasticity, and tighten stubborn body areas without downtime or surgery." data-ar="التخلص من الدهون الموضعية وتنسيق القوام وشد الترهلات بأحدث أجهزة النحت دون جراحة.">Target localized fat, improve skin elasticity, and tighten stubborn body areas without downtime or surgery.</p>
+          </div>
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-xs text-slate-400 font-medium"><i class="fa-regular fa-clock mr-1 rtl:ml-1"></i> 45 - 60 Min</span>
+            <a href="https://wa.me/97339000000?text=Hello,%20I'm%20interested%20in%20Body%20Sculpting." target="_blank" class="text-xs font-bold text-brand-900 hover:text-rose-500 flex items-center">
+              <span data-en="Book Now" data-ar="احجز الآن">Book Now</span>
+              <i class="fa-solid fa-chevron-right text-[10px] ml-1 rtl:mr-1 rtl:rotate-180"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- GOOGLE REVIEWS / SOCIAL PROOF -->
+  <section id="reviews" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Google Badge Banner -->
+      <div class="flex flex-col md:flex-row items-center justify-between bg-slate-50 rounded-2xl p-8 border border-slate-200 mb-12 shadow-sm">
+        <div class="flex items-center space-x-4 rtl:space-x-reverse mb-4 md:mb-0">
+          <div class="w-12 h-12 bg-white rounded-full shadow flex items-center justify-center">
+            <svg class="w-7 h-7" viewBox="0 0 24 24">
+              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+              <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="flex items-center space-x-1 text-amber-400 text-lg">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <span class="text-slate-900 font-bold ml-2 text-sm rtl:mr-2">4.9 / 5.0</span>
+            </div>
+            <p class="text-xs text-slate-500 font-medium" data-en="Based on 180+ Verified Google Patient Reviews" data-ar="استناداً إلى أكثر من 180 مراجعة معتمدة على جوجل">Based on 180+ Verified Google Patient Reviews</p>
+          </div>
+        </div>
+        <a href="https://wa.me/97339000000?text=Hello,%20I'd%20like%20to%20read%20more%20reviews%20or%20book%20a%20consultation." target="_blank" class="px-5 py-2.5 bg-brand-900 text-white rounded-full text-xs font-semibold hover:bg-brand-800 transition-colors shadow-sm">
+          <span data-en="Write or View Reviews" data-ar="عرض كل المراجعات">Write or View Reviews</span>
+        </a>
+      </div>
+
+      <!-- Testimonial Grid -->
+      <div class="grid md:grid-cols-3 gap-8">
+        
+        <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 flex flex-col justify-between relative shadow-sm">
+          <div>
+            <div class="flex items-center space-x-1 text-amber-400 text-sm mb-3">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="text-slate-700 text-sm italic leading-relaxed mb-6 font-light" data-en=""Dr. Gabriela is the gold standard for aesthetics in Bahrain! She takes her time to explain everything. My filler results look completely natural!"" data-ar="«الدكتورة غابرييلا هي الأفضل بلا منازع في البحرين! تعطي المريض وقتاً كاملاً للشرح والتوضيح ونتائج الفيلر أكثر من رائعة وطبيعية جداً.»">"Dr. Gabriela is the gold standard for aesthetics in Bahrain! She takes her time to explain everything. My filler results look completely natural!"</p>
+          </div>
+          <div class="flex items-center space-x-3 rtl:space-x-reverse border-t border-slate-200/60 pt-4">
+            <div class="w-10 h-10 rounded-full bg-rose-200 text-rose-800 flex items-center justify-center font-bold text-sm">
+              HA
+            </div>
+            <div>
+              <p class="text-xs font-bold text-slate-900">Hessa Al-Khalifa</p>
+              <p class="text-[11px] text-slate-400" data-en="Verified Patient • Seef" data-ar="مريضة معتمدة • السيف">Verified Patient • Seef</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 flex flex-col justify-between relative shadow-sm">
+          <div>
+            <div class="flex items-center space-x-1 text-amber-400 text-sm mb-3">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="text-slate-700 text-sm italic leading-relaxed mb-6 font-light" data-en=""The most elegant clinic in Seef. Zero waiting time, extremely hygienic, and the laser treatment yielded noticeable skin improvement after just one session."" data-ar="«أرقى عيادة في منطقة السيف. لا يوجد أي انتظار، النظافة والاحترافية عالية جداً، ونتائج جلسات الليزر ظهرت بوضوح من أول جلسة.»">"The most elegant clinic in Seef. Zero waiting time, extremely hygienic, and the laser treatment yielded noticeable skin improvement after just one session."</p>
+          </div>
+          <div class="flex items-center space-x-3 rtl:space-x-reverse border-t border-slate-200/60 pt-4">
+            <div class="w-10 h-10 rounded-full bg-brand-200 text-brand-900 flex items-center justify-center font-bold text-sm">
+              SM
+            </div>
+            <div>
+              <p class="text-xs font-bold text-slate-900">Sarah M.</p>
+              <p class="text-[11px] text-slate-400" data-en="Verified Patient • Manama" data-ar="مريضة معتمدة • المنامة">Verified Patient • Manama</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 flex flex-col justify-between relative shadow-sm">
+          <div>
+            <div class="flex items-center space-x-1 text-amber-400 text-sm mb-3">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="text-slate-700 text-sm italic leading-relaxed mb-6 font-light" data-en=""Professionalism at its best. Dr. Gabriela’s subtle touch with Botox smoothed my skin without looking frozen. Highly recommend to everyone in Bahrain!"" data-ar="«قمة في المهنية والاحتراف. لمسة الدكتورة في البوتوكس خففت التجاعيد بسلاسة وبدون أي تصنع. أنصح بها بشدة لكل من يبحث عن التميز.»">"Professionalism at its best. Dr. Gabriela’s subtle touch with Botox smoothed my skin without looking frozen. Highly recommend to everyone in Bahrain!"</p>
+          </div>
+          <div class="flex items-center space-x-3 rtl:space-x-reverse border-t border-slate-200/60 pt-4">
+            <div class="w-10 h-10 rounded-full bg-teal-200 text-teal-900 flex items-center justify-center font-bold text-sm">
+              NR
+            </div>
+            <div>
+              <p class="text-xs font-bold text-slate-900">Noura R.</p>
+              <p class="text-[11px] text-slate-400" data-en="Verified Patient • Riffa" data-ar="مريضة معتمدة • الرفاع">Verified Patient • Riffa</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATION & HOURS SECTION -->
+  <section id="contact" class="py-20 bg-slate-900 text-white relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Contact Details -->
+        <div class="lg:col-span-5 space-y-8">
+          <div>
+            <span class="text-xs font-extrabold uppercase tracking-widest text-rose-400 bg-rose-950 px-3 py-1 rounded-md border border-rose-800/50" data-en="Visit Our Clinic" data-ar="تفاصيل الزيارة">Visit Our Clinic</span>
+            <h2 class="text-3xl font-bold mt-4" data-en="Conveniently Located in Seef District" data-ar="موقع متميز ومريح في قلب ضاحية السيف">Conveniently Located in Seef District</h2>
+            <p class="text-slate-400 text-sm mt-2 font-light leading-relaxed" data-en="Our clinic provides dedicated VIP parking and full discretion for all patient consultations." data-ar="توفر عيادتنا مواقف خاصة كبار الشخصيات وخصوصية تامة لجميع المرضى والزوار.">Our clinic provides dedicated VIP parking and full discretion for all patient consultations.</p>
+          </div>
+
+          <div class="space-y-6 text-sm">
+            <!-- Address -->
+            <div class="flex items-start space-x-4 rtl:space-x-reverse">
+              <div class="w-10 h-10 rounded-xl bg-brand-800 flex items-center justify-center text-rose-300 flex-shrink-0">
+                <i class="fa-solid fa-location-dot text-lg"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold text-white" data-en="Clinic Address" data-ar="عنوان العيادة">Clinic Address</h4>
+                <p class="text-slate-300 text-xs mt-1 leading-relaxed" data-en="Building 1234, Road 2831, Block 428, Seef District, Kingdom of Bahrain" data-ar="مبنى 1234، طريق 2831، مجمع 428، ضاحية السيف، مملكة البحرين">Building 1234, Road 2831, Block 428, Seef District, Kingdom of Bahrain</p>
+              </div>
+            </div>
+
+            <!-- Hours -->
+            <div class="flex items-start space-x-4 rtl:space-x-reverse">
+              <div class="w-10 h-10 rounded-xl bg-brand-800 flex items-center justify-center text-rose-300 flex-shrink-0">
+                <i class="fa-solid fa-clock text-lg"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold text-white" data-en="Opening Hours" data-ar="ساعات العمل">Opening Hours</h4>
+                <p class="text-slate-300 text-xs mt-1" data-en="Saturday – Thursday: 9:00 AM – 8:00 PM" data-ar="السبت – الخميس: 9:00 صباحاً – 8:00 مساءً">Saturday – Thursday: 9:00 AM – 8:00 PM</p>
+                <p class="text-rose-400 text-xs mt-0.5" data-en="Friday: Closed (By Appointment Only)" data-ar="الجمعة: مغلق (بمواعيد مسبقة فقط)">Friday: Closed (By Appointment Only)</p>
+              </div>
+            </div>
+
+            <!-- Phone / Direct Contact -->
+            <div class="flex items-start space-x-4 rtl:space-x-reverse">
+              <div class="w-10 h-10 rounded-xl bg-brand-800 flex items-center justify-center text-rose-300 flex-shrink-0">
+                <i class="fa-solid fa-phone text-lg"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold text-white" data-en="Direct Appointments" data-ar="التواصل المباشر">Direct Appointments</h4>
+                <p class="text-slate-300 text-xs mt-1">WhatsApp: +973 3900 0000</p>
+                <p class="text-slate-300 text-xs">Phone: +973 1700 0000</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-2">
+            <a href="https://wa.me/97339000000?text=Hello%20Dr.%20Gabriela%20Clinic,%20I'd%20like%20to%20book%20a%20slot." target="_blank" class="inline-flex items-center justify-center px-6 py-3.5 rounded-full text-sm font-bold bg-emerald-500 hover:bg-emerald-600 text-white shadow-lg transition-all">
+              <i class="fa-brands fa-whatsapp text-lg mr-2 rtl:ml-2 rtl:mr-0"></i>
+              <span data-en="Book via WhatsApp Now" data-ar="احجز موعدك الآن عبر واتساب">Book via WhatsApp Now</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Map / Directions UI Card -->
+        <div class="lg:col-span-7">
+          <div class="bg-slate-800 rounded-3xl p-4 border border-slate-700 shadow-2xl relative overflow-hidden">
+            <!-- Stylized Map Box Placeholder -->
+            <div class="relative h-[380px] rounded-2xl overflow-hidden bg-slate-900 border border-slate-700/50 flex flex-col justify-between p-6 bg-[radial-gradient(#334155_1px,transparent_1px)] [background-size:20px_20px]">
+              <div class="flex justify-between items-start z-10">
+                <div class="bg-slate-950/80 backdrop-blur-md px-4 py-2 rounded-xl border border-slate-700 text-xs">
+                  <p class="font-bold text-white">Dr. Gabriela Clinic</p>
+                  <p class="text-slate-400 text-[11px]" data-en="Prime Seef Tower, 4th Floor" data-ar="برج السيف الرئيسي، الطابق الرابع">Prime Seef Tower, 4th Floor</p>
+                </div>
+                <a href="https://maps.google.com" target="_blank" class="bg-white text-slate-900 px-3 py-1.5 rounded-lg text-xs font-semibold hover:bg-slate-200 transition-colors shadow flex items-center space-x-1.5 rtl:space-x-reverse">
+                  <i class="fa-solid fa-diamond-turn-right text-brand-900"></i>
+                  <span data-en="Open in Maps" data-ar="فتح في الخرائط">Open in Maps</span>
+                </a>
+              </div>
+
+              <!-- Map Pin Highlight Center -->
+              <div class="self-center text-center my-auto z-10">
+                <div class="w-16 h-16 bg-rose-500/20 rounded-full flex items-center justify-center animate-ping absolute -ml-4 -mt-4"></div>
+                <div class="w-12 h-12 bg-rose-500 text-white rounded-full flex items-center justify-center shadow-2xl border-2 border-white mx-auto relative z-10">
+                  <i class="fa-solid fa-clinic-medical text-xl"></i>
+                </div>
+                <span class="mt-2 inline-block bg-slate-950/90 text-white text-xs px-3 py-1 rounded-full border border-slate-700 font-medium" data-en="Seef District, Bahrain" data-ar="ضاحية السيف، البحرين">Seef District, Bahrain</span>
+              </div>
+
+              <div class="text-xs text-slate-400 text-center z-10 bg-slate-950/80 backdrop-blur-md py-2 px-4 rounded-xl border border-slate-700/80" data-en="Valet parking service available upon arrival." data-ar="خدمة صف السيارات متوفرة فور الوصول.">
+                Valet parking service available upon arrival.
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-800 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left rtl:md:text-right">
+      <div>
+        <p class="text-white font-bold text-base">Dr. Gabriela Clinic</p>
+        <p class="text-slate-500 mt-1" data-en="© 2025 Dr. Gabriela Aesthetic Clinic. All rights reserved." data-ar="© 2025 عيادة الدكتورة غابرييلا للتجميل. جميع الحقوق محفوظة.">© 2025 Dr. Gabriela Aesthetic Clinic. All rights reserved.</p>
+      </div>
+      <div class="flex items-center space-x-6 rtl:space-x-reverse text-slate-400">
+        <a href="#hero" class="hover:text-white transition-colors" data-en="Privacy Policy" data-ar="سياسة الخصوصية">Privacy Policy</a>
+        <span>•</span>
+        <a href="#hero" class="hover:text-white transition-colors" data-en="Terms of Service" data-ar="الشروط والأحكام">Terms of Service</a>
+        <span>•</span>
+        <a href="https://wa.me/97339000000" class="hover:text-emerald-400 transition-colors"><i class="fa-brands fa-whatsapp text-sm mr-1 rtl:ml-1"></i> WhatsApp</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING WHATSAPP BUTTON -->
+  <a href="https://wa.me/97339000000?text=Hello%20Dr.%20Gabriela%20Clinic,%20I%20would%20like%20to%20book%20an%20appointment." target="_blank" aria-label="WhatsApp Chat" class="fixed bottom-6 right-6 rtl:right-auto rtl:left-6 z-50 bg-emerald-500 hover:bg-emerald-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-all duration-300 border-2 border-white/20 group">
+    <i class="fa-brands fa-whatsapp text-3xl"></i>
+    <span class="absolute right-16 rtl:right-auto rtl:left-16 bg-slate-900 text-white text-xs px-3 py-1.5 rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity shadow-md pointer-events-none" data-en="Book Consultation" data-ar="احجز استشارة">Book Consultation</span>
+  </a>
+
+  <!-- JAVASCRIPT FOR BILINGUAL TRANSITION -->
+  <script>
+    function setLanguage(lang) {
+      const isAr = lang === 'ar';
+      
+      // Set Document Direction & Language
+      document.documentElement.lang = lang;
+      document.documentElement.dir = isAr ? 'rtl' : 'ltr';
+      
+      // Font switching
+      if (isAr) {
+        document.body.classList.add('font-arabic');
+        document.body.classList.remove('font-sans');
+      } else {
+        document.body.classList.add('font-sans');
+        document.body.classList.remove('font-arabic');
+      }
+
+      // Dynamic Text Replacement
+      document.querySelectorAll('[data-en]').forEach(el => {
+        if (isAr && el.hasAttribute('data-ar')) {
+          el.innerHTML = el.getAttribute('data-ar');
+        } else if (!isAr && el.hasAttribute('data-en')) {
+          el.innerHTML = el.getAttribute('data-en');
+        }
+      });
+
+      // Language Toggle Buttons UI State
+      const btnEn = document.getElementById('lang-btn-en');
+      const btnAr = document.getElementById('lang-btn-ar');
+      
+      if (btnEn && btnAr) {
+        if (isAr) {
+          btnAr.classList.add('bg-brand-900', 'text-white', 'shadow-sm');
+          btnAr.classList.remove('text-slate-600');
+          btnEn.classList.remove('bg-brand-900', 'text-white', 'shadow-sm');
+          btnEn.classList.add('text-slate-600');
+        } else {
+          btnEn.classList.add('bg-brand-900', 'text-white', 'shadow-sm');
+          btnEn.classList.remove('text-slate-600');
+          btnAr.classList.remove('bg-brand-900', 'text-white', 'shadow-sm');
+          btnAr.classList.add('text-slate-600');
+        }
+      }
+    }
+  </script>
+</body>
+</html>
