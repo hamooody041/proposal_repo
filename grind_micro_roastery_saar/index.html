@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grind Micro Roastery | Artisanal Specialty Coffee in Saar</title>
+  <meta name="description" content="Artisanal Specialty Coffee Roasted Fresh in Saar, Bahrain. Single-origin beans, custom roasts, and subscription boxes.">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            amber: {
+              950: '#1a0f0a',
+              900: '#2c1810',
+              800: '#422218',
+              700: '#5c3121',
+              100: '#f7f1eb',
+            },
+            emerald: {
+              600: '#059669',
+              700: '#047857',
+            }
+          },
+          fontFamily: {
+            outfit: ['Outfit', 'sans-serif'],
+            cairo: ['Cairo', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-stone-50 text-amber-950 font-outfit antialiased selection:bg-amber-900 selection:text-white">
+
+  <!-- Navigation -->
+  <header class="sticky top-0 z-50 bg-stone-50/90 backdrop-blur-md border-b border-amber-950/10 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-full bg-amber-950 text-stone-50 flex items-center justify-center font-bold text-xl group-hover:bg-emerald-600 transition-colors duration-300 shadow-md">
+          <i class="fa-solid fa-mug-hot text-lg"></i>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-extrabold text-xl tracking-tight text-amber-950 leading-none">GRIND</span>
+          <span class="text-[10px] tracking-widest text-amber-800 uppercase font-semibold">Micro Roastery</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-amber-900">
+        <a href="#about" class="hover:text-emerald-600 transition-colors">About Us</a>
+        <a href="#beans" class="hover:text-emerald-600 transition-colors">Fresh Beans</a>
+        <a href="#subscriptions" class="hover:text-emerald-600 transition-colors">Subscriptions</a>
+        <a href="#reviews" class="hover:text-emerald-600 transition-colors">Reviews</a>
+        <a href="#location" class="hover:text-emerald-600 transition-colors">Visit Saar Roastery</a>
+      </nav>
+
+      <!-- WhatsApp Quick CTA -->
+      <div class="flex items-center gap-3">
+        <a href="https://wa.me/97317000000?text=Hello%20Grind%20Micro%20Roastery%2C%20I%20would%20like%20to%20order%20fresh%20coffee%20beans!" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 rounded-full font-semibold text-sm shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5">
+          <i class="fa-brands fa-whatsapp text-lg"></i>
+          <span class="hidden sm:inline">Order Beans</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative min-h-[90vh] flex items-center justify-center bg-amber-950 text-stone-50 overflow-hidden py-20">
+    <!-- Background Overlay Image -->
+    <div class="absolute inset-0 z-0 opacity-25 bg-cover bg-center mix-blend-luminosity"
+         style="background-image: url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=2000&auto=format&fit=crop');">
+    </div>
+    <!-- Gradient Vignette -->
+    <div class="absolute inset-0 bg-gradient-to-t from-amber-950 via-amber-950/80 to-transparent z-0"></div>
+
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
+      <!-- Localized Badges -->
+      <div class="inline-flex flex-wrap items-center justify-center gap-3 bg-amber-900/60 backdrop-blur-md border border-amber-800/50 px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider text-amber-200 shadow-inner">
+        <span class="flex items-center gap-1.5 text-emerald-400">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+          Batch #402 Freshly Roasted Today
+        </span>
+        <span class="text-amber-600">•</span>
+        <span>📍 Saar, Kingdom of Bahrain</span>
+      </div>
+
+      <!-- Main Headlines (EN & AR) -->
+      <div class="space-y-4 max-w-4xl mx-auto">
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-stone-50 tracking-tight leading-tight sm:leading-none">
+          Artisanal Specialty Coffee Roasted Fresh in Saar
+        </h1>
+        <p class="font-cairo text-2xl sm:text-3xl text-amber-200/90 font-bold tracking-wide pt-2" dir="rtl">
+          قهوة مختصة مُحمصة طازجة في السار
+        </p>
+      </div>
+
+      <p class="max-w-2xl mx-auto text-lg sm:text-xl text-stone-300 font-light leading-relaxed">
+        Small-batch single-origin coffees and bespoke espresso blends crafted with micro-roasting precision. Delivered straight to your doorstep across Bahrain.
+      </p>
+
+      <!-- Call to Action Buttons -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+        <a href="https://wa.me/97317000000?text=Hello%20Grind%20Micro%20Roastery%2C%20I%20would%20like%20to%20order%20beans%20via%20WhatsApp."
+           target="_blank"
+           rel="noopener noreferrer"
+           class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-lg px-8 py-4 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+          <i class="fa-brands fa-whatsapp text-2xl"></i>
+          <span>Order Beans via WhatsApp</span>
+        </a>
+        <a href="#beans"
+           class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-stone-50/10 hover:bg-stone-50/20 text-stone-100 border border-stone-100/30 font-semibold text-lg px-8 py-4 rounded-full backdrop-blur-sm transition-all duration-300">
+          <span>View Beans Menu</span>
+          <i class="fa-solid fa-arrow-down text-sm"></i>
+        </a>
+      </div>
+
+      <!-- Key Stats / Proof -->
+      <div class="pt-12 grid grid-cols-2 md:grid-cols-4 gap-6 border-t border-amber-900/40 max-w-3xl mx-auto text-left">
+        <div>
+          <p class="text-3xl font-extrabold text-amber-200">88+</p>
+          <p class="text-xs text-amber-400 uppercase tracking-wider font-semibold mt-1">SCA Cup Score</p>
+        </div>
+        <div>
+          <p class="text-3xl font-extrabold text-amber-200">100%</p>
+          <p class="text-xs text-amber-400 uppercase tracking-wider font-semibold mt-1">Arabica Beans</p>
+        </div>
+        <div>
+          <p class="text-3xl font-extrabold text-amber-200">24h</p>
+          <p class="text-xs text-amber-400 uppercase tracking-wider font-semibold mt-1">Local Roast Freshness</p>
+        </div>
+        <div>
+          <p class="text-3xl font-extrabold text-amber-200">4.9 ★</p>
+          <p class="text-xs text-amber-400 uppercase tracking-wider font-semibold mt-1">Google Rating</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-24 bg-stone-100 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        
+        <!-- Left Column: Story -->
+        <div class="space-y-6">
+          <div class="inline-flex items-center gap-2 text-amber-800 font-bold text-sm tracking-widest uppercase">
+            <i class="fa-solid fa-fire-flame-curved text-amber-600"></i>
+            <span>Our Roastery Craft</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-amber-950 leading-tight">
+            Micro-Roasting in Saar with Uncompromised Precision
+          </h2>
+          <p class="text-amber-900/80 leading-relaxed text-lg">
+            At <strong class="text-amber-950">Grind Micro Roastery</strong>, we believe every coffee origin tells a story. Hidden in the vibrant heart of Saar, our team carefully selects ethically sourced single-origin green beans from high-altitude estates across Ethiopia, Colombia, and Guatemala.
+          </p>
+          <p class="text-amber-900/80 leading-relaxed text-lg">
+            We roast in tiny 5kg batches, developing custom heat profiles that showcase the intricate fruit notes, floral aromas, and rich body natural to each crop.
+          </p>
+
+          <!-- Feature Bullets -->
+          <div class="grid sm:grid-cols-2 gap-4 pt-4">
+            <div class="flex items-start gap-3 p-4 bg-white rounded-xl shadow-sm border border-amber-950/5">
+              <div class="w-10 h-10 rounded-lg bg-amber-100 text-amber-950 flex items-center justify-center shrink-0">
+                <i class="fa-solid fa-leaf text-amber-800"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-amber-950">Direct Origin</h3>
+                <p class="text-sm text-amber-800/70">Ethically traded micro-lots</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 p-4 bg-white rounded-xl shadow-sm border border-amber-950/5">
+              <div class="w-10 h-10 rounded-lg bg-amber-100 text-amber-950 flex items-center justify-center shrink-0">
+                <i class="fa-solid fa-sliders text-amber-800"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-amber-950">Profile Control</h3>
+                <p class="text-sm text-amber-800/70">Custom airflow & temperature</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Visual Showcase -->
+        <div class="relative">
+          <div class="aspect-square rounded-2xl overflow-hidden shadow-2xl relative border-4 border-white">
+            <img src="https://images.unsplash.com/photo-1511537190424-bbbab87ac5eb?q=80&w=1000&auto=format&fit=crop" 
+                 alt="Coffee beans being roasted" 
+                 class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-amber-950/70 via-transparent to-transparent"></div>
+            <div class="absolute bottom-6 left-6 right-6 text-white p-6 bg-amber-950/80 backdrop-blur-md rounded-xl border border-amber-800/30">
+              <p class="font-cairo font-bold text-xl text-amber-200 mb-1" dir="rtl">جودة لا تُضاهى في كل فنجان</p>
+              <p class="text-sm text-stone-300 font-light">Experience unmatched specialty coffee freshness in every single cup.</p>
+            </div>
+          </div>
+          <!-- Floating Badge -->
+          <div class="absolute -bottom-6 -right-6 bg-emerald-600 text-white p-6 rounded-2xl shadow-xl hidden sm:block">
+            <i class="fa-solid fa-award text-3xl mb-2"></i>
+            <p class="font-bold text-lg leading-tight">100% Quality Guarantee</p>
+            <p class="text-xs opacity-90">Roasted & Packaged in Saar</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Items / Menu -->
+  <section id="beans" class="py-24 bg-stone-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+        <span class="text-emerald-600 font-bold text-sm tracking-widest uppercase">Freshly Packaged Beans</span>
+        <h2 class="text-3xl sm:text-5xl font-extrabold text-amber-950">Our Signature Roasted Coffee</h2>
+        <p class="text-amber-800/80 text-lg">Order whole beans or custom ground for Espresso, V60, AeroPress, or French Press.</p>
+      </div>
+
+      <!-- Coffee Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Card 1 -->
+        <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-amber-950/5 flex flex-col group">
+          <div class="relative bg-amber-100/50 p-8 flex items-center justify-center overflow-hidden">
+            <span class="absolute top-4 left-4 bg-amber-950 text-amber-200 text-xs font-bold px-3 py-1 rounded-full">Espresso Roast</span>
+            <span class="absolute top-4 right-4 bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-1 rounded-full">Best Seller</span>
+            <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?q=80&w=600&auto=format&fit=crop" 
+                 alt="Saar Blend Coffee Bag" 
+                 class="h-56 object-contain group-hover:scale-105 transition-transform duration-500">
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+            <div>
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="text-xl font-bold text-amber-950">Saar Dark Blend</h3>
+                <span class="text-lg font-extrabold text-emerald-700">6.500 BHD</span>
+              </div>
+              <p class="text-xs text-amber-800/70 font-semibold uppercase tracking-wider mb-3">250g • Brazil & Colombia Blend</p>
+              <p class="text-amber-900/80 text-sm leading-relaxed mb-4">
+                Rich crema, dark chocolate notes, roasted hazelnut finish. Smooth with low acidity.
+              </p>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="text-[11px] bg-stone-100 text-amber-900 px-2.5 py-1 rounded-md font-medium">🍫 Dark Chocolate</span>
+                <span class="text-[11px] bg-stone-100 text-amber-900 px-2.5 py-1 rounded-md font-medium">🌰 Hazelnut</span>
+                <span class="text-[11px] bg-stone-100 text-amber-900 px-2.5 py-1 rounded-md font-medium">🍯 Caramel</span>
+              </div>
+            </div>
+            <a href="https://wa.me/97317000000?text=I%20would%20like%20to%20order%20the%20Saar%20Dark%20Blend%20(250g)"
+               target="_blank"
+               class="w-full bg-amber-950 hover:bg-emerald-600 text-white font-semibold py-3 rounded-xl flex items-center justify-center gap-2 transition-colors duration-300">
+              <i class="fa-brands fa-whatsapp text-lg"></i>
+              <span>Order Bag via WhatsApp</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-amber-950/5 flex flex-col group">
+          <div class="relative bg-amber-100/50 p-8 flex items-center justify-center overflow-hidden">
+            <span class="absolute top-4 left-4 bg-amber-900 text-amber-200 text-xs font-bold px-3 py-1 rounded-full">Filter Roast</span>
+            <img src="https://images.unsplash.com/photo-1587734195503-904fca47e0e9?q=80&w=600&auto=format&fit=crop" 
+                 alt="Ethiopian Yirgacheffe Bag" 
+                 class="h-56 object-contain group-hover:scale-105 transition-transform duration-500">
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+            <div>
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="text-xl font-bold text-amber-950">Ethiopia Yirgacheffe</h3>
+                <span class="text-lg font-extrabold text-emerald-700">7.500 BHD</span>
+              </div>
+              <p class="text-xs text-amber-800/70 font-semibold uppercase tracking-wider mb-3">250g • Single Origin Light Roast</p>
+              <p class="text-amber-900/80 text-sm leading-relaxed mb-4">
+                Delicate floral jasmine aromas with bright peach acidity and a clean bergamot tea finish.
+              </p>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="text-[11px] bg-stone-100 text-amber-900 px-2.5 py-1 rounded-md font-medium">🌸 Jasmine</span>
+                <span class="text-[11px] bg-stone-100 text-amber-900 px-2.5 py-1 rounded-md font-medium">🍑 Peach</span>
+                <span class="text-[11px] bg-stone-100 text-amber-900 px-2.5 py-1 rounded-md font-medium">🍋 Bergamot</span>
+              </div>
+            </div>
+            <a href="https://wa.me/97317000000?text=I%20would%20like%20to%20order%20Ethiopia%20Yirgacheffe%20(250g)"
+               target="_blank"
+               class="w-full bg-amber-950 hover:bg-emerald-600 text-white font-semibold py-3 rounded-xl flex items-center justify-center gap-2 transition-colors duration-300">
+              <i class="fa-brands fa-whatsapp text-lg"></i>
+              <span>Order Bag via WhatsApp</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-amber-950/5 flex flex-col group">
+          <div class="relative bg-amber-100/50 p-8 flex items-center justify-center overflow-hidden">
+            <span class="absolute top-4 left-4 bg-amber-950 text-amber-200 text-xs font-bold px-3 py-1 rounded-full">Omni Roast</span>
+            <img src="https://images.unsplash.com/photo-1611854779393-1b2da9d400fe?q=80&w=600&auto=format&fit=crop" 
+                 alt="Colombia Huila Coffee" 
+                 class="h-56 object-contain group-hover:scale-105 transition-transform duration-500">
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+            <div>
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="text-xl font-bold text-amber-950">Colombia Huila Reserve</h3>
+                <span class="text-lg font-extrabold text-emerald-700">7.000 BHD</span>
+              </div>
+              <p class="text-xs text-amber-800/70 font-semibold uppercase tracking-wider mb-3">250g • Medium Roast</p>
+              <p class="text-amber-900/80 text-sm leading-relaxed mb-4">
+                Balanced sweetness featuring notes of red apple, brown sugar, and a smooth milk chocolate body.
+              </p>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="text-[11px] bg-stone-100 text-amber-900 px-2.5 py-1 rounded-md font-medium">🍎 Red Apple</span>
+                <span class="text-[11px] bg-stone-100 text-amber-900 px-2.5 py-1 rounded-md font-medium">🍬 Brown Sugar</span>
+                <span class="text-[11px] bg-stone-100 text-amber-900 px-2.5 py-1 rounded-md font-medium">🥛 Milk Chocolate</span>
+              </div>
+            </div>
+            <a href="https://wa.me/97317000000?text=I%20would%20like%20to%20order%20Colombia%20Huila%20Reserve%20(250g)"
+               target="_blank"
+               class="w-full bg-amber-950 hover:bg-emerald-600 text-white font-semibold py-3 rounded-xl flex items-center justify-center gap-2 transition-colors duration-300">
+              <i class="fa-brands fa-whatsapp text-lg"></i>
+              <span>Order Bag via WhatsApp</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Coffee Subscriptions Section -->
+  <section id="subscriptions" class="py-24 bg-amber-950 text-stone-50 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        
+        <div class="space-y-6">
+          <span class="bg-emerald-600/20 text-emerald-400 border border-emerald-500/30 text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider">
+            Never Run Out Of Roasts
+          </span>
+          <h2 class="text-3xl sm:text-5xl font-extrabold leading-tight">
+            The Saar Coffee Club Subscription
+          </h2>
+          <p class="text-stone-300 text-lg font-light leading-relaxed">
+            Get freshly roasted beans delivered directly to your home or office on a weekly or monthly schedule. Curated selection of our top micro-lots.
+          </p>
+          <ul class="space-y-3 text-stone-200">
+            <li class="flex items-center gap-3">
+              <i class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
+              <span>15% discount compared to retail bag prices</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <i class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
+              <span>Free local delivery in Saar & Janabiya</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <i class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
+              <span>Flexible grind settings & pause anytime</span>
+            </li>
+          </ul>
+          <div class="pt-4">
+            <a href="https://wa.me/97317000000?text=Hi!%20I'm%20interested%20in%20subscribing%20to%20The%20Saar%20Coffee%20Club."
+               target="_blank"
+               class="inline-flex items-center gap-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-lg px-8 py-4 rounded-full shadow-lg transition-all duration-300">
+              <i class="fa-brands fa-whatsapp text-2xl"></i>
+              <span>Setup Subscription via WhatsApp</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Subscription Card Feature -->
+        <div class="bg-stone-900 border border-amber-800/40 p-8 rounded-3xl space-y-6 shadow-2xl relative">
+          <div class="flex justify-between items-center border-b border-amber-900/40 pb-6">
+            <div>
+              <p class="text-xs text-amber-400 font-bold uppercase tracking-wider">Most Popular Tier</p>
+              <h3 class="text-2xl font-bold text-stone-100">Home Barista Box</h3>
+            </div>
+            <div class="text-right">
+              <span class="text-3xl font-extrabold text-emerald-400">22 BHD</span>
+              <span class="text-xs text-stone-400 block">/ Month (2x Bags)</span>
+            </div>
+          </div>
+          <div class="space-y-4 text-sm text-stone-300">
+            <div class="flex justify-between py-2 border-b border-stone-800">
+              <span>Deliveries</span>
+              <font class="font-bold text-stone-100">2 Bags Freshly Roasted / Month</font>
+            </div>
+            <div class="flex justify-between py-2 border-b border-stone-800">
+              <span>Origins Included</span>
+              <font class="font-bold text-stone-100">1 Blend + 1 Single Origin Micro-Lot</font>
+            </div>
+            <div class="flex justify-between py-2 border-b border-stone-800">
+              <span>Perks</span>
+              <font class="font-bold text-emerald-400">Free Sampling of New Unreleased Roasts</font>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Google Customer Reviews -->
+  <section id="reviews" class="py-24 bg-stone-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Header -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+        <div>
+          <div class="flex items-center gap-2 text-amber-800 font-bold text-sm tracking-widest uppercase mb-2">
+            <i class="fa-brands fa-google text-amber-700"></i>
+            <span>Verified Customer Feedback</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-amber-950">Loved by Saar Coffee Lovers</h2>
+        </div>
+        
+        <!-- Google Rating Badge Summary -->
+        <div class="bg-white px-6 py-4 rounded-2xl shadow-sm border border-amber-950/10 flex items-center gap-4 shrink-0">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google Logo" class="w-8 h-8">
+          <div>
+            <div class="flex items-center gap-1 text-amber-500 text-sm">
+              <span class="font-extrabold text-amber-950 text-xl mr-1">4.9</span>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p class="text-xs text-amber-800/70">Based on 180+ Google Reviews</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reviews Grid -->
+      <div class="grid md:grid-cols-3 gap-8">
+        
+        <!-- Review 1 -->
+        <div class="bg-white p-8 rounded-2xl shadow-sm border border-amber-950/5 flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
+            <div class="flex items-center gap-1 text-amber-500 text-sm">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p class="text-amber-900/90 text-sm leading-relaxed italic">
+              "Hands down the best specialty roastery in Bahrain! The Saar Dark Blend makes the cleanest espresso shot. Ordering through WhatsApp is super fast."
+            </p>
+          </div>
+          <div class="flex items-center gap-3 pt-4 border-t border-stone-100">
+            <div class="w-10 h-10 rounded-full bg-amber-900 text-white flex items-center justify-center font-bold text-sm">
+              AH
+            </div>
+            <div>
+              <h4 class="font-bold text-amber-950 text-sm">Ali H.</h4>
+              <span class="text-xs text-amber-800/60">Local Guide • Saar</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="bg-white p-8 rounded-2xl shadow-sm border border-amber-950/5 flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
+            <div class="flex items-center gap-1 text-amber-500 text-sm">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p class="font-cairo text-amber-900/90 text-sm leading-relaxed font-semibold" dir="rtl">
+              "أفضل محمصة قهوة في السار بدون منازع! القهوة الإثيوبية ممتازة جداً والتوصيل سريع جداً مع طزاجة التحميص."
+            </p>
+          </div>
+          <div class="flex items-center gap-3 pt-4 border-t border-stone-100">
+            <div class="w-10 h-10 rounded-full bg-emerald-700 text-white flex items-center justify-center font-bold text-sm">
+              FA
+            </div>
+            <div>
+              <h4 class="font-bold text-amber-950 text-sm">Fatima Al-Mansoor</h4>
+              <span class="text-xs text-amber-800/60">Verified Customer</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="bg-white p-8 rounded-2xl shadow-sm border border-amber-950/5 flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
+            <div class="flex items-center gap-1 text-amber-500 text-sm">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p class="text-amber-900/90 text-sm leading-relaxed italic">
+              "The quality of their single-origin beans is top tier. Very knowledgeable head roaster who recommended the perfect V60 grind size."
+            </p>
+          </div>
+          <div class="flex items-center gap-3 pt-4 border-t border-stone-100">
+            <div class="w-10 h-10 rounded-full bg-amber-800 text-white flex items-center justify-center font-bold text-sm">
+              MK
+            </div>
+            <div>
+              <h4 class="font-bold text-amber-950 text-sm">Marcus K.</h4>
+              <span class="text-xs text-amber-800/60">Coffee Enthusiast</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Location & Contact Section -->
+  <section id="location" class="py-24 bg-stone-50 border-t border-amber-950/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        
+        <!-- Info Side -->
+        <div class="space-y-8">
+          <div>
+            <span class="text-emerald-600 font-bold text-sm tracking-widest uppercase">Visit Us</span>
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-amber-950 mt-1">Our Saar Micro Roastery</h2>
+            <p class="text-amber-800/80 text-lg mt-3">Drop by to smell the fresh roasts, talk with our baristas, or pick up your pre-ordered bags.</p>
+          </div>
+
+          <div class="space-y-6">
+            <!-- Address -->
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-950 flex items-center justify-center shrink-0 font-bold">
+                <i class="fa-solid fa-location-dot text-xl text-amber-800"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-amber-950 text-lg">Roastery Location</h3>
+                <p class="text-amber-800/80 text-sm leading-relaxed">Avenue 35, Block 525, Saar, Kingdom of Bahrain</p>
+                <p class="text-xs text-amber-700 font-medium mt-1">Near Saar Mall & Janabiya Junction</p>
+              </div>
+            </div>
+
+            <!-- Opening Hours -->
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-950 flex items-center justify-center shrink-0 font-bold">
+                <i class="fa-solid fa-clock text-xl text-amber-800"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-amber-950 text-lg">Roasting & Pickup Hours</h3>
+                <p class="text-amber-800/80 text-sm">Monday – Sunday: 7:00 AM – 10:00 PM</p>
+                <p class="text-xs text-emerald-700 font-semibold mt-1">Fresh Batch Roasting Every Sunday & Wednesday Morning</p>
+              </div>
+            </div>
+
+            <!-- WhatsApp Contact -->
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 font-bold">
+                <i class="fa-brands fa-whatsapp text-2xl"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-amber-950 text-lg">WhatsApp Orders & Inquiries</h3>
+                <p class="text-amber-800/80 text-sm">+973 1700 0000</p>
+                <a href="https://wa.me/97317000000" 
+                   target="_blank"
+                   class="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-600 hover:text-emerald-700 mt-1 uppercase tracking-wider">
+                  <span>Chat directly on WhatsApp</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Map Card Overlay -->
+        <div class="bg-amber-950 rounded-3xl p-8 text-stone-50 shadow-2xl relative min-h-[400px] flex flex-col justify-between overflow-hidden">
+          <div class="absolute inset-0 opacity-40 bg-cover bg-center mix-blend-overlay"
+               style="background-image: url('https://images.unsplash.com/photo-1524350876685-274059332603?q=80&w=1000&auto=format&fit=crop');">
+          </div>
+          <div class="relative z-10 space-y-4">
+            <span class="bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Direct Contact</span>
+            <h3 class="text-3xl font-extrabold">Need Whole Beans Today?</h3>
+            <p class="text-stone-300 text-sm leading-relaxed">
+              Send us a message on WhatsApp with your preferred brewing method (Whole Bean, Espresso, V60, French Press) and address in Saar or Manama for fast local dispatch.
+            </p>
+          </div>
+          <div class="relative z-10 pt-8">
+            <a href="https://wa.me/97317000000?text=Hello%20Grind%20Micro%20Roastery%2C%20I%20need%20a%20fresh%20coffee%20bag%20delivery%20today!"
+               target="_blank"
+               class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-3 transition-colors duration-300 shadow-xl">
+              <i class="fa-brands fa-whatsapp text-2xl"></i>
+              <span>Order Beans via WhatsApp Now</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-amber-950 text-stone-400 py-12 border-t border-amber-900/60">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+      <div class="flex items-center justify-center gap-3">
+        <div class="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-sm">
+          <i class="fa-solid fa-mug-hot"></i>
+        </div>
+        <span class="font-extrabold text-xl tracking-tight text-stone-100">GRIND MICRO ROASTERY</span>
+      </div>
+      <p class="text-xs text-stone-400 max-w-md mx-auto">
+        Artisanal specialty coffee roasted in small batches in Saar, Bahrain. 100% Arabica micro-lots.
+      </p>
+      <p class="font-cairo text-sm text-amber-200/70 font-semibold" dir="rtl">
+        محمصة متخصصة في إعداد أجود أنواع القهوة المختصة في مملكة البحرين
+      </p>
+      <div class="pt-4 text-xs text-stone-500 border-t border-amber-900/40 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <p>© 2025 Grind Micro Roastery Saar. All rights reserved.</p>
+        <div class="flex items-center gap-6 text-stone-400 text-base">
+          <a href="#" class="hover:text-emerald-400 transition-colors"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://wa.me/97317000000" class="hover:text-emerald-400 transition-colors"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
