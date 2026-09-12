@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth font-inter">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grill City Bahrain | Authentic Charcoal Grills in Gudaibiya</title>
+  <meta name="description" content="Authentic Charcoal Grills & Middle Eastern Flavors in Gudaibiya, Bahrain. Fresh kebabs, tikka, and hot tandoor bread daily.">
+  
+  <!-- Google Fonts: Inter & Cairo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons & Material Symbols -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              red: '#b91c1c',       /* red-700 */
+              darkred: '#991b1b',   /* red-800 */
+              stone: '#1c1917',     /* stone-900 */
+              emerald: '#059669',   /* emerald-600 */
+              whatsapp: '#25D366',
+              gold: '#f59e0b'
+            }
+          },
+          fontFamily: {
+            inter: ['Inter', 'sans-serif'],
+            cairo: ['Cairo', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .font-cairo-active body { font-family: 'Cairo', sans-serif; }
+    .font-inter-active body { font-family: 'Inter', sans-serif; }
+    .hero-gradient {
+      background: linear-gradient(180deg, rgba(28, 25, 23, 0.75) 0%, rgba(28, 25, 23, 0.95) 100%);
+    }
+  </style>
+</head>
+<body class="bg-stone-950 text-stone-100 font-inter antialiased selection:bg-red-700 selection:text-white">
+
+  <!-- Top Banner Info -->
+  <div class="bg-red-700 text-white text-xs md:text-sm py-2 px-4 font-semibold text-center flex items-center justify-center gap-2 shadow-inner">
+    <span class="material-symbols-outlined text-base">local_fire_department</span>
+    <span data-i18n="topBanner">Fresh Charcoal Grills Delivered Hot in Gudaibiya & Surrounding Areas</span>
+    <span class="hidden md:inline font-bold border-l border-red-500 pl-2 ml-2">📞 +973 3900 0000</span>
+  </div>
+
+  <!-- Header Navigation -->
+  <header class="sticky top-0 z-50 bg-stone-900/90 backdrop-blur-md border-b border-stone-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-11 h-11 bg-red-700 rounded-xl flex items-center justify-center text-white shadow-lg shadow-red-900/40 group-hover:bg-red-600 transition-all">
+          <i class="fa-solid fa-fire-burner text-xl"></i>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-xl font-extrabold tracking-tight text-white leading-none" data-i18n="brandName">GRILL CITY</span>
+          <span class="text-xs text-red-500 font-semibold tracking-wider uppercase mt-1" data-i18n="brandSub">Gudaibiya • Bahrain</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-stone-300">
+        <a href="#about" class="hover:text-red-500 transition-colors" data-i18n="navAbout">About Us</a>
+        <a href="#menu" class="hover:text-red-500 transition-colors" data-i18n="navMenu">Our Menu</a>
+        <a href="#reviews" class="hover:text-red-500 transition-colors" data-i18n="navReviews">Reviews</a>
+        <a href="#location" class="hover:text-red-500 transition-colors" data-i18n="navLocation">Location</a>
+      </nav>
+
+      <!-- CTA & Language Switcher -->
+      <div class="flex items-center gap-3">
+        <button id="langToggleBtn" onclick="toggleLanguage()" class="px-3 py-1.5 rounded-lg bg-stone-800 hover:bg-stone-700 border border-stone-700 text-xs font-bold text-stone-200 transition-colors flex items-center gap-1.5">
+          <span class="material-symbols-outlined text-sm">language</span>
+          <span id="langLabel">العربية</span>
+        </button>
+
+        <a href="https://wa.me/97339000000?text=Hello%20Grill%20City,%20I%20would%20like%20to%20place%20an%20order" target="_blank" class="hidden sm:flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-4 py-2.5 rounded-xl text-sm shadow-md transition-all transform active:scale-95">
+          <i class="fa-brands fa-whatsapp text-lg"></i>
+          <span data-i18n="ctaWhatsapp">Order via WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="relative min-h-[85vh] flex items-center justify-center bg-cover bg-center overflow-hidden" style="background-image: url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1920&q=80');">
+    <div class="absolute inset-0 hero-gradient"></div>
+    <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center flex flex-col items-center">
+      
+      <!-- Badge -->
+      <div class="inline-flex items-center gap-2 bg-red-950/80 border border-red-700/60 px-4 py-1.5 rounded-full text-red-400 text-xs sm:text-sm font-semibold mb-6 shadow-xl backdrop-blur-sm animate-pulse">
+        <span class="material-symbols-outlined text-sm">whatshot</span>
+        <span data-i18n="heroBadge">🔥 Sizzling Hot Charcoal Grills</span>
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-white leading-tight sm:leading-tight tracking-tight mb-6 max-w-4xl" data-i18n="heroHeadline">
+        Authentic Charcoal Grills & Middle Eastern Flavors in Gudaibiya
+      </h1>
+
+      <!-- Subheadline -->
+      <p class="text-base sm:text-xl text-stone-300 max-w-2xl mb-10 leading-relaxed font-normal" data-i18n="heroSub">
+        Juicy kebabs, tender tikka, fresh bread, and authentic Arabic mezze prepared fresh over charcoal every single day.
+      </p>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+        <a href="https://wa.me/97339000000?text=Hello%20Grill%20City,%20I%20would%20like%20to%20order" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold px-8 py-4 rounded-xl text-base sm:text-lg shadow-xl shadow-emerald-950/50 transition-all transform hover:-translate-y-0.5 active:scale-95">
+          <i class="fa-brands fa-whatsapp text-2xl"></i>
+          <span data-i18n="ctaWhatsapp">Order via WhatsApp</span>
+        </a>
+        <a href="#menu" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-stone-800/90 hover:bg-stone-800 text-stone-200 border border-stone-700 font-bold px-8 py-4 rounded-xl text-base sm:text-lg transition-all">
+          <span data-i18n="ctaMenu">Explore Menu</span>
+          <span class="material-symbols-outlined">arrow_downward</span>
+        </a>
+      </div>
+
+      <!-- Quick Trust Indicators -->
+      <div class="mt-14 grid grid-cols-2 md:grid-cols-3 gap-6 pt-8 border-t border-stone-800/80 w-full max-w-3xl text-left">
+        <div class="flex items-center gap-3 justify-center">
+          <i class="fa-solid fa-certificate text-red-500 text-xl"></i>
+          <span class="text-xs sm:text-sm font-semibold text-stone-300" data-i18n="trustHalal">100% Fresh Halal Meat</span>
+        </div>
+        <div class="flex items-center gap-3 justify-center">
+          <i class="fa-solid fa-[#059669] fa-star text-amber-400 text-xl"></i>
+          <span class="text-xs sm:text-sm font-semibold text-stone-300" data-i18n="trustRating">4.9 Star Rated Local Favorite</span>
+        </div>
+        <div class="col-span-2 md:col-span-1 flex items-center gap-3 justify-center">
+          <i class="fa-solid fa-motorcycle text-red-500 text-xl"></i>
+          <span class="text-xs sm:text-sm font-semibold text-stone-300" data-i18n="trustDelivery">Fast Hot Delivery</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ABOUT / VALUE PROPOSITION SECTION -->
+  <section id="about" class="py-20 bg-stone-900 border-t border-b border-stone-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        
+        <div class="space-y-6">
+          <div class="inline-block px-3 py-1 bg-red-950/80 border border-red-800 text-red-400 text-xs font-bold tracking-wider uppercase rounded-md" data-i18n="aboutBadge">
+            Our Craft
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white leading-tight" data-i18n="aboutTitle">
+            The Art of Traditional Charcoal Grilling
+          </h2>
+          <p class="text-stone-300 text-base sm:text-lg leading-relaxed" data-i18n="aboutDesc">
+            At Grill City, we honor the ancient tradition of wood and charcoal flame grilling. From our hand-selected fresh meats to our signature marinades passed down through generations, every dish is crafted for peak tender flavor.
+          </p>
+
+          <!-- Feature List -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+            <div class="p-4 rounded-xl bg-stone-950/60 border border-stone-800">
+              <div class="w-10 h-10 rounded-lg bg-red-700/20 text-red-500 flex items-center justify-center font-bold mb-3">
+                <i class="fa-solid fa-drumstick-bite text-lg"></i>
+              </div>
+              <h3 class="font-bold text-white text-base mb-1" data-i18n="featFresh">100% Fresh Local Meat</h3>
+              <p class="text-xs text-stone-400" data-i18n="featFreshDesc">Delivered daily and prepared meticulously by master chefs.</p>
+            </div>
+
+            <div class="p-4 rounded-xl bg-stone-950/60 border border-stone-800">
+              <div class="w-10 h-10 rounded-lg bg-red-700/20 text-red-500 flex items-center justify-center font-bold mb-3">
+                <i class="fa-solid fa-fire text-lg"></i>
+              </div>
+              <h3 class="font-bold text-white text-base mb-1" data-i18n="featCharcoal">Natural Oak Charcoal</h3>
+              <p class="text-xs text-stone-400" data-i18n="featCharcoalDesc">Pure flame grilling for that unmistakable smoky aroma.</p>
+            </div>
+
+            <div class="p-4 rounded-xl bg-stone-950/60 border border-stone-800 sm:col-span-2">
+              <div class="w-10 h-10 rounded-lg bg-red-700/20 text-red-500 flex items-center justify-center font-bold mb-3">
+                <i class="fa-solid fa-bread-slice text-lg"></i>
+              </div>
+              <h3 class="font-bold text-white text-base mb-1" data-i18n="featBread">Hot Tandoor Bread</h3>
+              <p class="text-xs text-stone-400" data-i18n="featBreadDesc">Baked fresh to order in our traditional clay oven to complement every meal.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Image Collage -->
+        <div class="relative">
+          <div class="grid grid-cols-2 gap-4">
+            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80" alt="Charcoal Grill Skewers" class="rounded-2xl shadow-2xl object-cover h-64 w-full border border-stone-800">
+            <img src="https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?auto=format&fit=crop&w=600&q=80" alt="Middle Eastern Tikka" class="rounded-2xl shadow-2xl object-cover h-64 w-full border border-stone-800 mt-8">
+          </div>
+          <!-- Floating Badge -->
+          <div class="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-stone-950 border border-stone-700 text-stone-200 px-6 py-3 rounded-2xl shadow-2xl flex items-center gap-3 whitespace-nowrap">
+            <span class="text-red-500 font-extrabold text-xl">15+</span>
+            <span class="text-xs font-semibold leading-tight text-stone-300" data-i18n="badgeYears">Years Serving Gudaibiya<br>With Signature Flavors</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED MENU ITEMS GRID -->
+  <section id="menu" class="py-20 bg-stone-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-block px-3 py-1 bg-red-950/80 border border-red-800 text-red-400 text-xs font-bold tracking-wider uppercase rounded-md mb-3" data-i18n="menuBadge">
+          Our Menu
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4" data-i18n="menuTitle">
+          Popular Grill Favorites
+        </h2>
+        <p class="text-stone-400 text-base" data-i18n="menuSub">
+          Savor our most requested charcoal skewers, mixed family platters, and homemade sides.
+        </p>
+      </div>
+
+      <!-- Menu Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Item 1 -->
+        <div class="bg-stone-900 rounded-2xl overflow-hidden border border-stone-800 hover:border-red-700/50 transition-all group flex flex-col justify-between">
+          <div>
+            <div class="relative h-52 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=600&q=80" alt="Mixed Grill Platter" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <span class="absolute top-3 right-3 bg-red-700 text-white font-bold text-xs px-2.5 py-1 rounded-full shadow-md" data-i18n="item1Tag">Best Seller</span>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="text-xl font-bold text-white" data-i18n="item1Title">Grill City Special Mix Platter</h3>
+                <span class="text-lg font-extrabold text-emerald-400 font-mono">BHD 4.500</span>
+              </div>
+              <p class="text-stone-400 text-sm mb-4 leading-relaxed" data-i18n="item1Desc">
+                A feast of lamb tikka, shish tawook, beef kebab, and grilled lamb chop served with tandoor bread & garlic sauce.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-0">
+            <a href="https://wa.me/97339000000?text=I%20want%20to%20order%20Grill%20City%20Special%20Mix%20Platter" target="_blank" class="w-full flex items-center justify-center gap-2 bg-stone-800 hover:bg-emerald-600 hover:text-white text-emerald-400 border border-emerald-600/40 font-bold py-2.5 rounded-xl text-sm transition-all">
+              <i class="fa-brands fa-whatsapp"></i>
+              <span data-i18n="btnOrderThis">Order This Item</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="bg-stone-900 rounded-2xl overflow-hidden border border-stone-800 hover:border-red-700/50 transition-all group flex flex-col justify-between">
+          <div>
+            <div class="relative h-52 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?auto=format&fit=crop&w=600&q=80" alt="Bahraini Meat Tikka" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="text-xl font-bold text-white" data-i18n="item2Title">Bahraini Tender Meat Tikka</h3>
+                <span class="text-lg font-extrabold text-emerald-400 font-mono">BHD 3.200</span>
+              </div>
+              <p class="text-stone-400 text-sm mb-4 leading-relaxed" data-i18n="item2Desc">
+                Premium tender lamb cubes marinated in black lime & Bahraini spices, grilled over high charcoal heat.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-0">
+            <a href="https://wa.me/97339000000?text=I%20want%20to%20order%20Bahraini%20Tender%20Meat%20Tikka" target="_blank" class="w-full flex items-center justify-center gap-2 bg-stone-800 hover:bg-emerald-600 hover:text-white text-emerald-400 border border-emerald-600/40 font-bold py-2.5 rounded-xl text-sm transition-all">
+              <i class="fa-brands fa-whatsapp"></i>
+              <span data-i18n="btnOrderThis">Order This Item</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="bg-stone-900 rounded-2xl overflow-hidden border border-stone-800 hover:border-red-700/50 transition-all group flex flex-col justify-between">
+          <div>
+            <div class="relative h-52 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?auto=format&fit=crop&w=600&q=80" alt="Shish Tawook Skewers" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="text-xl font-bold text-white" data-i18n="item3Title">Garlic Shish Tawook</h3>
+                <span class="text-lg font-extrabold text-emerald-400 font-mono">BHD 2.800</span>
+              </div>
+              <p class="text-stone-400 text-sm mb-4 leading-relaxed" data-i18n="item3Desc">
+                Juicy chicken breast marinated in yogurt, garlic, lemon, and saffron spices. Served with signature dip.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-0">
+            <a href="https://wa.me/97339000000?text=I%20want%20to%20order%20Garlic%20Shish%20Tawook" target="_blank" class="w-full flex items-center justify-center gap-2 bg-stone-800 hover:bg-emerald-600 hover:text-white text-emerald-400 border border-emerald-600/40 font-bold py-2.5 rounded-xl text-sm transition-all">
+              <i class="fa-brands fa-whatsapp"></i>
+              <span data-i18n="btnOrderThis">Order This Item</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="bg-stone-900 rounded-2xl overflow-hidden border border-stone-800 hover:border-red-700/50 transition-all group flex flex-col justify-between">
+          <div>
+            <div class="relative h-52 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80" alt="Charcoal Lamb Chops" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="text-xl font-bold text-white" data-i18n="item4Title">Smoky Lamb Chops (4pcs)</h3>
+                <span class="text-lg font-extrabold text-emerald-400 font-mono">BHD 4.200</span>
+              </div>
+              <p class="text-stone-400 text-sm mb-4 leading-relaxed" data-i18n="item4Desc">
+                Tender rib chops flame-grilled to perfection with sea salt, herbs, and lemon glaze.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-0">
+            <a href="https://wa.me/97339000000?text=I%20want%20to%20order%20Smoky%20Lamb%20Chops" target="_blank" class="w-full flex items-center justify-center gap-2 bg-stone-800 hover:bg-emerald-600 hover:text-white text-emerald-400 border border-emerald-600/40 font-bold py-2.5 rounded-xl text-sm transition-all">
+              <i class="fa-brands fa-whatsapp"></i>
+              <span data-i18n="btnOrderThis">Order This Item</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Item 5 -->
+        <div class="bg-stone-900 rounded-2xl overflow-hidden border border-stone-800 hover:border-red-700/50 transition-all group flex flex-col justify-between">
+          <div>
+            <div class="relative h-52 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1637806930600-37fa8893f097?auto=format&fit=crop&w=600&q=80" alt="Fresh Hummus & Mezze" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="text-xl font-bold text-white" data-i18n="item5Title">Fresh Hummus & Garlic Dip</h3>
+                <span class="text-lg font-extrabold text-emerald-400 font-mono">BHD 1.200</span>
+              </div>
+              <p class="text-stone-400 text-sm mb-4 leading-relaxed" data-i18n="item5Desc">
+                Creamy chickpea hummus topped with virgin olive oil, paired with signature whipped garlic sauce.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-0">
+            <a href="https://wa.me/97339000000?text=I%20want%20to%20order%20Fresh%20Hummus%20and%20Garlic%20Dip" target="_blank" class="w-full flex items-center justify-center gap-2 bg-stone-800 hover:bg-emerald-600 hover:text-white text-emerald-400 border border-emerald-600/40 font-bold py-2.5 rounded-xl text-sm transition-all">
+              <i class="fa-brands fa-whatsapp"></i>
+              <span data-i18n="btnOrderThis">Order This Item</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Item 6 -->
+        <div class="bg-stone-900 rounded-2xl overflow-hidden border border-stone-800 hover:border-red-700/50 transition-all group flex flex-col justify-between">
+          <div>
+            <div class="relative h-52 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=600&q=80" alt="Family Feast Combo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <span class="absolute top-3 right-3 bg-red-700 text-white font-bold text-xs px-2.5 py-1 rounded-full shadow-md" data-i18n="item6Tag">Family Size</span>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="text-xl font-bold text-white" data-i18n="item6Title">Mega Family Grill Box</h3>
+                <span class="text-lg font-extrabold text-emerald-400 font-mono">BHD 12.500</span>
+              </div>
+              <p class="text-stone-400 text-sm mb-4 leading-relaxed" data-i18n="item6Desc">
+                Includes 12 mixed skewers, full grilled chicken, hummus, fries, salads, garlic sauce, and 6 tandoor breads.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-0">
+            <a href="https://wa.me/97339000000?text=I%20want%20to%20order%20Mega%20Family%20Grill%20Box" target="_blank" class="w-full flex items-center justify-center gap-2 bg-stone-800 hover:bg-emerald-600 hover:text-white text-emerald-400 border border-emerald-600/40 font-bold py-2.5 rounded-xl text-sm transition-all">
+              <i class="fa-brands fa-whatsapp"></i>
+              <span data-i18n="btnOrderThis">Order This Item</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Menu Callout CTA -->
+      <div class="mt-12 text-center bg-stone-900 border border-stone-800 rounded-2xl p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div class="text-left">
+          <h3 class="text-xl font-bold text-white mb-1" data-i18n="customOrderTitle">Want something custom or full menu catalog?</h3>
+          <p class="text-stone-400 text-sm" data-i18n="customOrderDesc">Message us on WhatsApp for live menu updates and daily specials.</p>
+        </div>
+        <a href="https://wa.me/97339000000?text=Hello%20Grill%20City,%20please%20send%20me%20your%20full%20menu" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold px-6 py-3 rounded-xl text-sm whitespace-nowrap shadow-md transition-all flex items-center gap-2">
+          <i class="fa-brands fa-whatsapp text-lg"></i>
+          <span data-i18n="btnFullMenu">Request Full Menu PDF</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF: STYLIZED GOOGLE CUSTOMER REVIEWS -->
+  <section id="reviews" class="py-20 bg-stone-900 border-t border-b border-stone-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <div>
+          <div class="inline-flex items-center gap-2 text-amber-400 text-xs font-bold uppercase tracking-wider mb-2">
+            <i class="fa-brands fa-google text-sm"></i>
+            <span data-i18n="revBadge">Google Reviews</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white" data-i18n="revTitle">
+            Loved by Grill Enthusiasts
+          </h2>
+        </div>
+        <div class="flex items-center gap-4 bg-stone-950 px-5 py-3 rounded-2xl border border-stone-800">
+          <div class="text-3xl font-black text-white font-mono">4.9</div>
+          <div>
+            <div class="flex text-amber-400 text-sm gap-1">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <span class="text-xs text-stone-400" data-i18n="revSubText">Based on 350+ reviews in Gudaibiya</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reviews Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Review Card 1 -->
+        <div class="bg-stone-950 p-6 rounded-2xl border border-stone-800 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-red-700/30 text-red-400 font-bold flex items-center justify-center text-sm">
+                  AH
+                </div>
+                <div>
+                  <h4 class="font-bold text-white text-sm">Ali Hassan</h4>
+                  <span class="text-xs text-stone-500">Local Guide • Gudaibiya</span>
+                </div>
+              </div>
+              <i class="fa-brands fa-google text-stone-600 text-lg"></i>
+            </div>
+            <div class="flex text-amber-400 text-xs gap-1 mb-3">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="text-stone-300 text-sm leading-relaxed italic" data-i18n="rev1Text">
+              "Hands down the best meat tikka in Manama! Tender, juicy, and the garlic paste with hot tandoor bread is unmatched. Quick delivery via WhatsApp too."
+            </p>
+          </div>
+          <span class="text-xs text-stone-600 mt-4 block">2 weeks ago</span>
+        </div>
+
+        <!-- Review Card 2 -->
+        <div class="bg-stone-950 p-6 rounded-2xl border border-stone-800 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-amber-700/30 text-amber-400 font-bold flex items-center justify-center text-sm">
+                  SK
+                </div>
+                <div>
+                  <h4 class="font-bold text-white text-sm">Sarah K.</h4>
+                  <span class="text-xs text-stone-500">Customer</span>
+                </div>
+              </div>
+              <i class="fa-brands fa-google text-stone-600 text-lg"></i>
+            </div>
+            <div class="flex text-amber-400 text-xs gap-1 mb-3">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="text-stone-300 text-sm leading-relaxed italic" data-i18n="rev2Text">
+              "Ordered the Mega Family Box for a family weekend dinner. Portion size was huge and every skewer was grilled over real charcoal. Super authentic!"
+            </p>
+          </div>
+          <span class="text-xs text-stone-600 mt-4 block">1 month ago</span>
+        </div>
+
+        <!-- Review Card 3 -->
+        <div class="bg-stone-950 p-6 rounded-2xl border border-stone-800 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-emerald-700/30 text-emerald-400 font-bold flex items-center justify-center text-sm">
+                  MJ
+                </div>
+                <div>
+                  <h4 class="font-bold text-white text-sm">Mohammed J.</h4>
+                  <span class="text-xs text-stone-500">Local Guide</span>
+                </div>
+              </div>
+              <i class="fa-brands fa-google text-stone-600 text-lg"></i>
+            </div>
+            <div class="flex text-amber-400 text-xs gap-1 mb-3">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="text-stone-300 text-sm leading-relaxed italic" data-i18n="rev3Text">
+              "Fast service and friendly staff. The lamb chops are melted perfection. Grill City is my main late-night grill spot in Gudaibiya."
+            </p>
+          </div>
+          <span class="text-xs text-stone-600 mt-4 block">3 weeks ago</span>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- LOCATION & HOURS SECTION -->
+  <section id="location" class="py-20 bg-stone-950 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        
+        <!-- Info Cards -->
+        <div class="space-y-8">
+          <div>
+            <div class="inline-block px-3 py-1 bg-red-950/80 border border-red-800 text-red-400 text-xs font-bold tracking-wider uppercase rounded-md mb-3" data-i18n="locBadge">
+              Find Us
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4" data-i18n="locTitle">
+              Visit Our Branch or Order Online
+            </h2>
+            <p class="text-stone-400 text-base" data-i18n="locSub">
+              Conveniently located in the bustling center of Gudaibiya, serving dine-in, takeaway, and fast home delivery.
+            </p>
+          </div>
+
+          <div class="space-y-4">
+            <!-- Address Item -->
+            <div class="p-5 rounded-2xl bg-stone-900 border border-stone-800 flex items-start gap-4">
+              <div class="w-12 h-12 rounded-xl bg-red-700/20 text-red-500 flex items-center justify-center shrink-0 text-xl">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-white text-base mb-1" data-i18n="addrHeading">Address</h3>
+                <p class="text-sm text-stone-300" data-i18n="addrText">Gudaibiya Main Avenue, Block 308, Manama, Kingdom of Bahrain</p>
+              </div>
+            </div>
+
+            <!-- Hours Item -->
+            <div class="p-5 rounded-2xl bg-stone-900 border border-stone-800 flex items-start gap-4">
+              <div class="w-12 h-12 rounded-xl bg-red-700/20 text-red-500 flex items-center justify-center shrink-0 text-xl">
+                <i class="fa-solid fa-clock"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-white text-base mb-1" data-i18n="hoursHeading">Opening Hours</h3>
+                <p class="text-sm text-stone-300" data-i18n="hoursText">Open Daily: 12:00 PM – 1:30 AM (Non-stop grilling)</p>
+              </div>
+            </div>
+
+            <!-- Phone & Direct WhatsApp -->
+            <div class="p-5 rounded-2xl bg-stone-900 border border-stone-800 flex items-start gap-4">
+              <div class="w-12 h-12 rounded-xl bg-emerald-700/20 text-emerald-400 flex items-center justify-center shrink-0 text-xl">
+                <i class="fa-brands fa-whatsapp"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-white text-base mb-1" data-i18n="phoneHeading">WhatsApp Direct Order</h3>
+                <p class="text-sm text-stone-300 mb-2" data-i18n="phoneText">Order directly with our kitchen staff for rapid pickup or home delivery.</p>
+                <a href="https://wa.me/97339000000?text=Hello%20Grill%20City,%20I%20would%20like%20to%20order" target="_blank" class="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 font-bold text-sm">
+                  <span>+973 3900 0000</span>
+                  <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Map / Location Graphic -->
+        <div class="bg-stone-900 border border-stone-800 rounded-3xl overflow-hidden p-6 flex flex-col justify-between min-h-[400px] relative">
+          <div class="absolute inset-0 bg-cover bg-center opacity-40" style="background-image: url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=800&q=80');"></div>
+          <div class="relative z-10 bg-stone-950/90 backdrop-blur-sm p-6 rounded-2xl border border-stone-800 max-w-sm">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="w-3 h-3 rounded-full bg-emerald-500 animate-ping"></span>
+              <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider" data-i18n="mapStatus">Kitchen Open Now</span>
+            </div>
+            <h4 class="text-lg font-bold text-white mb-1" data-i18n="mapTitle">Grill City Gudaibiya</h4>
+            <p class="text-xs text-stone-300 mb-4" data-i18n="mapDesc">Near Main Avenue Traffic Signal, Gudaibiya, Manama</p>
+            <a href="https://maps.google.com" target="_blank" class="w-full inline-flex items-center justify-center gap-2 bg-red-700 hover:bg-red-600 text-white font-bold py-2.5 px-4 rounded-xl text-xs transition-colors">
+              <i class="fa-solid fa-diamond-turn-right"></i>
+              <span data-i18n="btnGetDirections">Get Driving Directions</span>
+            </a>
+          </div>
+          
+          <div class="relative z-10 mt-6 bg-stone-950/90 backdrop-blur-sm p-4 rounded-2xl border border-stone-800 text-center">
+            <p class="text-xs text-stone-400" data-i18n="delivAreas">Delivery Available: Gudaibiya, Adliya, Hoora, Juffair & Manama</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-stone-950 border-t border-stone-900 py-10 text-stone-500 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <span class="font-bold text-stone-300" data-i18n="brandName">GRILL CITY</span>
+        <span>•</span>
+        <span data-i18n="footerRights">© 2025 All Rights Reserved. Gudaibiya, Bahrain.</span>
+      </div>
+      <div class="flex items-center gap-6 text-stone-400">
+        <a href="#" class="hover:text-red-500 transition-colors"><i class="fa-brands fa-instagram text-lg"></i></a>
+        <a href="#" class="hover:text-red-500 transition-colors"><i class="fa-brands fa-facebook text-lg"></i></a>
+        <a href="https://wa.me/97339000000" target="_blank" class="hover:text-emerald-500 transition-colors"><i class="fa-brands fa-whatsapp text-lg"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING WHATSAPP BUTTON FOR MOBILE HIGH-CONVERSION -->
+  <a href="https://wa.me/97339000000?text=Hello%20Grill%20City,%20I%20want%20to%20place%20an%20order" target="_blank" class="fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-400 text-white p-4 rounded-full shadow-2xl flex items-center justify-center transition-all transform hover:scale-110 active:scale-95 border-2 border-white/20" aria-label="WhatsApp Order">
+    <i class="fa-brands fa-whatsapp text-3xl"></i>
+  </a>
+
+  <!-- BILINGUAL JAVASCRIPT TRANSITION SCRIPT -->
+  <script>
+    const translations = {
+      en: {
+        topBanner: "Fresh Charcoal Grills Delivered Hot in Gudaibiya & Surrounding Areas",
+        brandName: "GRILL CITY",
+        brandSub: "Gudaibiya • Bahrain",
+        navAbout: "About Us",
+        navMenu: "Our Menu",
+        navReviews: "Reviews",
+        navLocation: "Location",
+        ctaWhatsapp: "Order via WhatsApp",
+        heroBadge: "🔥 Sizzling Hot Charcoal Grills",
+        heroHeadline: "Authentic Charcoal Grills & Middle Eastern Flavors in Gudaibiya",
+        heroSub: "Juicy kebabs, tender tikka, fresh bread, and authentic Arabic mezze prepared fresh over charcoal every single day.",
+        ctaMenu: "Explore Menu",
+        trustHalal: "100% Fresh Halal Meat",
+        trustRating: "4.9 Star Rated Local Favorite",
+        trustDelivery: "Fast Hot Delivery",
+        aboutBadge: "Our Craft",
+        aboutTitle: "The Art of Traditional Charcoal Grilling",
+        aboutDesc: "At Grill City, we honor the ancient tradition of wood and charcoal flame grilling. From our hand-selected fresh meats to our signature marinades passed down through generations, every dish is crafted for peak tender flavor.",
+        featFresh: "100% Fresh Local Meat",
+        featFreshDesc: "Delivered daily and prepared meticulously by master chefs.",
+        featCharcoal: "Natural Oak Charcoal",
+        featCharcoalDesc: "Pure flame grilling for that unmistakable smoky aroma.",
+        featBread: "Hot Tandoor Bread",
+        featBreadDesc: "Baked fresh to order in our traditional clay oven to complement every meal.",
+        badgeYears: "15+ Years Serving Gudaibiya<br>With Signature Flavors",
+        menuBadge: "Our Menu",
+        menuTitle: "Popular Grill Favorites",
+        menuSub: "Savor our most requested charcoal skewers, mixed family platters, and homemade sides.",
+        item1Tag: "Best Seller",
+        item1Title: "Grill City Special Mix Platter",
+        item1Desc: "A feast of lamb tikka, shish tawook, beef kebab, and grilled lamb chop served with tandoor bread & garlic sauce.",
+        item2Title: "Bahraini Tender Meat Tikka",
+        item2Desc: "Premium tender lamb cubes marinated in black lime & Bahraini spices, grilled over high charcoal heat.",
+        item3Title: "Garlic Shish Tawook",
+        item3Desc: "Juicy chicken breast marinated in yogurt, garlic, lemon, and saffron spices. Served with signature dip.",
+        item4Title: "Smoky Lamb Chops (4pcs)",
+        item4Desc: "Tender rib chops flame-grilled to perfection with sea salt, herbs, and lemon glaze.",
+        item5Title: "Fresh Hummus & Garlic Dip",
+        item5Desc: "Creamy chickpea hummus topped with virgin olive oil, paired with signature whipped garlic sauce.",
+        item6Tag: "Family Size",
+        item6Title: "Mega Family Grill Box",
+        item6Desc: "Includes 12 mixed skewers, full grilled chicken, hummus, fries, salads, garlic sauce, and 6 tandoor breads.",
+        btnOrderThis: "Order This Item",
+        customOrderTitle: "Want something custom or full menu catalog?",
+        customOrderDesc: "Message us on WhatsApp for live menu updates and daily specials.",
+        btnFullMenu: "Request Full Menu PDF",
+        revBadge: "Google Reviews",
+        revTitle: "Loved by Grill Enthusiasts",
+        revSubText: "Based on 350+ reviews in Gudaibiya",
+        rev1Text: ""Hands down the best meat tikka in Manama! Tender, juicy, and the garlic paste with hot tandoor bread is unmatched. Quick delivery via WhatsApp too."",
+        rev2Text: ""Ordered the Mega Family Box for a family weekend dinner. Portion size was huge and every skewer was grilled over real charcoal. Super authentic!"",
+        rev3Text: ""Fast service and friendly staff. The lamb chops are melted perfection. Grill City is my main late-night grill spot in Gudaibiya."",
+        locBadge: "Find Us",
+        locTitle: "Visit Our Branch or Order Online",
+        locSub: "Conveniently located in the bustling center of Gudaibiya, serving dine-in, takeaway, and fast home delivery.",
+        addrHeading: "Address",
+        addrText: "Gudaibiya Main Avenue, Block 308, Manama, Kingdom of Bahrain",
+        hoursHeading: "Opening Hours",
+        hoursText: "Open Daily: 12:00 PM – 1:30 AM (Non-stop grilling)",
+        phoneHeading: "WhatsApp Direct Order",
+        phoneText: "Order directly with our kitchen staff for rapid pickup or home delivery.",
+        mapStatus: "Kitchen Open Now",
+        mapTitle: "Grill City Gudaibiya",
+        mapDesc: "Near Main Avenue Traffic Signal, Gudaibiya, Manama",
+        btnGetDirections: "Get Driving Directions",
+        delivAreas: "Delivery Available: Gudaibiya, Adliya, Hoora, Juffair & Manama",
+        footerRights: "© 2025 All Rights Reserved. Gudaibiya, Bahrain."
+      },
+      ar: {
+        topBanner: "مشويات طازجة على الفحم تصلك ساخنة في القضيبية والمناطق المجاورة",
+        brandName: "مدينة المشويات",
+        brandSub: "القضيبية • البحرين",
+        navAbout: "من نحن",
+        navMenu: "قائمة الطعام",
+        navReviews: "التقييمات",
+        navLocation: "موقعنا",
+        ctaWhatsapp: "اطلب عبر الواتساب",
+        heroBadge: "🔥 مشويات طازجة على الفحم يومياً",
+        heroHeadline: "أشهى المشويات على الفحم والنكهات الشرقية في القضيبية",
+        heroSub: "كباب طري، تكا شهية، خبز تنور طازج ومقبلات شرقية أصيلة تُحضر يومياً على الفحم المشتعل.",
+        ctaMenu: "تصفح المأكولات",
+        trustHalal: "لحوم طازجة حلال 100%",
+        trustRating: "تقييم 4.9 نجوم - الأكثر طلباً",
+        trustDelivery: "توصيل سريع وساخن",
+        aboutBadge: "جودتنا",
+        aboutTitle: "فن الشواء التقليدي على الفحم",
+        aboutDesc: "في مدينة المشويات، نعتز بتقديم أصالة الشواء على الفحم الطبيعي. من لحومنا الطازجة المختارة بعناية إلى تتبيلاتنا الخاصة، نضمن لك تجربة غنية بالنكهات والدفء.",
+        featFresh: "لحوم طازجة 100%",
+        featFreshDesc: "تصلنا يومياً وتُحضر بإتقان على أيدي طهاة محترفين.",
+        featCharcoal: "فحم طبيعي أصيل",
+        featCharcoalDesc: "شواء على الفحم الحقيقي لنكهة مدخنة لا تُقاوم.",
+        featBread: "خبز تنور ساخن",
+        featBreadDesc: "يُخبز طازجاً فور الطلب في الفرن الفخاري التقليدي.",
+        badgeYears: "أكثر من 15 عاماً في خدمة القضيبية<br>بأنبل النكهات الشرقية",
+        menuBadge: "قائمة الطعام",
+        menuTitle: "الأطباق الأكثر طلباً",
+        menuSub: "استمتع بأسياخ المشويات، الوجبات العائلية والمقبلات المنزلية.",
+        item1Tag: "الأكثر مبيعاً",
+        item1Title: "مشاوي مدينة المشويات المشكلة",
+        item1Desc: "تشكيلة غنية من تكا اللحم، الشيش طاووق، كباب اللحم وريش الغنم تُقدم مع الخبز الثومية.",
+        item2Title: "تكا لحم بحرينية طرية",
+        item2Desc: "قطع لحم الغنم الطازجة المتبلة باللومي الأسود والبهارات البحرينية المشوية على الفحم.",
+        item3Title: "شيش طاووق بالثوم والزعفران",
+        item3Desc: "صدور دجاج طرية متبلة بالزبادي والثوم والليمون والزعفران، تُقدم مع صلصة الثوم.",
+        item4Title: "ريش غنم مدخنة (4 قطع)",
+        item4Desc: "ريش لحم مشوية على النار مع الملح البحري والأعشاب والعصرة الليمونية.",
+        item5Title: "حمص طازج وثومية خاصة",
+        item5Desc: "حمص ناعم بزيت الزيتون الصافي مع صلصة الثوم المخفوقة المتميزة.",
+        item6Tag: "وجبة عائلية",
+        item6Title: "صندوق المشاوي العائلي الضخم",
+        item6Desc: "يتضمن 12 سيخ مشكل، دجاجة كاملة، حمص، بطاطس، سلطات، ثومية و6 خبز تنور.",
+        btnOrderThis: "اطلب هذا الطبق",
+        customOrderTitle: "تريد طلباً خاصاً أو قائمة الطعام كاملة؟",
+        customOrderDesc: "تواصل معنا عبر الواتساب للحصول على القائمة الكاملة والعروض اليومية.",
+        btnFullMenu: "طلب قائمة الطعام PDF",
+        revBadge: "تقييمات جوجل",
+        revTitle: "رأي عشاق المشويات بنا",
+        revSubText: "بناءً على أكثر من 350 تقييم في القضيبية",
+        rev1Text: ""بلا منازع أفضل تكا لحم في المنامة! طرية ولذيذة، والخبز الساخن مع الثومية روعة. والتوصيل سريع عبر الواتساب."",
+        rev2Text: ""طلبت الصندوق العائلي لعشاء العائلة. الكمية راهية وكل الأسياخ مشوية على الفحم الحقيقي. ممتاز جداً!"",
+        rev3Text: ""خدمة سريعة وطاقم محترم. الريش تذوب في الفم. مدينة المشويات خياري الأول دائماً في القضيبية."",
+        locBadge: "موقعنا",
+        locTitle: "تفضل بزيارتنا أو اطلب أونلاين",
+        locSub: "نرحب بكم في قلب القضيبية النابض بالمنامة، للوجبات الداخلية، السفري والتوصيل السريع.",
+        addrHeading: "العنوان",
+        addrText: "شارع القضيبية العام، مجمع 308، المنامة، مملكة البحرين",
+        hoursHeading: "أوقات العمل",
+        hoursText: "يومياً: 12:00 ظهراً – 1:30 صباحاً (شواء مستمر)",
+        phoneHeading: "الطلب المباشر عبر الواتساب",
+        phoneText: "تواصل مباشرة مع مطبخنا للاستلام السريع أو التوصيل للمنزل.",
+        mapStatus: "المطبخ مفتوح الآن",
+        mapTitle: "مدينة المشويات - القضيبية",
+        mapDesc: "بالقرب من الإشارة الضوئية لشارع القضيبية العام، المنامة",
+        btnGetDirections: "الحصول على الاتجاهات",
+        delivAreas: "التوصيل متوفر لـ: القضيبية، العدلية، الحورة، الجفير والمنامة",
+        footerRights: "© 2025 جميع الحقوق محفوظة. القضيبية، البحرين."
+      }
+    };
+
+    let currentLang = 'en';
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'en' ? 'ar' : 'en';
+      const htmlEl = document.documentElement;
+      const langLabel = document.getElementById('langLabel');
+
+      // Set direction and lang attributes
+      htmlEl.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+      htmlEl.setAttribute('lang', currentLang);
+
+      // Toggle font styling classes
+      if (currentLang === 'ar') {
+        htmlEl.classList.remove('font-inter');
+        htmlEl.classList.add('font-cairo');
+        langLabel.textContent = 'English';
+      } else {
+        htmlEl.classList.remove('font-cairo');
+        htmlEl.classList.add('font-inter');
+        langLabel.textContent = 'العربية';
+      }
+
+      // Update text content for elements with data-i18n
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[currentLang] && translations[currentLang][key]) {
+          el.innerHTML = translations[currentLang][key];
+        }
+      });
+    }
+  </script>
+</body>
+</html>
