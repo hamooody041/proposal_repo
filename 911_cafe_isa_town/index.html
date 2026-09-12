@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-en="911 Cafe | Specialty Coffee Isa Town" data-ar="مقهى 911 | القهوة المختصة مدينة عيسى">911 Cafe | Specialty Coffee Isa Town</title>
+  
+  <!-- Google Fonts: Plus Jakarta Sans & Cairo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Google Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              900: '#1c1917', // stone-900
+              800: '#292524',
+              700: '#44403c',
+              50: '#fffbeb',  // amber-50
+              accent: '#d97706', // amber-600
+              accentHover: '#b45309',
+            }
+          },
+          fontFamily: {
+            en: ['Plus Jakarta Sans', 'sans-serif'],
+            ar: ['Cairo', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body.font-en { font-family: 'Plus Jakarta Sans', sans-serif; }
+    body.font-ar { font-family: 'Cairo', sans-serif; }
+    .glow-effect {
+      box-shadow: 0 0 40px -10px rgba(217, 119, 6, 0.3);
+    }
+  </style>
+</head>
+<body class="bg-stone-900 text-stone-100 font-en transition-colors duration-300 ease-in-out selection:bg-amber-600 selection:text-white">
+
+  <!-- HEADER & NAVIGATION -->
+  <header class="sticky top-0 z-50 bg-stone-900/95 backdrop-blur-md border-b border-stone-800/80 shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Logo -->
+        <a href="#" class="flex items-center gap-3 group">
+          <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center font-extrabold text-white text-xl shadow-md group-hover:scale-105 transition-transform">
+            911
+          </div>
+          <div class="flex flex-col">
+            <span class="font-extrabold text-xl tracking-wider text-white uppercase">911 CAFE</span>
+            <span class="text-[10px] text-amber-500 tracking-widest uppercase font-semibold" data-en="Isa Town • Bahrain" data-ar="مدينة عيسى • البحرين">Isa Town • Bahrain</span>
+          </div>
+        </a>
+
+        <!-- Nav Links (Desktop) -->
+        <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-stone-300">
+          <a href="#about" class="hover:text-amber-500 transition-colors" data-en="About Us" data-ar="عن الكافيه">About Us</a>
+          <a href="#menu" class="hover:text-amber-500 transition-colors" data-en="Menu Highlights" data-ar="قائمة الطعام">Menu Highlights</a>
+          <a href="#reviews" class="hover:text-amber-500 transition-colors" data-en="Reviews" data-ar="آراء العملاء">Reviews</a>
+          <a href="#location" class="hover:text-amber-500 transition-colors" data-en="Location & Hours" data-ar="الموقع والساعات">Location & Hours</a>
+        </nav>
+
+        <!-- Controls: Language Toggle & CTA -->
+        <div class="flex items-center gap-3 sm:gap-4">
+          <!-- Language Switcher -->
+          <div class="bg-stone-800/90 p-1 rounded-full border border-stone-700 flex items-center">
+            <button id="btn-lang-en" onclick="setLanguage('en')" class="px-3 py-1 text-xs font-bold rounded-full bg-amber-600 text-white shadow transition-all">
+              EN
+            </button>
+            <button id="btn-lang-ar" onclick="setLanguage('ar')" class="px-3 py-1 text-xs font-bold rounded-full text-stone-400 hover:text-white transition-all">
+              عربي
+            </button>
+          </div>
+
+          <!-- WhatsApp CTA Button -->
+          <a href="https://wa.me/97317000911?text=Hello%20911%20Cafe,%20I%20would%20like%20to%20place%20an%20order" target="_blank" rel="noopener" class="hidden sm:inline-flex items-center gap-2 bg-amber-600 hover:bg-amber-700 text-white font-bold px-4 py-2.5 rounded-xl shadow-lg hover:shadow-amber-600/20 hover:-translate-y-0.5 transition-all text-sm">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+            </svg>
+            <span data-en="Order via WhatsApp" data-ar="أطلب عبر الواتساب">Order via WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="relative py-16 sm:py-24 lg:py-32 overflow-hidden bg-gradient-to-b from-stone-900 via-stone-900 to-stone-950">
+    <!-- Background Decorative Glows -->
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-amber-600/15 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-0 right-0 w-80 h-80 bg-stone-800/40 rounded-full blur-2xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Text Content -->
+        <div class="lg:col-span-7 text-center lg:text-start">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-600/10 border border-amber-600/30 text-amber-500 text-xs sm:text-sm font-semibold mb-6">
+            <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+            <span data-en="Isa Town's Specialty Coffee Destination" data-ar="وجهة القهوة المختصة في مدينة عيسى">Isa Town's Specialty Coffee Destination</span>
+          </div>
+          
+          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight sm:leading-tight mb-6"
+              data-en="Isa Town's Destination for Premium Specialty Coffee & Fresh Brews"
+              data-ar="وجهتك الأولى للقهوة المختصة والمشروبات المميزة في مدينة عيسى">
+            Isa Town's Destination for Premium Specialty Coffee & Fresh Brews
+          </h1>
+          
+          <p class="text-base sm:text-lg text-stone-300 max-w-2xl mx-auto lg:mx-0 mb-8 leading-relaxed"
+             data-en="Experience expertly roasted single-origin beans, hand-crafted specialty beverages, and freshly baked artisanal bites in the heart of Isa Town."
+             data-ar="استمتع بأجود أنواع البوب المجهزة بعناية، والمشروبات الباردة والساخنة المصنوعة بشغف، إلى جانب المخبوزات الطازجة يومياً في قلب مدينة عيسى.">
+            Experience expertly roasted single-origin beans, hand-crafted specialty beverages, and freshly baked artisanal bites in the heart of Isa Town.
+          </p>
+
+          <!-- Hero Actions -->
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+            <a href="https://wa.me/97317000911?text=Hello%20911%20Cafe,%20I%20would%20like%20to%20place%20an%20order" target="_blank" rel="noopener"
+               class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-amber-600 hover:bg-amber-700 text-white font-bold px-8 py-4 rounded-xl shadow-xl hover:shadow-amber-600/25 transition-all text-base transform hover:-translate-y-0.5">
+              <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+              </svg>
+              <span data-en="Order via WhatsApp" data-ar="أطلب الآن عبر الواتساب">Order via WhatsApp</span>
+            </a>
+            
+            <a href="#menu"
+               class="w-full sm:w-auto inline-flex items-center justify-center gap-2 border border-stone-700 hover:border-amber-600 bg-stone-800/80 hover:bg-stone-800 text-stone-200 font-semibold px-6 py-4 rounded-xl transition-all text-base">
+              <span data-en="Explore Menu" data-ar="استكشف المنيو">Explore Menu</span>
+              <span class="material-icons-outlined text-sm">expand_more</span>
+            </a>
+          </div>
+
+          <!-- Micro Features -->
+          <div class="mt-10 pt-8 border-t border-stone-800 grid grid-cols-3 gap-4 text-center lg:text-start">
+            <div>
+              <p class="text-xl sm:text-2xl font-bold text-amber-500">100%</p>
+              <p class="text-xs text-stone-400 mt-1" data-en="Arabica Specialty Beans" data-ar="بن أرابيكا مختص 100%">Arabica Specialty Beans</p>
+            </div>
+            <div>
+              <p class="text-xl sm:text-2xl font-bold text-amber-500">4.9 ★</p>
+              <p class="text-xs text-stone-400 mt-1" data-en="Google Customer Rating" data-ar="تقييم جووجل الممتاز">Google Customer Rating</p>
+            </div>
+            <div>
+              <p class="text-xl sm:text-2xl font-bold text-amber-500">Isa Town</p>
+              <p class="text-xs text-stone-400 mt-1" data-en="Prime Location & Drive-thru" data-ar="موقع ممتاز وخدمة سريعة">Prime Location & Drive-thru</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Media Container -->
+        <div class="lg:col-span-5 relative">
+          <div class="relative mx-auto max-w-md lg:max-w-none">
+            <div class="rounded-3xl overflow-hidden border border-stone-800 bg-stone-800/50 p-3 shadow-2xl glow-effect">
+              <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1000&q=80" 
+                   alt="911 Cafe Barista Pouring Coffee" 
+                   class="w-full h-[420px] sm:h-[480px] object-cover rounded-2xl filter brightness-95 hover:scale-105 transition-transform duration-700">
+            </div>
+            <!-- Floating Badge -->
+            <div class="absolute -bottom-6 -left-4 sm:left-6 bg-stone-800/95 border border-stone-700 p-4 rounded-2xl shadow-xl flex items-center gap-3 backdrop-blur-md">
+              <div class="w-10 h-10 rounded-full bg-amber-600/20 text-amber-500 flex items-center justify-center font-bold">
+                <span class="material-icons-outlined">local_cafe</span>
+              </div>
+              <div>
+                <p class="text-xs text-stone-400 font-medium" data-en="Signature Drink" data-ar="المشروب المميز">Signature Drink</p>
+                <p class="text-sm font-bold text-white" data-en="911 Spanish Latte" data-ar="سبانيش لاتيه 911">911 Spanish Latte</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT & VALUE PROPOSITION SECTION -->
+  <section id="about" class="py-20 bg-stone-950 border-t border-b border-stone-800/60">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-amber-500 font-bold uppercase tracking-widest text-xs sm:text-sm mb-3"
+            data-en="Crafting Coffee Culture" data-ar="ثقافة القهوة المبتكرة">Crafting Coffee Culture</h2>
+        <h3 class="text-3xl sm:text-4xl font-extrabold text-white mb-6"
+            data-en="More Than Just Coffee — It's Your Daily Ritual"
+            data-ar="أكثر من مجرد قهوة — إنها طقسك اليومي المميز">
+          More Than Just Coffee — It's Your Daily Ritual
+        </h3>
+        <p class="text-stone-300 text-base sm:text-lg leading-relaxed"
+           data-en="Located in the heart of Isa Town, 911 Cafe was born from a passion for rich aromatics, smooth extractions, and a warm community atmosphere. Whether you need an early morning pick-me-up or a cozy evening space, we serve perfection in every cup."
+           data-ar="يقع مقهى 911 في قلب مدينة عيسى، وقد نبع من شغفنا بالقهوة الغنية بالروائح العطرة والاستخلاص المتوازن. سواء كنت تبحث عن دفعة طاقة صباحية أو جلسة مسائية مريحة، نحن نقدم لك الفخامة في كل كوب.">
+          Located in the heart of Isa Town, 911 Cafe was born from a passion for rich aromatics, smooth extractions, and a warm community atmosphere. Whether you need an early morning pick-me-up or a cozy evening space, we serve perfection in every cup.
+        </p>
+      </div>
+
+      <!-- Value Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <div class="bg-stone-900 border border-stone-800 rounded-2xl p-8 hover:border-amber-600/50 transition-all duration-300 hover:-translate-y-1">
+          <div class="w-14 h-14 rounded-xl bg-amber-600/10 border border-amber-600/30 flex items-center justify-center text-amber-500 mb-6">
+            <span class="material-icons-outlined text-3xl">coffee_maker</span>
+          </div>
+          <h4 class="text-xl font-bold text-white mb-3" data-en="Single-Origin Beans" data-ar="حبوب قهوة مختصة مختارة">Single-Origin Beans</h4>
+          <p class="text-stone-400 text-sm leading-relaxed"
+             data-en="Sourced directly from top coffee farms globally, roasted to highlight unique flavor profiles from floral undertones to rich chocolate Notes."
+             data-ar="مستوردة مباشرة من أفضل مزارع القهوة العالمية، ومحمصة لإبراز النكهات الفريدة من الإيحاءات الزهرية إلى الشوكولاتة الغنية.">
+            Sourced directly from top coffee farms globally, roasted to highlight unique flavor profiles from floral undertones to rich chocolate Notes.
+          </p>
+        </div>
+
+        <div class="bg-stone-900 border border-stone-800 rounded-2xl p-8 hover:border-amber-600/50 transition-all duration-300 hover:-translate-y-1">
+          <div class="w-14 h-14 rounded-xl bg-amber-600/10 border border-amber-600/30 flex items-center justify-center text-amber-500 mb-6">
+            <span class="material-icons-outlined text-3xl">psychology</span>
+          </div>
+          <h4 class="text-xl font-bold text-white mb-3" data-en="Master Baristas" data-ar="بارستا محترفون">Master Baristas</h4>
+          <p class="text-stone-400 text-sm leading-relaxed"
+             data-en="Our trained baristas precisely calibrate grind sizes, water temperature, and brew ratios for balanced flavor in every shot."
+             data-ar="يضبط فريقنا المحترف درجة الطحن، ودرجة حرارة الماء، ونسب الاستخلاص بدقة متناهية لضمان الطعم الأفضل دائماً.">
+            Our trained baristas precisely calibrate grind sizes, water temperature, and brew ratios for balanced flavor in every shot.
+          </p>
+        </div>
+
+        <div class="bg-stone-900 border border-stone-800 rounded-2xl p-8 hover:border-amber-600/50 transition-all duration-300 hover:-translate-y-1">
+          <div class="w-14 h-14 rounded-xl bg-amber-600/10 border border-amber-600/30 flex items-center justify-center text-amber-500 mb-6">
+            <span class="material-icons-outlined text-3xl">bakery_dining</span>
+          </div>
+          <h4 class="text-xl font-bold text-white mb-3" data-en="Fresh Pairings" data-ar="مخبوزات وحلويات طازجة">Fresh Pairings</h4>
+          <p class="text-stone-400 text-sm leading-relaxed"
+             data-en="Pair your favorite coffee with fresh golden croissants, delicate pastries, and rich artisan desserts baked daily."
+             data-ar="استمتع بقهوتك المفضلة مع كرواسون ذهبي مقرمش، وحلويات فاخرة يتم إعدادها وتحضيرها يومياً.">
+            Pair your favorite coffee with fresh golden croissants, delicate pastries, and rich artisan desserts baked daily.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED MENU ITEMS GRID -->
+  <section id="menu" class="py-20 bg-stone-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+        <div>
+          <h2 class="text-amber-500 font-bold uppercase tracking-widest text-xs sm:text-sm mb-2"
+              data-en="Curated Selections" data-ar="تشكيلة مختارة">Curated Selections</h2>
+          <h3 class="text-3xl sm:text-4xl font-extrabold text-white"
+              data-en="Popular Menu Highlights" data-ar="أبرز المشروبات والمأكولات">Popular Menu Highlights</h3>
+        </div>
+        <p class="text-stone-400 text-sm mt-4 md:mt-0 max-w-md"
+           data-en="Browse our top-ordered specialty brews and fresh bakery items available for pick-up and delivery."
+           data-ar="تصفح المشروبات والمخبوزات الأكثر طلباً المتاحة للطلب السريع والاستلام.">
+          Browse our top-ordered specialty brews and fresh bakery items available for pick-up and delivery.
+        </p>
+      </div>
+
+      <!-- Items Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Card 1 -->
+        <div class="bg-stone-800/70 rounded-2xl overflow-hidden border border-stone-700/60 hover:border-amber-600/50 transition-all duration-300 group flex flex-col justify-between">
+          <div>
+            <div class="relative overflow-hidden h-56">
+              <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=700&q=80" 
+                   alt="911 Spanish Latte" 
+                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <span class="absolute top-3 right-3 bg-amber-600 text-white font-extrabold text-xs px-3 py-1 rounded-full shadow">
+                BHD 2.200
+              </span>
+            </div>
+            <div class="p-6">
+              <h4 class="text-xl font-bold text-white mb-2 group-hover:text-amber-500 transition-colors"
+                  data-en="911 Signature Spanish Latte"
+                  data-ar="سبانيش لاتيه 911 الخاص">
+                911 Signature Spanish Latte
+              </h4>
+              <p class="text-stone-400 text-sm leading-relaxed mb-4"
+                 data-en="Rich double shot espresso blended with condensed milk and creamy texturized whole milk, served hot or over ice."
+                 data-ar="إسبريسو غني مزدوج مع حليب مكثف وحليب طازج، يُقدم ساخناً أو بارداً.">
+                Rich double shot espresso blended with condensed milk and creamy texturized whole milk, served hot or over ice.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-0">
+            <a href="https://wa.me/97317000911?text=Order%3A%20911%20Signature%20Spanish%20Latte" target="_blank" class="w-full py-2.5 rounded-xl border border-amber-600/40 bg-amber-600/10 hover:bg-amber-600 text-amber-500 hover:text-white font-bold text-xs flex items-center justify-center gap-2 transition-all">
+              <span class="material-icons-outlined text-sm">shopping_bag</span>
+              <span data-en="Order via WhatsApp" data-ar="أطلب الآن">Order via WhatsApp</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="bg-stone-800/70 rounded-2xl overflow-hidden border border-stone-700/60 hover:border-amber-600/50 transition-all duration-300 group flex flex-col justify-between">
+          <div>
+            <div class="relative overflow-hidden h-56">
+              <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=700&q=80" 
+                   alt="V60 Filter Coffee" 
+                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <span class="absolute top-3 right-3 bg-amber-600 text-white font-extrabold text-xs px-3 py-1 rounded-full shadow">
+                BHD 2.500
+              </span>
+            </div>
+            <div class="p-6">
+              <h4 class="text-xl font-bold text-white mb-2 group-hover:text-amber-500 transition-colors"
+                  data-en="Ethiopian V60 Manual Brew"
+                  data-ar="قهوة V60 إثيوبية مختصة">
+                Ethiopian V60 Manual Brew
+              </h4>
+              <p class="text-stone-400 text-sm leading-relaxed mb-4"
+                 data-en="Single-origin Yirgacheffe coffee beans poured precisely by hand, revealing bright floral & jasmine notes."
+                 data-ar="بن يرقاتشيف إثيوبي ذو مصدر واحد مُحضر يدوياً بعناية، يتميز بإيحاءات زهرية منعشة وجذابة.">
+                Single-origin Yirgacheffe coffee beans poured precisely by hand, revealing bright floral & jasmine notes.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-0">
+            <a href="https://wa.me/97317000911?text=Order%3A%20Ethiopian%20V60%20Manual%20Brew" target="_blank" class="w-full py-2.5 rounded-xl border border-amber-600/40 bg-amber-600/10 hover:bg-amber-600 text-amber-500 hover:text-white font-bold text-xs flex items-center justify-center gap-2 transition-all">
+              <span class="material-icons-outlined text-sm">shopping_bag</span>
+              <span data-en="Order via WhatsApp" data-ar="أطلب الآن">Order via WhatsApp</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="bg-stone-800/70 rounded-2xl overflow-hidden border border-stone-700/60 hover:border-amber-600/50 transition-all duration-300 group flex flex-col justify-between">
+          <div>
+            <div class="relative overflow-hidden h-56">
+              <img src="https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&w=700&q=80" 
+                   alt="Pistachio Iced Latte" 
+                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <span class="absolute top-3 right-3 bg-amber-600 text-white font-extrabold text-xs px-3 py-1 rounded-full shadow">
+                BHD 2.400
+              </span>
+            </div>
+            <div class="p-6">
+              <h4 class="text-xl font-bold text-white mb-2 group-hover:text-amber-500 transition-colors"
+                  data-en="Pistachio Cream Cold Brew"
+                  data-ar="كولد برو بكريمة الفستق">
+                Pistachio Cream Cold Brew
+              </h4>
+              <p class="text-stone-400 text-sm leading-relaxed mb-4"
+                 data-en="Slow-steeped cold brew topped with house-made sweet pistachio cream foam and crushed roasted pistachios."
+                 data-ar="قهوة مقطرة باردة تعلوها طبقة غنية من كريمة الفستق المنزلية وفستق محمص مجروش.">
+                Slow-steeped cold brew topped with house-made sweet pistachio cream foam and crushed roasted pistachios.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-0">
+            <a href="https://wa.me/97317000911?text=Order%3A%20Pistachio%20Cream%20Cold%20Brew" target="_blank" class="w-full py-2.5 rounded-xl border border-amber-600/40 bg-amber-600/10 hover:bg-amber-600 text-amber-500 hover:text-white font-bold text-xs flex items-center justify-center gap-2 transition-all">
+              <span class="material-icons-outlined text-sm">shopping_bag</span>
+              <span data-en="Order via WhatsApp" data-ar="أطلب الآن">Order via WhatsApp</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="bg-stone-800/70 rounded-2xl overflow-hidden border border-stone-700/60 hover:border-amber-600/50 transition-all duration-300 group flex flex-col justify-between">
+          <div>
+            <div class="relative overflow-hidden h-56">
+              <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=700&q=80" 
+                   alt="Butter Croissant" 
+                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <span class="absolute top-3 right-3 bg-amber-600 text-white font-extrabold text-xs px-3 py-1 rounded-full shadow">
+                BHD 1.200
+              </span>
+            </div>
+            <div class="p-6">
+              <h4 class="text-xl font-bold text-white mb-2 group-hover:text-amber-500 transition-colors"
+                  data-en="Fresh Artisan Butter Croissant"
+                  data-ar="كرواسون بالزبدة الطازجة">
+                Fresh Artisan Butter Croissant
+              </h4>
+              <p class="text-stone-400 text-sm leading-relaxed mb-4"
+                 data-en="Flaky, golden-layered French butter croissant, baked fresh every morning in our shop kitchen."
+                 data-ar="كرواسون فرنسي طازج وهش، مخبوز بالزبدة الفاخرة يومياً في مخبزنا.">
+                Flaky, golden-layered French butter croissant, baked fresh every morning in our shop kitchen.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-0">
+            <a href="https://wa.me/97317000911?text=Order%3A%20Fresh%20Artisan%20Butter%20Croissant" target="_blank" class="w-full py-2.5 rounded-xl border border-amber-600/40 bg-amber-600/10 hover:bg-amber-600 text-amber-500 hover:text-white font-bold text-xs flex items-center justify-center gap-2 transition-all">
+              <span class="material-icons-outlined text-sm">shopping_bag</span>
+              <span data-en="Order via WhatsApp" data-ar="أطلب الآن">Order via WhatsApp</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="bg-stone-800/70 rounded-2xl overflow-hidden border border-stone-700/60 hover:border-amber-600/50 transition-all duration-300 group flex flex-col justify-between">
+          <div>
+            <div class="relative overflow-hidden h-56">
+              <img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=700&q=80" 
+                   alt="Matcha Green Tea Latte" 
+                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <span class="absolute top-3 right-3 bg-amber-600 text-white font-extrabold text-xs px-3 py-1 rounded-full shadow">
+                BHD 2.300
+              </span>
+            </div>
+            <div class="p-6">
+              <h4 class="text-xl font-bold text-white mb-2 group-hover:text-amber-500 transition-colors"
+                  data-en="Ceremonial Uji Matcha Latte"
+                  data-ar="ماتشا أوجي يابانية فاخرة">
+                Ceremonial Uji Matcha Latte
+              </h4>
+              <p class="text-stone-400 text-sm leading-relaxed mb-4"
+                 data-en="First-harvest Japanese ceremonial grade matcha whisked with oat milk and subtle vanilla syrup."
+                 data-ar="ماتشا يابانية فاخرة من القطفة الأولى مخفوقة بحليب الشوفان لمذاق ناعم ومميز.">
+                First-harvest Japanese ceremonial grade matcha whisked with oat milk and subtle vanilla syrup.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-0">
+            <a href="https://wa.me/97317000911?text=Order%3A%20Ceremonial%20Uji%20Matcha%20Latte" target="_blank" class="w-full py-2.5 rounded-xl border border-amber-600/40 bg-amber-600/10 hover:bg-amber-600 text-amber-500 hover:text-white font-bold text-xs flex items-center justify-center gap-2 transition-all">
+              <span class="material-icons-outlined text-sm">shopping_bag</span>
+              <span data-en="Order via WhatsApp" data-ar="أطلب الآن">Order via WhatsApp</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="bg-stone-800/70 rounded-2xl overflow-hidden border border-stone-700/60 hover:border-amber-600/50 transition-all duration-300 group flex flex-col justify-between">
+          <div>
+            <div class="relative overflow-hidden h-56">
+              <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=700&q=80" 
+                   alt="Fudge Chocolate Brownie" 
+                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <span class="absolute top-3 right-3 bg-amber-600 text-white font-extrabold text-xs px-3 py-1 rounded-full shadow">
+                BHD 1.600
+              </span>
+            </div>
+            <div class="p-6">
+              <h4 class="text-xl font-bold text-white mb-2 group-hover:text-amber-500 transition-colors"
+                  data-en="Warm Chocolate Fudge Brownie"
+                  data-ar="براونيز الشوكولاتة الساخن">
+                Warm Chocolate Fudge Brownie
+              </h4>
+              <p class="text-stone-400 text-sm leading-relaxed mb-4"
+                 data-en="Decadent dark chocolate brownie served warm with a side dusting of sea salt and rich cocoa powder."
+                 data-ar="براونيز الشوكولاتة الداكنة الغنية تقدم دافئة ومزينة برشة من الملح البحري والكاكاو.">
+                Decadent dark chocolate brownie served warm with a side dusting of sea salt and rich cocoa powder.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-0">
+            <a href="https://wa.me/97317000911?text=Order%3A%20Warm%20Chocolate%20Fudge%20Brownie" target="_blank" class="w-full py-2.5 rounded-xl border border-amber-600/40 bg-amber-600/10 hover:bg-amber-600 text-amber-500 hover:text-white font-bold text-xs flex items-center justify-center gap-2 transition-all">
+              <span class="material-icons-outlined text-sm">shopping_bag</span>
+              <span data-en="Order via WhatsApp" data-ar="أطلب الآن">Order via WhatsApp</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- GOOGLE CUSTOMER REVIEWS SECTION -->
+  <section id="reviews" class="py-20 bg-stone-950 border-t border-b border-stone-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-600/10 text-amber-500 text-xs font-bold mb-3">
+          <span>★ Google Business Reviews</span>
+        </div>
+        <h3 class="text-3xl sm:text-4xl font-extrabold text-white mb-4"
+            data-en="Loved by Isa Town Coffee Enthusiasts"
+            data-ar="محبوب لدى عشاق القهوة في مدينة عيسى">
+          Loved by Isa Town Coffee Enthusiasts
+        </h3>
+        <div class="flex items-center justify-center gap-2">
+          <div class="flex text-amber-500 text-xl">★★★★★</div>
+          <span class="text-white font-bold text-lg">4.9</span>
+          <span class="text-stone-400 text-sm" data-en="(350+ Google Reviews)" data-ar="(أكثر من 350 تقييم على Google)">(350+ Google Reviews)</span>
+        </div>
+      </div>
+
+      <!-- Reviews Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Review 1 -->
+        <div class="bg-stone-900 border border-stone-800 p-6 rounded-2xl relative flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-full bg-amber-700 text-white font-bold flex items-center justify-center text-sm">
+                AH
+              </div>
+              <div>
+                <h5 class="text-white font-bold text-sm">Ahmed Al-Hassan</h5>
+                <p class="text-stone-400 text-xs" data-en="Local Guide • 42 reviews" data-ar="مرشد محلي • 42 تقييم">Local Guide • 42 reviews</p>
+              </div>
+            </div>
+            <div class="flex text-amber-500 text-sm mb-3">★★★★★</div>
+            <p class="text-stone-300 text-sm leading-relaxed italic"
+               data-en="“Best Spanish Latte in Isa Town by far! The espresso quality is top notch and the atmosphere is super clean and welcoming. Fast service too.”"
+               data-ar="“أفضل سبانيش لاتيه في مدينة عيسى بلا منازع! جودة القهوة ممتازة جداً والجو عام في الكافيه رايق ونظيف. والخدمة سريعة.”">
+              “Best Spanish Latte in Isa Town by far! The espresso quality is top notch and the atmosphere is super clean and welcoming. Fast service too.”
+            </p>
+          </div>
+          <span class="text-stone-500 text-[11px] mt-4 block" data-en="2 weeks ago on Google" data-ar="قبل أسبوعين على Google">2 weeks ago on Google</span>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="bg-stone-900 border border-stone-800 p-6 rounded-2xl relative flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-full bg-stone-700 text-white font-bold flex items-center justify-center text-sm">
+                SK
+              </div>
+              <div>
+                <h5 class="text-white font-bold text-sm">Sara Khalil</h5>
+                <p class="text-stone-400 text-xs" data-en="Local Guide • 18 reviews" data-ar="مرشد محلي • 18 تقييم">Local Guide • 18 reviews</p>
+              </div>
+            </div>
+            <div class="flex text-amber-500 text-sm mb-3">★★★★★</div>
+            <p class="text-stone-300 text-sm leading-relaxed italic"
+               data-en="“The V60 pour over is consistently balanced. Baristas know their beans inside out. Always my go-to spot for studying and morning coffee.”"
+               data-ar="“قهوة V60 المقطرة مضبوطة ومستواها ثابت دائماً. البارستا فاهمين شغلهم تمام. المكان المفضّل لي للقهوة والعمل.”">
+              “The V60 pour over is consistently balanced. Baristas know their beans inside out. Always my go-to spot for studying and morning coffee.”
+            </p>
+          </div>
+          <span class="text-stone-500 text-[11px] mt-4 block" data-en="1 month ago on Google" data-ar="قبل شهر على Google">1 month ago on Google</span>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="bg-stone-900 border border-stone-800 p-6 rounded-2xl relative flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-full bg-amber-900 text-amber-200 font-bold flex items-center justify-center text-sm">
+                MB
+              </div>
+              <div>
+                <h5 class="text-white font-bold text-sm">Mohammed Bucheeri</h5>
+                <p class="text-stone-400 text-xs" data-en="Verified Customer" data-ar="عميل موثق">Verified Customer</p>
+              </div>
+            </div>
+            <div class="flex text-amber-500 text-sm mb-3">★★★★★</div>
+            <p class="text-stone-300 text-sm leading-relaxed italic"
+               data-en="“Order via WhatsApp was super easy! Showed up and my iced matcha and croissant were ready instantly. Great customer service!”"
+               data-ar="“الطلب عن طريق الواتساب كان في غاية السهولة! وصلت والمشروب والكرواسون جاهزين تماماً. تعامل راقي جداً.”">
+              “Order via WhatsApp was super easy! Showed up and my iced matcha and croissant were ready instantly. Great customer service!”
+            </p>
+          </div>
+          <span class="text-stone-500 text-[11px] mt-4 block" data-en="3 weeks ago on Google" data-ar="قبل 3 أسابيع على Google">3 weeks ago on Google</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATION & CONTACT SECTION -->
+  <section id="location" class="py-20 bg-stone-900 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Details Column -->
+        <div class="lg:col-span-5">
+          <h2 class="text-amber-500 font-bold uppercase tracking-widest text-xs sm:text-sm mb-2"
+              data-en="Visit Us Today" data-ar="تفضل بزيارتنا">Visit Us Today</h2>
+          <h3 class="text-3xl sm:text-4xl font-extrabold text-white mb-6"
+              data-en="Location & Opening Hours" data-ar="الموقع وساعات العمل">
+            Location & Opening Hours
+          </h3>
+          
+          <div class="space-y-6 text-stone-300">
+            
+            <!-- Address -->
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl bg-amber-600/10 border border-amber-600/30 text-amber-500 flex items-center justify-center shrink-0 mt-1">
+                <span class="material-icons-outlined">location_on</span>
+              </div>
+              <div>
+                <h5 class="text-white font-bold text-base mb-1" data-en="Address" data-ar="العنوان">Address</h5>
+                <p class="text-sm text-stone-300" data-en="Avenue 11, Isa Town, Kingdom of Bahrain" data-ar="شارع 11، مدينة عيسى، مملكة البحرين">Avenue 11, Isa Town, Kingdom of Bahrain</p>
+                <p class="text-xs text-stone-500 mt-1" data-en="Near Isa Town Mall & Educational Area" data-ar="قرب مجمع مدينة عيسى والمنطقة التعليمية">Near Isa Town Mall & Educational Area</p>
+              </div>
+            </div>
+
+            <!-- Hours -->
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl bg-amber-600/10 border border-amber-600/30 text-amber-500 flex items-center justify-center shrink-0 mt-1">
+                <span class="material-icons-outlined">schedule</span>
+              </div>
+              <div>
+                <h5 class="text-white font-bold text-base mb-1" data-en="Opening Hours" data-ar="أوقات العمل">Opening Hours</h5>
+                <p class="text-sm text-stone-300" data-en="Saturday – Thursday: 6:00 AM – 12:00 Midnight" data-ar="السبت – الخميس: 6:00 صباحاً – 12:00 منتصف الليل">Saturday – Thursday: 6:00 AM – 12:00 Midnight</p>
+                <p class="text-sm text-stone-300" data-en="Friday: 1:00 PM – 12:00 Midnight" data-ar="الجمعة: 1:00 ظهراً – 12:00 منتصف الليل">Friday: 1:00 PM – 12:00 Midnight</p>
+              </div>
+            </div>
+
+            <!-- Phone / WhatsApp -->
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl bg-amber-600/10 border border-amber-600/30 text-amber-500 flex items-center justify-center shrink-0 mt-1">
+                <span class="material-icons-outlined">phone</span>
+              </div>
+              <div>
+                <h5 class="text-white font-bold text-base mb-1" data-en="Direct Contact & WhatsApp" data-ar="التواصل المباشر والواتساب">Direct Contact & WhatsApp</h5>
+                <p class="text-sm text-stone-300 dir-ltr">+973 1700 0911</p>
+                <p class="text-xs text-stone-400 mt-0.5" data-en="Available for quick ordering & drive-thru prep" data-ar="متاح للطلبات السريعة وتحضير السيارة">Available for quick ordering & drive-thru prep</p>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="mt-8">
+            <a href="https://wa.me/97317000911?text=Hello%20911%20Cafe,%20I%20have%20an%20inquiry" target="_blank" class="inline-flex items-center gap-3 bg-amber-600 hover:bg-amber-700 text-white font-bold px-6 py-3.5 rounded-xl shadow-lg transition-all text-sm">
+              <span class="material-icons-outlined">chat</span>
+              <span data-en="Chat with Barista on WhatsApp" data-ar="محادثة البارستا عبر الواتساب">Chat with Barista on WhatsApp</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Map / Visual Frame Container -->
+        <div class="lg:col-span-7">
+          <div class="bg-stone-800 p-4 rounded-3xl border border-stone-700 shadow-2xl relative overflow-hidden">
+            <!-- Interactive Map Graphic Placeholder -->
+            <div class="relative w-full h-80 sm:h-96 rounded-2xl overflow-hidden bg-stone-950 flex flex-col items-center justify-center text-center p-6 border border-stone-800">
+              <!-- Map Background Overlay -->
+              <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1000&q=80"
+                   alt="Isa Town Map Visual" 
+                   class="absolute inset-0 w-full h-full object-cover opacity-20 filter grayscale">
+              
+              <div class="relative z-10 max-w-sm">
+                <div class="w-14 h-14 rounded-full bg-amber-600 text-white flex items-center justify-center mx-auto mb-4 shadow-xl animate-bounce">
+                  <span class="material-icons-outlined text-2xl">place</span>
+                </div>
+                <h4 class="text-xl font-bold text-white mb-2">911 Cafe — Isa Town</h4>
+                <p class="text-stone-300 text-xs mb-6" data-en="Click below to open exact location in Google Maps for turn-by-turn navigation." data-ar="انقر أدناه لفتح الموقع الدقيق في خرائط جووجل الملاحية.">Click below to open exact location in Google Maps for turn-by-turn navigation.</p>
+                <a href="https://maps.google.com/?q=Isa+Town+Bahrain" target="_blank" class="inline-flex items-center gap-2 bg-stone-800 hover:bg-stone-700 text-amber-500 font-bold px-5 py-2.5 rounded-xl border border-amber-600/30 text-xs transition-all">
+                  <span class="material-icons-outlined text-sm">map</span>
+                  <span data-en="Open Google Maps" data-ar="فتح في خرائط Google">Open Google Maps</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-stone-950 border-t border-stone-800 py-12 text-stone-400 text-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-lg bg-amber-600 flex items-center justify-center font-bold text-white text-base">
+            911
+          </div>
+          <span class="font-extrabold text-white text-lg tracking-wider">911 CAFE</span>
+        </div>
+
+        <p class="text-center text-xs text-stone-500"
+           data-en="© 2025 911 Cafe Isa Town. All Rights Reserved. Crafted for Specialty Coffee Lovers."
+           data-ar="© 2025 مقهى 911 مدينة عيسى. جميع الحقوق محفوظة. صُمم لعشاق القهوة المختصة.">
+          © 2025 911 Cafe Isa Town. All Rights Reserved. Crafted for Specialty Coffee Lovers.
+        </p>
+
+        <div class="flex items-center gap-4 text-xs font-semibold text-stone-400">
+          <a href="#" class="hover:text-amber-500 transition-colors">Instagram</a>
+          <span>•</span>
+          <a href="#" class="hover:text-amber-500 transition-colors">TikTok</a>
+          <span>•</span>
+          <a href="https://wa.me/97317000911" target="_blank" class="hover:text-amber-500 transition-colors">WhatsApp</a>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <!-- BILINGUAL TRANSLATION SCRIPT -->
+  <script>
+    function setLanguage(lang) {
+      document.documentElement.lang = lang;
+      document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+      
+      // Body font adjustment
+      if (lang === 'ar') {
+        document.body.classList.remove('font-en');
+        document.body.classList.add('font-ar');
+      } else {
+        document.body.classList.remove('font-ar');
+        document.body.classList.add('font-en');
+      }
+
+      // Button styling toggle
+      const btnEn = document.getElementById('btn-lang-en');
+      const btnAr = document.getElementById('btn-lang-ar');
+      if (btnEn && btnAr) {
+        if (lang === 'en') {
+          btnEn.className = "px-3 py-1 text-xs font-bold rounded-full bg-amber-600 text-white shadow transition-all";
+          btnAr.className = "px-3 py-1 text-xs font-bold rounded-full text-stone-400 hover:text-white transition-all";
+        } else {
+          btnAr.className = "px-3 py-1 text-xs font-bold rounded-full bg-amber-600 text-white shadow transition-all";
+          btnEn.className = "px-3 py-1 text-xs font-bold rounded-full text-stone-400 hover:text-white transition-all";
+        }
+      }
+
+      // Translate DOM nodes using data attributes
+      document.querySelectorAll('[data-en]').forEach(el => {
+        const val = el.getAttribute(`data-${lang}`);
+        if (val) {
+          if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+            el.placeholder = val;
+          } else {
+            el.textContent = val;
+          }
+        }
+      });
+    }
+  </script>
+</body>
+</html>
