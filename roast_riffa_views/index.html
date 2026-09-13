@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roast Specialty Coffee & Roastery | Riffa Views, Bahrain</title>
+  <meta name="description" content="Artisanal Specialty Coffee & Freshly Roasted Beans Delivered Across Bahrain. Visit our roastery at Riffa Views or order online via WhatsApp.">
+  
+  <!-- Google Fonts: Plus Jakarta Sans & Cairo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Google Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#1c1917',   /* stone-900 */
+              light: '#fffbeb',  /* amber-50 */
+              accent: '#d97706', /* amber-600 */
+              accentHover: '#b45309', /* amber-700 */
+              card: '#262626',   /* stone-800 */
+            }
+          },
+          fontFamily: {
+            en: ['"Plus Jakarta Sans"', 'sans-serif'],
+            ar: ['"Cairo"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', 'Cairo', sans-serif;
+      background-color: #1c1917;
+      color: #fffbeb;
+    }
+    .font-ar {
+      font-family: 'Cairo', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-stone-900 text-amber-50 antialiased selection:bg-amber-600 selection:text-white">
+
+  <!-- Sticky Navigation Header -->
+  <header class="sticky top-0 z-50 bg-stone-900/90 backdrop-blur-md border-b border-stone-800 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Brand Logo -->
+        <a href="#" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-full bg-amber-600 flex items-center justify-center text-stone-900 font-black text-xl shadow-lg shadow-amber-600/20 group-hover:scale-105 transition-transform">
+            R
+          </div>
+          <div class="flex flex-col">
+            <span class="font-extrabold text-2xl tracking-widest uppercase text-white">ROAST</span>
+            <span class="text-[10px] tracking-widest text-amber-500 font-semibold uppercase -mt-1">Riffa Views • Bahrain</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-stone-300">
+          <a href="#about" class="hover:text-amber-500 transition-colors" data-en="About Us" data-ar="من نحن">About Us</a>
+          <a href="#featured" class="hover:text-amber-500 transition-colors" data-en="Specialty Beans" data-ar="حبوب القهوة">Specialty Beans</a>
+          <a href="#reviews" class="hover:text-amber-500 transition-colors" data-en="Reviews" data-ar="آراء العملاء">Reviews</a>
+          <a href="#location" class="hover:text-amber-500 transition-colors" data-en="Visit Us" data-ar="موقعنا">Visit Us</a>
+        </nav>
+
+        <!-- Actions (Language Switcher & Primary CTA) -->
+        <div class="flex items-center gap-3">
+          <!-- Language Switcher Button -->
+          <button id="langToggleBtn" onclick="toggleLanguage()" class="px-3 py-1.5 rounded-lg border border-stone-700 bg-stone-800/80 hover:bg-stone-700 text-xs font-semibold tracking-wider text-amber-400 flex items-center gap-1.5 transition-all">
+            <span class="material-icons-outlined text-sm">language</span>
+            <span id="langBtnText">العربية</span>
+          </button>
+
+          <!-- WhatsApp Quick CTA -->
+          <a href="https://wa.me/97317000000?text=Hello%20Roast!%20I%20would%20like%20to%20order%20specialty%20coffee%20beans." target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-all shadow-md shadow-emerald-900/30 hover:scale-[1.02]">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+            </svg>
+            <span data-en="WhatsApp Us" data-ar="تواصل عبر الواتساب">WhatsApp Us</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative min-h-[88vh] flex items-center justify-center overflow-hidden py-16 lg:py-24 bg-gradient-to-b from-stone-900 via-stone-900 to-stone-950">
+    <!-- Decorative Background Glow -->
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-amber-600/10 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="absolute bottom-10 right-10 w-72 h-72 bg-amber-700/10 rounded-full blur-[90px] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- Hero Text Content -->
+      <div class="lg:col-span-7 space-y-8 text-center lg:text-left text-balance">
+        
+        <!-- Location / Badge -->
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-semibold uppercase tracking-wider">
+          <span class="material-icons-outlined text-sm">place</span>
+          <span data-en="Riffa Views Roastery & Cafe • Bahrain" data-ar="محمصة ومقهى رفاع فيوز • البحرين">Riffa Views Roastery & Cafe • Bahrain</span>
+        </div>
+
+        <!-- Main Headline -->
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight sm:leading-none">
+          <span data-en="Artisanal Specialty Coffee & Freshly Roasted Beans Delivered Across Bahrain" data-ar="قهوة مختصة وحبوب محمصة طازجة توصلك في جميع أنحاء البحرين">
+            Artisanal Specialty Coffee & Freshly Roasted Beans Delivered Across Bahrain
+          </span>
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="text-lg sm:text-xl text-stone-300 max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+          <span data-en="Sourced directly from top high-altitude farms across Ethiopia, Colombia, and Guatemala. Roasted daily in small batches for peak flavor depth and aroma." 
+                data-ar="مستوردة مباشرة من أعلى المزارع في إثيوبيا، كولومبيا، وغواتيمالا. تُحمص يومياً بدفعات صغيرة لنضمن لك أعلى مستويات الجودة والنكهة الغنية.">
+            Sourced directly from top high-altitude farms across Ethiopia, Colombia, and Guatemala. Roasted daily in small batches for peak flavor depth and aroma.
+          </span>
+        </p>
+
+        <!-- Hero CTA Action Group -->
+        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+          <!-- Main WhatsApp Button -->
+          <a href="https://wa.me/97317000000?text=Hello%20Roast!%20I%20would%20like%20to%20order%20freshly%20roasted%20coffee%20beans." target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-base px-8 py-4 rounded-xl shadow-xl shadow-emerald-950/50 hover:scale-[1.02] active:scale-[0.98] transition-all group">
+            <svg class="w-6 h-6 fill-current group-hover:rotate-12 transition-transform" viewBox="0 0 24 24">
+              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+            </svg>
+            <span data-en="Order Beans via WhatsApp" data-ar="اطلب الحبوب عبر الواتساب">Order Beans via WhatsApp</span>
+          </a>
+
+          <!-- Secondary Button -->
+          <a href="#featured" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-stone-800 hover:bg-stone-700 text-stone-200 border border-stone-700 font-semibold text-base px-6 py-4 rounded-xl hover:text-white transition-all">
+            <span data-en="Explore Bean Selection" data-ar="استكشف قائمة الحبوب">Explore Bean Selection</span>
+            <span class="material-icons-outlined text-sm">south</span>
+          </a>
+        </div>
+
+        <!-- Social Trust Indicators -->
+        <div class="pt-6 border-t border-stone-800/80 flex flex-wrap items-center justify-center lg:justify-start gap-8 text-stone-400 text-sm">
+          <div class="flex items-center gap-2">
+            <span class="flex text-amber-400">★ ★ ★ ★ ★</span>
+            <span class="font-bold text-white">4.9</span>
+            <span data-en="(180+ Google Reviews)" data-ar="(١٨٠+ تقييم جوجل)">(180+ Google Reviews)</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="material-icons-outlined text-amber-500 text-lg">local_shipping</span>
+            <span data-en="Same Day Bahrain Delivery" data-ar="توصيل سريع داخل البحرين">Same Day Bahrain Delivery</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Hero Image Visual Showcase -->
+      <div class="lg:col-span-5 relative">
+        <div class="relative mx-auto max-w-md lg:max-w-none">
+          <!-- Glowing Card Background -->
+          <div class="absolute -inset-1 bg-gradient-to-r from-amber-600 to-amber-900 rounded-3xl blur-xl opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
+          
+          <div class="relative rounded-3xl overflow-hidden border border-stone-700/80 bg-stone-800 shadow-2xl aspect-[4/5] group">
+            <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1000&q=80" alt="Roast Coffee Beans Extraction" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700">
+            
+            <!-- Floating Badge Over Image -->
+            <div class="absolute bottom-6 left-6 right-6 p-4 rounded-2xl bg-stone-900/90 backdrop-blur-md border border-stone-700/60 shadow-lg flex items-center justify-between">
+              <div>
+                <p class="text-xs text-amber-400 font-medium uppercase tracking-wider" data-en="Freshly Roasted Daily" data-ar="تحميص يومي طازج">Freshly Roasted Daily</p>
+                <p class="text-sm font-bold text-white" data-en="Single-Origin & Reserve Blends" data-ar="محاصيل مختصة وفاخرة">Single-Origin & Reserve Blends</p>
+              </div>
+              <div class="w-10 h-10 rounded-full bg-amber-600/20 text-amber-400 border border-amber-500/30 flex items-center justify-center font-bold text-lg">
+                ☕
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-20 bg-stone-950 border-y border-stone-800 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Title -->
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+        <h2 class="text-xs font-bold uppercase tracking-widest text-amber-500" data-en="Our Craft & Philosophy" data-ar="فلسفتنا وشغفنا">Our Craft & Philosophy</h2>
+        <p class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight"
+           data-en="Crafted with Precision, Roasted with Passion in Riffa Views"
+           data-ar="صُنعت بدقة متناهية، وحُمصت بشغف في رفاع فيوز">
+          Crafted with Precision, Roasted with Passion in Riffa Views
+        </p>
+      </div>
+
+      <!-- Value Proposition Grid -->
+      <div class="grid md:grid-cols-3 gap-8">
+        
+        <!-- Pillar 1 -->
+        <div class="bg-stone-900 border border-stone-800 p-8 rounded-2xl hover:border-amber-600/50 transition-all group">
+          <div class="w-14 h-14 rounded-xl bg-amber-600/10 border border-amber-500/20 text-amber-500 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <span class="material-icons-outlined text-3xl">local_fire_department</span>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3" data-en="Master Micro-Roasting" data-ar="تحميص احترافي دقيق">Master Micro-Roasting</h3>
+          <p class="text-stone-400 text-sm leading-relaxed"
+             data-en="Every batch is micro-roasted in our Riffa Views facility using precision profile curves to unlock rich aromatic notes and balanced acidity."
+             data-ar="نقوم بتحميص القهوة بدفعات صغيرة في رفاع فيوز باستخدام أفضل معايير التحميص العالمية لاستخراج أعمق النكهات والنوتات العطرية.">
+            Every batch is micro-roasted in our Riffa Views facility using precision profile curves to unlock rich aromatic notes and balanced acidity.
+          </p>
+        </div>
+
+        <!-- Pillar 2 -->
+        <div class="bg-stone-900 border border-stone-800 p-8 rounded-2xl hover:border-amber-600/50 transition-all group">
+          <div class="w-14 h-14 rounded-xl bg-amber-600/10 border border-amber-500/20 text-amber-500 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <span class="material-icons-outlined text-3xl">public</span>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3" data-en="Ethical Direct Origin" data-ar="محاصيل حصرية مباشرة">Ethical Direct Origin</h3>
+          <p class="text-stone-400 text-sm leading-relaxed"
+             data-en="We partner directly with sustainable high-altitude coffee estates in Ethiopia, Colombia, Guatemala, and Yemen to secure top 1% specialty lots."
+             data-ar="نتعامل مباشرة مع أرقى مزارع القهوة المستدامة في إثيوبيا وكولومبيا وغواتيمالا واليمن لضمان تقديم أعلى درجات القهوة المختصة.">
+            We partner directly with sustainable high-altitude coffee estates in Ethiopia, Colombia, Guatemala, and Yemen to secure top 1% specialty lots.
+          </p>
+        </div>
+
+        <!-- Pillar 3 -->
+        <div class="bg-stone-900 border border-stone-800 p-8 rounded-2xl hover:border-amber-600/50 transition-all group">
+          <div class="w-14 h-14 rounded-xl bg-amber-600/10 border border-amber-500/20 text-amber-500 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <span class="material-icons-outlined text-3xl">coffee_maker</span>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3" data-en="Barista Level Freshness" data-ar="طازجة بأسلوب البارستا">Barista Level Freshness</h3>
+          <p class="text-stone-400 text-sm leading-relaxed"
+             data-en="Whether you prefer V60 pour-over, manual espresso, or smooth cold brew, our beans are customized for your favorite home brewing method."
+             data-ar="سواء كنت تفضل V60 أو الإسبريسو أو الكولد برو، نوفر لك طحن وتحضير مخصص يناسب أسلوب التحضير المفضل لديك في المنزل.">
+            Whether you prefer V60 pour-over, manual espresso, or smooth cold brew, our beans are customized for your favorite home brewing method.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Items / Menu Grid -->
+  <section id="featured" class="py-20 bg-stone-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-widest text-amber-500" data-en="Fresh Roast Selection" data-ar="تشكيلة الحبوب الطازجة">Fresh Roast Selection</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-1" data-en="Featured Coffee Beans & Drinks" data-ar="أبرز محاصيلنا ومشروباتنا">Featured Coffee Beans & Drinks</h2>
+        </div>
+        <p class="text-stone-400 text-sm max-w-md"
+           data-en="Select your favorite specialty bean below and message us on WhatsApp for instant doorstep delivery across Bahrain."
+           data-ar="اختر محصولك المفضل أدناه واطلبه مباشرة عبر الواتساب ليصلك طازجاً إلى باب بيتك في البحرين.">
+          Select your favorite specialty bean below and message us on WhatsApp for instant doorstep delivery across Bahrain.
+        </p>
+      </div>
+
+      <!-- Menu Grid -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Product Card 1 -->
+        <div class="bg-stone-950 border border-stone-800 rounded-2xl overflow-hidden hover:border-amber-600/60 transition-all flex flex-col justify-between group">
+          <div>
+            <div class="relative h-52 overflow-hidden bg-stone-800">
+              <img src="https://images.unsplash.com/photo-1587734195503-904fca47e0e9?auto=format&fit=crop&w=600&q=80" alt="Ethiopia Yirgacheffe" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <span class="absolute top-3 right-3 bg-amber-600 text-stone-900 font-extrabold text-xs px-2.5 py-1 rounded-md shadow">
+                Single Origin
+              </span>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-bold text-white">Ethiopia Yirgacheffe</h3>
+              <p class="text-xs text-amber-500 font-medium mt-0.5 mb-2" data-en="Notes: Jasmine, Bergamot, Blueberry" data-ar="النكهات: ياسمين، برغموت، توت أزرق">Notes: Jasmine, Bergamot, Blueberry</p>
+              <p class="text-stone-400 text-xs leading-relaxed mb-4"
+                 data-en="250g • Light Roast • Ideal for V60 Filter & Aeropress."
+                 data-ar="٢٥٠ جرام • تحميص خفيف • مثالية للتقطير و V60.">
+                250g • Light Roast • Ideal for V60 Filter & Aeropress.
+              </p>
+            </div>
+          </div>
+          <div class="p-5 pt-0 flex items-center justify-between border-t border-stone-900 mt-auto">
+            <span class="text-lg font-extrabold text-white">BHD 7.500</span>
+            <a href="https://wa.me/97317000000?text=Hello!%20I%20would%20like%20to%20order%20the%20Ethiopia%20Yirgacheffe%20beans." target="_blank" class="inline-flex items-center gap-1.5 bg-emerald-600/20 hover:bg-emerald-600 text-emerald-400 hover:text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition-all border border-emerald-500/30">
+              <span data-en="Order" data-ar="اطلب الآن">Order</span>
+              <span class="material-icons-outlined text-sm">send</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Product Card 2 -->
+        <div class="bg-stone-950 border border-stone-800 rounded-2xl overflow-hidden hover:border-amber-600/60 transition-all flex flex-col justify-between group">
+          <div>
+            <div class="relative h-52 overflow-hidden bg-stone-800">
+              <img src="https://images.unsplash.com/photo-1611854779393-1b2da9d400fe?auto=format&fit=crop&w=600&q=80" alt="Colombia Huila Reserve" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <span class="absolute top-3 right-3 bg-amber-600 text-stone-900 font-extrabold text-xs px-2.5 py-1 rounded-md shadow">
+                Best Seller
+              </span>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-bold text-white">Colombia Huila Reserve</h3>
+              <p class="text-xs text-amber-500 font-medium mt-0.5 mb-2" data-en="Notes: Dark Chocolate, Caramel, Red Apple" data-ar="النكهات: شوكولاتة داكنة، كراميل، تفاح أحمر">Notes: Dark Chocolate, Caramel, Red Apple</p>
+              <p class="text-stone-400 text-xs leading-relaxed mb-4"
+                 data-en="250g • Medium Roast • Rich body, great for Espresso & Milk drinks."
+                 data-ar="٢٥٠ جرام • تحميص متوسط • قوام غني للإسبريسو والمشروبات مع الحليب.">
+                250g • Medium Roast • Rich body, great for Espresso & Milk drinks.
+              </p>
+            </div>
+          </div>
+          <div class="p-5 pt-0 flex items-center justify-between border-t border-stone-900 mt-auto">
+            <span class="text-lg font-extrabold text-white">BHD 8.000</span>
+            <a href="https://wa.me/97317000000?text=Hello!%20I%20would%20like%20to%20order%20the%20Colombia%20Huila%20Reserve%20beans." target="_blank" class="inline-flex items-center gap-1.5 bg-emerald-600/20 hover:bg-emerald-600 text-emerald-400 hover:text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition-all border border-emerald-500/30">
+              <span data-en="Order" data-ar="اطلب الآن">Order</span>
+              <span class="material-icons-outlined text-sm">send</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Product Card 3 -->
+        <div class="bg-stone-950 border border-stone-800 rounded-2xl overflow-hidden hover:border-amber-600/60 transition-all flex flex-col justify-between group">
+          <div>
+            <div class="relative h-52 overflow-hidden bg-stone-800">
+              <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80" alt="Roast Signature House Blend" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <span class="absolute top-3 right-3 bg-stone-800 text-amber-400 border border-amber-500/30 font-bold text-xs px-2.5 py-1 rounded-md shadow">
+                House Blend
+              </span>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-bold text-white">Roast Signature Espresso</h3>
+              <p class="text-xs text-amber-500 font-medium mt-0.5 mb-2" data-en="Notes: Toasted Hazelnut, Cocoa, Vanilla" data-ar="النكهات: بندق محمص، كاكاو، فانيلا">Notes: Toasted Hazelnut, Cocoa, Vanilla</p>
+              <p class="text-stone-400 text-xs leading-relaxed mb-4"
+                 data-en="250g • Medium-Dark • Smooth balance with velvety crema finish."
+                 data-ar="٢٥٠ جرام • تحميص متوسط إلى غامق • متوازنة مع كريمة مخملية.">
+                250g • Medium-Dark • Smooth balance with velvety crema finish.
+              </p>
+            </div>
+          </div>
+          <div class="p-5 pt-0 flex items-center justify-between border-t border-stone-900 mt-auto">
+            <span class="text-lg font-extrabold text-white">BHD 6.500</span>
+            <a href="https://wa.me/97317000000?text=Hello!%20I%20would%20like%20to%20order%20the%20Roast%20Signature%20Espresso%20Blend." target="_blank" class="inline-flex items-center gap-1.5 bg-emerald-600/20 hover:bg-emerald-600 text-emerald-400 hover:text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition-all border border-emerald-500/30">
+              <span data-en="Order" data-ar="اطلب الآن">Order</span>
+              <span class="material-icons-outlined text-sm">send</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Product Card 4 -->
+        <div class="bg-stone-950 border border-stone-800 rounded-2xl overflow-hidden hover:border-amber-600/60 transition-all flex flex-col justify-between group">
+          <div>
+            <div class="relative h-52 overflow-hidden bg-stone-800">
+              <img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=600&q=80" alt="Bottled Cold Brew Concentrate" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <span class="absolute top-3 right-3 bg-amber-600 text-stone-900 font-extrabold text-xs px-2.5 py-1 rounded-md shadow">
+                Ready to Drink
+              </span>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-bold text-white">Signature Cold Brew (500ml)</h3>
+              <p class="text-xs text-amber-500 font-medium mt-0.5 mb-2" data-en="Steeped for 18 Hours • Ultra Smooth" data-ar="منقوعة لمدة ١٨ ساعة • ناعمة ولذيذة جداً">Steeped for 18 Hours • Ultra Smooth</p>
+              <p class="text-stone-400 text-xs leading-relaxed mb-4"
+                 data-en="Bottled fresh daily in Riffa. Low acidity, natural subtle sweetness."
+                 data-ar="مجهزة يومياً في زجاجات خاصة برفاع. حموضة خفيفة وحلاوة طبيعية.">
+                Bottled fresh daily in Riffa. Low acidity, natural subtle sweetness.
+              </p>
+            </div>
+          </div>
+          <div class="p-5 pt-0 flex items-center justify-between border-t border-stone-900 mt-auto">
+            <span class="text-lg font-extrabold text-white">BHD 4.500</span>
+            <a href="https://wa.me/97317000000?text=Hello!%20I%20would%20like%20to%20order%20the%20Signature%20Cold%20Brew." target="_blank" class="inline-flex items-center gap-1.5 bg-emerald-600/20 hover:bg-emerald-600 text-emerald-400 hover:text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition-all border border-emerald-500/30">
+              <span data-en="Order" data-ar="اطلب الآن">Order</span>
+              <span class="material-icons-outlined text-sm">send</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Google Customer Reviews (Social Proof) -->
+  <section id="reviews" class="py-20 bg-stone-950 border-t border-stone-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Google Reviews Badge Header -->
+      <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+        <div class="inline-flex items-center gap-2 bg-stone-900 border border-stone-800 px-4 py-2 rounded-full">
+          <svg class="w-5 h-5" viewBox="0 0 24 24">
+            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+          </svg>
+          <span class="text-xs font-bold text-stone-300 uppercase tracking-wider">Verified Google Customer Reviews</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white" data-en="Loved by Coffee Enthusiasts in Bahrain" data-ar="يعشقه محبو القهوة في البحرين">Loved by Coffee Enthusiasts in Bahrain</h2>
+        <div class="flex items-center justify-center gap-1 text-amber-400 text-xl">
+          ★ ★ ★ ★ ★ <span class="text-white font-bold text-sm ml-2">4.9 / 5.0 (180+ Reviews)</span>
+        </div>
+      </div>
+
+      <!-- Testimonial Cards Grid -->
+      <div class="grid md:grid-cols-3 gap-8">
+        
+        <!-- Review 1 -->
+        <div class="bg-stone-900 border border-stone-800 p-6 rounded-2xl flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <div class="flex text-amber-400 text-sm">★ ★ ★ ★ ★</div>
+              <span class="text-xs text-stone-500">2 weeks ago</span>
+            </div>
+            <p class="text-stone-300 text-sm leading-relaxed italic"
+               data-en="&ldquo;Hands down the best coffee roastery in Riffa! The Colombia Huila single origin is incredible for V60. Super fast WhatsApp delivery too.&rdquo;"
+               data-ar="&ldquo;بدون مبالغة أفضل محمصة قهوة في الرفاع! محصول كولومبيا هويلت ممتاز جداً للتقطير. والتوصيل عبر الواتساب كان سريع جداً.&rdquo;">
+              &ldquo;Hands down the best coffee roastery in Riffa! The Colombia Huila single origin is incredible for V60. Super fast WhatsApp delivery too.&rdquo;
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-stone-800 flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full bg-amber-600 text-stone-900 font-bold flex items-center justify-center text-sm">AH</div>
+            <div>
+              <h4 class="text-sm font-bold text-white">Ali Al-Hassan</h4>
+              <p class="text-[11px] text-stone-500">Local Guide • Riffa Views</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="bg-stone-900 border border-stone-800 p-6 rounded-2xl flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <div class="flex text-amber-400 text-sm">★ ★ ★ ★ ★</div>
+              <span class="text-xs text-stone-500">1 month ago</span>
+            </div>
+            <p class="text-stone-300 text-sm leading-relaxed italic"
+               data-en="&ldquo;The atmosphere in the café is cozy and refined, but ordering their fresh roasted beans directly home via WhatsApp is a game changer.&rdquo;"
+               data-ar="&ldquo;أجواء المقهى هادئة وراقية جداً، وخدمة طلب الحبوب المحمصة طازجة للمنزل عبر الواتساب ممتازة وسهلة.&rdquo;">
+              &ldquo;The atmosphere in the café is cozy and refined, but ordering their fresh roasted beans directly home via WhatsApp is a game changer.&rdquo;
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-stone-800 flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full bg-amber-700 text-stone-900 font-bold flex items-center justify-center text-sm">SK</div>
+            <div>
+              <h4 class="text-sm font-bold text-white">Sarah Khalifa</h4>
+              <p class="text-[11px] text-stone-500">Verified Customer</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="bg-stone-900 border border-stone-800 p-6 rounded-2xl flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <div class="flex text-amber-400 text-sm">★ ★ ★ ★ ★</div>
+              <span class="text-xs text-stone-500">3 weeks ago</span>
+            </div>
+            <p class="text-stone-300 text-sm leading-relaxed italic"
+               data-en="&ldquo;Top quality beans roasted right here in Bahrain. Their signature espresso blend produces the richest crema I have tasted.&rdquo;"
+               data-ar="&ldquo;أجود أنواع الحبوب المحمصة محلياً في البحرين. خلطة الإسبريسو الخاصة بهم تعطي خامة وكريمة غنية جداً.&rdquo;">
+              &ldquo;Top quality beans roasted right here in Bahrain. Their signature espresso blend produces the richest crema I have tasted.&rdquo;
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-stone-800 flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full bg-emerald-700 text-stone-900 font-bold flex items-center justify-center text-sm">JM</div>
+            <div>
+              <h4 class="text-sm font-bold text-white">James Miller</h4>
+              <p class="text-[11px] text-stone-500">Coffee Enthusiast</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Location & Contact Section -->
+  <section id="location" class="py-20 bg-stone-900 border-t border-stone-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Info Side -->
+        <div class="lg:col-span-5 space-y-8">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-widest text-amber-500" data-en="Find Us In Riffa" data-ar="زورونا في الرفاع">Find Us In Riffa</span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-1" data-en="Visit Our Roastery & Cafe" data-ar="تفضل بزيارة محمستنا ومقهانا">Visit Our Roastery & Cafe</h2>
+          </div>
+
+          <div class="space-y-6 text-sm text-stone-300">
+            <!-- Address -->
+            <div class="flex items-start gap-4 p-4 rounded-xl bg-stone-950 border border-stone-800">
+              <span class="material-icons-outlined text-amber-500 text-2xl mt-0.5">place</span>
+              <div>
+                <h4 class="font-bold text-white text-base" data-en="Location Address" data-ar="العنوان">Location Address</h4>
+                <p class="mt-1 text-stone-400"
+                   data-en="Riffa Views Commercial Area, Southern Governorate, Kingdom of Bahrain"
+                   data-ar="منطقة رفاع فيوز التجارية، المحافظة الجنوبية، مملكة البحرين">
+                  Riffa Views Commercial Area, Southern Governorate, Kingdom of Bahrain
+                </p>
+              </div>
+            </div>
+
+            <!-- Opening Hours -->
+            <div class="flex items-start gap-4 p-4 rounded-xl bg-stone-950 border border-stone-800">
+              <span class="material-icons-outlined text-amber-500 text-2xl mt-0.5">schedule</span>
+              <div>
+                <h4 class="font-bold text-white text-base" data-en="Opening Hours" data-ar="ساعات العمل">Opening Hours</h4>
+                <p class="mt-1 text-stone-400"
+                   data-en="Monday – Sunday: 7:00 AM – 11:00 PM"
+                   data-ar="الإثنين – الأحد: ٧:٠٠ صباحاً – ١١:٠٠ مساءً">
+                  Monday – Sunday: 7:00 AM – 11:00 PM
+                </p>
+              </div>
+            </div>
+
+            <!-- Direct Phone & WhatsApp -->
+            <div class="flex items-start gap-4 p-4 rounded-xl bg-stone-950 border border-stone-800">
+              <span class="material-icons-outlined text-amber-500 text-2xl mt-0.5">phone</span>
+              <div>
+                <h4 class="font-bold text-white text-base" data-en="Direct Contact" data-ar="الاتصال المباشر">Direct Contact</h4>
+                <p class="mt-1 text-stone-400">+973 1700 0000 / +973 3900 0000</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="https://wa.me/97317000000?text=Hello!%20I%20would%20like%20to%20inquire%20about%20Roast%20coffee." target="_blank" class="inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-6 py-3.5 rounded-xl transition-all shadow-lg">
+              <span data-en="Chat on WhatsApp" data-ar="تحدث معنا عبر الواتساب">Chat on WhatsApp</span>
+            </a>
+            <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-stone-800 hover:bg-stone-700 text-white font-semibold px-6 py-3.5 rounded-xl border border-stone-700 transition-all">
+              <span data-en="Open in Google Maps" data-ar="فتح في خرائط جوجل">Open in Google Maps</span>
+              <span class="material-icons-outlined text-sm">open_in_new</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Map / Storefront Mockup -->
+        <div class="lg:col-span-7">
+          <div class="relative rounded-3xl overflow-hidden border border-stone-800 bg-stone-950 shadow-2xl h-[420px] group">
+            <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=1200&q=80" alt="Roast Coffee Shop Riffa Views" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80">
+            <div class="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/20 to-transparent"></div>
+            <div class="absolute bottom-8 left-8 right-8 p-6 bg-stone-900/90 backdrop-blur-md rounded-2xl border border-stone-700 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div class="flex items-center gap-3">
+                <div class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></div>
+                <span class="font-bold text-white text-sm" data-en="Roastery open today until 11:00 PM" data-ar="المحمصة مفتوحة اليوم حتى ١١:٠٠ مساءً">Roastery open today until 11:00 PM</span>
+              </div>
+              <span class="text-xs text-amber-400 font-semibold uppercase tracking-wider" data-en="Riffa Views • Kingdom of Bahrain" data-ar="رفاع فيوز • مملكة البحرين">Riffa Views • Kingdom of Bahrain</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-stone-950 border-t border-stone-800 py-12 text-stone-500 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+      
+      <div class="flex items-center gap-3">
+        <div class="w-7 h-7 rounded-full bg-amber-600 flex items-center justify-center text-stone-900 font-extrabold text-xs">
+          R
+        </div>
+        <span class="font-bold text-stone-300 text-sm tracking-wider uppercase">ROAST SPECIALTY COFFEE</span>
+      </div>
+
+      <p data-en="© 2025 Roast Roastery W.L.L. All Rights Reserved. Riffa Views, Bahrain." data-ar="© ٢٠٢٥ محمصة روست ذ.م.م. جميع الحقوق محفوظة. رفاع فيوز، البحرين.">
+        © 2025 Roast Roastery W.L.L. All Rights Reserved. Riffa Views, Bahrain.
+      </p>
+
+      <div class="flex items-center gap-6">
+        <a href="#" class="hover:text-amber-500 transition-colors">Instagram</a>
+        <a href="#" class="hover:text-amber-500 transition-colors">WhatsApp</a>
+        <a href="#" class="hover:text-amber-500 transition-colors">Location</a>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Bilingual Runtime Language Switcher Script -->
+  <script>
+    let currentLang = 'en';
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'en' ? 'ar' : 'en';
+      setLanguage(currentLang);
+    }
+
+    function setLanguage(lang) {
+      const htmlEl = document.documentElement;
+      const langBtnText = document.getElementById('langBtnText');
+
+      htmlEl.lang = lang;
+      htmlEl.dir = lang === 'ar' ? 'rtl' : 'ltr';
+
+      if (lang === 'ar') {
+        document.body.classList.add('font-ar');
+        if (langBtnText) langBtnText.textContent = 'English';
+      } else {
+        document.body.classList.remove('font-ar');
+        if (langBtnText) langBtnText.textContent = 'العربية';
+      }
+
+      // Swap all dataset copy elements
+      const elements = document.querySelectorAll('[data-en][data-ar]');
+      elements.forEach(el => {
+        const newText = el.getAttribute(`data-${lang}`);
+        if (newText) {
+          el.innerHTML = newText;
+        }
+      });
+    }
+  </script>
+</body>
+</html>
