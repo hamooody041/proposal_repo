@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>C45 Artisan Coffee | Specialty Coffee in Seef District</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Google Material Symbols -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandPrimary: '#18181b', // zinc-900
+            brandSecondary: '#fffbeb', // amber-50
+            brandAccent: '#d97706', // amber-600
+            brandAccentDark: '#b45309', // amber-700
+            brandDarkCard: '#27272a', // zinc-800
+          },
+          fontFamily: {
+            outfit: ['Outfit', 'sans-serif'],
+            cairo: ['Cairo', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Outfit', 'Cairo', sans-serif;
+    }
+    .font-ar {
+      font-family: 'Cairo', sans-serif;
+    }
+    .font-en {
+      font-family: 'Outfit', sans-serif;
+    }
+    .bg-grid-pattern {
+      background-image: radial-gradient(rgba(217, 119, 6, 0.15) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+  </style>
+</head>
+<body class="bg-brandPrimary text-zinc-100 antialiased selection:bg-brandAccent selection:text-white transition-colors duration-300">
+
+  <!-- Header Navigation -->
+  <header class="sticky top-0 z-50 bg-brandPrimary/90 backdrop-blur-md border-b border-zinc-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Logo -->
+        <a href="#" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brandAccent to-amber-700 flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-brandAccent/20 group-hover:scale-105 transition-transform">
+            C45
+          </div>
+          <div class="flex flex-col">
+            <span class="text-lg font-bold tracking-wider text-white uppercase">C45 ARTISAN</span>
+            <span class="text-xs text-brandAccent font-medium tracking-widest uppercase">Coffee & Lab</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-300">
+          <a href="#about" class="hover:text-brandAccent transition-colors" data-i18n="nav_about">About Us</a>
+          <a href="#menu" class="hover:text-brandAccent transition-colors" data-i18n="nav_menu">Featured Menu</a>
+          <a href="#reviews" class="hover:text-brandAccent transition-colors" data-i18n="nav_reviews">Reviews</a>
+          <a href="#location" class="hover:text-brandAccent transition-colors" data-i18n="nav_location">Location & Hours</a>
+        </nav>
+
+        <!-- Language Switcher & WhatsApp CTA -->
+        <div class="flex items-center gap-4">
+          <!-- Language Switcher Button -->
+          <button id="langToggleBtn" onclick="toggleLanguage()" class="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-zinc-700 bg-zinc-800/60 hover:bg-zinc-800 text-xs font-semibold text-zinc-200 transition-all">
+            <span class="material-symbols-outlined text-sm text-brandAccent">language</span>
+            <span id="langLabel">العربية</span>
+          </button>
+
+          <!-- Quick WhatsApp CTA -->
+          <a href="https://wa.me/97317000045?text=Hello%20C45%20Artisan%20Coffee,%20I%20would%20like%20to%20place%20an%20order" target="_blank" class="hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm shadow-md hover:shadow-emerald-600/30 transition-all">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+              <path d="M12.031 0c-6.627 0-12 5.373-12 12 0 2.159.57 4.26 1.65 6.105l-1.651 6.037 6.182-1.621c1.787.975 3.81 1.479 5.819 1.479 6.627 0 12-5.373 12-12 0-6.627-5.373-12-12-12zm0 22c-1.81 0-3.586-.482-5.148-1.393l-.369-.216-3.833 1.005 1.023-3.741-.24-.381c-1.011-1.606-1.545-3.468-1.545-5.388 0-5.514 4.486-10 10-10s10 4.486 10 10-4.486 10-10 10zm5.29-7.308c-.29-.145-1.716-.847-1.98-.943-.264-.096-.456-.145-.648.145-.192.29-.748.943-.917 1.137-.168.193-.337.217-.627.072-1.239-.62-2.316-1.3-3.236-2.408-.242-.291-.048-.445.097-.589.13-.13.29-.338.435-.508.145-.169.193-.29.29-.483.096-.193.048-.362-.024-.508-.072-.145-.648-1.562-.889-2.138-.235-.561-.475-.484-.648-.493-.168-.008-.362-.01-.556-.01-.193 0-.508.072-.773.362-.265.29-1.013.99-1.013 2.415 0 1.425 1.037 2.802 1.182 2.995.145.193 2.043 3.12 4.948 4.373 2.045.883 2.825.86 3.822.711.666-.1 1.716-.701 1.957-1.378.241-.676.241-1.256.169-1.378-.072-.121-.265-.193-.555-.338z"/>
+            </svg>
+            <span data-i18n="cta_whatsapp">Order via WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-grid-pattern py-20 px-4">
+    <!-- Ambient Glow Effects -->
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brandAccent/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-10 right-10 w-[300px] h-[300px] bg-amber-700/10 rounded-full blur-2xl pointer-events-none"></div>
+
+    <div class="max-w-5xl mx-auto text-center relative z-10">
+      <!-- Location Badge -->
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-800/80 border border-brandAccent/30 text-brandAccent text-xs md:text-sm font-semibold tracking-wide mb-8 shadow-inner">
+        <span class="material-symbols-outlined text-base">location_on</span>
+        <span data-i18n="hero_badge">Seef District, Kingdom of Bahrain</span>
+      </div>
+
+      <!-- Main Headline -->
+      <h1 id="heroHeadline" class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white leading-tight mb-6">
+        Artisanal Brews & Mystery Stories in Seef District
+      </h1>
+
+      <!-- Subtitle -->
+      <p id="heroSubtext" class="text-lg sm:text-xl text-zinc-300 max-w-3xl mx-auto font-light leading-relaxed mb-10">
+        Step into C45, where every cup is a calibrated masterpiece. Experience micro-lot pour-overs, handcrafted pastries, and dark modern aesthetics crafted for genuine coffee connoisseurs.
+      </p>
+
+      <!-- Hero CTAs -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="https://wa.me/97317000045?text=Hello%20C45%20Artisan%20Coffee,%20I%20would%20like%20to%20order" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-base shadow-xl shadow-emerald-600/25 hover:scale-[1.02] transition-all">
+          <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+            <path d="M12.031 0c-6.627 0-12 5.373-12 12 0 2.159.57 4.26 1.65 6.105l-1.651 6.037 6.182-1.621c1.787.975 3.81 1.479 5.819 1.479 6.627 0 12-5.373 12-12 0-6.627-5.373-12-12-12zm0 22c-1.81 0-3.586-.482-5.148-1.393l-.369-.216-3.833 1.005 1.023-3.741-.24-.381c-1.011-1.606-1.545-3.468-1.545-5.388 0-5.514 4.486-10 10-10s10 4.486 10 10-4.486 10-10 10zm5.29-7.308c-.29-.145-1.716-.847-1.98-.943-.264-.096-.456-.145-.648.145-.192.29-.748.943-.917 1.137-.168.193-.337.217-.627.072-1.239-.62-2.316-1.3-3.236-2.408-.242-.291-.048-.445.097-.589.13-.13.29-.338.435-.508.145-.169.193-.29.29-.483.096-.193.048-.362-.024-.508-.072-.145-.648-1.562-.889-2.138-.235-.561-.475-.484-.648-.493-.168-.008-.362-.01-.556-.01-.193 0-.508.072-.773.362-.265.29-1.013.99-1.013 2.415 0 1.425 1.037 2.802 1.182 2.995.145.193 2.043 3.12 4.948 4.373 2.045.883 2.825.86 3.822.711.666-.1 1.716-.701 1.957-1.378.241-.676.241-1.256.169-1.378-.072-.121-.265-.193-.555-.338z"/>
+          </svg>
+          <span data-i18n="cta_whatsapp">Order via WhatsApp</span>
+        </a>
+        <a href="#menu" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-100 font-semibold text-base border border-zinc-700 transition-all">
+          <span data-i18n="hero_view_menu">Explore Menu</span>
+          <span class="material-symbols-outlined text-lg">local_cafe</span>
+        </a>
+      </div>
+
+      <!-- Quick Highlights Bar -->
+      <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 text-center border-t border-zinc-800 pt-10">
+        <div>
+          <div class="text-2xl font-extrabold text-brandAccent">88+</div>
+          <div class="text-xs text-zinc-400 mt-1" data-i18n="stat_cupping">Cupping Score Beans</div>
+        </div>
+        <div>
+          <div class="text-2xl font-extrabold text-brandAccent">100%</div>
+          <div class="text-xs text-zinc-400 mt-1" data-i18n="stat_arabica">Single-Origin Arabica</div>
+        </div>
+        <div>
+          <div class="text-2xl font-extrabold text-brandAccent">4.9 ★</div>
+          <div class="text-xs text-zinc-400 mt-1" data-i18n="stat_rating">Google Customer Rating</div>
+        </div>
+        <div>
+          <div class="text-2xl font-extrabold text-brandAccent">7 Days</div>
+          <div class="text-xs text-zinc-400 mt-1" data-i18n="stat_open">Fresh Daily In Seef</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About & Value Proposition Section -->
+  <section id="about" class="py-20 bg-zinc-950 border-t border-zinc-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        
+        <!-- Image Showcase -->
+        <div class="relative">
+          <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-zinc-800 group">
+            <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&q=80&w=1000" alt="C45 Coffee Roaster" class="w-full h-[450px] object-cover group-hover:scale-105 transition-transform duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent"></div>
+          </div>
+          <!-- Floating Badge -->
+          <div class="absolute -bottom-6 -right-2 sm:right-6 bg-brandDarkCard border border-brandAccent/40 p-4 rounded-xl shadow-xl flex items-center gap-4">
+            <div class="w-12 h-12 rounded-lg bg-brandAccent/20 flex items-center justify-center text-brandAccent">
+              <span class="material-symbols-outlined text-2xl">workspace_premium</span>
+            </div>
+            <div>
+              <h4 class="text-sm font-bold text-white" data-i18n="about_badge_title">Precision Extraction</h4>
+              <p class="text-xs text-zinc-400" data-i18n="about_badge_desc">Gram-calibrated espresso shots</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Content Column -->
+        <div class="space-y-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-amber-500/10 text-brandAccent text-xs font-semibold tracking-wide uppercase">
+            <span data-i18n="about_tag">The C45 Story</span>
+          </div>
+          
+          <h2 class="text-3xl sm:text-4xl font-bold text-white leading-tight" data-i18n="about_heading">
+            Where Mystery Meets Precision Craftsmanship
+          </h2>
+          
+          <p class="text-zinc-300 leading-relaxed text-base" data-i18n="about_p1">
+            Located in Bahrain's vibrant Seef District, C45 Artisan Coffee was founded on a simple passion: pushing coffee extraction to its highest art form. Every bean in our reserve is meticulously selected from ethical micro-lot farms around the globe.
+          </p>
+
+          <p class="text-zinc-400 leading-relaxed text-sm" data-i18n="about_p2">
+            Whether you are seeking a quiet space to savor a hand-poured V60, indulging in our signature artisan beverages, or grabbing your morning brew before work, C45 delivers a refined sanctuary with every cup.
+          </p>
+
+          <!-- Feature List -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+            <div class="flex items-start gap-3">
+              <span class="material-symbols-outlined text-brandAccent mt-0.5">check_circle</span>
+              <div>
+                <h3 class="text-sm font-semibold text-white" data-i18n="feat1_title">Micro-Lot Beans</h3>
+                <p class="text-xs text-zinc-400" data-i18n="feat1_desc">Direct trade Ethiopian, Colombian & Panamanian varieties.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="material-symbols-outlined text-brandAccent mt-0.5">check_circle</span>
+              <div>
+                <h3 class="text-sm font-semibold text-white" data-i18n="feat2_title">Master Baristas</h3>
+                <p class="text-xs text-zinc-400" data-i18n="feat2_desc">Crafted with exact water ratios and temperature control.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Menu Section -->
+  <section id="menu" class="py-20 bg-brandPrimary border-t border-zinc-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-amber-500/10 text-brandAccent text-xs font-semibold tracking-wide uppercase mb-3">
+          <span data-i18n="menu_tag">Artisan Selection</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white" data-i18n="menu_heading">Featured Drinks & Delights</h2>
+        <p class="text-zinc-400 text-sm mt-3" data-i18n="menu_subheading">Directly available for dine-in, takeaway, or quick WhatsApp pre-order.</p>
+      </div>
+
+      <!-- Menu Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Item 1 -->
+        <div class="bg-brandDarkCard rounded-2xl overflow-hidden border border-zinc-800 hover:border-brandAccent/50 transition-all group flex flex-col justify-between">
+          <div>
+            <div class="relative h-52 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&q=80&w=600" alt="V60 Reserve" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <span class="absolute top-3 right-3 bg-brandPrimary/80 backdrop-blur-md text-brandAccent text-xs font-bold px-3 py-1 rounded-full border border-brandAccent/30">
+                Single Origin
+              </span>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="text-xl font-bold text-white group-hover:text-brandAccent transition-colors" data-i18n="item1_name">V60 Ethiopian Yirgacheffe</h3>
+                <span class="text-lg font-extrabold text-brandAccent">2.8 BHD</span>
+              </div>
+              <p class="text-zinc-400 text-xs leading-relaxed mb-4" data-i18n="item1_desc">
+                Floral aroma with delicate notes of jasmine, bergamot citrus, and a clean honey finish.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-0">
+            <a href="https://wa.me/97317000045?text=I%20would%20like%20to%20order:%20V60%20Ethiopian%20Yirgacheffe" target="_blank" class="w-full inline-flex items-center justify-center gap-2 py-2.5 rounded-lg bg-zinc-800 hover:bg-emerald-600 text-zinc-200 hover:text-white text-xs font-semibold border border-zinc-700 hover:border-emerald-600 transition-all">
+              <span data-i18n="order_item">Order via WhatsApp</span>
+              <span class="material-symbols-outlined text-sm">send</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="bg-brandDarkCard rounded-2xl overflow-hidden border border-zinc-800 hover:border-brandAccent/50 transition-all group flex flex-col justify-between">
+          <div>
+            <div class="relative h-52 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&q=80&w=600" alt="C45 Cold Brew" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <span class="absolute top-3 right-3 bg-brandPrimary/80 backdrop-blur-md text-brandAccent text-xs font-bold px-3 py-1 rounded-full border border-brandAccent/30">
+                Signature
+              </span>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="text-xl font-bold text-white group-hover:text-brandAccent transition-colors" data-i18n="item2_name">C45 Signature Cold Brew</h3>
+                <span class="text-lg font-extrabold text-brandAccent">2.5 BHD</span>
+              </div>
+              <p class="text-zinc-400 text-xs leading-relaxed mb-4" data-i18n="item2_desc">
+                Steeped for 18 hours in small batches. Ultra-smooth, low acidity with dark chocolate & hazelnut undertones.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-0">
+            <a href="https://wa.me/97317000045?text=I%20would%20like%20to%20order:%20C45%20Signature%20Cold%20Brew" target="_blank" class="w-full inline-flex items-center justify-center gap-2 py-2.5 rounded-lg bg-zinc-800 hover:bg-emerald-600 text-zinc-200 hover:text-white text-xs font-semibold border border-zinc-700 hover:border-emerald-600 transition-all">
+              <span data-i18n="order_item">Order via WhatsApp</span>
+              <span class="material-symbols-outlined text-sm">send</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="bg-brandDarkCard rounded-2xl overflow-hidden border border-zinc-800 hover:border-brandAccent/50 transition-all group flex flex-col justify-between">
+          <div>
+            <div class="relative h-52 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&q=80&w=600" alt="Spanish Latte" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="text-xl font-bold text-white group-hover:text-brandAccent transition-colors" data-i18n="item3_name">Artisan Spanish Latte</h3>
+                <span class="text-lg font-extrabold text-brandAccent">2.6 BHD</span>
+              </div>
+              <p class="text-zinc-400 text-xs leading-relaxed mb-4" data-i18n="item3_desc">
+                Rich espresso blended with organic milk and custom house-made condensed caramel touch.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-0">
+            <a href="https://wa.me/97317000045?text=I%20would%20like%20to%20order:%20Artisan%20Spanish%20Latte" target="_blank" class="w-full inline-flex items-center justify-center gap-2 py-2.5 rounded-lg bg-zinc-800 hover:bg-emerald-600 text-zinc-200 hover:text-white text-xs font-semibold border border-zinc-700 hover:border-emerald-600 transition-all">
+              <span data-i18n="order_item">Order via WhatsApp</span>
+              <span class="material-symbols-outlined text-sm">send</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="bg-brandDarkCard rounded-2xl overflow-hidden border border-zinc-800 hover:border-brandAccent/50 transition-all group flex flex-col justify-between">
+          <div>
+            <div class="relative h-52 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&q=80&w=600" alt="Pistachio Croissant" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <span class="absolute top-3 right-3 bg-brandPrimary/80 backdrop-blur-md text-brandAccent text-xs font-bold px-3 py-1 rounded-full border border-brandAccent/30">
+                Fresh Pastry
+              </span>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="text-xl font-bold text-white group-hover:text-brandAccent transition-colors" data-i18n="item4_name">Pistachio Cream Croissant</h3>
+                <span class="text-lg font-extrabold text-brandAccent">2.2 BHD</span>
+              </div>
+              <p class="text-zinc-400 text-xs leading-relaxed mb-4" data-i18n="item4_desc">
+                Flaky butter layers filled with rich Sicilian pistachio cream, baked fresh twice daily.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-0">
+            <a href="https://wa.me/97317000045?text=I%20would%20like%20to%20order:%20Pistachio%20Croissant" target="_blank" class="w-full inline-flex items-center justify-center gap-2 py-2.5 rounded-lg bg-zinc-800 hover:bg-emerald-600 text-zinc-200 hover:text-white text-xs font-semibold border border-zinc-700 hover:border-emerald-600 transition-all">
+              <span data-i18n="order_item">Order via WhatsApp</span>
+              <span class="material-symbols-outlined text-sm">send</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Item 5 -->
+        <div class="bg-brandDarkCard rounded-2xl overflow-hidden border border-zinc-800 hover:border-brandAccent/50 transition-all group flex flex-col justify-between">
+          <div>
+            <div class="relative h-52 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1577968897966-3d4325b36b61?auto=format&fit=crop&q=80&w=600" alt="Flat White" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="text-xl font-bold text-white group-hover:text-brandAccent transition-colors" data-i18n="item5_name">Velvet Flat White</h3>
+                <span class="text-lg font-extrabold text-brandAccent">2.3 BHD</span>
+              </div>
+              <p class="text-zinc-400 text-xs leading-relaxed mb-4" data-i18n="item5_desc">
+                Double ristretto shot with micro-foamed textured milk for intense espresso clarity.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-0">
+            <a href="https://wa.me/97317000045?text=I%20would%20like%20to%20order:%20Velvet%20Flat%20White" target="_blank" class="w-full inline-flex items-center justify-center gap-2 py-2.5 rounded-lg bg-zinc-800 hover:bg-emerald-600 text-zinc-200 hover:text-white text-xs font-semibold border border-zinc-700 hover:border-emerald-600 transition-all">
+              <span data-i18n="order_item">Order via WhatsApp</span>
+              <span class="material-symbols-outlined text-sm">send</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Item 6 -->
+        <div class="bg-brandDarkCard rounded-2xl overflow-hidden border border-zinc-800 hover:border-brandAccent/50 transition-all group flex flex-col justify-between">
+          <div>
+            <div class="relative h-52 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&q=80&w=600" alt="Chemex Reserve" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <span class="absolute top-3 right-3 bg-brandPrimary/80 backdrop-blur-md text-brandAccent text-xs font-bold px-3 py-1 rounded-full border border-brandAccent/30">
+                Limited Lot
+              </span>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="text-xl font-bold text-white group-hover:text-brandAccent transition-colors" data-i18n="item6_name">Panama Geisha Chemex</h3>
+                <span class="text-lg font-extrabold text-brandAccent">3.5 BHD</span>
+              </div>
+              <p class="text-zinc-400 text-xs leading-relaxed mb-4" data-i18n="item6_desc">
+                Rare Geisha variety featuring subtle peach tea notes, jasmine blossom, and silky body.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-0">
+            <a href="https://wa.me/97317000045?text=I%20would%20like%20to%20order:%20Panama%20Geisha%20Chemex" target="_blank" class="w-full inline-flex items-center justify-center gap-2 py-2.5 rounded-lg bg-zinc-800 hover:bg-emerald-600 text-zinc-200 hover:text-white text-xs font-semibold border border-zinc-700 hover:border-emerald-600 transition-all">
+              <span data-i18n="order_item">Order via WhatsApp</span>
+              <span class="material-symbols-outlined text-sm">send</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Google Customer Reviews Section -->
+  <section id="reviews" class="py-20 bg-zinc-950 border-t border-zinc-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header with Google Summary -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-amber-500/10 text-brandAccent text-xs font-semibold tracking-wide uppercase mb-3">
+            <span data-i18n="reviews_tag">Social Proof</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-bold text-white" data-i18n="reviews_heading">Loved by Coffee Enthusiasts</h2>
+        </div>
+        
+        <!-- Google Badge Widget -->
+        <div class="bg-brandDarkCard p-4 rounded-xl border border-zinc-800 flex items-center gap-4 shadow-lg">
+          <div class="flex items-center gap-1 text-amber-400 text-xl font-bold">
+            <span>4.9</span>
+            <span class="material-symbols-outlined text-amber-400 fill-1">star</span>
+          </div>
+          <div class="border-r border-zinc-700 h-8"></div>
+          <div>
+            <div class="flex text-amber-400 text-sm">
+              ★★★★★
+            </div>
+            <p class="text-xs text-zinc-400 mt-0.5" data-i18n="reviews_count">Based on 240+ Google Reviews</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Review Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Review 1 -->
+        <div class="bg-brandDarkCard p-6 rounded-2xl border border-zinc-800 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-brandAccent/20 text-brandAccent flex items-center justify-center font-bold text-sm">
+                  A.A.
+                </div>
+                <div>
+                  <h3 class="text-sm font-semibold text-white">Ahmed Al-Khalifa</h3>
+                  <p class="text-xs text-zinc-400">Bahrain Local Guide</p>
+                </div>
+              </div>
+              <span class="text-xs text-amber-400 font-bold">5/5 ★</span>
+            </div>
+            <p class="text-zinc-300 text-xs leading-relaxed italic" data-i18n="review1_text">
+              "Hands down the best V60 in Seef District. The baristas really know their science and origin profiles. Sleek atmosphere and top quality micro-lots!"
+            </p>
+          </div>
+          <div class="mt-4 pt-4 border-t border-zinc-800/80 flex justify-between items-center text-[10px] text-zinc-500">
+            <span>Verified Google Review</span>
+            <span>2 weeks ago</span>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="bg-brandDarkCard p-6 rounded-2xl border border-zinc-800 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-sm">
+                  S.M.
+                </div>
+                <div>
+                  <h3 class="text-sm font-semibold text-white">Sarah M.</h3>
+                  <p class="text-xs text-zinc-400">Coffee Aficionado</p>
+                </div>
+              </div>
+              <span class="text-xs text-amber-400 font-bold">5/5 ★</span>
+            </div>
+            <p class="text-zinc-300 text-xs leading-relaxed italic" data-i18n="review2_text">
+              "The signature cold brew and pistachio croissants are an incredible pair. The dark moody interior design makes it my favorite work spot in Manama."
+            </p>
+          </div>
+          <div class="mt-4 pt-4 border-t border-zinc-800/80 flex justify-between items-center text-[10px] text-zinc-500">
+            <span>Verified Google Review</span>
+            <span>1 month ago</span>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="bg-brandDarkCard p-6 rounded-2xl border border-zinc-800 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold text-sm">
+                  M.H.
+                </div>
+                <div>
+                  <h3 class="text-sm font-semibold text-white">Mohammed Hassan</h3>
+                  <p class="text-xs text-zinc-400">Seef Resident</p>
+                </div>
+              </div>
+              <span class="text-xs text-amber-400 font-bold">5/5 ★</span>
+            </div>
+            <p class="text-zinc-300 text-xs leading-relaxed italic" data-i18n="review3_text">
+              "Consistently rich espresso and incredibly friendly staff. Ordering through WhatsApp for quick pickup on my way to office works seamlessly."
+            </p>
+          </div>
+          <div class="mt-4 pt-4 border-t border-zinc-800/80 flex justify-between items-center text-[10px] text-zinc-500">
+            <span>Verified Google Review</span>
+            <span>3 weeks ago</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Location & Contact Section -->
+  <section id="location" class="py-20 bg-brandPrimary border-t border-zinc-800 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        
+        <!-- Info Column -->
+        <div class="space-y-8">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-amber-500/10 text-brandAccent text-xs font-semibold tracking-wide uppercase mb-3">
+              <span data-i18n="loc_tag">Visit & Connect</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-bold text-white" data-i18n="loc_heading">Find Us in Seef District</h2>
+            <p class="text-zinc-400 text-sm mt-2" data-i18n="loc_sub">We are conveniently located in the commercial heart of Bahrain.</p>
+          </div>
+
+          <div class="space-y-6">
+            <!-- Address -->
+            <div class="flex items-start gap-4 p-4 rounded-xl bg-brandDarkCard border border-zinc-800">
+              <div class="w-10 h-10 rounded-lg bg-brandAccent/20 flex items-center justify-center text-brandAccent shrink-0">
+                <span class="material-symbols-outlined">location_on</span>
+              </div>
+              <div>
+                <h3 class="text-sm font-semibold text-white" data-i18n="address_title">Address</h3>
+                <p class="text-xs text-zinc-300 mt-1" data-i18n="address_text">Building 45, Road 2801, Block 428, Seef District, Manama, Kingdom of Bahrain</p>
+              </div>
+            </div>
+
+            <!-- Opening Hours -->
+            <div class="flex items-start gap-4 p-4 rounded-xl bg-brandDarkCard border border-zinc-800">
+              <div class="w-10 h-10 rounded-lg bg-brandAccent/20 flex items-center justify-center text-brandAccent shrink-0">
+                <span class="material-symbols-outlined">schedule</span>
+              </div>
+              <div>
+                <h3 class="text-sm font-semibold text-white" data-i18n="hours_title">Opening Hours</h3>
+                <div class="text-xs text-zinc-300 mt-1 space-y-1">
+                  <p data-i18n="hours_weekday">Sun - Thu: 7:00 AM – 11:00 PM</p>
+                  <p data-i18n="hours_weekend">Fri - Sat: 8:00 AM – 12:00 Midnight</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Phone & Direct Contact -->
+            <div class="flex items-start gap-4 p-4 rounded-xl bg-brandDarkCard border border-zinc-800">
+              <div class="w-10 h-10 rounded-lg bg-emerald-500/20 flex items-center justify-center text-emerald-400 shrink-0">
+                <span class="material-symbols-outlined">call</span>
+              </div>
+              <div>
+                <h3 class="text-sm font-semibold text-white" data-i18n="contact_title">Direct Contact & WhatsApp</h3>
+                <p class="text-xs text-zinc-300 mt-1">+973 17 000 045</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Button -->
+          <div>
+            <a href="https://wa.me/97317000045?text=Hello%20C45%20Artisan%20Coffee" target="_blank" class="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm shadow-lg transition-all">
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                <path d="M12.031 0c-6.627 0-12 5.373-12 12 0 2.159.57 4.26 1.65 6.105l-1.651 6.037 6.182-1.621c1.787.975 3.81 1.479 5.819 1.479 6.627 0 12-5.373 12-12 0-6.627-5.373-12-12-12zm0 22c-1.81 0-3.586-.482-5.148-1.393l-.369-.216-3.833 1.005 1.023-3.741-.24-.381c-1.011-1.606-1.545-3.468-1.545-5.388 0-5.514 4.486-10 10-10s10 4.486 10 10-4.486 10-10 10zm5.29-7.308c-.29-.145-1.716-.847-1.98-.943-.264-.096-.456-.145-.648.145-.192.29-.748.943-.917 1.137-.168.193-.337.217-.627.072-1.239-.62-2.316-1.3-3.236-2.408-.242-.291-.048-.445.097-.589.13-.13.29-.338.435-.508.145-.169.193-.29.29-.483.096-.193.048-.362-.024-.508-.072-.145-.648-1.562-.889-2.138-.235-.561-.475-.484-.648-.493-.168-.008-.362-.01-.556-.01-.193 0-.508.072-.773.362-.265.29-1.013.99-1.013 2.415 0 1.425 1.037 2.802 1.182 2.995.145.193 2.043 3.12 4.948 4.373 2.045.883 2.825.86 3.822.711.666-.1 1.716-.701 1.957-1.378.241-.676.241-1.256.169-1.378-.072-.121-.265-.193-.555-.338z"/>
+              </svg>
+              <span data-i18n="cta_whatsapp">Order via WhatsApp</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Map Placeholder Card -->
+        <div class="relative rounded-2xl overflow-hidden border border-zinc-800 bg-brandDarkCard min-h-[350px] flex flex-col justify-between p-8 group">
+          <div class="absolute inset-0 bg-cover bg-center opacity-40 group-hover:scale-105 transition-transform duration-700" style="background-image: url('https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=1000');"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-brandPrimary via-brandPrimary/70 to-transparent"></div>
+          
+          <div class="relative z-10">
+            <span class="px-3 py-1 rounded-full bg-brandAccent text-white text-xs font-bold uppercase tracking-wider">
+              Seef District
+            </span>
+          </div>
+
+          <div class="relative z-10 space-y-4">
+            <h3 class="text-2xl font-bold text-white" data-i18n="map_card_title">Visit C45 Specialty Lab</h3>
+            <p class="text-xs text-zinc-300 max-w-sm" data-i18n="map_card_sub">Experience our minimalist luxury interior, high-speed Wi-Fi, and artisanal brews.</p>
+            <a href="https://maps.google.com/?q=Seef+District+Bahrain" target="_blank" class="inline-flex items-center gap-2 text-xs font-bold text-brandAccent hover:underline">
+              <span data-i18n="open_maps">Open in Google Maps</span>
+              <span class="material-symbols-outlined text-sm">open_in_new</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-zinc-950 border-t border-zinc-800 py-12 text-zinc-400 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+      
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-lg bg-brandAccent flex items-center justify-center text-white font-bold text-sm">
+          C45
+        </div>
+        <span class="text-white font-semibold tracking-wider text-sm">C45 ARTISAN COFFEE</span>
+      </div>
+
+      <p>© 2025 C45 Artisan Coffee. All rights reserved. Seef District, Kingdom of Bahrain.</p>
+
+      <div class="flex gap-4">
+        <a href="#" class="hover:text-brandAccent transition-colors">Instagram</a>
+        <a href="#" class="hover:text-brandAccent transition-colors">WhatsApp</a>
+        <a href="#" class="hover:text-brandAccent transition-colors">Location</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bilingual Dynamic Javascript Script -->
+  <script>
+    const translations = {
+      en: {
+        nav_about: "About Us",
+        nav_menu: "Featured Menu",
+        nav_reviews: "Reviews",
+        nav_location: "Location & Hours",
+        hero_badge: "Seef District, Kingdom of Bahrain",
+        hero_headline: "Artisanal Brews & Mystery Stories in Seef District",
+        hero_subtext: "Step into C45, where every cup is a calibrated masterpiece. Experience micro-lot pour-overs, handcrafted pastries, and dark modern aesthetics crafted for genuine coffee connoisseurs.",
+        cta_whatsapp: "Order via WhatsApp",
+        hero_view_menu: "Explore Menu",
+        stat_cupping: "Cupping Score Beans",
+        stat_arabica: "Single-Origin Arabica",
+        stat_rating: "Google Customer Rating",
+        stat_open: "Fresh Daily In Seef",
+        about_tag: "The C45 Story",
+        about_heading: "Where Mystery Meets Precision Craftsmanship",
+        about_p1: "Located in Bahrain's vibrant Seef District, C45 Artisan Coffee was founded on a simple passion: pushing coffee extraction to its highest art form. Every bean in our reserve is meticulously selected from ethical micro-lot farms around the globe.",
+        about_p2: "Whether you are seeking a quiet space to savor a hand-poured V60, indulging in our signature artisan beverages, or grabbing your morning brew before work, C45 delivers a refined sanctuary with every cup.",
+        about_badge_title: "Precision Extraction",
+        about_badge_desc: "Gram-calibrated espresso shots",
+        feat1_title: "Micro-Lot Beans",
+        feat1_desc: "Direct trade Ethiopian, Colombian & Panamanian varieties.",
+        feat2_title: "Master Baristas",
+        feat2_desc: "Crafted with exact water ratios and temperature control.",
+        menu_tag: "Artisan Selection",
+        menu_heading: "Featured Drinks & Delights",
+        menu_subheading: "Directly available for dine-in, takeaway, or quick WhatsApp pre-order.",
+        item1_name: "V60 Ethiopian Yirgacheffe",
+        item1_desc: "Floral aroma with delicate notes of jasmine, bergamot citrus, and a clean honey finish.",
+        item2_name: "C45 Signature Cold Brew",
+        item2_desc: "Steeped for 18 hours in small batches. Ultra-smooth, low acidity with dark chocolate & hazelnut undertones.",
+        item3_name: "Artisan Spanish Latte",
+        item3_desc: "Rich espresso blended with organic milk and custom house-made condensed caramel touch.",
+        item4_name: "Pistachio Cream Croissant",
+        item4_desc: "Flaky butter layers filled with rich Sicilian pistachio cream, baked fresh twice daily.",
+        item5_name: "Velvet Flat White",
+        item5_desc: "Double ristretto shot with micro-foamed textured milk for intense espresso clarity.",
+        item6_name: "Panama Geisha Chemex",
+        item6_desc: "Rare Geisha variety featuring subtle peach tea notes, jasmine blossom, and silky body.",
+        order_item: "Order via WhatsApp",
+        reviews_tag: "Social Proof",
+        reviews_heading: "Loved by Coffee Enthusiasts",
+        reviews_count: "Based on 240+ Google Reviews",
+        review1_text: "\"Hands down the best V60 in Seef District. The baristas really know their science and origin profiles. Sleek atmosphere and top quality micro-lots!\"",
+        review2_text: "\"The signature cold brew and pistachio croissants are an incredible pair. The dark moody interior design makes it my favorite work spot in Manama.\"",
+        review3_text: "\"Consistently rich espresso and incredibly friendly staff. Ordering through WhatsApp for quick pickup on my way to office works seamlessly.\"",
+        loc_tag: "Visit & Connect",
+        loc_heading: "Find Us in Seef District",
+        loc_sub: "We are conveniently located in the commercial heart of Bahrain.",
+        address_title: "Address",
+        address_text: "Building 45, Road 2801, Block 428, Seef District, Manama, Kingdom of Bahrain",
+        hours_title: "Opening Hours",
+        hours_weekday: "Sun - Thu: 7:00 AM – 11:00 PM",
+        hours_weekend: "Fri - Sat: 8:00 AM – 12:00 Midnight",
+        contact_title: "Direct Contact & WhatsApp",
+        map_card_title: "Visit C45 Specialty Lab",
+        map_card_sub: "Experience our minimalist luxury interior, high-speed Wi-Fi, and artisanal brews.",
+        open_maps: "Open in Google Maps",
+        lang_btn: "العربية"
+      },
+      ar: {
+        nav_about: "عن الكافيه",
+        nav_menu: "قائمة المشروبات",
+        nav_reviews: "التقييمات",
+        nav_location: "الموقع والمواعيد",
+        hero_badge: "ضاحية السيف، مملكة البحرين",
+        hero_headline: "قهوة مختصة وتجارب فريدة في ضاحية السيف",
+        hero_subtext: "اكتشف عالم C45 حيث تحضر كل كوب بدقة متناهية. استمتع بأجود أنواع القهوة المقطرة، والحلويات الطازجة، في أجواء حديثة فاخرة مصممة لعشاق القهوة الحقيقيين.",
+        cta_whatsapp: "اطلب عبر الواتساب",
+        hero_view_menu: "تصفح القائمة",
+        stat_cupping: "درجة تقييم القهوة +88",
+        stat_arabica: "حبوب أرابيكا 100%",
+        stat_rating: "تقييم عملاء جوجل",
+        stat_open: "طازج يومياً في السيف",
+        about_tag: "قصة C45",
+        about_heading: "حيث يلتقي الشغف بالدقة والإتقان",
+        about_p1: "يقع C45 أرتيزان كافيه في قلب ضاحية السيف بالبحرين، حيث تأسس بناءً على شغف راسخ: الارتقاء بصناعة القهوة المختصة إلى أعلى مستوياتها. نختار حبوب القهوة بعناية فائقة من أندر المحاصيل العالمية.",
+        about_p2: "سواء كنت تبحث عن مساحة هادئة للاستمتاع بكوب V60 مقطر بعناية، أو المشروبات المبتكرة الخاصة بنا، يقدم لك C45 تجربة استثنائية مع كل رشفة.\ font-",
+        about_badge_title: "استخلاص دقيق",
+        about_badge_desc: "جرعات اسبريسو موزونة بالغرام",
+        feat1_title: "محاصيل نادرة",
+        feat1_desc: "استيراد مباشر من إثيوبيا، كولومبيا وبنما.",
+        feat2_title: "بارستا محترفون",
+        feat2_desc: "تحضير بمعايير دقيقة لدرجات الحرارة والنسب.",
+        menu_tag: "اختيارات مختارة",
+        menu_heading: "أبرز المشروبات والحلويات",
+        menu_subheading: "متاحة للطلب داخل الكافيه، للطلب الخارجي، أو للطلب السريع عبر الواتساب.",
+        item1_name: "V60 إثيوبي يورغاتشيف",
+        item1_desc: "إيحاءات زهرية مع نغمات الياسمين، الحمضيات الخفيفة، والنهاية العسلية الصافية.",
+        item2_name: "كولد برو C45 الخاص",
+        item2_desc: "منقوع لمدة 18 ساعة بفقرات صغيرة. قوام سلس جداً وقليل الحموضة مع إيحاءات الشوكولاتة الداكنة.",
+        item3_name: "سبانيش لاتيه متميز",
+        item3_desc: "اسبريسو غني ممزوج مع حليب عضوي ولمسة كراميل محلى خاصة بنا.",
+        item4_name: "كرواسون بكريمة الفستق",
+        item4_desc: "طبقات هشة من الزبدة محشوة بكريمة الفستق الصقلي الغنية، تُخبز طازجة مرتين يومياً.",
+        item5_name: "فلات وايت فلفيت",
+        item5_desc: "جرعة ريستريتو مضاعفة مع حليب مبخر بقوام مخملي لوضوح نكهة الاسبريسو.",
+        item6_name: "بنما جيشا كيمكس",
+        item6_desc: "محصول جيشا النادر مع إيحاءات شاي الخوخ، زهر الياسمين، وقوام حريري.",
+        order_item: "اطلب عبر الواتساب",
+        reviews_tag: "آراء العملاء",
+        reviews_heading: "يقدرنا عشاق القهوة المختصة",
+        reviews_count: "بناءً على أكثر من 240 تقييم في جوجل",
+        review1_text: "\"بلا منازع أفضل V60 في ضاحية السيف. البارستا على دراية كاملة بتفاصيل المحاصيل. أجواء راقية وقهوة ممتازة!\"",
+        review2_text: "\"الكولد برو وكرواسون الفستق مزيج لا يُقاوَم. التصميم الداخلي المظلم والأنيق يجعله مكاني المفضل للعمل في المنامة.\"",
+        review3_text: "\"اسبريسو غني دائماً وطاقم عمل ودود للغاية. خدمة الطلب عبر الواتساب للاستلام السريع في طريقي للعمل ممتازة.\"",
+        loc_tag: "تفضل بزيارتنا",
+        loc_heading: "موقعنا في ضاحية السيف",
+        loc_sub: "نقع في موقع متميز في المركز التجاري لمملكة البحرين.",
+        address_title: "العنوان",
+        address_text: "مبنى 45، طريق 2801، مجمع 428، ضاحية السيف، المنامة، مملكة البحرين",
+        hours_title: "ساعات العمل",
+        hours_weekday: "الأحد - الأربعاء: 7:00 صباحاً – 11:00 مساءً",
+        hours_weekend: "الخميس - السبت: 8:00 صباحاً – 12:00 منتصف الليل",
+        contact_title: "التواصل المباشر والواتساب",
+        map_card_title: "قم بزيارة معامل C45",
+        map_card_sub: "استمتع بالتصميم الفاخر، إنترنت عالي السرعة، وأجود أنواع القهوة المختصة.",
+        open_maps: "فتح في خرائط جوجل",
+        lang_btn: "English"
+      }
+    };
+
+    let currentLang = 'en';
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'en' ? 'ar' : 'en';
+      const html = document.documentElement;
+      
+      // Toggle DIR and LANG attribute
+      html.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+      html.setAttribute('lang', currentLang);
+      
+      // Font adjustment
+      if (currentLang === 'ar') {
+        document.body.classList.add('font-ar');
+        document.body.classList.remove('font-en');
+      } else {
+        document.body.classList.add('font-en');
+        document.body.classList.remove('font-ar');
+      }
+
+      // Update DOM Elements with data-i18n
+      const elements = document.querySelectorAll('[data-i18n]');
+      elements.forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[currentLang][key]) {
+          el.textContent = translations[currentLang][key];
+        }
+      });
+
+      // Specific updates for hardcoded localized elements
+      document.getElementById('langLabel').textContent = translations[currentLang].lang_btn;
+      document.getElementById('heroHeadline').textContent = translations[currentLang].hero_headline;
+      document.getElementById('heroSubtext').textContent = translations[currentLang].hero_subtext;
+    }
+  </script>
+</body>
+</html>
