@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11:11 Cafe | Specialty Coffee & Artisanal Bakes - District 1, Saar</title>
+    <meta name="description" content="Experience the luxury of Eleven Eleven in District 1, Saar, Bahrain. Savor our signature V60, artisanal pastries, and book luxury work retreats. Direct ordering & loyalty rewards.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#FDFBF7',
+                        espresso: '#1E1611',
+                        gold: '#C5A059',
+                        cashmere: '#F5EFEB',
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Structured Schema for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FoodEstablishment",
+      "name": "11:11 Cafe (Eleven Eleven)",
+      "image": "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&q=80&w=800",
+      "@id": "",
+      "url": "https://eleveneleven.bh",
+      "telephone": "+97317111111",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "District 1, Road 7111, Block 571",
+        "addressLocality": "Saar",
+        "addressCountry": "BH"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 26.2114,
+        "longitude": 50.4851
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Sunday"],
+          "opens": "07:00",
+          "closes": "00:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Friday", "Saturday"],
+          "opens": "07:00",
+          "closes": "01:00"
+        }
+      ],
+      "menu": "#menu"
+    }
+    </script>
+
+    <style>
+        /* Custom scrollbar matching design palette */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FDFBF7;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #C5A059;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #1E1611;
+        }
+        .text-stroke-gold {
+            -webkit-text-stroke: 1px #C5A059;
+            color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-cream text-espresso font-sans antialiased overflow-x-hidden selection:bg-gold selection:text-espresso">
+
+    <!-- Top Notification Bar -->
+    <div class="bg-espresso text-cream text-xs py-2 px-4 text-center tracking-widest font-light border-b border-gold/20">
+        <span>MAKE A WISH • GET FREE SAFFRON CROISSANT ON YOUR FIRST DIRECT ORDER</span>
+    </div>
+
+    <!-- Header / Navigation (Sticky Glassmorphism) -->
+    <header class="sticky top-0 z-40 bg-cream/80 backdrop-blur-md border-b border-gold/10 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand Logo (Minimalist Serif Style) -->
+                <a href="#" class="flex flex-col items-center group">
+                    <span class="font-serif text-3xl font-light tracking-[0.25em] text-espresso leading-none group-hover:text-gold transition-colors duration-300">11:11</span>
+                    <span class="text-[9px] tracking-[0.4em] text-gold uppercase mt-1">E L E V E N  E L E V E N</span>
+                </a>
+
+                <!-- Desktop Nav Navigation Links -->
+                <nav class="hidden md:flex space-x-10 text-xs font-semibold tracking-widest uppercase">
+                    <a href="#experience" class="text-espresso hover:text-gold transition-colors duration-300">The Craft</a>
+                    <a href="#menu" class="text-espresso hover:text-gold transition-colors duration-300">The Menu</a>
+                    <a href="#direct-order" class="text-espresso hover:text-gold transition-colors duration-300">Order Direct</a>
+                    <a href="#workspace" class="text-espresso hover:text-gold transition-colors duration-300">Workspace</a>
+                    <a href="#club" class="text-espresso hover:text-gold transition-colors duration-300">11:11 Club</a>
+                </nav>
+
+                <!-- Header CTA Actions -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <button onclick="toggleCart()" class="relative p-2 text-espresso hover:text-gold transition-all">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                        </svg>
+                        <span id="cart-badge" class="absolute -top-1 -right-1 bg-gold text-espresso text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center hidden">0</span>
+                    </button>
+                    <a href="#direct-order" class="inline-flex items-center justify-center px-6 py-2.5 border border-gold bg-gold text-espresso text-xs font-semibold uppercase tracking-widest hover:bg-espresso hover:text-cream hover:border-espresso transition-all duration-300 rounded-md shadow-sm">
+                        Order Now
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="flex items-center md:hidden space-x-4">
+                    <button onclick="toggleCart()" class="relative p-2 text-espresso hover:text-gold transition-all">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                        </svg>
+                        <span id="cart-badge-mobile" class="absolute top-0 right-0 bg-gold text-espresso text-[9px] font-bold rounded-full w-4 h-4 flex items-center justify-center hidden">0</span>
+                    </button>
+                    <button id="mobile-menu-btn" class="text-espresso focus:outline-none p-2" aria-label="Toggle Menu">
+                        <div class="space-y-1.5">
+                            <span class="block w-6 h-0.5 bg-espresso transition-transform duration-300" id="bar1"></span>
+                            <span class="block w-4 h-0.5 bg-espresso transition-opacity duration-300" id="bar2"></span>
+                            <span class="block w-6 h-0.5 bg-espresso transition-transform duration-300" id="bar3"></span>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-cream border-b border-gold/10 px-4 pt-4 pb-8 space-y-4 text-center transition-all duration-300">
+            <a href="#experience" class="block text-xs font-semibold tracking-widest uppercase py-2 border-b border-gold/5">The Craft</a>
+            <a href="#menu" class="block text-xs font-semibold tracking-widest uppercase py-2 border-b border-gold/5">The Menu</a>
+            <a href="#direct-order" class="block text-xs font-semibold tracking-widest uppercase py-2 border-b border-gold/5">Order Direct</a>
+            <a href="#workspace" class="block text-xs font-semibold tracking-widest uppercase py-2 border-b border-gold/5">Workspace</a>
+            <a href="#club" class="block text-xs font-semibold tracking-widest uppercase py-2 pb-4">11:11 Club</a>
+            <div class="pt-4">
+                <a href="#direct-order" class="block w-full py-3 bg-gold text-espresso text-xs font-bold uppercase tracking-widest rounded-md">Order Delivery / Pickup</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Section 2: Hero Section (The Mood Setter) -->
+    <section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-espresso text-cream">
+        <!-- Background image with exquisite luxurious blur overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=2000" 
+                 alt="11:11 Espresso Pour" 
+                 class="w-full h-full object-cover opacity-35 transform scale-105 transition-transform duration-10000 ease-out">
+            <div class="absolute inset-0 bg-gradient-to-b from-espresso/80 via-espresso/90 to-espresso"></div>
+        </div>
+
+        <!-- Ambient Jazz Controller -->
+        <div class="absolute bottom-8 left-8 z-20 hidden md:flex items-center space-x-3 bg-cream/10 backdrop-blur-md px-4 py-2.5 rounded-full border border-cream/10 text-xs text-cream/80">
+            <button onclick="toggleAmbientMusic()" class="focus:outline-none hover:text-gold transition-colors">
+                <i id="music-icon" class="fa-solid fa-play text-xs mr-2"></i>
+                <span id="music-text">Curated Ambient Vibe</span>
+            </button>
+            <span class="h-3 w-px bg-cream/20"></span>
+            <div class="flex space-x-0.5 items-end h-3">
+                <span class="w-0.5 bg-gold animate-pulse h-1"></span>
+                <span class="w-0.5 bg-gold animate-pulse h-3" style="animation-delay: 0.15s"></span>
+                <span class="w-0.5 bg-gold animate-pulse h-2" style="animation-delay: 0.3s"></span>
+                <span class="w-0.5 bg-gold animate-pulse h-4" style="animation-delay: 0.45s"></span>
+            </div>
+        </div>
+
+        <div class="relative z-10 max-w-5xl mx-auto px-4 text-center py-20">
+            <span class="text-gold text-xs sm:text-sm tracking-[0.4em] uppercase font-semibold mb-6 block animate-fade-in-down">THE COFFEE IS SPECIALTY. THE MOMENT IS YOURS.</span>
+            
+            <h1 class="font-serif text-5xl sm:text-7xl md:text-8xl font-extralight tracking-widest text-cream mb-8 leading-tight">
+                M A K E &nbsp;A &nbsp;W I S H<br>
+                <span class="font-serif italic text-gold font-light">at 11:11</span>
+            </h1>
+            
+            <p class="max-w-2xl mx-auto text-sm sm:text-lg text-cream/70 font-light leading-relaxed tracking-wide mb-12">
+                Step into District 1’s sanctuary of sensory design, where meticulously sourced specialty micro-lots meet hand-laminated fresh bakes daily.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#direct-order" class="w-full sm:w-auto px-8 py-4 bg-gold hover:bg-cream hover:text-espresso text-espresso text-xs font-bold tracking-widest uppercase transition-all duration-300 rounded-md shadow-lg">
+                    Order Direct Web App
+                </a>
+                <a href="#menu" class="w-full sm:w-auto px-8 py-4 border border-cream/30 hover:border-gold hover:text-gold text-cream text-xs font-bold tracking-widest uppercase transition-all duration-300 rounded-md">
+                    View Interactive Menu
+                </a>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-8 right-8 z-10 text-[10px] tracking-[0.2em] text-cream/40 uppercase font-light hidden lg:block">
+            District 1, Saar, Kingdom of Bahrain
+        </div>
+    </section>
+
+    <!-- Section 3: Brand Pillars & The Experience (The Social Hub) -->
+    <section id="experience" class="py-24 sm:py-32 bg-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <h2 class="font-serif text-4xl sm:text-5xl font-light text-espresso mb-4">Crafting Quiet Luxury Daily</h2>
+                <div class="w-24 h-px bg-gold mx-auto mb-6"></div>
+                <p class="text-espresso/60 text-sm tracking-wide leading-relaxed">
+                    Every extraction, layer of pastry, and architectural detail in our District 1 space is curated to provide a momentary pause from the rush of everyday life.
+                </p>
+            </div>
+
+            <!-- 3-Column Editorial Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
+                <!-- Pillar 1 -->
+                <div class="group relative flex flex-col items-center text-center">
+                    <div class="w-full h-80 overflow-hidden mb-8 relative rounded-md shadow-md">
+                        <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&q=80&w=600" 
+                             alt="V60 Pouring" 
+                             class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out">
+                        <!-- Live Badge indicator -->
+                        <div class="absolute top-4 left-4 bg-espresso/90 backdrop-blur-sm text-[10px] text-gold tracking-widest uppercase px-3 py-1.5 rounded">
+                            Ethiopia, Guji - Natural
+                        </div>
+                    </div>
+                    <span class="text-gold font-serif italic text-lg mb-2">01 / The Roast</span>
+                    <h3 class="font-serif text-2xl font-normal text-espresso mb-3">Specialty Brewing</h3>
+                    <p class="text-espresso/70 text-xs tracking-wide leading-relaxed max-w-xs">
+                        Beans sourced from ethical micro-lots, roasted to perfection, and brewed via V60, Chemex, or state-of-the-art espresso extraction.
+                    </p>
+                </div>
+
+                <!-- Pillar 2 -->
+                <div class="group relative flex flex-col items-center text-center">
+                    <div class="w-full h-80 overflow-hidden mb-8 relative rounded-md shadow-md">
+                        <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&q=80&w=600" 
+                             alt="Fresh Pastries" 
+                             class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out">
+                        <div class="absolute top-4 left-4 bg-gold text-espresso text-[10px] tracking-widest uppercase font-bold px-3 py-1.5 rounded animate-pulse">
+                            Fresh Out of the Oven
+                        </div>
+                    </div>
+                    <span class="text-gold font-serif italic text-lg mb-2">02 / The Bake</span>
+                    <h3 class="font-serif text-2xl font-normal text-espresso mb-3">Artisanal Pastries</h3>
+                    <p class="text-espresso/70 text-xs tracking-wide leading-relaxed max-w-xs">
+                        Handcrafted daily by our master pastry chefs, fusing classic French lamination with local premium cardamoms and saffrons.
+                    </p>
+                </div>
+
+                <!-- Pillar 3 -->
+                <div class="group relative flex flex-col items-center text-center">
+                    <div class="w-full h-80 overflow-hidden mb-8 relative rounded-md shadow-md">
+                        <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&q=80&w=600" 
+                             alt="District 1 Interiors" 
+                             class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out">
+                        <div class="absolute top-4 left-4 bg-espresso/90 backdrop-blur-sm text-[10px] text-gold tracking-widest uppercase px-3 py-1.5 rounded">
+                            WORKSPACE-FRIENDLY
+                        </div>
+                    </div>
+                    <span class="text-gold font-serif italic text-lg mb-2">03 / The Space</span>
+                    <h3 class="font-serif text-2xl font-normal text-espresso mb-3">District 1 Sanctuary</h3>
+                    <p class="text-espresso/70 text-xs tracking-wide leading-relaxed max-w-xs">
+                        Designed for connection. A bright architectural space with ultra-fast optical fiber Wi-Fi and designated silent zones.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: The Digital Menu (Frictionless Browsing) -->
+    <section id="menu" class="py-24 bg-cashmere border-t border-b border-gold/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-gold text-xs tracking-[0.4em] uppercase font-semibold block mb-3">EXPERIENCE FLAVOR</span>
+                <h2 class="font-serif text-4xl sm:text-5xl font-light text-espresso">The Digital Menu</h2>
+                <p class="text-espresso/60 text-xs tracking-widest uppercase mt-4">Bypass the PDF. Real-time updates daily.</p>
+            </div>
+
+            <!-- Category Tabs & Dietary Filter Pills -->
+            <div class="flex flex-col items-center space-y-6 mb-12">
+                <!-- Menu Categories -->
+                <div class="flex flex-wrap justify-center gap-2 bg-cream p-1.5 rounded-lg border border-gold/10">
+                    <button onclick="filterMenu('coffee')" id="tab-coffee" class="menu-tab px-6 py-2.5 text-xs tracking-widest uppercase font-semibold rounded-md transition-all duration-300 bg-gold text-espresso">
+                        Specialty Coffee
+                    </button>
+                    <button onclick="filterMenu('bakery')" id="tab-bakery" class="menu-tab px-6 py-2.5 text-xs tracking-widest uppercase font-semibold rounded-md transition-all duration-300 text-espresso/60 hover:text-espresso">
+                        Artisanal Bakery
+                    </button>
+                    <button onclick="filterMenu('brunch')" id="tab-brunch" class="menu-tab px-6 py-2.5 text-xs tracking-widest uppercase font-semibold rounded-md transition-all duration-300 text-espresso/60 hover:text-espresso">
+                        Breakfast & Brunch
+                    </button>
+                </div>
+
+                <!-- Dietary Tags Legend -->
+                <div class="flex flex-wrap justify-center gap-4 text-[10px] text-espresso/70">
+                    <span class="inline-flex items-center space-x-1.5">
+                        <span class="bg-gold/20 text-gold font-bold px-1.5 py-0.5 rounded">V</span>
+                        <span>Vegan</span>
+                    </span>
+                    <span class="inline-flex items-center space-x-1.5">
+                        <span class="bg-gold/20 text-gold font-bold px-1.5 py-0.5 rounded">GF</span>
+                        <span>Gluten-Free</span>
+                    </span>
+                    <span class="inline-flex items-center space-x-1.5">
+                        <span class="bg-gold/20 text-gold font-bold px-1.5 py-0.5 rounded">DF</span>
+                        <span>Dairy-Free</span>
+                    </span>
+                    <span class="inline-flex items-center space-x-1.5">
+                        <span class="bg-gold/20 text-gold font-bold px-1.5 py-0.5 rounded">N</span>
+                        <span>Contains Nuts</span>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Menu Grid Layout -->
+            <div id="menu-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+                <!-- Rendered Dynamically through Javascript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Direct Delivery & Loyalty (Bypassing the Apps) -->
+    <section id="direct-order" class="py-24 bg-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Elegant Split Container -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
+                
+                <!-- Direct Delivery Promotion (8 Columns Left) -->
+                <div class="lg:col-span-7 bg-[#1E1611] text-cream p-8 sm:p-12 md:p-16 rounded-xl relative overflow-hidden flex flex-col justify-between shadow-2xl border border-gold/15">
+                    <div>
+                        <span class="text-gold text-xs tracking-[0.4em] uppercase font-bold mb-4 block">BYPASS THE THIRD-PARTY APPS</span>
+                        <h2 class="font-serif text-3xl sm:text-5xl font-light text-cream leading-tight mb-6">Order Direct to Your Doorstep in Saar</h2>
+                        <p class="text-cream/70 text-sm tracking-wide leading-relaxed mb-8">
+                            Why pay higher inflated menu pricing on delivery apps? Secure immediate dispatch, loyalty stars, and piping hot coffee straight from our District 1 hub.
+                        </p>
+                        <div class="flex flex-wrap gap-6 mb-12">
+                            <div class="flex items-center space-x-3">
+                                <i class="fa-regular fa-clock text-gold text-lg"></i>
+                                <span class="text-xs text-cream/80 tracking-widest">AVERAGE DISPATCH: 12 MIN</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fa-solid fa-truck-ramp-box text-gold text-lg"></i>
+                                <span class="text-xs text-cream/80 tracking-widest">DIRECT DRIVERS ONLY</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Checkout integrations and checkout CTA buttons -->
+                    <div class="pt-8 border-t border-cream/10">
+                        <div class="flex flex-col sm:flex-row gap-4 mb-6">
+                            <button onclick="alert('Pickup Order flow initiated! Select items above to customize.')" class="flex-1 py-4 bg-gold hover:bg-cream hover:text-espresso text-espresso text-xs font-semibold tracking-widest uppercase rounded transition-all duration-300">
+                                Instant Pickup Order
+                            </button>
+                            <button onclick="alert('Delivery Order flow initiated! Select items above to customize.')" class="flex-1 py-4 border border-cream/30 hover:border-gold hover:text-gold text-cream text-xs font-semibold tracking-widest uppercase rounded transition-all duration-300">
+                                Home Delivery
+                            </button>
+                        </div>
+                        <div class="flex items-center justify-between text-[11px] text-cream/40">
+                            <span>We Accept BenefitPay, Apple Pay, Card & Cash on Delivery</span>
+                            <div class="flex space-x-2">
+                                <span class="bg-cream/10 px-1.5 py-0.5 rounded text-[8px] text-cream/80 font-semibold">BENEFIT PAY</span>
+                                <span class="bg-cream/10 px-1.5 py-0.5 rounded text-[8px] text-cream/80 font-semibold">APPLE PAY</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 11:11 VIP Club Loyalty Signup (5 Columns Right) -->
+                <div id="club" class="lg:col-span-5 bg-cashmere p-8 sm:p-12 md:p-16 rounded-xl border border-gold/15 flex flex-col justify-between">
+                    <div>
+                        <span class="text-gold text-xs tracking-[0.4em] uppercase font-bold mb-4 block">EXCLUSIVE LOYALTY</span>
+                        <h2 class="font-serif text-3xl sm:text-4xl font-light text-espresso mb-6">Join the 11:11 VIP Club</h2>
+                        <p class="text-espresso/70 text-xs tracking-wide leading-relaxed mb-8">
+                            No logins. No complex passwords. Get your digital pass directly via SMS. Spend BD 1, collect stars, and cash them out for custom bakes and priority reservations.
+                        </p>
+                        <ul class="space-y-4 mb-8 text-xs text-espresso/80 font-medium">
+                            <li class="flex items-center space-x-3">
+                                <i class="fa-regular fa-star text-gold"></i>
+                                <span>Free welcome pastry upon activation</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <i class="fa-regular fa-envelope text-gold"></i>
+                                <span>Secret off-menu alerts & tasting invitations</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <i class="fa-regular fa-bell text-gold"></i>
+                                <span>Instant priority table and workshop booking</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Direct Signup Input -->
+                    <form onsubmit="handleVIPRegister(event)" class="space-y-3">
+                        <div>
+                            <label class="block text-[10px] tracking-widest text-espresso/60 uppercase mb-2">Phone Number (WhatsApp Preferred)</label>
+                            <div class="flex gap-2">
+                                <span class="inline-flex items-center px-3 rounded border border-gold/20 bg-cream text-espresso/70 text-xs">+973</span>
+                                <input type="tel" required placeholder="3311 1111" class="flex-1 bg-cream border border-gold/20 text-espresso text-sm px-4 py-3 rounded focus:outline-none focus:border-gold">
+                            </div>
+                        </div>
+                        <button type="submit" class="w-full py-4 bg-espresso text-cream hover:bg-gold hover:text-espresso text-xs font-semibold tracking-widest uppercase rounded transition-all duration-300">
+                            Get VIP Card Via SMS / WhatsApp
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: Space Booking & Remote Work Reserve (Frictionless Scheduling) -->
+    <section id="workspace" class="py-24 bg-espresso text-cream border-b border-gold/15">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                
+                <!-- Text Block -->
+                <div class="lg:col-span-5">
+                    <span class="text-gold text-xs tracking-[0.4em] uppercase font-bold mb-4 block">WORKSPACE SEATING</span>
+                    <h2 class="font-serif text-4xl sm:text-5xl font-light text-cream mb-6">Reserve Your Quiet Area</h2>
+                    <p class="text-cream/70 text-sm leading-relaxed mb-8">
+                        Skip the crowd search. Secure highly-focused visual spaces equipped with high-speed fiber internet, charging panels, and a constant rotation of specialty coffee.
+                    </p>
+                    
+                    <!-- Live Status Counter Widget -->
+                    <div class="bg-cream/5 p-6 rounded-lg border border-cream/10">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs tracking-widest text-cream/60 uppercase">VIBE UPDATE STATUS</span>
+                            <span class="flex h-2 w-2 relative">
+                              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                              <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                            </span>
+                        </div>
+                        <p class="text-gold font-serif italic text-lg mb-1">Quiet & Focused Work Zone Active</p>
+                        <p class="text-[11px] text-cream/40">Currently 4 dedicated seats free for reservation right now in District 1.</p>
+                    </div>
+                </div>
+
+                <!-- Interactive Scheduling Form Container -->
+                <div class="lg:col-span-7 bg-cream text-espresso p-8 sm:p-12 rounded-xl border border-gold/15 shadow-2xl">
+                    <h3 class="font-serif text-2xl font-light text-espresso mb-8">Book Seating / Conference Spot</h3>
+                    <form onsubmit="handleBooking(event)" class="space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-[10px] tracking-widest text-espresso/60 uppercase mb-2">Select Date</label>
+                                <input type="date" required class="w-full bg-cashmere border border-gold/20 text-espresso text-sm px-4 py-3 rounded focus:outline-none focus:border-gold">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] tracking-widest text-espresso/60 uppercase mb-2">Select Session</label>
+                                <select class="w-full bg-cashmere border border-gold/20 text-espresso text-sm px-4 py-3.5 rounded focus:outline-none focus:border-gold">
+                                    <option>Morning Focus (7:00 AM - 12:00 PM)</option>
+                                    <option>Midday Connect (12:00 PM - 5:00 PM)</option>
+                                    <option>Evening Wind-down (5:00 PM - Midnight)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-[10px] tracking-widest text-espresso/60 uppercase mb-2">Purpose of Visit</label>
+                            <select class="w-full bg-cashmere border border-gold/20 text-espresso text-sm px-4 py-3.5 rounded focus:outline-none focus:border-gold">
+                                <option>Solo Focus (Equipped Desk with Wi-Fi)</option>
+                                <option>Social Gathering / Casual Meeting</option>
+                                <option>Private Dining / Micro Event Presentation</option>
+                            </select>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-[10px] tracking-widest text-espresso/60 uppercase mb-2">Your Name</label>
+                                <input type="text" required placeholder="Hassan Al-Saeed" class="w-full bg-cashmere border border-gold/20 text-espresso text-sm px-4 py-3 rounded focus:outline-none focus:border-gold">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] tracking-widest text-espresso/60 uppercase mb-2">Mobile Phone</label>
+                                <input type="tel" required placeholder="+973 3911 1111" class="w-full bg-cashmere border border-gold/20 text-espresso text-sm px-4 py-3 rounded focus:outline-none focus:border-gold">
+                            </div>
+                        </div>
+                        <button type="submit" class="w-full py-4 bg-espresso text-cream hover:bg-gold hover:text-espresso text-xs font-semibold tracking-widest uppercase rounded transition-all duration-300">
+                            Reserve My Workspace Spot
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 7: Social Proof (The Lifestyle Proof) -->
+    <section class="py-24 bg-cream overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-gold text-xs tracking-[0.4em] uppercase font-bold block mb-3">THE #1111BAHRAIN EXPERIENCE</span>
+                <h2 class="font-serif text-4xl sm:text-5xl font-light text-espresso">Shared Moments</h2>
+                <p class="text-espresso/60 text-xs tracking-widest uppercase mt-4">Join our community on Instagram</p>
+            </div>
+
+            <!-- Curated IG Masonry Gallery style -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
+                <div class="relative group overflow-hidden rounded shadow-sm aspect-square">
+                    <img src="https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&q=80&w=500" alt="Modern workspace" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-espresso/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <p class="text-xs text-cream font-light">"My sanctuary desk in District 1. Fast Wi-Fi and clean aesthetics."</p>
+                        <span class="text-[9px] text-gold uppercase mt-2">@saar_creative</span>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded shadow-sm aspect-square">
+                    <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&q=80&w=500" alt="Iced Pour-over" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-espresso/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <p class="text-xs text-cream font-light">"Flawless single-origin V60 iced drip pour. Best in Bahrain."</p>
+                        <span class="text-[9px] text-gold uppercase mt-2">@bahrain_coffee_hunter</span>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded shadow-sm aspect-square">
+                    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&q=80&w=500" alt="Croissant Closeup" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-espresso/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <p class="text-xs text-cream font-light">"Layers of flaky gold pastry. Get the saffron cardamom!"</p>
+                        <span class="text-[9px] text-gold uppercase mt-2">@bh.foodies</span>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded shadow-sm aspect-square">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=500" alt="Cafe Ambience" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-espresso/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <p class="text-xs text-cream font-light">"Slowing down the afternoon before the sunset wish."</p>
+                        <span class="text-[9px] text-gold uppercase mt-2">@minimalist_living</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Google Reviews Slider (Clean Premium Layout) -->
+            <div class="max-w-4xl mx-auto bg-cashmere p-8 sm:p-12 rounded-xl border border-gold/10 relative">
+                <div class="text-center">
+                    <div class="flex justify-center space-x-1 mb-4 text-gold text-sm">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <blockquote class="font-serif text-lg sm:text-2xl font-light text-espresso italic leading-relaxed mb-6">
+                        "The absolute best V60 in Saar, hands down. The minimalist design and peaceful workspace make it my favorite escape. Plus, direct parking layout in District 1 is seamless."
+                    </blockquote>
+                    <span class="text-xs tracking-widest text-espresso/60 uppercase font-semibold">— Fatima A., Saar Resident & verified Google Local Guide</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 8: Footer (The Local SEO Anchor) -->
+    <footer class="bg-espresso text-cream pt-20 pb-28 border-t border-gold/10 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
+                
+                <!-- Column 1: Editorial Branding -->
+                <div class="md:col-span-5">
+                    <span class="font-serif text-3xl font-light tracking-[0.25em] text-cream leading-none block mb-2">11:11</span>
+                    <span class="text-[9px] tracking-[0.4em] text-gold uppercase block mb-6">E L E V E N  E L E V E N</span>
+                    <p class="text-cream/50 text-xs tracking-wide leading-relaxed max-w-sm mb-6">
+                        Serving the finest pour-overs, handcrafted cold brews, and artisan baked items daily. Curating slow living for Saar, Janabiya, Budaiya, and the wider Northern Governorate.
+                    </p>
+                    <div class="flex space-x-4 text-cream/70 hover:text-gold">
+                        <a href="#" class="hover:text-gold transition-colors"><i class="fa-brands fa-instagram text-lg"></i></a>
+                        <a href="#" class="hover:text-gold transition-colors"><i class="fa-brands fa-whatsapp text-lg"></i></a>
+                        <a href="#" class="hover:text-gold transition-colors"><i class="fa-brands fa-tiktok text-lg"></i></a>
+                    </div>
+                </div>
+
+                <!-- Column 2: Exact Location & Directions -->
+                <div class="md:col-span-4">
+                    <span class="text-gold text-xs tracking-widest uppercase font-bold block mb-4">D1 PHYSICAL SANCTUARY</span>
+                    <p class="text-cream/80 text-xs tracking-wider leading-loose mb-4">
+                        District 1 Food Hub<br>
+                        Road 7111, Block 571, Saar<br>
+                        Kingdom of Bahrain
+                    </p>
+                    <a href="https://maps.google.com" target="_blank" class="inline-flex items-center text-gold text-xs font-semibold tracking-widest uppercase hover:underline">
+                        <i class="fa-solid fa-location-dot mr-2"></i> Get Directions on Google Maps
+                    </a>
+                </div>
+
+                <!-- Column 3: Hours -->
+                <div class="md:col-span-3">
+                    <span class="text-gold text-xs tracking-widest uppercase font-bold block mb-4">OPERATING HOURS</span>
+                    <p class="text-cream/80 text-xs tracking-wider leading-loose">
+                        <span class="block">Daily: 7:00 AM - Midnight</span>
+                        <span class="block">Friday: 7:00 AM - 1:00 AM</span>
+                        <span class="block">Saturday: 7:00 AM - 1:00 AM</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Bottom Legal Bar -->
+            <div class="border-t border-cream/10 pt-8 flex flex-col sm:flex-row justify-between items-center text-[10px] text-cream/40 tracking-widest uppercase gap-4">
+                <span>© 2024 Eleven Eleven Cafe. Crafted with dedication in Saar. All Rights Reserved.</span>
+                <div class="flex space-x-4">
+                    <a href="#" class="hover:text-gold">Privacy Policy</a>
+                    <span>•</span>
+                    <a href="#" class="hover:text-gold">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- The Mobile Thumb-Zone Sticky Utility Bar -->
+    <div class="md:hidden fixed bottom-0 left-0 right-0 bg-[#1E1611]/95 backdrop-blur-md border-t border-gold/20 py-3.5 px-4 z-50 flex items-center justify-between shadow-2xl">
+        <a href="tel:+97317111111" class="flex flex-col items-center justify-center text-cream/80 hover:text-gold transition-colors w-1/4">
+            <i class="fa-solid fa-phone text-sm mb-1"></i>
+            <span class="text-[8px] tracking-widest uppercase">Call Us</span>
+        </a>
+        <a href="#menu" class="flex flex-col items-center justify-center text-cream/80 hover:text-gold transition-colors w-1/4">
+            <i class="fa-regular fa-file-pdf text-sm mb-1"></i>
+            <span class="text-[8px] tracking-widest uppercase">View Menu</span>
+        </a>
+        <a href="#direct-order" class="flex-1 ml-4 bg-gold hover:bg-cream text-espresso hover:text-espresso py-3 px-4 rounded text-center text-xs font-bold tracking-widest uppercase transition-all">
+            Order Direct (Get Free Pastry)
+        </a>
+    </div>
+
+    <!-- Persistent Right Floating WhatsApp Contact -->
+    <a href="https://wa.me/97317111111" target="_blank" class="fixed bottom-24 right-6 bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 hover:bg-[#20ba5a] transition-all duration-300 z-30 flex items-center justify-center" aria-label="WhatsApp Barista">
+        <i class="fa-brands fa-whatsapp text-2xl"></i>
+    </a>
+
+    <!-- Interactive Slide-Out Checkout Cart Sidebar panel -->
+    <div id="cart-sidebar" class="fixed inset-0 overflow-hidden z-50 hidden" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
+        <div class="absolute inset-0 overflow-hidden">
+            <!-- Backdrop overlay -->
+            <div class="absolute inset-0 bg-espresso/60 backdrop-blur-sm transition-opacity duration-300" onclick="toggleCart()"></div>
+
+            <div class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
+                <div class="pointer-events-auto w-screen max-w-md bg-cream border-l border-gold/15 shadow-2xl flex flex-col">
+                    <div class="flex-1 py-6 overflow-y-auto px-4 sm:px-6">
+                        <div class="flex items-start justify-between pb-6 border-b border-gold/10">
+                            <h2 class="font-serif text-2xl font-light text-espresso" id="slide-over-title">Your Wish List / Order</h2>
+                            <button onclick="toggleCart()" class="p-2 text-espresso hover:text-gold transition-colors">
+                                <i class="fa-solid fa-xmark text-lg"></i>
+                            </button>
+                        </div>
+
+                        <!-- Cart items list container -->
+                        <div class="mt-8">
+                            <div class="flow-root">
+                                <ul id="cart-items-list" class="-my-6 divide-y divide-gold/5">
+                                    <!-- Items added dynamically through script -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Checkout calculations & footer integration -->
+                    <div class="border-t border-gold/15 py-6 px-4 sm:px-6 bg-cashmere">
+                        <div class="flex justify-between text-base font-semibold text-espresso mb-1">
+                            <span>Subtotal</span>
+                            <span id="cart-subtotal">0.000 BD</span>
+                        </div>
+                        <p class="text-[10px] text-espresso/50 tracking-wider mb-6">Exclusive lower direct menu pricing applies. Free delivery for Saar orders.</p>
+                        <div class="space-y-3">
+                            <button onclick="handleCheckout()" class="w-full py-4 bg-gold hover:bg-espresso hover:text-cream text-espresso text-xs font-semibold tracking-widest uppercase rounded transition-all duration-300 shadow-md">
+                                Proceed with Direct Web App Checkout
+                            </button>
+                            <button onclick="toggleCart()" class="w-full text-center text-xs text-espresso/60 hover:text-espresso tracking-widest uppercase font-semibold">
+                                Or Keep Crafting Wish
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Menu and Cart Javascript Logic -->
+    <script>
+        // Interactive Premium Menu Data Setup
+        const menuData = [
+            {
+                id: 'coffee-1',
+                category: 'coffee',
+                name: 'V60 Single-Origin Drip',
+                description: 'Rotating ethical micro-lots. Superbly clean, delicate floral & bright berry notes.',
+                price: 2.400,
+                image: 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&q=80&w=300',
+                tags: ['V', 'DF', 'GF']
+            },
+            {
+                id: 'coffee-2',
+                category: 'coffee',
+                name: '11:11 Signature Shakerato',
+                description: 'Double espresso pull emulsified with cold cane milk, shaken with fresh orange zest.',
+                price: 2.600,
+                image: 'https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&q=80&w=300',
+                tags: ['V', 'DF']
+            },
+            {
+                id: 'coffee-3',
+                category: 'coffee',
+                name: 'Espresso Macchiato',
+                description: 'Our complex chocolatey physical house blend, topped with structured micro-texture foam.',
+                price: 1.800,
+                image: 'https://images.unsplash.com/photo-1510707577719-ee7c14b51a3a?auto=format&fit=crop&q=80&w=300',
+                tags: ['GF']
+            },
+            {
+                id: 'coffee-4',
+                category: 'coffee',
+                name: 'Spanish Rose Iced Latte',
+                description: 'Organic sweet condensed milk blended smoothly with rose-infused single estate espresso.',
+                price: 2.500,
+                image: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&q=80&w=300',
+                tags: []
+            },
+            {
+                id: 'bakery-1',
+                category: 'bakery',
+                name: 'Saffron Cardamom Croissant',
+                description: 'Our iconic Saar house specialty. Over 27 hand-laminated layers infused with local spice syrups.',
+                price: 2.200,
+                image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&q=80&w=300',
+                tags: ['N']
+            },
+            {
+                id: 'bakery-2',
+                category: 'bakery',
+                name: 'Tahini Chocolate Swirl Babka',
+                description: 'Decadent dark chocolate braid offset with rich creamy Lebanese sesame paste.',
+                price: 2.000,
+                image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=80&w=300',
+                tags: ['N']
+            },
+            {
+                id: 'brunch-1',
+                category: 'brunch',
+                name: 'Avocado Tartine with Rose Petals',
+                description: 'Freshly kneaded sourdough toasted perfectly, smashed Haas avocados, heirloom tomatoes, botanical rose petals.',
+                price: 4.200,
+                image: 'https://images.unsplash.com/photo-1541532713592-79a0317b6b77?auto=format&fit=crop&q=80&w=300',
+                tags: ['V', 'GF Available']
+            },
+            {
+                id: 'brunch-2',
+                category: 'brunch',
+                name: 'Baked Shakshuka Skillet',
+                description: 'Organic free-range local eggs simmered in spicy coriander-perfumed tomato ragout, organic feta crumbles.',
+                price: 3.900,
+                image: 'https://images.unsplash.com/photo-1590412200988-a436bb7050a8?auto=format&fit=crop&q=80&w=300',
+                tags: ['GF']
+            }
+        ];
+
+        // Dynamic Cart Storage State
+        let cart = [];
+
+        // Filter & Render Menu function
+        function filterMenu(category) {
+            // Update Tab Selection Highlight UI styling
+            document.querySelectorAll('.menu-tab').forEach(tab => {
+                tab.classList.remove('bg-gold', 'text-espresso');
+                tab.classList.add('text-espresso/60');
+            });
+            const activeTab = document.getElementById(`tab-${category}`);
+            if (activeTab) {
+                activeTab.classList.remove('text-espresso/60');
+                activeTab.classList.add('bg-gold', 'text-espresso');
+            }
+
+            // Render Corresponding items
+            const filtered = menuData.filter(item => item.category === category);
+            const grid = document.getElementById('menu-grid');
+            grid.innerHTML = '';
+
+            filtered.forEach(item => {
+                const tagHTML = item.tags.map(tag => `<span class="bg-gold/25 text-espresso font-bold text-[9px] px-1.5 py-0.5 rounded">${tag}</span>`).join(' ');
+                
+                const itemHTML = `
+                    <div class="flex flex-col sm:flex-row items-center gap-6 p-6 bg-cream rounded-lg border border-gold/10 hover:border-gold transition-all duration-300 relative group">
+                        <img src="${item.image}" alt="${item.name}" class="w-24 h-24 rounded-md object-cover border border-gold/10">
+                        <div class="flex-1 text-center sm:text-left">
+                            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
+                                <h4 class="font-serif text-xl font-normal text-espresso">${item.name}</h4>
+                                <span class="font-serif text-base text-gold font-semibold">${item.price.toFixed(3)} BD</span>
+                            </div>
+                            <p class="text-espresso/60 text-xs tracking-wide leading-relaxed my-2">${item.description}</p>
+                            <div class="flex flex-wrap items-center justify-center sm:justify-start gap-1.5 mt-3">
+                                ${tagHTML}
+                            </div>
+                        </div>
+                        <button onclick="addToCart('${item.id}')" class="absolute bottom-4 right-4 sm:static flex items-center justify-center w-10 h-10 rounded-full bg-gold/10 text-gold hover:bg-gold hover:text-espresso transition-all duration-300 shadow-sm">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                    </div>
+                `;
+                grid.innerHTML += itemHTML;
+            });
+        }
+
+        // Add product item to dynamic cart state
+        function addToCart(productId) {
+            const item = menuData.find(p => p.id === productId);
+            if (item) {
+                const existing = cart.find(c => c.id === productId);
+                if (existing) {
+                    existing.qty += 1;
+                } else {
+                    cart.push({ ...item, qty: 1 });
+                }
+                updateCartUI();
+                openCart();
+            }
+        }
+
+        // Remove product item quantity
+        function removeQty(productId) {
+            const existing = cart.find(c => c.id === productId);
+            if (existing) {
+                existing.qty -= 1;
+                if (existing.qty <= 0) {
+                    cart = cart.filter(c => c.id !== productId);
+                }
+                updateCartUI();
+            }
+        }
+
+        // Add product item quantity inside Sidebar view
+        function addQty(productId) {
+            const existing = cart.find(c => c.id === productId);
+            if (existing) {
+                existing.qty += 1;
+                updateCartUI();
+            }
+        }
+
+        // Update visual representations of checkout calculations & badges
+        function updateCartUI() {
+            const list = document.getElementById('cart-items-list');
+            list.innerHTML = '';
+            let total = 0;
+            let count = 0;
+
+            cart.forEach(item => {
+                const itemTotal = item.price * item.qty;
+                total += itemTotal;
+                count += item.qty;
+                
+                const cartItemHTML = `
+                    <li class="py-6 flex">
+                        <div class="flex-shrink-0 w-16 h-16 border border-gold/10 rounded overflow-hidden">
+                            <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover">
+                        </div>
+                        <div class="ml-4 flex-1 flex flex-col">
+                            <div>
+                                <div class="flex justify-between text-sm font-semibold text-espresso">
+                                    <h3 class="font-serif text-base">${item.name}</h3>
+                                    <p class="ml-4 font-serif">${itemTotal.toFixed(3)} BD</p>
+                                </div>
+                            </div>
+                            <div class="flex-1 flex items-center justify-between text-xs">
+                                <p class="text-espresso/50">Qty ${item.qty}</p>
+                                <div class="flex space-x-2 border border-gold/20 rounded">
+                                    <button onclick="removeQty('${item.id}')" class="px-2 py-0.5 text-espresso/60 hover:text-espresso hover:bg-gold/10">-</button>
+                                    <span class="px-1 text-espresso">${item.qty}</span>
+                                    <button onclick="addQty('${item.id}')" class="px-2 py-0.5 text-espresso/60 hover:text-espresso hover:bg-gold/10">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                `;
+                list.innerHTML += cartItemHTML;
+            });
+
+            document.getElementById('cart-subtotal').innerText = `${total.toFixed(3)} BD`;
+            
+            // Badge visual state checks
+            const badge = document.getElementById('cart-badge');
+            const badgeMobile = document.getElementById('cart-badge-mobile');
+            
+            if (count > 0) {
+                badge.classList.remove('hidden');
+                badge.innerText = count;
+                badgeMobile.classList.remove('hidden');
+                badgeMobile.innerText = count;
+            } else {
+                badge.classList.add('hidden');
+                badgeMobile.classList.add('hidden');
+                list.innerHTML = `<p class="text-center text-xs text-espresso/40 py-12 tracking-widest uppercase">Wish List Empty. Select artisanal items above.</p>`;
+            }
+        }
+
+        // Show checkout completed message simulation
+        function handleCheckout() {
+            if (cart.length === 0) {
+                alert('Your wishlist cart is empty. Please select an artisanal coffee or pastry above to order!');
+                return;
+            }
+            alert('Checking out with BenefitPay / Apple Pay instant dispatch engine! Your request is routed directly to the District 1, Saar kitchen.');
+            cart = [];
+            updateCartUI();
+            toggleCart();
+        }
+
+        // Toggle sliding layout Cart visibility states
+        function toggleCart() {
+            const sidebar = document.getElementById('cart-sidebar');
+            sidebar.classList.toggle('hidden');
+        }
+        function openCart() {
+            const sidebar = document.getElementById('cart-sidebar');
+            sidebar.classList.remove('hidden');
+        }
+
+        // Space Booking reservation trigger submission 
+        function handleBooking(event) {
+            event.preventDefault();
+            alert('Thank you! Your silent workspace session in District 1, Saar is locked. High-speed Wi-Fi token has been generated and sent via WhatsApp.');
+            event.target.reset();
+        }
+
+        // VIP SMS Register trigger submission
+        function handleVIPRegister(event) {
+            event.preventDefault();
+            alert('Success! Welcome to the 11:11 Cafe VIP club. Your dynamic SMS card has been dispatched. Show this barcode on your next coffee pick-up to claim your welcome pastry.');
+            event.target.reset();
+        }
+
+        // Simulated Curated Ambient Lofi Visualiser play states
+        let playing = false;
+        function toggleAmbientMusic() {
+            const icon = document.getElementById('music-icon');
+            const text = document.getElementById('music-text');
+            if (!playing) {
+                icon.className = 'fa-solid fa-pause text-xs mr-2';
+                text.innerText = 'Now playing Curated Jazz...';
+                playing = true;
+            } else {
+                icon.className = 'fa-solid fa-play text-xs mr-2';
+                text.innerText = 'Ambience Paused';
+                playing = false;
+            }
+        }
+
+        // Mobile Hamburger Drawer Logic Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const bar1 = document.getElementById('bar1');
+        const bar2 = document.getElementById('bar2');
+        const bar3 = document.getElementById('bar3');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            bar1.classList.toggle('rotate-45');
+            bar1.classList.toggle('translate-y-2');
+            bar2.classList.toggle('opacity-0');
+            bar3.classList.toggle('-rotate-45');
+            bar3.classList.toggle('-translate-y-2');
+        });
+
+        // Default Render call setup on load
+        window.onload = () => {
+            filterMenu('coffee');
+            updateCartUI();
+        };
+    </script>
+</body>
+</html>
