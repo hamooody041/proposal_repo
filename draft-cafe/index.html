@@ -1,0 +1,1459 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Draft Cafe Riyadh | Where Specialty Coffee Meets Design</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@500;700;800&family=Tajawal:wght@400;500;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- AlpineJS for Interactive State -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            canvas: '#F7F5F0',
+            espresso: '#1A1714',
+            terracotta: '#C86D51',
+            sand: '#EFECE6',
+            accent: '#C86D51'
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            syne: ['Syne', 'sans-serif'],
+            cormorant: ['Cormorant Garamond', 'serif'],
+            arabic: ['Tajawal', 'sans-serif']
+          },
+          boxShadow: {
+            brutal: '4px 4px 0px 0px #1A1714',
+            'brutal-lg': '8px 8px 0px 0px #1A1714',
+            'brutal-sm': '2px 2px 0px 0px #1A1714',
+            'brutal-hover': '2px 2px 0px 0px #1A1714'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F7F5F0;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1A1714;
+      border-radius: 0px;
+    }
+
+    /* Font swapping classes depending on active language */
+    .lang-en .font-heading { font-family: 'Syne', sans-serif; }
+    .lang-en .font-editorial { font-family: 'Cormorant Garamond', serif; }
+    .lang-en .font-body { font-family: 'Plus Jakarta Sans', sans-serif; }
+
+    .lang-ar .font-heading { font-family: 'Tajawal', sans-serif; font-weight: 800; }
+    .lang-ar .font-editorial { font-family: 'Tajawal', sans-serif; font-weight: 700; }
+    .lang-ar .font-body { font-family: 'Tajawal', sans-serif; }
+
+    /* Custom Marquee Speed */
+    .marquee-container {
+      overflow: hidden;
+      white-space: nowrap;
+      display: flex;
+    }
+    .marquee-content {
+      display: inline-block;
+      animation: marquee 25s linear infinite;
+    }
+    @keyframes marquee {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    
+    [x-cloak] { display: none !important; }
+  </style>
+</head>
+<body 
+  x-data="{
+    lang: 'en',
+    cart: [],
+    cartOpen: false,
+    orderModalOpen: false,
+    workshopModalOpen: false,
+    selectedWorkshop: '',
+    successToast: false,
+    toastMessage: '',
+    activeTab: 'retail',
+    addToCart(item) {
+      let existing = this.cart.find(i => i.id === item.id);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        this.cart.push({ ...item, qty: 1 });
+      }
+      this.showToast(this.lang === 'en' ? `${item.nameEn} added to cart!` : `تمت إضافة ${item.nameAr} إلى السلة!`);
+    },
+    removeFromCart(index) {
+      this.cart.splice(index, 1);
+    },
+    get cartTotal() {
+      return this.cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+    },
+    showToast(msg) {
+      this.toastMessage = msg;
+      this.successToast = true;
+      setTimeout(() => { this.successToast = false; }, 3000);
+    },
+    openWorkshop(nameEn, nameAr) {
+      this.selectedWorkshop = this.lang === 'en' ? nameEn : nameAr;
+      this.workshopModalOpen = true;
+    }
+  }"
+  :class="lang === 'en' ? 'lang-en' : 'lang-ar'"
+  :dir="lang === 'en' ? 'ltr' : 'rtl'"
+  class="bg-canvas text-espresso font-body transition-all duration-300 antialiased"
+>
+
+  <!-- SUCCESS TOAST -->
+  <div 
+    x-show="successToast"
+    x-transition:enter="transition ease-out duration-300Transform"
+    x-transition:enter-start="translate-y-12 opacity-0"
+    x-transition:enter-end="translate-y-0 opacity-100"
+    x-transition:leave="transition ease-in duration-200"
+    x-transition:leave-start="opacity-100"
+    x-transition:leave-end="opacity-0"
+    class="fixed bottom-24 right-6 left-6 md:left-auto md:right-8 z-50 bg-terracotta text-white border-2 border-espresso px-6 py-4 shadow-brutal flex items-center justify-between min-w-[320px]"
+    x-cloak
+  >
+    <span class="font-medium" x-text="toastMessage"></span>
+    <button @click="successToast = false" class="ml-4 text-white hover:opacity-70">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+  </div>
+
+  <!-- HEADER & NAVIGATION -->
+  <header class="sticky top-0 z-40 bg-canvas/90 backdrop-blur-md border-b-2 border-espresso">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-2">
+        <span class="font-heading text-2xl font-black tracking-widest text-espresso uppercase">
+          DRAFT <span class="text-terracotta">.</span>
+        </span>
+      </a>
+
+      <!-- Nav Links - Desktop -->
+      <nav class="hidden md:flex items-center gap-8 font-medium">
+        <a href="#about" class="hover:text-terracotta transition-colors">
+          <span x-show="lang === 'en'">Our Story</span>
+          <span x-show="lang === 'ar'" x-cloak>قصتنا</span>
+        </a>
+        <a href="#offerings" class="hover:text-terracotta transition-colors">
+          <span x-show="lang === 'en'">The Hybrid Grid</span>
+          <span x-show="lang === 'ar'" x-cloak>تنوعنا الهجين</span>
+        </a>
+        <a href="#shop" class="hover:text-terracotta transition-colors">
+          <span x-show="lang === 'en'">Shop &amp; Pickup</span>
+          <span x-show="lang === 'ar'" x-cloak>المتجر والاستلام</span>
+        </a>
+        <a href="#locations" class="hover:text-terracotta transition-colors">
+          <span x-show="lang === 'en'">Locations</span>
+          <span x-show="lang === 'ar'" x-cloak>الفروع</span>
+        </a>
+        <a href="#community" class="hover:text-terracotta transition-colors">
+          <span x-show="lang === 'en'">Workshops</span>
+          <span x-show="lang === 'ar'" x-cloak>ورش العمل</span>
+        </a>
+      </nav>
+
+      <!-- Right Controls -->
+      <div class="flex items-center gap-4">
+        <!-- Lang Switcher -->
+        <button 
+          @click="lang = (lang === 'en' ? 'ar' : 'en')" 
+          class="border-2 border-espresso px-3 py-1 bg-sand font-bold text-sm shadow-brutal-sm hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none transition-all"
+        >
+          <span x-show="lang === 'en'">العربية</span>
+          <span x-show="lang === 'ar'" x-cloak>English</span>
+        </button>
+
+        <!-- Cart Trigger -->
+        <button 
+          @click="cartOpen = true" 
+          class="relative border-2 border-espresso p-2.5 bg-canvas hover:bg-sand transition-colors"
+        >
+          <i class="fa-solid fa-bag-shopping text-lg"></i>
+          <span 
+            x-show="cart.length > 0" 
+            class="absolute -top-2 -right-2 bg-terracotta text-white font-bold text-xs w-5 h-5 flex items-center justify-center rounded-full border border-espresso"
+            x-text="cart.reduce((sum, item) => sum + item.qty, 0)"
+          ></span>
+        </button>
+
+        <!-- Mobile Action Btn -->
+        <button 
+          @click="orderModalOpen = true" 
+          class="hidden sm:inline-block bg-terracotta text-white border-2 border-espresso font-bold px-4 py-2 hover:bg-espresso transition-colors shadow-brutal-sm"
+        >
+          <span x-show="lang === 'en'">Order Pickup</span>
+          <span x-show="lang === 'ar'" x-cloak>طلب استلام</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE FLOATING ACTION BAR -->
+  <div class="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-40 w-[90%] max-w-sm flex border-2 border-espresso shadow-brutal bg-espresso p-1.5 gap-1.5">
+    <button 
+      @click="orderModalOpen = true" 
+      class="flex-1 bg-terracotta text-white font-bold text-center py-3 text-sm tracking-wide active:scale-95 transition-all uppercase"
+    >
+      <span x-show="lang === 'en'">⚡ Order Pickup</span>
+      <span x-show="lang === 'ar'" x-cloak>⚡ طلب استلام سريع</span>
+    </button>
+    <a 
+      href="#shop" 
+      class="flex-1 bg-canvas text-espresso font-bold text-center py-3 text-sm tracking-wide active:scale-95 transition-all uppercase flex items-center justify-center"
+    >
+      <span x-show="lang === 'en'">🛒 Shop Goods</span>
+      <span x-show="lang === 'ar'" x-cloak>🛒 تصفح المتجر</span>
+    </a>
+  </div>
+
+  <!-- HERO SECTION -->
+  <section class="relative border-b-2 border-espresso min-h-[calc(100vh-80px)] flex flex-col justify-between">
+    <div class="grid grid-cols-1 lg:grid-cols-12 flex-1">
+      
+      <!-- Editorial Visual Side (Split Screen) -->
+      <div class="lg:col-span-5 relative bg-sand border-b-2 lg:border-b-0 lg:border-r-2 border-espresso min-h-[350px] lg:min-h-0 overflow-hidden">
+        <!-- Warm Brutalist Decorative elements -->
+        <div class="absolute inset-0 bg-cover bg-center mix-blend-multiply opacity-90 transition-transform duration-[8000ms] hover:scale-110" style="background-image: url('https://images.unsplash.com/photo-1498804103079-a6351b050096?auto=format&fit=crop&q=80&w=1200');">
+        </div>
+        <div class="absolute bottom-6 left-6 right-6 bg-canvas border-2 border-espresso p-4 shadow-brutal flex items-center gap-3">
+          <div class="w-10 h-10 bg-terracotta text-white flex items-center justify-center rounded-none font-heading font-bold text-lg border border-espresso">
+            D
+          </div>
+          <div>
+            <p class="text-xs uppercase tracking-widest font-bold text-espresso/70" x-show="lang === 'en'">Now Brewing in Riyadh</p>
+            <p class="text-xs uppercase tracking-widest font-bold text-espresso/70" x-show="lang === 'ar'" x-cloak>نُحضّرها الآن في الرياض</p>
+            <p class="text-sm font-black text-espresso" x-show="lang === 'en'">Sourced Directly, Handcrafted Daily</p>
+            <p class="text-sm font-black text-espresso" x-show="lang === 'ar'" x-cloak>مصدر مباشر، صناعة يدوية يومياً</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive Content Side -->
+      <div class="lg:col-span-7 px-6 py-12 md:p-16 lg:p-24 flex flex-col justify-between bg-canvas">
+        <div>
+          <!-- Riyadh Branch Badge -->
+          <div class="inline-block bg-sand border-2 border-espresso px-4 py-1.5 shadow-brutal-sm mb-8 text-xs font-bold tracking-wider uppercase text-espresso">
+            <i class="fa-solid fa-location-dot text-terracotta mr-1.5 ml-1.5"></i>
+            <span x-show="lang === 'en'">Riyadh (Al Sulaimaniyah • The Zone • U Walk)</span>
+            <span x-show="lang === 'ar'" x-cloak>الرياض (السليمانية • ذا زون • يو ووك)</span>
+          </div>
+
+          <!-- Heading -->
+          <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-black text-espresso tracking-tight leading-none mb-6 uppercase">
+            <span x-show="lang === 'en'">Where Specialty Coffee <br class="hidden md:inline"><span class="text-terracotta">Meets Design.</span></span>
+            <span x-show="lang === 'ar'" x-cloak>حيث يلتقي التصميم <br class="hidden md:inline"><span class="text-terracotta">بالقهوة المختصة.</span></span>
+          </h1>
+
+          <!-- Subheadline -->
+          <p class="text-lg md:text-xl font-editorial text-espresso/80 leading-relaxed mb-8 max-w-xl">
+            <span x-show="lang === 'en'">Riyadh's iconic creative haven. Skip aggregator fees, order your daily brew for instant pickup, shop curated design stationery, or join our next design workshop.</span>
+            <span x-show="lang === 'ar'" x-cloak>ملاذ الرياض الإبداعي المميز. تجنب عمولات تطبيقات التوصيل، اطلب قهوتك المفضلة للاستلام السريع والمباشر، تسوّق القرطاسية الفنية المصممة، أو انضم لورشتنا القادمة.</span>
+          </p>
+
+          <!-- High-Intent CTA Action Group -->
+          <div class="flex flex-col sm:flex-row gap-4 mb-12">
+            <button 
+              @click="orderModalOpen = true" 
+              class="bg-terracotta text-white border-2 border-espresso text-base font-bold px-8 py-4 shadow-brutal hover:bg-espresso hover:text-white transition-all transform hover:-translate-y-1 active:translate-y-0 active:shadow-none uppercase flex items-center justify-center gap-2"
+            >
+              <i class="fa-solid fa-bolt"></i>
+              <span x-show="lang === 'en'">Order Direct (Skip the Line)</span>
+              <span x-show="lang === 'ar'" x-cloak>طلب مباشر (تجاوز الانتظار)</span>
+            </button>
+            
+            <a 
+              href="#shop"
+              class="bg-sand text-espresso border-2 border-espresso text-base font-bold px-8 py-4 shadow-brutal hover:bg-canvas transition-all transform hover:-translate-y-1 active:translate-y-0 active:shadow-none uppercase flex items-center justify-center gap-2"
+            >
+              <i class="fa-solid fa-store"></i>
+              <span x-show="lang === 'en'">Explore Lifestyle Shop</span>
+              <span x-show="lang === 'ar'" x-cloak>تصفح متجر المنتجات</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick Mini Infobar -->
+        <div class="border-t-2 border-espresso pt-8 grid grid-cols-3 gap-4 text-center sm:text-left">
+          <div>
+            <p class="font-heading text-2xl font-black text-terracotta">15%</p>
+            <p class="text-xs font-bold text-espresso/70 uppercase" x-show="lang === 'en'">Direct Order Discount</p>
+            <p class="text-xs font-bold text-espresso/70 uppercase" x-show="lang === 'ar'" x-cloak>خصم الطلب المباشر</p>
+          </div>
+          <div>
+            <p class="font-heading text-2xl font-black text-espresso">3</p>
+            <p class="text-xs font-bold text-espresso/70 uppercase" x-show="lang === 'en'">Riyadh Outlets</p>
+            <p class="text-xs font-bold text-espresso/70 uppercase" x-show="lang === 'ar'" x-cloak>فروع بالرياض</p>
+          </div>
+          <div>
+            <p class="font-heading text-2xl font-black text-espresso">10k+</p>
+            <p class="text-xs font-bold text-espresso/70 uppercase" x-show="lang === 'en'">Creative Minds</p>
+            <p class="text-xs font-bold text-espresso/70 uppercase" x-show="lang === 'ar'" x-cloak>مبدع مسجل</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF MARQUEE / TICKER -->
+  <div class="bg-espresso text-sand py-4 border-b-2 border-espresso overflow-hidden marquee-container select-none">
+    <div class="marquee-content flex gap-12 font-heading font-black text-sm uppercase tracking-widest">
+      <!-- Set 1 -->
+      <span>✦ 3 ICONIC RIYADH BRANCHES</span>
+      <span class="text-terracotta">✦ 100% ARABICA SPECIALTY GRADE</span>
+      <span>✦ CURATED DESIGN OBJECTS</span>
+      <span class="text-terracotta">✦ CHOSEN BY RIYADH'S CREATIVE CLASS</span>
+      <span>✦ "THE EPICENTER OF RIYADH'S MODERN REMOTE-WORKING MOVEMENT." — LOCAL INSIGHTS</span>
+      
+      <!-- Set 2 (Duplicated for seamless loop) -->
+      <span>✦ 3 ICONIC RIYADH BRANCHES</span>
+      <span class="text-terracotta">✦ 100% ARABICA SPECIALTY GRADE</span>
+      <span>✦ CURATED DESIGN OBJECTS</span>
+      <span class="text-terracotta">✦ CHOSEN BY RIYADH'S CREATIVE CLASS</span>
+      <span>✦ "THE EPICENTER OF RIYADH'S MODERN REMOTE-WORKING MOVEMENT." — LOCAL INSIGHTS</span>
+    </div>
+  </div>
+
+  <!-- THE HYBRID GRID (Core Offerings Bento) -->
+  <section id="offerings" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b-2 border-espresso">
+    <div class="mb-12 text-center">
+      <p class="text-xs font-bold tracking-widest text-terracotta uppercase mb-2">
+        <span x-show="lang === 'en'">What is Draft?</span>
+        <span x-show="lang === 'ar'" x-cloak>ما هو مسودة؟</span>
+      </p>
+      <h2 class="font-heading text-3xl sm:text-4xl font-black uppercase text-espresso">
+        <span x-show="lang === 'en'">The Hybrid Creative Space</span>
+        <span x-show="lang === 'ar'" x-cloak>المساحة الإبداعية الهجينة</span>
+      </h2>
+    </div>
+
+    <!-- Bento Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      
+      <!-- Card 1: Cafe -->
+      <div class="border-2 border-espresso bg-canvas shadow-brutal flex flex-col justify-between p-8 group hover:-translate-y-1 hover:shadow-brutal-lg transition-all">
+        <div>
+          <div class="w-12 h-12 bg-sand border border-espresso flex items-center justify-center text-espresso text-xl mb-6 font-bold">
+            01
+          </div>
+          <h3 class="font-heading text-2xl font-extrabold uppercase mb-3 text-espresso">
+            <span x-show="lang === 'en'">The Cafe &amp; Brew Bar</span>
+            <span x-show="lang === 'ar'" x-cloak>المقهى وركن التحضير</span>
+          </h3>
+          <p class="text-espresso/70 leading-relaxed mb-6">
+            <span x-show="lang === 'en'">Artisanal specialty coffee, signature cold brews, and premium local organic pastries handcrafted each morning.</span>
+            <span x-show="lang === 'ar'" x-cloak>حبوب قهوة مختصة، مشروبات مبتكرة باردة، ومخبوزات عضوية طازجة تُحضر يدوياً بكل حب صباح كل يوم.</span>
+          </p>
+        </div>
+        <button 
+          @click="orderModalOpen = true" 
+          class="bg-espresso text-sand border border-espresso py-3 font-bold text-sm uppercase tracking-wide group-hover:bg-terracotta group-hover:text-white transition-all shadow-brutal-sm"
+        >
+          <span x-show="lang === 'en'">View Menu &amp; Order</span>
+          <span x-show="lang === 'ar'" x-cloak>تصفح المنيو واطلب</span>
+        </button>
+      </div>
+
+      <!-- Card 2: Lifestyle Store -->
+      <div class="border-2 border-espresso bg-sand shadow-brutal flex flex-col justify-between p-8 group hover:-translate-y-1 hover:shadow-brutal-lg transition-all">
+        <div>
+          <div class="w-12 h-12 bg-canvas border border-espresso flex items-center justify-center text-espresso text-xl mb-6 font-bold">
+            02
+          </div>
+          <h3 class="font-heading text-2xl font-extrabold uppercase mb-3 text-espresso">
+            <span x-show="lang === 'en'">Curated Lifestyle Shop</span>
+            <span x-show="lang === 'ar'" x-cloak>متجر المنتجات الفنية والقرطاسية</span>
+          </h3>
+          <p class="text-espresso/70 leading-relaxed mb-6">
+            <span x-show="lang === 'en'">Exclusive minimalist stationery, design notebooks, imported home decor, and specialty roasted beans to order nationwide.</span>
+            <span x-show="lang === 'ar'" x-cloak>قرطاسية حصرية ومفكرات بتصاميم مميزة، ديكورات منزلية منتقاة بعناية، وحبوب قهوة محمصة تُشحن لكافة مناطق المملكة.</span>
+          </p>
+        </div>
+        <a 
+          href="#shop" 
+          class="bg-espresso text-sand border border-espresso py-3 text-center font-bold text-sm uppercase tracking-wide group-hover:bg-terracotta group-hover:text-white transition-all shadow-brutal-sm"
+        >
+          <span x-show="lang === 'en'">Shop Goods Online</span>
+          <span x-show="lang === 'ar'" x-cloak>تسوق المنتجات عبر الإنترنت</span>
+        </a>
+      </div>
+
+      <!-- Card 3: Workshops -->
+      <div class="border-2 border-espresso bg-canvas shadow-brutal flex flex-col justify-between p-8 group hover:-translate-y-1 hover:shadow-brutal-lg transition-all">
+        <div>
+          <div class="w-12 h-12 bg-sand border border-espresso flex items-center justify-center text-espresso text-xl mb-6 font-bold">
+            03
+          </div>
+          <h3 class="font-heading text-2xl font-extrabold uppercase mb-3 text-espresso">
+            <span x-show="lang === 'en'">Workshops &amp; Culture</span>
+            <span x-show="lang === 'ar'" x-cloak>ورش العمل والأنشطة الثقافية</span>
+          </h3>
+          <p class="text-espresso/70 leading-relaxed mb-6">
+            <span x-show="lang === 'en'">A modern hub for artists, freelancers and innovators. Reserve dynamic hot desks, join design panels, and register for masterclasses.</span>
+            <span x-show="lang === 'ar'" x-cloak>مساحة عمل للمبدعين، المستقلين والمبتكرين. احجز طاولة عمل مخصصة، انضم لجلسات النقاش، وسجل في ورش العمل الاحترافية لدينا.</span>
+          </p>
+        </div>
+        <a 
+          href="#community" 
+          class="bg-espresso text-sand border border-espresso py-3 text-center font-bold text-sm uppercase tracking-wide group-hover:bg-terracotta group-hover:text-white transition-all shadow-brutal-sm"
+        >
+          <span x-show="lang === 'en'">View Event Calendar</span>
+          <span x-show="lang === 'ar'" x-cloak>عرض جدول الفعاليات</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- E-COMMERCE & PICKUP PREVIEW (Interactive Store Tabs) -->
+  <section id="shop" class="py-20 bg-sand/40 border-b-2 border-espresso">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Header Area -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <div>
+          <p class="text-xs font-bold tracking-widest text-terracotta uppercase mb-2">
+            <span x-show="lang === 'en'">Instant Gratification</span>
+            <span x-show="lang === 'ar'" x-cloak>احصل عليها فوراً</span>
+          </p>
+          <h2 class="font-heading text-3xl sm:text-4xl font-black uppercase text-espresso">
+            <span x-show="lang === 'en'">Direct E-Shop &amp; Pickup</span>
+            <span x-show="lang === 'ar'" x-cloak>متجرنا الإلكتروني والاستلام المباشر</span>
+          </h2>
+        </div>
+        
+        <!-- Tab Controls (Brutalist style) -->
+        <div class="flex flex-wrap border-2 border-espresso p-1 bg-canvas shadow-brutal">
+          <button 
+            @click="activeTab = 'retail'" 
+            :class="activeTab === 'retail' ? 'bg-terracotta text-white' : 'bg-canvas text-espresso hover:bg-sand'"
+            class="px-4 py-2 text-xs font-bold uppercase transition-colors duration-150"
+          >
+            <span x-show="lang === 'en'">Curated Retail</span>
+            <span x-show="lang === 'ar'" x-cloak>القرطاسية والمنتجات</span>
+          </button>
+          <button 
+            @click="activeTab = 'beans'" 
+            :class="activeTab === 'beans' ? 'bg-terracotta text-white' : 'bg-canvas text-espresso hover:bg-sand'"
+            class="px-4 py-2 text-xs font-bold uppercase transition-colors duration-150 border-l border-r border-espresso/20"
+          >
+            <span x-show="lang === 'en'">Signature Beans</span>
+            <span x-show="lang === 'ar'" x-cloak>حبوب القهوة الخاصة</span>
+          </button>
+          <button 
+            @click="activeTab = 'pickup'" 
+            :class="activeTab === 'pickup' ? 'bg-terracotta text-white' : 'bg-canvas text-espresso hover:bg-sand'"
+            class="px-4 py-2 text-xs font-bold uppercase transition-colors duration-150"
+          >
+            <span x-show="lang === 'en'">Quick Pickup Menu</span>
+            <span x-show="lang === 'ar'" x-cloak>منيو الاستلام السريع</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Direct Conversion Nudge Banner -->
+      <div class="bg-terracotta border-2 border-espresso text-white p-4 shadow-brutal mb-12 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-canvas text-terracotta flex items-center justify-center font-bold border border-espresso">
+            <i class="fa-solid fa-gift"></i>
+          </div>
+          <div>
+            <p class="text-sm font-bold uppercase tracking-wider">
+              <span x-show="lang === 'en'">Save 15% and Skip the Third-Party Delivery Markup!</span>
+              <span x-show="lang === 'ar'" x-cloak>وفر 15% وتجنب عمولات تطبيقات التوصيل الخارجية!</span>
+            </p>
+            <p class="text-xs opacity-90">
+              <span x-show="lang === 'en'">Every checkout on our direct channel gains points toward free premium merch.</span>
+              <span x-show="lang === 'ar'" x-cloak>كل عملية شراء مباشرة تؤهلك لكسب نقاط والحصول على منتجات حصرية مجانية.</span>
+            </p>
+          </div>
+        </div>
+        <button 
+          @click="orderModalOpen = true" 
+          class="bg-canvas text-espresso border border-espresso px-5 py-2 text-xs font-black uppercase hover:bg-sand transition-colors shrink-0 shadow-brutal-sm"
+        >
+          <span x-show="lang === 'en'">Order Pickup Now</span>
+          <span x-show="lang === 'ar'" x-cloak>اطلب للاستلام الآن</span>
+        </button>
+      </div>
+
+      <!-- Product Grid (Retail Goods) -->
+      <div x-show="activeTab === 'retail'" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Product 1 -->
+        <div class="bg-canvas border-2 border-espresso shadow-brutal flex flex-col justify-between overflow-hidden relative group">
+          <div class="bg-sand border-b border-espresso relative h-64 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&q=80&w=600" alt="Journal" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+            <span class="absolute top-3 left-3 bg-espresso text-sand text-[10px] font-extrabold px-2 py-1 uppercase tracking-wider border border-espresso">New Drop</span>
+          </div>
+          <div class="p-6">
+            <h3 class="font-heading text-lg font-black uppercase mb-1 text-espresso">
+              <span x-show="lang === 'en'">Minimalist Grid Journal</span>
+              <span x-show="lang === 'ar'" x-cloak>دفتر التخطيط الشبكي</span>
+            </h3>
+            <p class="text-xs text-espresso/60 mb-4" x-show="lang === 'en'">Cream-toned layflat design layout, 120gsm paper.</p>
+            <p class="text-xs text-espresso/60 mb-4" x-show="lang === 'ar'" x-cloak>تصميم مسطح مريح بلون كريمي، ورق بجودة ١٢٠ جم.</p>
+            <div class="flex items-center justify-between mt-auto">
+              <span class="font-heading text-lg font-black text-espresso">SAR 65</span>
+              <button 
+                @click="addToCart({ id: 'ret1', nameEn: 'Minimalist Grid Journal', nameAr: 'دفتر التخطيط الشبكي', price: 65, img: 'https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&q=80&w=200' })"
+                class="bg-terracotta text-white border border-espresso px-3 py-2 text-xs font-extrabold uppercase hover:bg-espresso hover:text-white transition-colors"
+              >
+                <span x-show="lang === 'en'">+ Add</span>
+                <span x-show="lang === 'ar'" x-cloak>+ إضافة</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="bg-canvas border-2 border-espresso shadow-brutal flex flex-col justify-between overflow-hidden relative group">
+          <div class="bg-sand border-b border-espresso relative h-64 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&q=80&w=600" alt="Pen Tray" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+          </div>
+          <div class="p-6">
+            <h3 class="font-heading text-lg font-black uppercase mb-1 text-espresso">
+              <span x-show="lang === 'en'">Concrete Brass Pen Tray</span>
+              <span x-show="lang === 'ar'" x-cloak>حامل أقلام كونكريت ونحاس</span>
+            </h3>
+            <p class="text-xs text-espresso/60 mb-4" x-show="lang === 'en'">Sleek industrial design object to elevate desk.</p>
+            <p class="text-xs text-espresso/60 mb-4" x-show="lang === 'ar'" x-cloak>تصميم صناعي فاخر يضفي لمسة جمالية لمكتبك.</p>
+            <div class="flex items-center justify-between mt-auto">
+              <span class="font-heading text-lg font-black text-espresso">SAR 110</span>
+              <button 
+                @click="addToCart({ id: 'ret2', nameEn: 'Concrete Brass Pen Tray', nameAr: 'حامل أقلام كونكريت ونحاس', price: 110, img: 'https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&q=80&w=200' })"
+                class="bg-terracotta text-white border border-espresso px-3 py-2 text-xs font-extrabold uppercase hover:bg-espresso hover:text-white transition-colors"
+              >
+                <span x-show="lang === 'en'">+ Add</span>
+                <span x-show="lang === 'ar'" x-cloak>+ إضافة</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="bg-canvas border-2 border-espresso shadow-brutal flex flex-col justify-between overflow-hidden relative group">
+          <div class="bg-sand border-b border-espresso relative h-64 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1516962215378-7fa2e137ae93?auto=format&fit=crop&q=80&w=600" alt="Wallet" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+          </div>
+          <div class="p-6">
+            <h3 class="font-heading text-lg font-black uppercase mb-1 text-espresso">
+              <span x-show="lang === 'en'">Minimalist Leather Sleeve</span>
+              <span x-show="lang === 'ar'" x-cloak>حامل كروت جلدي بسيط</span>
+            </h3>
+            <p class="text-xs text-espresso/60 mb-4" x-show="lang === 'en'">Raw vegetable-tanned leather wallet sleeve.</p>
+            <p class="text-xs text-espresso/60 mb-4" x-show="lang === 'ar'" x-cloak>حامل بطاقات من الجلد الطبيعي الفاخر.</p>
+            <div class="flex items-center justify-between mt-auto">
+              <span class="font-heading text-lg font-black text-espresso">SAR 125</span>
+              <button 
+                @click="addToCart({ id: 'ret3', nameEn: 'Minimalist Leather Sleeve', nameAr: 'حامل كروت جلدي بسيط', price: 125, img: 'https://images.unsplash.com/photo-1516962215378-7fa2e137ae93?auto=format&fit=crop&q=80&w=200' })"
+                class="bg-terracotta text-white border border-espresso px-3 py-2 text-xs font-extrabold uppercase hover:bg-espresso hover:text-white transition-colors"
+              >
+                <span x-show="lang === 'en'">+ Add</span>
+                <span x-show="lang === 'ar'" x-cloak>+ إضافة</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="bg-canvas border-2 border-espresso shadow-brutal flex flex-col justify-between overflow-hidden relative group">
+          <div class="bg-sand border-b border-espresso relative h-64 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1589254065878-42c9da997008?auto=format&fit=crop&q=80&w=600" alt="Vase" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+            <span class="absolute top-3 left-3 bg-terracotta text-white text-[10px] font-extrabold px-2 py-1 uppercase tracking-wider border border-espresso">Limited</span>
+          </div>
+          <div class="p-6">
+            <h3 class="font-heading text-lg font-black uppercase mb-1 text-espresso">
+              <span x-show="lang === 'en'">Raw Terracotta Carafe</span>
+              <span x-show="lang === 'ar'" x-cloak>وعاء تقديم الفخار الطبيعي</span>
+            </h3>
+            <p class="text-xs text-espresso/60 mb-4" x-show="lang === 'en'">Clay-baked serving container, cold-retentive.</p>
+            <p class="text-xs text-espresso/60 mb-4" x-show="lang === 'ar'" x-cloak>وعاء فخاري مصمم لحفظ حرارة المشروبات الباردة.</p>
+            <div class="flex items-center justify-between mt-auto">
+              <span class="font-heading text-lg font-black text-espresso">SAR 140</span>
+              <button 
+                @click="addToCart({ id: 'ret4', nameEn: 'Raw Terracotta Carafe', nameAr: 'وعاء تقديم الفخار الطبيعي', price: 140, img: 'https://images.unsplash.com/photo-1589254065878-42c9da997008?auto=format&fit=crop&q=80&w=200' })"
+                class="bg-terracotta text-white border border-espresso px-3 py-2 text-xs font-extrabold uppercase hover:bg-espresso hover:text-white transition-colors"
+              >
+                <span x-show="lang === 'en'">+ Add</span>
+                <span x-show="lang === 'ar'" x-cloak>+ إضافة</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Grid (Coffee Beans) -->
+      <div x-show="activeTab === 'beans'" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8" x-cloak>
+        <!-- Product 1 Beans -->
+        <div class="bg-canvas border-2 border-espresso shadow-brutal flex flex-col justify-between overflow-hidden relative group">
+          <div class="bg-sand border-b border-espresso relative h-64 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&q=80&w=600" alt="Beans" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+          </div>
+          <div class="p-6">
+            <span class="text-[10px] font-bold text-terracotta uppercase tracking-widest block mb-1">Origin: Ethiopia</span>
+            <h3 class="font-heading text-lg font-black uppercase mb-1 text-espresso">
+              <span x-show="lang === 'en'">Hambela Alaka (250g)</span>
+              <span x-show="lang === 'ar'" x-cloak>هاميلا ألاكا (٢٥٠ج)</span>
+            </h3>
+            <p class="text-xs text-espresso/60 mb-4" x-show="lang === 'en'">Process: Natural. Tasting notes: Jasmine, Peach, Honey.</p>
+            <p class="text-xs text-espresso/60 mb-4" x-show="lang === 'ar'" x-cloak>المعالجة: مجففة. الإيحاءات: ياسمين، خوخ، عسل طبيعي.</p>
+            <div class="flex items-center justify-between mt-auto">
+              <span class="font-heading text-lg font-black text-espresso">SAR 85</span>
+              <button 
+                @click="addToCart({ id: 'bean1', nameEn: 'Hambela Alaka (250g)', nameAr: 'هاميلا ألاكا (٢٥٠ج)', price: 85, img: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&q=80&w=200' })"
+                class="bg-terracotta text-white border border-espresso px-3 py-2 text-xs font-extrabold uppercase hover:bg-espresso hover:text-white transition-colors"
+              >
+                <span x-show="lang === 'en'">+ Add</span>
+                <span x-show="lang === 'ar'" x-cloak>+ إضافة</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 2 Beans -->
+        <div class="bg-canvas border-2 border-espresso shadow-brutal flex flex-col justify-between overflow-hidden relative group">
+          <div class="bg-sand border-b border-espresso relative h-64 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&q=80&w=600" alt="Beans" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+          </div>
+          <div class="p-6">
+            <span class="text-[10px] font-bold text-terracotta uppercase tracking-widest block mb-1">Origin: Colombia</span>
+            <h3 class="font-heading text-lg font-black uppercase mb-1 text-espresso">
+              <span x-show="lang === 'en'">Finca El Paraiso (250g)</span>
+              <span x-show="lang === 'ar'" x-cloak>فينكا إل بارايسو (٢٥٠ج)</span>
+            </h3>
+            <p class="text-xs text-espresso/60 mb-4" x-show="lang === 'en'">Process: Double Anaerobic. Tasting notes: Strawberry, Cream.</p>
+            <p class="text-xs text-espresso/60 mb-4" x-show="lang === 'ar'" x-cloak>المعالجة: لا هوائية مزدوجة. الإيحاءات: فراولة، كريمة.</p>
+            <div class="flex items-center justify-between mt-auto">
+              <span class="font-heading text-lg font-black text-espresso">SAR 115</span>
+              <button 
+                @click="addToCart({ id: 'bean2', nameEn: 'Finca El Paraiso (250g)', nameAr: 'فينكا إل بارايسو (٢٥٠ج)', price: 115, img: 'https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&q=80&w=200' })"
+                class="bg-terracotta text-white border border-espresso px-3 py-2 text-xs font-extrabold uppercase hover:bg-espresso hover:text-white transition-colors"
+              >
+                <span x-show="lang === 'en'">+ Add</span>
+                <span x-show="lang === 'ar'" x-cloak>+ إضافة</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 3 Beans -->
+        <div class="bg-canvas border-2 border-espresso shadow-brutal flex flex-col justify-between overflow-hidden relative group">
+          <div class="bg-sand border-b border-espresso relative h-64 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1511537190424-bbbab87ac5eb?auto=format&fit=crop&q=80&w=600" alt="Beans" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+            <span class="absolute top-3 left-3 bg-terracotta text-white text-[10px] font-extrabold px-2 py-1 uppercase tracking-wider border border-espresso">Rare</span>
+          </div>
+          <div class="p-6">
+            <span class="text-[10px] font-bold text-terracotta uppercase tracking-widest block mb-1">Origin: Saudi Arabia</span>
+            <h3 class="font-heading text-lg font-black uppercase mb-1 text-espresso">
+              <span x-show="lang === 'en'">Khawlani Reserve (250g)</span>
+              <span x-show="lang === 'ar'" x-cloak>خولاني احتياطي (٢٥٠ج)</span>
+            </h3>
+            <p class="text-xs text-espresso/60 mb-4" x-show="lang === 'en'">Process: Traditional. Tasting notes: Cardamom, Dates, Spice.</p>
+            <p class="text-xs text-espresso/60 mb-4" x-show="lang === 'ar'" x-cloak>المعالجة: تقليدية. الإيحاءات: هيل، تمر، توابل خفيفة.</p>
+            <div class="flex items-center justify-between mt-auto">
+              <span class="font-heading text-lg font-black text-espresso">SAR 130</span>
+              <button 
+                @click="addToCart({ id: 'bean3', nameEn: 'Khawlani Reserve (250g)', nameAr: 'خولاني احتياطي (٢٥٠ج)', price: 130, img: 'https://images.unsplash.com/photo-1511537190424-bbbab87ac5eb?auto=format&fit=crop&q=80&w=200' })"
+                class="bg-terracotta text-white border border-espresso px-3 py-2 text-xs font-extrabold uppercase hover:bg-espresso hover:text-white transition-colors"
+              >
+                <span x-show="lang === 'en'">+ Add</span>
+                <span x-show="lang === 'ar'" x-cloak>+ إضافة</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 4 Beans -->
+        <div class="bg-canvas border-2 border-espresso shadow-brutal flex flex-col justify-between overflow-hidden relative group">
+          <div class="bg-sand border-b border-espresso relative h-64 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&q=80&w=600" alt="Beans" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+          </div>
+          <div class="p-6">
+            <span class="text-[10px] font-bold text-terracotta uppercase tracking-widest block mb-1">Origin: Yemen</span>
+            <h3 class="font-heading text-lg font-black uppercase mb-1 text-espresso">
+              <span x-show="lang === 'en'">Harazi Premium (250g)</span>
+              <span x-show="lang === 'ar'" x-cloak>حرازي بريميوم (٢٥٠ج)</span>
+            </h3>
+            <p class="text-xs text-espresso/60 mb-4" x-show="lang === 'en'">Process: Anaerobic Natural. Tasting notes: Dried Fig, Cocoa.</p>
+            <p class="text-xs text-espresso/60 mb-4" x-show="lang === 'ar'" x-cloak>المعالجة: لا هوائية مجففة. الإيحاءات: تين مجفف، كاكاو.</p>
+            <div class="flex items-center justify-between mt-auto">
+              <span class="font-heading text-lg font-black text-espresso">SAR 95</span>
+              <button 
+                @click="addToCart({ id: 'bean4', nameEn: 'Harazi Premium (250g)', nameAr: 'حرازي بريميوم (٢٥٠ج)', price: 95, img: 'https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&q=80&w=200' })"
+                class="bg-terracotta text-white border border-espresso px-3 py-2 text-xs font-extrabold uppercase hover:bg-espresso hover:text-white transition-colors"
+              >
+                <span x-show="lang === 'en'">+ Add</span>
+                <span x-show="lang === 'ar'" x-cloak>+ إضافة</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Grid (Quick Pickup Menu) -->
+      <div x-show="activeTab === 'pickup'" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8" x-cloak>
+        <!-- Drink 1 -->
+        <div class="bg-canvas border-2 border-espresso shadow-brutal flex flex-col justify-between overflow-hidden relative group">
+          <div class="bg-sand border-b border-espresso relative h-64 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&q=80&w=600" alt="Drink" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+            <span class="absolute top-3 left-3 bg-terracotta text-white text-[10px] font-extrabold px-2 py-1 uppercase tracking-wider border border-espresso">Signature</span>
+          </div>
+          <div class="p-6">
+            <h3 class="font-heading text-lg font-black uppercase mb-1 text-espresso">
+              <span x-show="lang === 'en'">Terracotta Latte (Iced)</span>
+              <span x-show="lang === 'ar'" x-cloak>تيراكوتا لاتيه (بارد)</span>
+            </h3>
+            <p class="text-xs text-espresso/60 mb-4" x-show="lang === 'en'">Creamy infused cardamom and house spice syrup.</p>
+            <p class="text-xs text-espresso/60 mb-4" x-show="lang === 'ar'" x-cloak>قهوة غنية بنكهة الهيل وشراب التوابل الخاص بمكعبات الثلج.</p>
+            <div class="flex items-center justify-between mt-auto">
+              <span class="font-heading text-lg font-black text-espresso">SAR 28</span>
+              <button 
+                @click="addToCart({ id: 'drk1', nameEn: 'Terracotta Latte (Iced)', nameAr: 'تيراكوتا لاتيه (بارد)', price: 28, img: 'https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&q=80&w=200' })"
+                class="bg-terracotta text-white border border-espresso px-3 py-2 text-xs font-extrabold uppercase hover:bg-espresso hover:text-white transition-colors"
+              >
+                <span x-show="lang === 'en'">+ Order</span>
+                <span x-show="lang === 'ar'" x-cloak>+ طلب</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Drink 2 -->
+        <div class="bg-canvas border-2 border-espresso shadow-brutal flex flex-col justify-between overflow-hidden relative group">
+          <div class="bg-sand border-b border-espresso relative h-64 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&q=80&w=600" alt="Drink" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+          </div>
+          <div class="p-6">
+            <h3 class="font-heading text-lg font-black uppercase mb-1 text-espresso">
+              <span x-show="lang === 'en'">Spanish Rose Cortado</span>
+              <span x-show="lang === 'ar'" x-cloak>سبانش روز كورتادو</span>
+            </h3>
+            <p class="text-xs text-espresso/60 mb-4" x-show="lang === 'en'">Balanced double shot sweetened with organic rosewater.</p>
+            <p class="text-xs text-espresso/60 mb-4" x-show="lang === 'ar'" x-cloak>جرعة مزدوجة متوازنة مع حليب محلى بماء الورد العضوي.</p>
+            <div class="flex items-center justify-between mt-auto">
+              <span class="font-heading text-lg font-black text-espresso">SAR 24</span>
+              <button 
+                @click="addToCart({ id: 'drk2', nameEn: 'Spanish Rose Cortado', nameAr: 'سبانش روز كورتادو', price: 24, img: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&q=80&w=200' })"
+                class="bg-terracotta text-white border border-espresso px-3 py-2 text-xs font-extrabold uppercase hover:bg-espresso hover:text-white transition-colors"
+              >
+                <span x-show="lang === 'en'">+ Order</span>
+                <span x-show="lang === 'ar'" x-cloak>+ طلب</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Drink 3 -->
+        <div class="bg-canvas border-2 border-espresso shadow-brutal flex flex-col justify-between overflow-hidden relative group">
+          <div class="bg-sand border-b border-espresso relative h-64 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&q=80&w=600" alt="Drink" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+          </div>
+          <div class="p-6">
+            <h3 class="font-heading text-lg font-black uppercase mb-1 text-espresso">
+              <span x-show="lang === 'en'">Cold Brew Peach Tonic</span>
+              <span x-show="lang === 'ar'" x-cloak>تونيك الخوخ والقهوة الباردة</span>
+            </h3>
+            <p class="text-xs text-espresso/60 mb-4" x-show="lang === 'en'">18-hour cold brew, sparkling tonic, peach purée.</p>
+            <p class="text-xs text-espresso/60 mb-4" x-show="lang === 'ar'" x-cloak>قهوة باردة لمدة ١٨ ساعة مع ماء تونيك فوار وبيوريه الخوخ.</p>
+            <div class="flex items-center justify-between mt-auto">
+              <span class="font-heading text-lg font-black text-espresso">SAR 26</span>
+              <button 
+                @click="addToCart({ id: 'drk3', nameEn: 'Cold Brew Peach Tonic', nameAr: 'تونيك الخوخ والقهوة الباردة', price: 26, img: 'https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&q=80&w=200' })"
+                class="bg-terracotta text-white border border-espresso px-3 py-2 text-xs font-extrabold uppercase hover:bg-espresso hover:text-white transition-colors"
+              >
+                <span x-show="lang === 'en'">+ Order</span>
+                <span x-show="lang === 'ar'" x-cloak>+ طلب</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Drink 4 -->
+        <div class="bg-canvas border-2 border-espresso shadow-brutal flex flex-col justify-between overflow-hidden relative group">
+          <div class="bg-sand border-b border-espresso relative h-64 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&q=80&w=600" alt="Drink" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+          </div>
+          <div class="p-6">
+            <h3 class="font-heading text-lg font-black uppercase mb-1 text-espresso">
+              <span x-show="lang === 'en'">Double Espresso (House Blend)</span>
+              <span x-show="lang === 'ar'" x-cloak>إسبريسو ثنائي (خلطة مسوّدة)</span>
+            </h3>
+            <p class="text-xs text-espresso/60 mb-4" x-show="lang === 'en'">Balanced acidity, heavy chocolate finish notes.</p>
+            <p class="text-xs text-espresso/60 mb-4" x-show="lang === 'ar'" x-cloak>حموضة متوازنة مع إيحاءات الشوكولاتة الغنية المتبقية.</p>
+            <div class="flex items-center justify-between mt-auto">
+              <span class="font-heading text-lg font-black text-espresso">SAR 18</span>
+              <button 
+                @click="addToCart({ id: 'drk4', nameEn: 'Double Espresso (House Blend)', nameAr: 'إسبريسو ثنائي (خلطة مسوّدة)', price: 18, img: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&q=80&w=200' })"
+                class="bg-terracotta text-white border border-espresso px-3 py-2 text-xs font-extrabold uppercase hover:bg-espresso hover:text-white transition-colors"
+              >
+                <span x-show="lang === 'en'">+ Order</span>
+                <span x-show="lang === 'ar'" x-cloak>+ طلب</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- LOCATIONS & BRANCH EXPERIENCE -->
+  <section id="locations" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b-2 border-espresso">
+    <div class="mb-12">
+      <p class="text-xs font-bold tracking-widest text-terracotta uppercase mb-2">
+        <span x-show="lang === 'en'">Experience the Architecture</span>
+        <span x-show="lang === 'ar'" x-cloak>عِش متعة التصميم الهندسي</span>
+      </p>
+      <h2 class="font-heading text-3xl sm:text-4xl font-black uppercase text-espresso">
+        <span x-show="lang === 'en'">Our Riyadh Havens</span>
+        <span x-show="lang === 'ar'" x-cloak>فروعنا في الرياض</span>
+      </h2>
+    </div>
+
+    <!-- Location Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      
+      <!-- Branch 1 -->
+      <div class="border-2 border-espresso bg-canvas shadow-brutal flex flex-col justify-between overflow-hidden relative group">
+        <div class="h-48 overflow-hidden relative border-b-2 border-espresso bg-sand">
+          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=600" alt="Al Sulaimaniyah Flagship" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute top-3 right-3 bg-espresso text-sand font-bold text-[10px] px-2 py-1 uppercase tracking-wider">
+            <span x-show="lang === 'en'">Flagship</span>
+            <span x-show="lang === 'ar'" x-cloak>الفرع الرئيسي</span>
+          </div>
+        </div>
+        <div class="p-6 flex-1 flex flex-col justify-between">
+          <div>
+            <h3 class="font-heading text-xl font-extrabold uppercase mb-2 text-espresso">
+              <span x-show="lang === 'en'">Al Sulaimaniyah</span>
+              <span x-show="lang === 'ar'" x-cloak>السليمانية</span>
+            </h3>
+            <p class="text-xs text-espresso/70 mb-4">
+              <span x-show="lang === 'en'">Abu Bakr Al Shazi, Al Sulaimaniyah District. Near local design hub spaces.</span>
+              <span x-show="lang === 'ar'" x-cloak>شارع أبو بكر الشاذي، حي السليمانية. مجاوراً لأبرز المساحات الفنية والهندسية.</span>
+            </p>
+            <div class="space-y-1 mb-6 text-xs text-espresso/80 font-medium">
+              <p><i class="fa-regular fa-clock mr-1.5 ml-1.5 text-terracotta"></i> <span x-show="lang === 'en'">Open Daily: 6:00 AM – 12:00 AM</span><span x-show="lang === 'ar'" x-cloak>يومياً: ٦ صباحاً – ١٢ منتصف الليل</span></p>
+              <p><i class="fa-solid fa-wifi mr-1.5 ml-1.5 text-terracotta"></i> <span x-show="lang === 'en'">Hi-Speed Fiber &amp; Workstations</span><span x-show="lang === 'ar'" x-cloak>ألياف بصرية سريعة، مساحات عمل</span></p>
+            </div>
+          </div>
+          <a 
+            href="https://maps.google.com" 
+            target="_blank" 
+            class="w-full text-center bg-sand text-espresso border border-espresso py-3 font-bold text-xs uppercase tracking-widest hover:bg-espresso hover:text-white transition-all shadow-brutal-sm flex items-center justify-center gap-2"
+          >
+            <i class="fa-solid fa-map-pin"></i>
+            <span x-show="lang === 'en'">Get Directions</span>
+            <span x-show="lang === 'ar'" x-cloak>الحصول على الاتجاهات</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Branch 2 -->
+      <div class="border-2 border-espresso bg-canvas shadow-brutal flex flex-col justify-between overflow-hidden relative group">
+        <div class="h-48 overflow-hidden relative border-b-2 border-espresso bg-sand">
+          <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=600" alt="The Zone" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute top-3 right-3 bg-espresso text-sand font-bold text-[10px] px-2 py-1 uppercase tracking-wider">
+            <span x-show="lang === 'en'">Lively Hub</span>
+            <span x-show="lang === 'ar'" x-cloak>فرع حيوي</span>
+          </div>
+        </div>
+        <div class="p-6 flex-1 flex flex-col justify-between">
+          <div>
+            <h3 class="font-heading text-xl font-extrabold uppercase mb-2 text-espresso">
+              <span x-show="lang === 'en'">The Zone</span>
+              <span x-show="lang === 'ar'" x-cloak>ذا زون</span>
+            </h3>
+            <p class="text-xs text-espresso/70 mb-4">
+              <span x-show="lang === 'en'">Al Takhassousi St, Al Mohammadiyah. Vibrant central courtyard outdoor seating.</span>
+              <span x-show="lang === 'ar'" x-cloak>طريق التخصصي، حي المحمدية. يتميز بجلسات خارجية واسعة ومميزة في قلب ذا زون.</span>
+            </p>
+            <div class="space-y-1 mb-6 text-xs text-espresso/80 font-medium">
+              <p><i class="fa-regular fa-clock mr-1.5 ml-1.5 text-terracotta"></i> <span x-show="lang === 'en'">Open Daily: 7:00 AM – 1:00 AM</span><span x-show="lang === 'ar'" x-cloak>يومياً: ٧ صباحاً – ١ بعد منتصف الليل</span></p>
+              <p><i class="fa-solid fa-cloud-sun mr-1.5 ml-1.5 text-terracotta"></i> <span x-show="lang === 'en'">Aesthetic Sunlit Greenhouse</span><span x-show="lang === 'ar'" x-cloak>تصميم زجاجي مشمس وجذاب</span></p>
+            </div>
+          </div>
+          <a 
+            href="https://maps.google.com" 
+            target="_blank" 
+            class="w-full text-center bg-sand text-espresso border border-espresso py-3 font-bold text-xs uppercase tracking-widest hover:bg-espresso hover:text-white transition-all shadow-brutal-sm flex items-center justify-center gap-2"
+          >
+            <i class="fa-solid fa-map-pin"></i>
+            <span x-show="lang === 'en'">Get Directions</span>
+            <span x-show="lang === 'ar'" x-cloak>الحصول على الاتجاهات</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Branch 3 -->
+      <div class="border-2 border-espresso bg-canvas shadow-brutal flex flex-col justify-between overflow-hidden relative group">
+        <div class="h-48 overflow-hidden relative border-b-2 border-espresso bg-sand">
+          <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&q=80&w=600" alt="U Walk" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute top-3 right-3 bg-espresso text-sand font-bold text-[10px] px-2 py-1 uppercase tracking-wider">
+            <span x-show="lang === 'en'">Promenade Vibe</span>
+            <span x-show="lang === 'ar'" x-cloak>ممشى يو ووك</span>
+          </div>
+        </div>
+        <div class="p-6 flex-1 flex flex-col justify-between">
+          <div>
+            <h3 class="font-heading text-xl font-extrabold uppercase mb-2 text-espresso">
+              <span x-show="lang === 'en'">U Walk</span>
+              <span x-show="lang === 'ar'" x-cloak>يو ووك</span>
+            </h3>
+            <p class="text-xs text-espresso/70 mb-4">
+              <span x-show="lang === 'en'">Prince Turki Ibn Abdulaziz Al Awwal Rd. Sleek concrete interiors &amp; late brewbar.</span>
+              <span x-show="lang === 'ar'" x-cloak>طريق الأمير تركي بن عبدالعزيز الأول. تصميم خرساني مع ركن قهوة متأخر.</span>
+            </p>
+            <div class="space-y-1 mb-6 text-xs text-espresso/80 font-medium">
+              <p><i class="fa-regular fa-clock mr-1.5 ml-1.5 text-terracotta"></i> <span x-show="lang === 'en'">Open Daily: 7:00 AM – 2:00 AM</span><span x-show="lang === 'ar'" x-cloak>يومياً: ٧ صباحاً – ٢ بعد منتصف الليل</span></p>
+              <p><i class="fa-solid fa-moon mr-1.5 ml-1.5 text-terracotta"></i> <span x-show="lang === 'en'">Late Night Creative Hub</span><span x-show="lang === 'ar'" x-cloak>ملتقى إبداعي للمبدعين ليلاً</span></p>
+            </div>
+          </div>
+          <a 
+            href="https://maps.google.com" 
+            target="_blank" 
+            class="w-full text-center bg-sand text-espresso border border-espresso py-3 font-bold text-xs uppercase tracking-widest hover:bg-espresso hover:text-white transition-all shadow-brutal-sm flex items-center justify-center gap-2"
+          >
+            <i class="fa-solid fa-map-pin"></i>
+            <span x-show="lang === 'en'">Get Directions</span>
+            <span x-show="lang === 'ar'" x-cloak>الحصول على الاتجاهات</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- COMMUNITY & WORKSHOP CALENDAR (Lead Capture) -->
+  <section id="community" class="py-20 bg-canvas border-b-2 border-espresso">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Lead capture text / Event Calendar Left -->
+        <div class="lg:col-span-7">
+          <p class="text-xs font-bold tracking-widest text-terracotta uppercase mb-2">
+            <span x-show="lang === 'en'">Never Stop Drafting</span>
+            <span x-show="lang === 'ar'" x-cloak>استمر في الإبداع والتعلم</span>
+          </p>
+          <h2 class="font-heading text-3xl sm:text-4xl font-black uppercase text-espresso mb-6">
+            <span x-show="lang === 'en'">Upcoming Design Workshops</span>
+            <span x-show="lang === 'ar'" x-cloak>ورش العمل الإبداعية القادمة</span>
+          </h2>
+          <p class="text-espresso/70 mb-8 max-w-xl text-base leading-relaxed">
+            <span x-show="lang === 'en'">Skip messy Instagram DMs. Register securely for official design modules, book study rooms, and secure curated limited workshop seat tickets directly below.</span>
+            <span x-show="lang === 'ar'" x-cloak>تجاوز عشوائية رسائل الإنستغرام الخاصة. سجل بأمان وراحة في ورش العمل الفنية والمهنية لدينا، واحجز طاولات الدراسة المخصصة مباشرة من هنا.</span>
+          </p>
+
+          <!-- Event list cards -->
+          <div class="space-y-4">
+            <!-- Event 1 -->
+            <div class="border-2 border-espresso p-5 bg-sand flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 hover:shadow-brutal shadow-brutal-sm transition-all">
+              <div>
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="bg-terracotta text-white font-bold text-[9px] uppercase px-2 py-0.5 border border-espresso">
+                    <span x-show="lang === 'en'">Design module</span>
+                    <span x-show="lang === 'ar'" x-cloak>وحدة التصميم</span>
+                  </span>
+                  <span class="text-xs text-espresso/60 font-bold">
+                    <span x-show="lang === 'en'">Oct 24 • Al Sulaimaniyah</span>
+                    <span x-show="lang === 'ar'" x-cloak>٢٤ أكتوبر • السليمانية</span>
+                  </span>
+                </div>
+                <h4 class="font-heading font-extrabold text-base uppercase text-espresso">
+                  <span x-show="lang === 'en'">Intro to Modern Arabic Calligraphy &amp; Branding</span>
+                  <span x-show="lang === 'ar'" x-cloak>مقدمة في الخط العربي الحديث وتصميم الهوية</span>
+                </h4>
+              </div>
+              <button 
+                @click="openWorkshop('Intro to Modern Arabic Calligraphy', 'مقدمة في الخط العربي الحديث')"
+                class="bg-espresso text-sand border border-espresso px-5 py-2.5 text-xs font-black uppercase hover:bg-terracotta hover:text-white transition-colors shrink-0"
+              >
+                <span x-show="lang === 'en'">Reserve Seat</span>
+                <span x-show="lang === 'ar'" x-cloak>احجز مقعدك</span>
+              </button>
+            </div>
+
+            <!-- Event 2 -->
+            <div class="border-2 border-espresso p-5 bg-sand flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 hover:shadow-brutal shadow-brutal-sm transition-all">
+              <div>
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="bg-espresso text-sand font-bold text-[9px] uppercase px-2 py-0.5 border border-espresso">
+                    <span x-show="lang === 'en'">Craft masterclass</span>
+                    <span x-show="lang === 'ar'" x-cloak>مهارات الحرف</span>
+                  </span>
+                  <span class="text-xs text-espresso/60 font-bold">
+                    <span x-show="lang === 'en'">Nov 03 • The Zone</span>
+                    <span x-show="lang === 'ar'" x-cloak>٣ نوفمبر • ذا زون</span>
+                  </span>
+                </div>
+                <h4 class="font-heading font-extrabold text-base uppercase text-espresso">
+                  <span x-show="lang === 'en'">Pottery &amp; Clay Handbuilding for Beginners</span>
+                  <span x-show="lang === 'ar'" x-cloak>صناعة وتشكيل الفخار بالطين للمبتدئين</span>
+                </h4>
+              </div>
+              <button 
+                @click="openWorkshop('Pottery & Clay Handbuilding', 'صناعة وتشكيل الفخار بالطين')"
+                class="bg-espresso text-sand border border-espresso px-5 py-2.5 text-xs font-black uppercase hover:bg-terracotta hover:text-white transition-colors shrink-0"
+              >
+                <span x-show="lang === 'en'">Reserve Seat</span>
+                <span x-show="lang === 'ar'" x-cloak>احجز مقعدك</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- VIP SMS Sign up Box Right -->
+        <div class="lg:col-span-5 bg-sand border-2 border-espresso p-8 shadow-brutal">
+          <div class="w-10 h-10 bg-terracotta text-white flex items-center justify-center font-bold text-lg border border-espresso mb-6">
+            <i class="fa-solid fa-envelope-open-text"></i>
+          </div>
+          <h3 class="font-heading text-xl font-extrabold uppercase text-espresso mb-3">
+            <span x-show="lang === 'en'">Join the Draft Circle</span>
+            <span x-show="lang === 'ar'" x-cloak>انضم إلى دائرة مسوّدة</span>
+          </h3>
+          <p class="text-xs text-espresso/70 mb-6 leading-relaxed">
+            <span x-show="lang === 'en'">Subscribe directly for early access to drop items, free workshop tickets, and exclusive secret local drink menu items before launch.</span>
+            <span x-show="lang === 'ar'" x-cloak>اشترك مباشرة للحصول على وصول مبكر لإصداراتنا الحصرية، تذاكر مجانية لورش العمل، ومشروبات سرية خاصة قبل إطلاقها للعامة.</span>
+          </p>
+          
+          <!-- Form (Saudi focused mobile & email registration) -->
+          <form @submit.prevent="showToast(lang === 'en' ? 'Welcome to the Circle! Check your phone/email.' : 'أهلاً بك في الدائرة! تحقق من جوالك أو بريدك الإلكتروني.')" class="space-y-4">
+            <div>
+              <label class="block text-[10px] font-black uppercase text-espresso/70 mb-1">
+                <span x-show="lang === 'en'">Your Name</span>
+                <span x-show="lang === 'ar'" x-cloak>الاسم الكريم</span>
+              </label>
+              <input type="text" required placeholder="Sarah Al-Otaibi" class="w-full bg-canvas border border-espresso p-3 text-xs focus:ring-1 focus:ring-terracotta outline-none rounded-none text-espresso placeholder-espresso/40">
+            </div>
+            <div>
+              <label class="block text-[10px] font-black uppercase text-espresso/70 mb-1">
+                <span x-show="lang === 'en'">Saudi Mobile Number (SMS Updates)</span>
+                <span x-show="lang === 'ar'" x-cloak>رقم الجوال السعودي (لتحديثات SMS)</span>
+              </label>
+              <div class="relative">
+                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-xs font-bold text-espresso/60 border-r border-espresso/20 pr-2">+966</span>
+                <input type="tel" required placeholder="5XXXXXXXX" class="w-full bg-canvas border border-espresso p-3 pl-16 text-xs focus:ring-1 focus:ring-terracotta outline-none rounded-none text-espresso placeholder-espresso/40">
+              </div>
+            </div>
+            <div>
+              <label class="block text-[10px] font-black uppercase text-espresso/70 mb-1">
+                <span x-show="lang === 'en'">Email address</span>
+                <span x-show="lang === 'ar'" x-cloak>البريد الإلكتروني</span>
+              </label>
+              <input type="email" required placeholder="creative@domain.com" class="w-full bg-canvas border border-espresso p-3 text-xs focus:ring-1 focus:ring-terracotta outline-none rounded-none text-espresso placeholder-espresso/40">
+            </div>
+            <button 
+              type="submit" 
+              class="w-full bg-terracotta text-white border-2 border-espresso py-3.5 text-xs font-black uppercase hover:bg-espresso transition-all shadow-brutal-sm hover:translate-y-[1px]"
+            >
+              <span x-show="lang === 'en'">Join (Get 10% Off Shop)</span>
+              <span x-show="lang === 'ar'" x-cloak>انضمام (احصل على خصم ١٠٪)</span>
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-espresso text-sand pt-16 pb-24 md:pb-12 border-t-2 border-espresso">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+        
+        <!-- Mission Column -->
+        <div>
+          <h4 class="font-heading font-black tracking-widest text-lg uppercase mb-4 text-white">DRAFT</h4>
+          <p class="text-xs text-sand/70 leading-relaxed mb-6">
+            <span x-show="lang === 'en'">Draft is Riyadh's premium hybrid specialty coffee and curated lifestyle experience space. Established with Vision 2030 design, craftsmanship, and local community at our very core.</span>
+            <span x-show="lang === 'ar'" x-cloak>مسوّدة هي مساحة ريادية متميزة في الرياض تجمع بين القهوة المختصة والقرطاسية الفنية المصممة، تأسست بشغف لتمكين مجتمع المبدعين المحلي في ضوء رؤية المملكة ٢٠٣٠.</span>
+          </p>
+          <div class="flex gap-3 text-base">
+            <a href="#" class="text-sand/60 hover:text-terracotta transition-colors"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="text-sand/60 hover:text-terracotta transition-colors"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" class="text-sand/60 hover:text-terracotta transition-colors"><i class="fa-brands fa-tiktok"></i></a>
+          </div>
+        </div>
+
+        <!-- Quick Links Column -->
+        <div>
+          <h4 class="font-heading font-black text-xs uppercase tracking-widest text-white mb-4">
+            <span x-show="lang === 'en'">Navigation</span>
+            <span x-show="lang === 'ar'" x-cloak>التنقل في الموقع</span>
+          </h4>
+          <ul class="space-y-2 text-xs font-medium text-sand/80">
+            <li><a href="#" class="hover:text-white transition-colors"><span x-show="lang === 'en'">Home</span><span x-show="lang === 'ar'" x-cloak>الرئيسية</span></a></li>
+            <li><a href="#offerings" class="hover:text-white transition-colors"><span x-show="lang === 'en'">Hybrid Spaces</span><span x-show="lang === 'ar'" x-cloak>مساحاتنا الهجينة</span></a></li>
+            <li><a href="#shop" class="hover:text-white transition-colors"><span x-show="lang === 'en'">Specialty Shop</span><span x-show="lang === 'ar'" x-cloak>المتجر المخصص</span></a></li>
+            <li><a href="#locations" class="hover:text-white transition-colors"><span x-show="lang === 'en'">Branch Map</span><span x-show="lang === 'ar'" x-cloak>خريطة الفروع</span></a></li>
+            <li><a href="#community" class="hover:text-white transition-colors"><span x-show="lang === 'en'">Creative Circle</span><span x-show="lang === 'ar'" x-cloak>الدائرة الإبداعية</span></a></li>
+          </ul>
+        </div>
+
+        <!-- Delivery note Column -->
+        <div>
+          <h4 class="font-heading font-black text-xs uppercase tracking-widest text-white mb-4">
+            <span x-show="lang === 'en'">Delivery Partners</span>
+            <span x-show="lang === 'ar'" x-cloak>شركاء التوصيل</span>
+          </h4>
+          <p class="text-xs text-sand/70 leading-relaxed mb-4">
+            <span x-show="lang === 'en'">While we strongly suggest direct pickup for ultimate freshness and 15% savings, you can also find us on local partner networks.</span>
+            <span x-show="lang === 'ar'" x-cloak>بينما ننصح دائماً بالطلب المباشر للحصول على الجودة الأفضل وخصم ١٥٪، تتوفر منتجاتنا أيضاً لدى شركاء التوصيل المحليين.</span>
+          </p>
+          <div class="flex flex-wrap gap-2 text-[10px] font-bold uppercase text-espresso">
+            <span class="bg-sand px-2 py-1">Jahez</span>
+            <span class="bg-sand px-2 py-1">HungerStation</span>
+            <span class="bg-sand px-2 py-1">The Chefz</span>
+          </div>
+        </div>
+
+        <!-- Secure Trust column -->
+        <div>
+          <h4 class="font-heading font-black text-xs uppercase tracking-widest text-white mb-4">
+            <span x-show="lang === 'en'">KSA E-Commerce Trust</span>
+            <span x-show="lang === 'ar'" x-cloak>ثقة التجارة الإلكترونية بالمملكة</span>
+          </h4>
+          <!-- Payment Badges -->
+          <div class="flex flex-wrap gap-2 mb-6">
+            <span class="bg-white text-espresso font-black px-2 py-1 text-[9px] border border-white">Apple Pay</span>
+            <span class="bg-white text-espresso font-black px-2 py-1 text-[9px] border border-white">mada</span>
+            <span class="bg-white text-espresso font-black px-2 py-1 text-[9px] border border-white">Visa</span>
+            <span class="bg-white text-espresso font-black px-2 py-1 text-[9px] border border-white">Tabby</span>
+            <span class="bg-white text-espresso font-black px-2 py-1 text-[9px] border border-white">Tamara</span>
+          </div>
+          <!-- Maroof integration badge and registration -->
+          <div class="bg-sand/10 border border-sand/20 p-3 flex items-center gap-3">
+            <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center text-espresso text-xs font-bold shrink-0">
+              M
+            </div>
+            <div class="text-[10px] text-sand/60">
+              <p class="font-bold text-white">Maroof Verified #245199</p>
+              <p>MCI Commercial Register 101034421</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Divider -->
+      <div class="border-t border-sand/20 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] text-sand/50">
+        <p>
+          <span x-show="lang === 'en'">© 2024 Draft Cafe. All Rights Reserved. Designed for Riyadh's Creative Vision.</span>
+          <span x-show="lang === 'ar'" x-cloak>© ٢٠٢٤ مقهى مسودة. جميع الحقوق محفوظة. صُمم بشغف لرؤية الرياض الإبداعية.</span>
+        </p>
+        <p class="flex gap-4">
+          <a href="#" class="hover:text-white transition-colors"><span x-show="lang === 'en'">Terms of Service</span><span x-show="lang === 'ar'" x-cloak>الشروط والأحكام</span></a>
+          <a href="#" class="hover:text-white transition-colors"><span x-show="lang === 'en'">Privacy Policy</span><span x-show="lang === 'ar'" x-cloak>سياسة الخصوصية</span></a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- CART DRAWER MODAL -->
+  <div 
+    x-show="cartOpen"
+    class="fixed inset-0 z-50 overflow-hidden"
+    style="display: none;"
+    x-cloak
+  >
+    <!-- Overlay -->
+    <div 
+      @click="cartOpen = false"
+      class="absolute inset-0 bg-espresso/60 backdrop-blur-sm transition-opacity"
+    ></div>
+
+    <!-- Panel container -->
+    <div class="absolute inset-y-0 right-0 max-w-full flex pl-10">
+      <div 
+        class="w-screen max-w-md bg-canvas border-l-2 border-espresso flex flex-col justify-between shadow-2xl"
+        @click.away="cartOpen = false"
+      >
+        <!-- Drawer Header -->
+        <div class="p-6 border-b-2 border-espresso bg-sand flex items-center justify-between">
+          <h3 class="font-heading text-lg font-black uppercase text-espresso">
+            <span x-show="lang === 'en'">Your Selection</span>
+            <span x-show="lang === 'ar'" x-cloak>سلتك الحالية</span>
+          </h3>
+          <button @click="cartOpen = false" class="text-espresso hover:text-terracotta">
+            <i class="fa-solid fa-xmark text-lg"></i>
+          </button>
+        </div>
+
+        <!-- Drawer Body (Cart Items) -->
+        <div class="flex-1 overflow-y-auto p-6 space-y-4">
+          <!-- Empty State -->
+          <template x-if="cart.length === 0">
+            <div class="text-center py-12">
+              <i class="fa-solid fa-mug-hot text-espresso/20 text-5xl mb-4"></i>
+              <p class="text-xs text-espresso/60 font-bold uppercase">
+                <span x-show="lang === 'en'">Your bag is empty</span>
+                <span x-show="lang === 'ar'" x-cloak>سلتك فارغة تماماً</span>
+              </p>
+            </div>
+          </template>
+
+          <!-- Cart Item Template -->
+          <template x-for="(item, index) in cart" :key="item.id">
+            <div class="border border-espresso p-4 bg-white flex items-center justify-between gap-4">
+              <img :src="item.img" class="w-12 h-12 object-cover border border-espresso" alt="">
+              <div class="flex-1 min-w-0">
+                <h4 class="font-heading text-xs font-black uppercase text-espresso truncate" x-text="lang === 'en' ? item.nameEn : item.nameAr"></h4>
+                <p class="text-[10px] text-espresso/60 mt-0.5" x-text="'SAR ' + item.price"></p>
+                <div class="flex items-center gap-2 mt-2">
+                  <button @click="item.qty > 1 ? item.qty-- : removeFromCart(index)" class="w-5 h-5 border border-espresso bg-sand text-xs flex items-center justify-center hover:bg-espresso hover:text-white">-</button>
+                  <span class="text-xs font-bold text-espresso" x-text="item.qty"></span>
+                  <button @click="item.qty++" class="w-5 h-5 border border-espresso bg-sand text-xs flex items-center justify-center hover:bg-espresso hover:text-white">+</button>
+                </div>
+              </div>
+              <div class="text-right">
+                <p class="font-heading text-sm font-black text-espresso" x-text="'SAR ' + (item.price * item.qty)"></p>
+                <button @click="removeFromCart(index)" class="text-[10px] font-bold text-terracotta hover:underline mt-1">
+                  <span x-show="lang === 'en'">Remove</span>
+                  <span x-show="lang === 'ar'" x-cloak>حذف</span>
+                </button>
+              </div>
+            </div>
+          </template>
+        </div>
+
+        <!-- Drawer Footer -->
+        <div class="p-6 border-t-2 border-espresso bg-sand space-y-4">
+          <div class="flex items-center justify-between text-espresso font-black font-heading">
+            <span class="uppercase">
+              <span x-show="lang === 'en'">Total Sum</span>
+              <span x-show="lang === 'ar'" x-cloak>الإجمالي الإجمالي</span>
+            </span>
+            <span x-text="'SAR ' + cartTotal"></span>
+          </div>
+          <p class="text-[10px] text-espresso/60 leading-relaxed">
+            <span x-show="lang === 'en'">Prices include VAT. Apple Pay options available on direct secure redirection.</span>
+            <span x-show="lang === 'ar'" x-cloak>الأسعار شاملة ضريبة القيمة المضافة. تتوفر خيارات الدفع بـ Apple Pay فور توجيهك الآمن.</span>
+          </p>
+          <div class="space-y-2">
+            <button 
+              @click="showToast(lang === 'en' ? 'Direct checkout initialized!' : 'تم بدء عملية الدفع المباشر والآمن!'); cartOpen = false;"
+              class="w-full bg-terracotta text-white border-2 border-espresso py-3.5 text-xs font-black uppercase hover:bg-espresso transition-all shadow-brutal-sm flex items-center justify-center gap-2"
+              :disabled="cart.length === 0"
+              :class="cart.length === 0 ? 'opacity-50 cursor-not-allowed' : ''"
+            >
+              <i class="fa-brands fa-apple"></i>
+              <span x-show="lang === 'en'">Express Pay with Apple Pay</span>
+              <span x-show="lang === 'ar'" x-cloak>شراء سريع بـ Apple Pay</span>
+            </button>
+            <button 
+              @click="showToast(lang === 'en' ? 'Standard checkout process initiated.' : 'تم بدء عملية الدفع الاعتيادية.'); cartOpen = false;"
+              class="w-full bg-espresso text-sand border-2 border-espresso py-3 text-xs font-black uppercase hover:bg-canvas hover:text-espresso transition-all shadow-brutal-sm"
+              :disabled="cart.length === 0"
+              :class="cart.length === 0 ? 'opacity-50 cursor-not-allowed' : ''"
+            >
+              <span x-show="lang === 'en'">Proceed to Secure Checkout</span>
+              <span x-show="lang === 'ar'" x-cloak>متابعة الدفع الآمن</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- WEB MENU PICKUP / ORDER DIRECT MODAL -->
+  <div 
+    x-show="orderModalOpen"
+    class="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto bg-espresso/80 backdrop-blur-sm"
+    style="display: none;"
+    x-cloak
+  >
+    <div 
+      class="bg-canvas border-2 border-espresso max-w-lg w-full p-6 shadow-brutal relative"
+      @click.away="orderModalOpen = false"
+    >
+      <!-- Close Button -->
+      <button 
+        @click="orderModalOpen = false" 
+        class="absolute top-4 right-4 text-espresso hover:text-terracotta"
+      >
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+
+      <div class="mb-6">
+        <div class="w-10 h-10 bg-terracotta text-white flex items-center justify-center font-bold text-lg border border-espresso mb-4">
+          <i class="fa-solid fa-bolt"></i>
+        </div>
+        <h3 class="font-heading text-xl font-extrabold uppercase text-espresso">
+          <span x-show="lang === 'en'">Quick Direct Pickup</span>
+          <span x-show="lang === 'ar'" x-cloak>الطلب والاستلام المباشر السريع</span>
+        </h3>
+        <p class="text-xs text-espresso/60 mt-1">
+          <span x-show="lang === 'en'">Your order will be fresh and prepared for pickup in 10-15 minutes.</span>
+          <span x-show="lang === 'ar'" x-cloak>سيكون طلبك جاهزاً وطازجاً للاستلام خلال ١٠ - ١٥ دقيقة فقط.</span>
+        </p>
+      </div>
+
+      <!-- Simple Form -->
+      <form @submit.prevent="showToast(lang === 'en' ? 'Direct Pickup Order Placed!' : 'تم تقديم طلب الاستلام المباشر بنجاح!'); orderModalOpen = false;" class="space-y-4">
+        <div>
+          <label class="block text-[10px] font-black uppercase text-espresso/70 mb-1">
+            <span x-show="lang === 'en'">Select Outlet</span>
+            <span x-show="lang === 'ar'" x-cloak>اختر فرع الاستلام</span>
+          </label>
+          <select class="w-full bg-sand border border-espresso p-3 text-xs focus:ring-1 focus:ring-terracotta outline-none rounded-none text-espresso font-bold">
+            <option value="suly"><span x-show="lang === 'en'">Al Sulaimaniyah (Flagship)</span><span x-show="lang === 'ar'" x-cloak>السليمانية (الفرع الرئيسي)</span></option>
+            <option value="zone"><span x-show="lang === 'en'">The Zone</span><span x-show="lang === 'ar'" x-cloak>ذا زون</span></option>
+            <option value="uwalk"><span x-show="lang === 'en'">U Walk</span><span x-show="lang === 'ar'" x-cloak>يو ووك</span></option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-[10px] font-black uppercase text-espresso/70 mb-1">
+            <span x-show="lang === 'en'">Choose Brew / Items</span>
+            <span x-show="lang === 'ar'" x-cloak>اختر طلبك المفضل</span>
+          </label>
+          <select class="w-full bg-sand border border-espresso p-3 text-xs focus:ring-1 focus:ring-terracotta outline-none rounded-none text-espresso">
+            <option>Terracotta Latte (Iced) - SAR 28</option>
+            <option>Spanish Rose Cortado - SAR 24</option>
+            <option>Cold Brew Peach Tonic - SAR 26</option>
+            <option>Double Espresso - SAR 18</option>
+            <option>Croissant / Fresh Pastries Assortment - SAR 18</option>
+          </select>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-[10px] font-black uppercase text-espresso/70 mb-1">
+              <span x-show="lang === 'en'">Name</span>
+              <span x-show="lang === 'ar'" x-cloak>الاسم</span>
+            </label>
+            <input type="text" required placeholder="Mohammed" class="w-full bg-sand border border-espresso p-3 text-xs outline-none rounded-none">
+          </div>
+          <div>
+            <label class="block text-[10px] font-black uppercase text-espresso/70 mb-1">
+              <span x-show="lang === 'en'">Mobile</span>
+              <span x-show="lang === 'ar'" x-cloak>رقم الجوال</span>
+            </label>
+            <input type="tel" required placeholder="05xxxxxxxx" class="w-full bg-sand border border-espresso p-3 text-xs outline-none rounded-none">
+          </div>
+        </div>
+
+        <!-- Quick Check / Save notice -->
+        <div class="bg-sand p-3 text-[11px] text-espresso/70 border border-espresso">
+          <i class="fa-solid fa-circle-check text-terracotta mr-1 ml-1"></i>
+          <span x-show="lang === 'en'">Direct ordering earns 15% automatic discount on all checkout totals instantly.</span>
+          <span x-show="lang === 'ar'" x-cloak>الطلب المباشر يمنحك خصماً تلقائياً فوزياً بنسبة ١٥٪ على الإجمالي.</span>
+        </div>
+
+        <button 
+          type="submit" 
+          class="w-full bg-terracotta text-white border-2 border-espresso py-3.5 text-xs font-black uppercase hover:bg-espresso transition-all shadow-brutal-sm"
+        >
+          <span x-show="lang === 'en'">Confirm Pickup Order</span>
+          <span x-show="lang === 'ar'" x-cloak>تأكيد وإرسال طلب الاستلام</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- WORKSHOP SEAT RESERVATION MODAL -->
+  <div 
+    x-show="workshopModalOpen"
+    class="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto bg-espresso/80 backdrop-blur-sm"
+    style="display: none;"
+    x-cloak
+  >
+    <div 
+      class="bg-canvas border-2 border-espresso max-w-md w-full p-6 shadow-brutal relative"
+      @click.away="workshopModalOpen = false"
+    >
+      <!-- Close Button -->
+      <button 
+        @click="workshopModalOpen = false" 
+        class="absolute top-4 right-4 text-espresso hover:text-terracotta"
+      >
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+
+      <div class="mb-6">
+        <div class="w-10 h-10 bg-terracotta text-white flex items-center justify-center font-bold text-lg border border-espresso mb-4">
+          <i class="fa-solid fa-graduation-cap"></i>
+        </div>
+        <h3 class="font-heading text-xl font-extrabold uppercase text-espresso">
+          <span x-show="lang === 'en'">Reserve Seat Ticket</span>
+          <span x-show="lang === 'ar'" x-cloak>حجز تذكرة ورشة العمل</span>
+        </h3>
+        <p class="text-xs text-espresso/70 mt-2">
+          <span x-show="lang === 'en'">Course: </span>
+          <span x-show="lang === 'ar'" x-cloak>الورشة: </span>
+          <strong class="text-espresso underline" x-text="selectedWorkshop"></strong>
+        </p>
+      </div>
+
+      <form @submit.prevent="showToast(lang === 'en' ? 'Seat Reserved Successfully!' : 'تم حجز مقعدك بنجاح!'); workshopModalOpen = false;" class="space-y-4">
+        <div>
+          <label class="block text-[10px] font-black uppercase text-espresso/70 mb-1">
+            <span x-show="lang === 'en'">Full Name</span>
+            <span x-show="lang === 'ar'" x-cloak>الاسم الكامل</span>
+          </label>
+          <input type="text" required placeholder="Fahad Al-Malki" class="w-full bg-sand border border-espresso p-3 text-xs outline-none rounded-none text-espresso">
+        </div>
+        <div>
+          <label class="block text-[10px] font-black uppercase text-espresso/70 mb-1">
+            <span x-show="lang === 'en'">Email</span>
+            <span x-show="lang === 'ar'" x-cloak>البريد الإلكتروني</span>
+          </label>
+          <input type="email" required placeholder="fahad@creative.sa" class="w-full bg-sand border border-espresso p-3 text-xs outline-none rounded-none text-espresso">
+        </div>
+        <div>
+          <label class="block text-[10px] font-black uppercase text-espresso/70 mb-1">
+            <span x-show="lang === 'en'">Mobile Number</span>
+            <span x-show="lang === 'ar'" x-cloak>رقم الجوال</span>
+          </label>
+          <input type="tel" required placeholder="05xxxxxxxx" class="w-full bg-sand border border-espresso p-3 text-xs outline-none rounded-none text-espresso">
+        </div>
+
+        <div class="bg-sand p-3 text-[11px] text-espresso/70 border border-espresso">
+          <span x-show="lang === 'en'">Due on Entrance: <strong>SAR 150</strong> (Includes premium workbook &amp; direct specialty signature beverage).</span>
+          <span x-show="lang === 'ar'" x-cloak>مستحق عند الدخول: <strong>١٥٠ ريال</strong> (شاملة كتيب التدريب ومشروبك الخاص المفضل مجاناً).</span>
+        </div>
+
+        <button 
+          type="submit" 
+          class="w-full bg-terracotta text-white border-2 border-espresso py-3.5 text-xs font-black uppercase hover:bg-espresso transition-all shadow-brutal-sm"
+        >
+          <span x-show="lang === 'en'">Confirm &amp; Register Seat</span>
+          <span x-show="lang === 'ar'" x-cloak>تأكيد الحجز والتسجيل</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>
