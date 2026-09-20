@@ -1,0 +1,665 @@
+<!DOCTYPE html> 
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nakhla Specialty Coffee | Al Khobar's Neighborhood Sanctuary</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        terracotta: '#D97757',
+                        'terracotta-dark': '#C05E3C',
+                        warmbg: '#FBF9F5',
+                        sand: '#EFECE6',
+                        charcoal: '#2C2825',
+                        coffee: '#4A3B32'
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom scrollbar and smooth transitions */
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        h1, h2, h3, .font-serif { font-family: 'Playfair Display', serif; }
+    </style>
+</head>
+<body class="bg-warmbg text-charcoal antialiased selection:bg-terracotta selection:text-white">
+
+    <!-- Top Notification Bar (Ramadan / Operating Hours Announcement) -->
+    <div class="bg-coffee text-warmbg px-4 py-2 text-xs md:text-sm font-medium text-center relative z-50 flex items-center justify-center gap-2">
+        <span class="flex h-2 w-2 relative">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-terracotta opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-terracotta"></span>
+        </span>
+        <span>🌙 Ramadan Hours Updated: Open daily from 4:00 PM to 3:00 AM. Valet available at Corniche branch!</span>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-40 backdrop-blur-md bg-warmbg/90 border-b border-sand">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-2">
+                <div class="w-10 h-10 rounded-full bg-coffee flex items-center justify-center text-warmbg font-serif font-bold text-xl">
+                    N
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-serif text-xl font-bold tracking-tight text-coffee">Nakhla</span>
+                    <span class="text-[10px] uppercase tracking-widest text-terracotta font-semibold">Al Khobar</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-charcoal">
+                <a href="#hero" class="hover:text-terracotta transition-colors">Home</a>
+                <a href="#features" class="hover:text-terracotta transition-colors">Why Us</a>
+                <a href="#menu" class="hover:text-terracotta transition-colors">Menu</a>
+                <a href="#community" class="hover:text-terracotta transition-colors">Community</a>
+                <a href="#location" class="hover:text-terracotta transition-colors">Location & Hours</a>
+            </nav>
+
+            <!-- Action Buttons -->
+            <div class="hidden md:flex items-center gap-3">
+                <a href="#menu" class="bg-terracotta hover:bg-terracotta-dark text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-all shadow-sm">
+                    Order Pickup
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="mobile-menu-btn" class="md:hidden text-coffee text-2xl focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-warmbg border-b border-sand px-4 pt-2 pb-6 space-y-3">
+            <a href="#hero" class="block py-2 text-base font-medium text-charcoal hover:text-terracotta">Home</a>
+            <a href="#features" class="block py-2 text-base font-medium text-charcoal hover:text-terracotta">Why Us</a>
+            <a href="#menu" class="block py-2 text-base font-medium text-charcoal hover:text-terracotta">Menu</a>
+            <a href="#community" class="block py-2 text-base font-medium text-charcoal hover:text-terracotta">Community</a>
+            <a href="#location" class="block py-2 text-base font-medium text-charcoal hover:text-terracotta">Location & Hours</a>
+            <div class="pt-2">
+                <a href="#menu" class="block text-center w-full bg-terracotta text-white text-sm font-semibold px-5 py-3 rounded-full">
+                    Order Pickup
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 1. Hero Section -->
+    <section id="hero" class="relative min-h-[90vh] flex items-center justify-center overflow-hidden py-16 lg:py-24">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&q=80&w=2000" alt="Nakhla Cafe Interior Al Khobar" class="w-full h-full object-cover object-center">
+            <div class="absolute inset-0 bg-gradient-to-r from-charcoal/80 via-charcoal/60 to-transparent"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="max-w-2xl">
+                <!-- Subtitle badge -->
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-warmbg text-xs font-medium mb-6 border border-white/20">
+                    <i class="fa-solid fa-mug-hot text-terracotta"></i> Specialty Coffee Roasters & Lounge
+                </div>
+
+                <!-- H1 Value Proposition -->
+                <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.1] mb-6">
+                    Your Daily Ritual, Elevated. Welcome to Nakhla — Al Khobar’s Neighborhood Sanctuary.
+                </h1>
+
+                <!-- Subheadline -->
+                <p class="text-lg text-sand/90 font-light mb-8 leading-relaxed">
+                    Specialty coffee roasted to perfection, artisan pastries, and the ultimate space to work or unwind in the heart of Al Khobar.
+                </p>
+
+                <!-- Dual CTAs -->
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-10">
+                    <a href="#menu" class="bg-terracotta hover:bg-terracotta-dark text-white font-semibold px-8 py-4 rounded-full text-center transition-all shadow-lg hover:shadow-terracotta/30 flex items-center justify-center gap-2">
+                        <span>Explore Our Menu</span>
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </a>
+                    <a href="#location" class="bg-white/10 hover:bg-white/20 text-white border border-white/30 backdrop-blur-md font-semibold px-8 py-4 rounded-full text-center transition-all flex items-center justify-center gap-2">
+                        <span>Find Us & Hours</span>
+                        <i class="fa-solid fa-location-dot text-sm"></i>
+                    </a>
+                </div>
+
+                <!-- Quick Trust Badge Bar -->
+                <div class="flex flex-wrap items-center gap-6 pt-6 border-t border-white/15 text-warmbg/90 text-sm">
+                    <div class="flex items-center gap-2">
+                        <div class="text-amber-400 flex">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <span class="font-bold text-white">4.8 / 5.0</span>
+                        <span class="text-xs text-sand/70">(1,420+ Google Reviews)</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="h-2.5 w-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                        <span class="font-medium text-white">Open Now • Al Khobar Corniche</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Features / "Why Us" Section -->
+    <section id="features" class="py-20 bg-warmbg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-xl mx-auto mb-16">
+                <span class="text-terracotta font-semibold text-sm uppercase tracking-wider">The Nakhla Experience</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-coffee mt-2">Crafted For Quality & Community</h2>
+                <p class="text-charcoal/70 mt-3 font-light">We combine world-class specialty coffee roasting with an ambiance designed to inspire your best moments.</p>
+            </div>
+
+            <!-- 3-Column Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-sand/60 hover:shadow-md transition-all group">
+                    <div class="w-14 h-14 rounded-xl bg-sand flex items-center justify-center text-terracotta text-2xl mb-6 group-hover:bg-terracotta group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-seedling"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-coffee mb-3">Handcrafted Perfection</h3>
+                    <p class="text-charcoal/75 text-sm leading-relaxed">
+                        Sourced from the world's finest beans and roasted locally. Every cup of V60, espresso, and signature drink is crafted with precision.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-sand/60 hover:shadow-md transition-all group">
+                    <div class="w-14 h-14 rounded-xl bg-sand flex items-center justify-center text-terracotta text-2xl mb-6 group-hover:bg-terracotta group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-wifi"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-coffee mb-3">Built for Focus & Connection</h3>
+                    <p class="text-charcoal/75 text-sm leading-relaxed">
+                        High-speed Wi-Fi, ample power outlets, and thoughtfully designed aesthetic spaces—perfect for remote work or catching up with friends.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-sand/60 hover:shadow-md transition-all group">
+                    <div class="w-14 h-14 rounded-xl bg-sand flex items-center justify-center text-terracotta text-2xl mb-6 group-hover:bg-terracotta group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-croissant"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-coffee mb-3">Fresh Daily & Inclusive</h3>
+                    <p class="text-charcoal/75 text-sm leading-relaxed">
+                        In-house pastries baked daily. Explore our dedicated selection of vegan, gluten-free, and dairy-free options.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Services / Core Offerings (Interactive Digital Menu Preview) -->
+    <section id="menu" class="py-20 bg-sand/40 border-t border-b border-sand">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-xl mx-auto mb-12">
+                <span class="text-terracotta font-semibold text-sm uppercase tracking-wider">Digital Menu Preview</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-coffee mt-2">Sip, Savor, Stay</h2>
+                <p class="text-charcoal/70 mt-3 font-light">Discover our signature brews, seasonal specials, and fresh bites.</p>
+            </div>
+
+            <!-- Interactive Tabs Navigation -->
+            <div class="flex justify-center mb-12">
+                <div class="inline-flex bg-white p-1.5 rounded-full shadow-sm border border-sand">
+                    <button onclick="switchTab('coffee')" id="btn-coffee" class="tab-btn px-6 py-2.5 rounded-full text-sm font-semibold transition-all bg-terracotta text-white">
+                        Specialty Coffee
+                    </button>
+                    <button onclick="switchTab('signature')" id="btn-signature" class="tab-btn px-6 py-2.5 rounded-full text-sm font-semibold transition-all text-charcoal hover:text-terracotta">
+                        Signature Drinks
+                    </button>
+                    <button onclick="switchTab('bakery')" id="btn-bakery" class="tab-btn px-6 py-2.5 rounded-full text-sm font-semibold transition-all text-charcoal hover:text-terracotta">
+                        Artisan Bakery
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tab Content Containers -->
+            <!-- TAB 1: Specialty Coffee -->
+            <div id="content-coffee" class="menu-tab-content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Item 1 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-sand/60 flex flex-col">
+                    <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&q=80&w=600" alt="V60 Pour Over" class="h-48 w-full object-cover">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-serif text-lg font-bold text-coffee">V60 Pour Over</h3>
+                            <span class="bg-terracotta/10 text-terracotta font-bold text-sm px-2.5 py-1 rounded-lg">22 SAR</span>
+                        </div>
+                        <p class="text-charcoal/70 text-xs mb-4 flex-grow">
+                            Single-origin beans brewed to order with choice of notes: floral, citrus, or berry undertones.
+                        </p>
+                        <div class="flex items-center justify-between pt-4 border-t border-sand">
+                            <span class="text-[11px] bg-sand px-2.5 py-1 rounded-full text-coffee font-medium">Single Origin</span>
+                            <button onclick="alert('Added V60 to pre-order list!')" class="text-terracotta hover:text-terracotta-dark text-sm font-semibold flex items-center gap-1">
+                                <i class="fa-solid fa-plus"></i> Quick Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-sand/60 flex flex-col">
+                    <img src="https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&q=80&w=600" alt="Spanish Latte" class="h-48 w-full object-cover">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-serif text-lg font-bold text-coffee">Signature Spanish Latte</h3>
+                            <span class="bg-terracotta/10 text-terracotta font-bold text-sm px-2.5 py-1 rounded-lg">26 SAR</span>
+                        </div>
+                        <p class="text-charcoal/70 text-xs mb-4 flex-grow">
+                            House-made condensed milk blend with double ristretto espresso shot and textured organic milk.
+                        </p>
+                        <div class="flex items-center justify-between pt-4 border-t border-sand">
+                            <span class="text-[11px] bg-amber-100 text-amber-800 px-2.5 py-1 rounded-full font-medium">Best Seller</span>
+                            <button onclick="alert('Added Spanish Latte to pre-order list!')" class="text-terracotta hover:text-terracotta-dark text-sm font-semibold flex items-center gap-1">
+                                <i class="fa-solid fa-plus"></i> Quick Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-sand/60 flex flex-col">
+                    <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&q=80&w=600" alt="Flat White" class="h-48 w-full object-cover">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-serif text-lg font-bold text-coffee">Flat White</h3>
+                            <span class="bg-terracotta/10 text-terracotta font-bold text-sm px-2.5 py-1 rounded-lg">20 SAR</span>
+                        </div>
+                        <p class="text-charcoal/70 text-xs mb-4 flex-grow">
+                            Double shot of our signature espresso paired with velvety micro-foamed milk.
+                        </p>
+                        <div class="flex items-center justify-between pt-4 border-t border-sand">
+                            <span class="text-[11px] bg-sand px-2.5 py-1 rounded-full text-coffee font-medium">Classic</span>
+                            <button onclick="alert('Added Flat White to pre-order list!')" class="text-terracotta hover:text-terracotta-dark text-sm font-semibold flex items-center gap-1">
+                                <i class="fa-solid fa-plus"></i> Quick Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 2: Signature Drinks (Hidden by default) -->
+            <div id="content-signature" class="menu-tab-content hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Item 1 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-sand/60 flex flex-col">
+                    <img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&q=80&w=600" alt="Al Khobar Sunset Infusion" class="h-48 w-full object-cover">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-serif text-lg font-bold text-coffee">Corniche Sunset Cold Brew</h3>
+                            <span class="bg-terracotta/10 text-terracotta font-bold text-sm px-2.5 py-1 rounded-lg">28 SAR</span>
+                        </div>
+                        <p class="text-charcoal/70 text-xs mb-4 flex-grow">
+                            Slow-steeped cold brew infused with hibiscus, local citrus, and a hint of cardamom.
+                        </p>
+                        <div class="flex items-center justify-between pt-4 border-t border-sand">
+                            <span class="text-[11px] bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-full font-medium">Al Khobar Exclusive</span>
+                            <button onclick="alert('Added Sunset Cold Brew to pre-order list!')" class="text-terracotta hover:text-terracotta-dark text-sm font-semibold flex items-center gap-1">
+                                <i class="fa-solid fa-plus"></i> Quick Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-sand/60 flex flex-col">
+                    <img src="https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&q=80&w=600" alt="Pistachio Latte" class="h-48 w-full object-cover">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-serif text-lg font-bold text-coffee">Royal Pistachio Latte</h3>
+                            <span class="bg-terracotta/10 text-terracotta font-bold text-sm px-2.5 py-1 rounded-lg">29 SAR</span>
+                        </div>
+                        <p class="text-charcoal/70 text-xs mb-4 flex-grow">
+                            Made with pure Sicilian pistachio cream paste, espresso, and topped with crushed pistachio nuts.
+                        </p>
+                        <div class="flex items-center justify-between pt-4 border-t border-sand">
+                            <span class="text-[11px] bg-amber-100 text-amber-800 px-2.5 py-1 rounded-full font-medium">Signature</span>
+                            <button onclick="alert('Added Pistachio Latte to pre-order list!')" class="text-terracotta hover:text-terracotta-dark text-sm font-semibold flex items-center gap-1">
+                                <i class="fa-solid fa-plus"></i> Quick Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 3: Artisan Bakery (Hidden by default) -->
+            <div id="content-bakery" class="menu-tab-content hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Item 1 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-sand/60 flex flex-col">
+                    <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&q=80&w=600" alt="Croissant" class="h-48 w-full object-cover">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-serif text-lg font-bold text-coffee">Pistachio Cream Croissant</h3>
+                            <span class="bg-terracotta/10 text-terracotta font-bold text-sm px-2.5 py-1 rounded-lg">24 SAR</span>
+                        </div>
+                        <p class="text-charcoal/70 text-xs mb-4 flex-grow">
+                            Flaky, golden butter croissant filled generously with house-made pistachio praline cream.
+                        </p>
+                        <div class="flex items-center justify-between pt-4 border-t border-sand">
+                            <span class="text-[11px] bg-amber-100 text-amber-800 px-2.5 py-1 rounded-full font-medium">Freshly Baked</span>
+                            <button onclick="alert('Added Croissant to pre-order list!')" class="text-terracotta hover:text-terracotta-dark text-sm font-semibold flex items-center gap-1">
+                                <i class="fa-solid fa-plus"></i> Quick Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-sand/60 flex flex-col">
+                    <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&q=80&w=600" alt="Vegan Cake" class="h-48 w-full object-cover">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-serif text-lg font-bold text-coffee">Vegan Dark Chocolate Tart</h3>
+                            <span class="bg-terracotta/10 text-terracotta font-bold text-sm px-2.5 py-1 rounded-lg">26 SAR</span>
+                        </div>
+                        <p class="text-charcoal/70 text-xs mb-4 flex-grow">
+                            Rich, decadent 70% dark chocolate ganache on a gluten-free walnut crust.
+                        </p>
+                        <div class="flex items-center justify-between pt-4 border-t border-sand">
+                            <span class="text-[11px] bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-full font-medium">Vegan & GF</span>
+                            <button onclick="alert('Added Tart to pre-order list!')" class="text-terracotta hover:text-terracotta-dark text-sm font-semibold flex items-center gap-1">
+                                <i class="fa-solid fa-plus"></i> Quick Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Conversion Hook Banner -->
+            <div class="mt-16 bg-coffee rounded-2xl p-8 md:p-10 text-warmbg flex flex-col md:flex-row items-center justify-between gap-6 shadow-lg">
+                <div>
+                    <h3 class="font-serif text-2xl font-bold mb-2">Craving something on the go?</h3>
+                    <p class="text-sand/80 text-sm font-light">Skip the line and pre-order your favorite brew and pastry for quick pickup.</p>
+                </div>
+                <a href="#" onclick="alert('Opening Express Pickup Checkout...'); return false;" class="bg-terracotta hover:bg-terracotta-dark text-white font-semibold px-8 py-3.5 rounded-full text-sm transition-all shadow whitespace-nowrap">
+                    Order for Pickup <i class="fa-solid fa-bag-shopping ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Social Proof Section (Community & UGC) -->
+    <section id="community" class="py-20 bg-warmbg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-xl mx-auto mb-16">
+                <span class="text-terracotta font-semibold text-sm uppercase tracking-wider">Community & Stories</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-coffee mt-2">Loved by Al Khobar</h2>
+                <p class="text-charcoal/70 mt-3 font-light">Tag <span class="font-semibold text-charcoal">@NakhlaCafe</span> to be featured in our gallery.</p>
+            </div>
+
+            <!-- Instagram Style Photo Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
+                <div class="relative group overflow-hidden rounded-2xl aspect-square shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=500" alt="Customer photo 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                        <span class="text-white text-xs font-medium"><i class="fa-brands fa-instagram mr-1"></i> @reem_coffee</span>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-2xl aspect-square shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&q=80&w=500" alt="Customer photo 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                        <span class="text-white text-xs font-medium"><i class="fa-brands fa-instagram mr-1"></i> @faisal_khobar</span>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-2xl aspect-square shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=500" alt="Customer photo 3" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                        <span class="text-white text-xs font-medium"><i class="fa-brands fa-instagram mr-1"></i> @afnan_m</span>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-2xl aspect-square shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1507133754951-54215201416e?auto=format&fit=crop&q=80&w=500" alt="Customer photo 4" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                        <span class="text-white text-xs font-medium"><i class="fa-brands fa-instagram mr-1"></i> @khobar_foodies</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonials Highlights -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-sand/60 relative">
+                    <div class="text-terracotta text-3xl font-serif absolute top-4 right-6 opacity-30">“</div>
+                    <p class="text-charcoal/80 text-sm leading-relaxed mb-6 font-light">
+                        "The best Spanish Latte in Al Khobar, hands down. The vibe is unmatched for working remotely with fast internet and wonderful lighting."
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-sand flex items-center justify-center font-bold text-coffee">
+                            AM
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm text-coffee">Afnan M.</h4>
+                            <p class="text-xs text-charcoal/60">Google Local Guide</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-sand/60 relative">
+                    <div class="text-terracotta text-3xl font-serif absolute top-4 right-6 opacity-30">“</div>
+                    <p class="text-charcoal/80 text-sm leading-relaxed mb-6 font-light">
+                        "Hidden gem near the Corniche. Their pistachio croissant and V60 setup is a must-try for any true specialty coffee enthusiast!"
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-sand flex items-center justify-center font-bold text-coffee">
+                            FK
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm text-coffee">Faisal K.</h4>
+                            <p class="text-xs text-charcoal/60">Verified Customer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Call-to-Action (CTA) & Location Hub -->
+    <section id="location" class="py-20 bg-sand/50 border-t border-sand">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                
+                <!-- Left Side: Visit & Hours (Interactive Logistics) -->
+                <div class="bg-white p-8 sm:p-10 rounded-3xl shadow-sm border border-sand/80 flex flex-col justify-between">
+                    <div>
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-terracotta/10 text-terracotta text-xs font-semibold mb-4">
+                            <i class="fa-solid fa-map-pin"></i> Easy Navigation
+                        </div>
+                        <h3 class="font-serif text-2xl sm:text-3xl font-bold text-coffee mb-6">Plan Your Visit</h3>
+                        
+                        <!-- Address & Parking -->
+                        <div class="mb-6">
+                            <h4 class="font-bold text-sm text-coffee mb-1">📍 Address</h4>
+                            <p class="text-charcoal/75 text-sm">
+                                King Abdulaziz Road, Al Khobar Corniche District. Valet available & easy street parking directly in front.
+                            </p>
+                        </div>
+
+                        <!-- Operating Hours -->
+                        <div class="mb-8">
+                            <h4 class="font-bold text-sm text-coffee mb-2">⏰ Operating Hours (Ramadan Schedule)</h4>
+                            <div class="space-y-1.5 text-sm text-charcoal/75">
+                                <div class="flex justify-between py-1 border-b border-sand/50">
+                                    <span>Saturday – Wednesday:</span>
+                                    <span class="font-medium text-coffee">4:00 PM – 3:00 AM</span>
+                                </div>
+                                <div class="flex justify-between py-1 border-b border-sand/50">
+                                    <span>Thursday – Friday:</span>
+                                    <span class="font-medium text-coffee">4:00 PM – 4:00 AM</span>
+                                </div>
+                            </div>
+                            <p class="mt-3 text-xs text-emerald-700 font-semibold flex items-center gap-1.5">
+                                <span class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                                🟢 Open Now - Closes at 3:00 AM
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Map Action Buttons -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-4">
+                        <a href="https://maps.google.com" target="_blank" class="bg-coffee hover:bg-coffee/90 text-warmbg text-center py-3 px-4 rounded-xl text-sm font-semibold transition-all flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-map-location-dot">></i> Google Maps
+                        </a>
+                        <a href="https://maps.apple.com" target="_blank" class="bg-sand hover:bg-sand/80 text-coffee text-center py-3 px-4 rounded-xl text-sm font-semibold transition-all flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-apple"></i> Apple Maps
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Side: Direct Connection Card -->
+                <div class="bg-coffee text-warmbg p-8 sm:p-10 rounded-3xl shadow-lg flex flex-col justify-between">
+                    <div>
+                        <span class="text-terracotta text-xs font-semibold uppercase tracking-wider">Reservations & Events</span>
+                        <h3 class="font-serif text-2xl sm:text-3xl font-bold text-white mt-2 mb-4">Planning a Gathering or Event?</h3>
+                        <p class="text-sand/80 text-sm font-light mb-8 leading-relaxed">
+                            Reserve a table for your remote work sessions, private meetings, or celebratory gatherings instantly without waiting for a social media DM reply.
+                        </p>
+
+                        <!-- Feature list -->
+                        <ul class="space-y-3 mb-8 text-sm text-sand/90">
+                            <li class="flex items-center gap-3">
+                                <i class="fa-solid fa-circle-check text-terracotta"></i> Priority seating for groups up to 10
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fa-solid fa-circle-check text-terracotta"></i> Custom pastry boxes for corporate events
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fa-solid fa-circle-check text-terracotta"></i> Fast response via WhatsApp concierge
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="space-y-3">
+                        <button onclick="alert('Table reservation system popup opening...')" class="w-full bg-terracotta hover:bg-terracotta-dark text-white font-semibold py-3.5 px-6 rounded-xl text-sm transition-all shadow text-center block">
+                            Reserve a Table
+                        </button>
+                        <a href="https://wa.me/966500000000" target="_blank" class="w-full bg-white/10 hover:bg-white/25 text-white font-semibold py-3.5 px-6 rounded-xl text-sm transition-all text-center block border border-white/20">
+                            <i class="fa-brands fa-whatsapp text-emerald-400 mr-2"></i> Contact via WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Footer (Trust, Branding & SEO Footprint) -->
+    <footer class="bg-charcoal text-warmbg pt-16 pb-8 border-t border-charcoal">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-white/10">
+                
+                <!-- Column 1: Brand -->
+                <div class="md:col-span-1">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-8 h-8 rounded-full bg-terracotta flex items-center justify-center text-white font-serif font-bold text-lg">
+                            N
+                        </div>
+                        <span class="font-serif text-xl font-bold text-white">Nakhla</span>
+                    </div>
+                    <p class="text-sand/70 text-xs leading-relaxed mb-6">
+                        Al Khobar's premier specialty coffee destination. Delivering exceptional roasts, serene ambiance, and artisan pastries.
+                    </p>
+                    <p class="text-xs text-sand/50">© 2026 Nakhla Specialty Coffee. All rights reserved.</p>
+                </div>
+
+                <!-- Column 2: Quick Links -->
+                <div>
+                    <h4 class="font-bold text-sm text-white uppercase tracking-wider mb-4">Quick Links</h4>
+                    <ul class="space-y-2.5 text-xs text-sand/80">
+                        <li><a href="#menu" class="hover:text-terracotta transition-colors">Digital Menu</a></li>
+                        <li><a href="#features" class="hover:text-terracotta transition-colors">Our Story & Vibe</a></li>
+                        <li><a href="#location" class="hover:text-terracotta transition-colors">Location & Parking</a></li>
+                        <li><a href="#" class="hover:text-terracotta transition-colors">Privacy Policy</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Connect -->
+                <div>
+                    <h4 class="font-bold text-sm text-white uppercase tracking-wider mb-4">Connect With Us</h4>
+                    <div class="flex items-center gap-3 mb-4">
+                        <a href="#" class="w-9 h-9 rounded-full bg-white/10 hover:bg-terracotta flex items-center justify-center text-white transition-colors">
+                            <i class="fa-brands fa-instagram text-sm"></i>
+                        </a>
+                        <a href="#" class="w-9 h-9 rounded-full bg-white/10 hover:bg-terracotta flex items-center justify-center text-white transition-colors">
+                            <i class="fa-brands fa-tiktok text-sm"></i>
+                        </a>
+                        <a href="#" class="w-9 h-9 rounded-full bg-white/10 hover:bg-terracotta flex items-center justify-center text-white transition-colors">
+                            <i class="fa-brands fa-snapchat text-sm"></i>
+                        </a>
+                        <a href="https://wa.me/966500000000" class="w-9 h-9 rounded-full bg-white/10 hover:bg-terracotta flex items-center justify-center text-white transition-colors">
+                            <i class="fa-brands fa-whatsapp text-sm"></i>
+                        </a>
+                    </div>
+                    <p class="text-xs text-sand/70">Email: hello@nakhlacafe.sa</p>
+                </div>
+
+                <!-- Column 4: Newsletter / Hours Reminder -->
+                <div>
+                    <h4 class="font-bold text-sm text-white uppercase tracking-wider mb-4">Stay Updated</h4>
+                    <p class="text-xs text-sand/70 mb-3">Subscribe for seasonal bean releases and exclusive menu updates.</p>
+                    <form onsubmit="event.preventDefault(); alert('Thank you for subscribing!');" class="flex gap-2">
+                        <input type="email" placeholder="Your email address" required class="bg-white/10 border border-white/20 rounded-xl px-3 py-2 text-xs text-white placeholder-sand/50 focus:outline-none focus:border-terracotta flex-grow">
+                        <button type="submit" class="bg-terracotta hover:bg-terracotta-dark text-white px-4 py-2 rounded-xl text-xs font-semibold transition-all">
+                            Join
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- SEO Bottom Bar -->
+            <div class="pt-8 text-center">
+                <p class="text-[11px] text-sand/50 tracking-wide">
+                    Specialty Coffee Al Khobar | Best Cafe in Al Khobar | V60 Coffee Shop Eastern Province | Spanish Latte Al Khobar Corniche
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Menu Tabs & Mobile Menu toggle -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Interactive Digital Menu Tabs
+        function switchTab(category) {
+            // Hide all tab contents
+            const contents = document.querySelectorAll('.menu-tab-content');
+            contents.forEach(el => el.classList.add('hidden'));
+
+            // Remove active style from all tab buttons
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-terracotta', 'text-white');
+                btn.classList.add('text-charcoal');
+            });
+
+            // Show target content
+            document.getElementById('content-' + category).classList.remove('hidden');
+
+            // Highlight active button
+            const activeBtn = document.getElementById('btn-' + category);
+            activeBtn.classList.remove('text-charcoal');
+            activeBtn.classList.add('bg-terracotta', 'text-white');
+        }
+    </script>
+</body>
+</html>
