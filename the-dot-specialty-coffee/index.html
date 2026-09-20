@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sip with Intention | The Dot Specialty Coffee Saar, Bahrain</title>
+  <meta name="description" content="Discover The Dot Specialty Coffee in Saar, Bahrain. Elevate your routine with single-origin beans, craft beverages, artisanal matcha, and a quiet workspace.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- FontAwesome Icons for flawless visuals -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Custom Styling & Theme Tokens -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'brand-bg-primary': '#FDFBF8',
+            'brand-bg-secondary': '#F6F3EC',
+            'brand-surface-dark': '#1C1A17',
+            'brand-accent-taupe': '#8C7A6B',
+            'brand-accent-green': '#5D6B59',
+            'brand-text-primary': '#1C1A17',
+            'brand-text-secondary': '#6B655F',
+            'brand-border': '#E6E1D8',
+          },
+          fontFamily: {
+            serif: ['Cormorant Garamond', 'serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom transition curves mirroring physical premium interactions */
+    .transition-japandi {
+      transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    
+    /* Hide default scrollbar but keep functionality */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    
+    /* Glassmorphism Navigation */
+    .glass-nav {
+      background: rgba(253, 251, 248, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(230, 225, 216, 0.5);
+    }
+  </style>
+
+  <!-- Local Business Schema Markup (JSON-LD) -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CafeOrCoffeeShop",
+      "name": "The Dot Specialty Coffee",
+      "image": "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&q=80&w=1200",
+      "@id": "https://thedot.bh",
+      "url": "https://thedot.bh",
+      "telephone": "+97317000000",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Avenue 27, Saar District",
+        "addressLocality": "Saar",
+        "addressCountry": "BH"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 26.2084,
+        "longitude": 50.4859
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Sunday"],
+          "opens": "07:00",
+          "closes": "22:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Friday", "Saturday"],
+          "opens": "08:00",
+          "closes": "23:30"
+        }
+      ],
+      "menu": "https://thedot.bh/#menu",
+      "servesCuisine": ["Specialty Coffee", "Artisanal Matcha", "Premium Bakes"],
+      "amenityFeature": {
+        "@type": "LocationFeatureSpecification",
+        "name": "High-Speed Free Wi-Fi",
+        "value": "true"
+      }
+    }
+  </script>
+</head>
+<body class="bg-brand-bg-primary text-brand-text-primary font-sans antialiased selection:bg-brand-accent-taupe selection:text-white">
+
+  <!-- Notification Banner for Saar Locals -->
+  <div class="bg-brand-surface-dark text-[#FDFBF8] py-2.5 px-4 text-xs font-medium tracking-widest uppercase text-center flex justify-center items-center gap-2">
+    <span>Fresh roast batch available. Same-day delivery across Saar & Janabiya.</span>
+    <a href="#shop" class="underline hover:text-brand-accent-taupe transition-japandi">Shop Now</a>
+  </div>
+
+  <!-- Navigation Bar -->
+  <nav class="sticky top-0 z-50 glass-nav transition-japandi">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+      <!-- Brand Identity -->
+      <a href="#" class="flex items-center gap-3 group">
+        <span class="text-xl text-brand-text-primary group-hover:scale-110 transition-japandi">●</span>
+        <span class="font-serif text-2xl tracking-wider font-semibold uppercase">The Dot</span>
+      </a>
+
+      <!-- Desktop Menu Links -->
+      <div class="hidden md:flex items-center gap-8 text-sm tracking-widest uppercase text-brand-text-secondary">
+        <a href="#menu" class="hover:text-brand-text-primary transition-japandi relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-brand-text-primary hover:after:w-full after:transition-all">Live Menu</a>
+        <a href="#pillars" class="hover:text-brand-text-primary transition-japandi relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-brand-text-primary hover:after:w-full after:transition-all">Our Sourcing</a>
+        <a href="#shop" class="hover:text-brand-text-primary transition-japandi relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-brand-text-primary hover:after:w-full after:transition-all">Fresh Beans</a>
+        <a href="#vibe-check" class="hover:text-brand-text-primary transition-japandi relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-brand-text-primary hover:after:w-full after:transition-all">Space Status</a>
+        <a href="#community" class="hover:text-brand-text-primary transition-japandi relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-brand-text-primary hover:after:w-full after:transition-all">Community</a>
+      </div>
+
+      <!-- Conversion & Cart Icons -->
+      <div class="flex items-center gap-4">
+        <button onclick="toggleCart()" class="relative p-2 text-brand-text-primary hover:text-brand-accent-taupe transition-japandi">
+          <i class="fa-solid fa-bag-shopping text-lg"></i>
+          <span id="cart-count" class="absolute top-0 right-0 bg-brand-accent-taupe text-white text-[10px] rounded-full w-4.5 h-4.5 flex items-center justify-center font-bold">0</span>
+        </button>
+        <a href="#menu" class="hidden sm:inline-block bg-brand-surface-dark text-white px-5 py-3 text-xs tracking-widest uppercase border border-brand-surface-dark hover:bg-brand-accent-taupe hover:border-brand-accent-taupe transition-japandi">
+          Order Pickup
+        </a>
+        <!-- Mobile Navigation Menu Button -->
+        <button onclick="toggleMobileNav()" class="md:hidden p-2 text-brand-text-primary focus:outline-none">
+          <i id="mobile-nav-icon" class="fa-solid fa-bars text-xl"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-nav" class="hidden md:hidden bg-brand-bg-primary border-t border-brand-border px-6 py-8 space-y-6 transition-japandi">
+      <a href="#menu" onclick="toggleMobileNav()" class="block text-lg font-serif tracking-wide text-brand-text-primary">Live Menu</a>
+      <a href="#pillars" onclick="toggleMobileNav()" class="block text-lg font-serif tracking-wide text-brand-text-primary">Our Sourcing</a>
+      <a href="#shop" onclick="toggleMobileNav()" class="block text-lg font-serif tracking-wide text-brand-text-primary">Buy Fresh Beans</a>
+      <a href="#vibe-check" onclick="toggleMobileNav()" class="block text-lg font-serif tracking-wide text-brand-text-primary">Workspace Vibe Check</a>
+      <a href="#community" onclick="toggleMobileNav()" class="block text-lg font-serif tracking-wide text-brand-text-primary">Community Voices</a>
+      <a href="#menu" onclick="toggleMobileNav()" class="block w-full text-center bg-brand-surface-dark text-white py-3 text-sm tracking-widest uppercase">Order Pickup</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="relative min-h-[calc(100vh-120px)] flex flex-col justify-center border-b border-brand-border py-12 lg:py-24">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center w-full">
+      
+      <!-- Editorial Left Panel -->
+      <div class="lg:col-span-7 flex flex-col justify-center space-y-6 lg:space-y-8 z-10">
+        <div class="flex items-center gap-3">
+          <span class="w-1.5 h-1.5 rounded-full bg-brand-accent-taupe"></span>
+          <span class="text-xs tracking-[0.25em] text-brand-text-secondary uppercase font-semibold">Saar, Kingdom of Bahrain</span>
+        </div>
+        <h1 class="font-serif text-5xl sm:text-6xl lg:text-7xl leading-[1.05] tracking-tight font-medium">
+          Sip with <span class="italic font-light text-brand-accent-taupe">Intention</span>.<br>Brew with Precision.
+        </h1>
+        <p class="text-brand-text-secondary text-base sm:text-lg max-w-xl font-light leading-relaxed">
+          A Japandi sanctuary tailored for specialty coffee, slow roasting, and quiet artistic focus. Handcrafting balanced cups daily within Saar's creative district.
+        </p>
+        <div class="flex flex-wrap gap-4 pt-4">
+          <a href="#menu" class="bg-brand-surface-dark text-[#FDFBF8] px-8 py-4 text-xs tracking-widest uppercase border border-brand-surface-dark hover:bg-brand-accent-taupe hover:border-brand-accent-taupe transition-japandi">
+            Explore Today's Brews
+          </a>
+          <a href="#shop" class="bg-transparent text-brand-text-primary px-8 py-4 text-xs tracking-widest uppercase border border-brand-text-primary hover:bg-brand-surface-dark hover:text-white transition-japandi">
+            Shop Fresh Beans
+          </a>
+        </div>
+      </div>
+
+      <!-- Visual Cinematic Right Panel -->
+      <div class="lg:col-span-5 relative w-full h-[350px] sm:h-[450px] lg:h-[600px]">
+        <div class="absolute inset-0 border border-brand-border p-3 bg-brand-bg-secondary">
+          <div class="w-full h-full overflow-hidden relative group">
+            <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&q=80&w=1000" 
+                 alt="Slow pour-over extraction process at The Dot" 
+                 class="w-full h-full object-cover grayscale-[20%] group-hover:scale-105 transition-japandi duration-[1500ms]">
+            <!-- Glassmorphic floating overlay element -->
+            <div class="absolute bottom-6 left-6 right-6 bg-brand-bg-primary/90 backdrop-blur-md p-4 border border-brand-border/60 flex items-center justify-between">
+              <div>
+                <p class="text-[10px] tracking-widest text-brand-text-secondary uppercase font-semibold">Micro-Batch Roasting</p>
+                <p class="font-serif text-sm italic font-semibold text-brand-text-primary">Guatemala El Injerto — Roasted Yesterday</p>
+              </div>
+              <span class="text-xs text-brand-accent-taupe font-bold tracking-widest uppercase">Fresh</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Section 2: Core Pillars (KSP Cards) -->
+  <section id="pillars" class="py-20 lg:py-28 bg-brand-bg-secondary border-b border-brand-border">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="max-w-2xl mb-16">
+        <p class="text-xs tracking-[0.25em] text-brand-accent-taupe uppercase font-bold mb-4">The Architectural Criteria</p>
+        <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl tracking-wide leading-tight">
+          A holistic physical & digital experience crafted for coffee purists.
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Card 1 -->
+        <div class="bg-brand-bg-primary p-8 border border-brand-border flex flex-col justify-between min-h-[320px] transition-japandi hover:-translate-y-1 hover:shadow-sm">
+          <div>
+            <div class="w-12 h-12 bg-brand-bg-secondary flex items-center justify-center text-brand-accent-taupe mb-8">
+              <i class="fa-solid fa-seedling text-lg"></i>
+            </div>
+            <h3 class="font-serif text-2xl font-medium mb-3">Traceable Origins</h3>
+            <p class="text-brand-text-secondary text-sm font-light leading-relaxed">
+              We source directly from eco-conscious smallholders. Our single-origins showcase intense clarity, honoring the micro-climates of East Africa & Latin America.
+            </p>
+          </div>
+          <span class="text-[10px] tracking-widest text-brand-accent-taupe uppercase font-bold mt-6">Roast Mastery</span>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="bg-brand-bg-primary p-8 border border-brand-border flex flex-col justify-between min-h-[320px] transition-japandi hover:-translate-y-1 hover:shadow-sm">
+          <div>
+            <div class="w-12 h-12 bg-brand-bg-secondary flex items-center justify-center text-brand-accent-taupe mb-8">
+              <i class="fa-solid fa-compass-drafting text-lg"></i>
+            </div>
+            <h3 class="font-serif text-2xl font-medium mb-3">Aesthetic Simplicity</h3>
+            <p class="text-brand-text-secondary text-sm font-light leading-relaxed">
+              Drawing architecture from Danish timber & Kyoto teahouses. High-contrast spaces constructed out of concrete, raw oak, and pure natural light.
+            </p>
+          </div>
+          <span class="text-[10px] tracking-widest text-brand-accent-taupe uppercase font-bold mt-6">Japandi Philosophy</span>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="bg-brand-bg-primary p-8 border border-brand-border flex flex-col justify-between min-h-[320px] transition-japandi hover:-translate-y-1 hover:shadow-sm">
+          <div>
+            <div class="w-12 h-12 bg-brand-bg-secondary flex items-center justify-center text-brand-accent-taupe mb-8">
+              <i class="fa-solid fa-laptop-code text-lg"></i>
+            </div>
+            <h3 class="font-serif text-2xl font-medium mb-3">Creative Sanctuary</h3>
+            <p class="text-brand-text-secondary text-sm font-light leading-relaxed">
+              Equipped with symmetrical high-speed enterprise Wi-Fi, hidden electrical outlets under clean tables, and tailored acoustics for undisturbed work.
+            </p>
+          </div>
+          <span class="text-[10px] tracking-widest text-brand-accent-taupe uppercase font-bold mt-6">Productivity Enabled</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Interactive Digital Menu -->
+  <section id="menu" class="py-20 lg:py-28 border-b border-brand-border relative">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <!-- Heading -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <div>
+          <p class="text-xs tracking-[0.25em] text-brand-accent-taupe uppercase font-bold mb-4">Live Digital Menu</p>
+          <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl tracking-wide">Explore Today’s Sips & Bites</h2>
+        </div>
+        
+        <!-- Dietary quick filters -->
+        <div class="flex flex-wrap gap-2 text-xs">
+          <button onclick="toggleDietaryFilter('vegan')" id="btn-vegan" class="px-4 py-2 border border-brand-border hover:border-brand-text-primary transition-japandi rounded-full flex items-center gap-2 bg-brand-bg-secondary text-brand-text-secondary">
+            <span class="w-1.5 h-1.5 rounded-full bg-brand-accent-green"></span> Vegan Friendly
+          </button>
+          <button onclick="toggleDietaryFilter('gf')" id="btn-gf" class="px-4 py-2 border border-brand-border hover:border-brand-text-primary transition-japandi rounded-full flex items-center gap-2 bg-brand-bg-secondary text-brand-text-secondary">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#D4AF37]"></span> Gluten-Free
+          </button>
+        </div>
+      </div>
+
+      <!-- Tab Selector Header -->
+      <div class="flex border-b border-brand-border overflow-x-auto no-scrollbar mb-10">
+        <button onclick="switchMenuTab('pour-over')" id="tab-pour-over" class="menu-tab-btn py-4 px-6 text-sm tracking-widest uppercase border-b-2 border-brand-text-primary font-semibold text-brand-text-primary transition-japandi whitespace-nowrap">Filter & Pour-Over</button>
+        <button onclick="switchMenuTab('espresso')" id="tab-espresso" class="menu-tab-btn py-4 px-6 text-sm tracking-widest uppercase border-b-2 border-transparent text-brand-text-secondary hover:text-brand-text-primary transition-japandi whitespace-nowrap">Espresso Classics</button>
+        <button onclick="switchMenuTab('matcha')" id="tab-matcha" class="menu-tab-btn py-4 px-6 text-sm tracking-widest uppercase border-b-2 border-transparent text-brand-text-secondary hover:text-brand-text-primary transition-japandi whitespace-nowrap">Matcha Program</button>
+        <button onclick="switchMenuTab('bakes')" id="tab-bakes" class="menu-tab-btn py-4 px-6 text-sm tracking-widest uppercase border-b-2 border-transparent text-brand-text-secondary hover:text-brand-text-primary transition-japandi whitespace-nowrap">Artisanal Bakes</button>
+      </div>
+
+      <!-- Dynamic Menu List Grid -->
+      <div id="menu-items-container" class="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-8 min-h-[300px]">
+        <!-- Generated Dynamically via JS for interactive state representation -->
+      </div>
+    </div>
+
+    <!-- Slide-out Menu Item Drawer -->
+    <div id="menu-drawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-brand-bg-primary shadow-2xl z-50 border-l border-brand-border translate-x-full transition-transform duration-500 flex flex-col justify-between">
+      <div>
+        <div class="p-6 border-b border-brand-border flex justify-between items-center bg-brand-bg-secondary">
+          <h4 class="font-serif text-2xl font-medium" id="drawer-title">Product Detail</h4>
+          <button onclick="closeMenuDrawer()" class="text-brand-text-secondary hover:text-brand-text-primary p-2">
+            <i class="fa-solid fa-xmark text-lg"></i>
+          </button>
+        </div>
+        <div class="p-6 space-y-6 overflow-y-auto" id="drawer-content">
+          <!-- Loaded dynamically -->
+        </div>
+      </div>
+      <div class="p-6 border-t border-brand-border bg-brand-bg-secondary">
+        <button onclick="closeMenuDrawer()" class="w-full bg-brand-surface-dark text-white py-3 text-sm tracking-widest uppercase hover:bg-brand-accent-taupe transition-japandi">
+          Go Back to Menu
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: D2C E-Commerce & Subscription Portal -->
+  <section id="shop" class="py-20 lg:py-28 bg-brand-bg-secondary border-b border-brand-border">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <!-- Shop Intro Header -->
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <p class="text-xs tracking-[0.25em] text-brand-accent-taupe uppercase font-bold mb-4">The Roast Store</p>
+        <h2 class="font-serif text-4xl lg:text-5xl tracking-wide mb-6">Fresh Sourcing Delivered to Your Door</h2>
+        <p class="text-brand-text-secondary text-sm font-light leading-relaxed">
+          Get freshly roasted whole beans delivered automated weekly to compound estates in Saar, Janabiya, and wider Bahrain. Save 15% on recurring orders.
+        </p>
+      </div>
+
+      <!-- Product Catalog Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Product Card 1 -->
+        <div class="bg-brand-bg-primary border border-brand-border p-6 flex flex-col justify-between transition-japandi hover:shadow-sm">
+          <div>
+            <div class="relative bg-brand-bg-secondary aspect-square w-full mb-6 overflow-hidden">
+              <span class="absolute top-3 left-3 bg-brand-accent-taupe text-[#FDFBF8] text-[9px] font-bold uppercase tracking-widest px-2.5 py-1 z-10">Limited Edition</span>
+              <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&q=80&w=600" alt="Colombia Geisha Roast Bag" class="w-full h-full object-cover grayscale-[10%]">
+            </div>
+            <h3 class="font-serif text-2xl font-medium text-brand-text-primary mb-2">Colombia Geisha (Finca El Obraje)</h3>
+            <p class="text-brand-text-secondary text-xs font-light tracking-wide mb-4">Tasting Notes: Bergamot, Lavender, Jasmine Tea</p>
+          </div>
+          <div class="space-y-4 pt-4 border-t border-brand-border">
+            <div class="flex justify-between items-center">
+              <span class="text-xs tracking-wider text-brand-text-secondary uppercase">Price</span>
+              <span class="font-semibold text-base">BD 8.500</span>
+            </div>
+            
+            <!-- Sub Toggle Simulation -->
+            <div class="grid grid-cols-2 gap-2 text-[10px] tracking-wider uppercase font-semibold">
+              <button onclick="setPurchaseType('colombia', 'onetime', 8.5)" id="type-colombia-onetime" class="colombia-btn py-2 text-center border border-brand-text-primary bg-brand-surface-dark text-white transition-japandi">One-time</button>
+              <button onclick="setPurchaseType('colombia', 'sub', 7.225)" id="type-colombia-sub" class="colombia-btn py-2 text-center border border-brand-border text-brand-text-secondary hover:border-brand-text-primary transition-japandi">Sub (Save 15%)</button>
+            </div>
+
+            <button onclick="addToCart('Colombia Geisha (Finca El Obraje)', 'colombia')" class="w-full bg-brand-surface-dark text-[#FDFBF8] py-3 text-xs tracking-widest uppercase hover:bg-brand-accent-taupe hover:border-brand-accent-taupe transition-japandi">
+              Add Roast Bag
+            </button>
+          </div>
+        </div>
+
+        <!-- Product Card 2 -->
+        <div class="bg-brand-bg-primary border border-brand-border p-6 flex flex-col justify-between transition-japandi hover:shadow-sm">
+          <div>
+            <div class="relative bg-brand-bg-secondary aspect-square w-full mb-6 overflow-hidden">
+              <span class="absolute top-3 left-3 bg-[#5D6B59] text-white text-[9px] font-bold uppercase tracking-widest px-2.5 py-1 z-10">Single Origin</span>
+              <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&q=80&w=600" alt="Ethiopia Guji Roast Bag" class="w-full h-full object-cover grayscale-[10%]">
+            </div>
+            <h3 class="font-serif text-2xl font-medium text-brand-text-primary mb-2">Ethiopia Guji Uraga (Light Roast)</h3>
+            <p class="text-brand-text-secondary text-xs font-light tracking-wide mb-4">Tasting Notes: Peach Blossom, Lemon Zest, Black Tea</p>
+          </div>
+          <div class="space-y-4 pt-4 border-t border-brand-border">
+            <div class="flex justify-between items-center">
+              <span class="text-xs tracking-wider text-brand-text-secondary uppercase">Price</span>
+              <span class="font-semibold text-base">BD 6.200</span>
+            </div>
+
+            <!-- Sub Toggle Simulation -->
+            <div class="grid grid-cols-2 gap-2 text-[10px] tracking-wider uppercase font-semibold">
+              <button onclick="setPurchaseType('ethiopia', 'onetime', 6.2)" id="type-ethiopia-onetime" class="ethiopia-btn py-2 text-center border border-brand-text-primary bg-brand-surface-dark text-white transition-japandi">One-time</button>
+              <button onclick="setPurchaseType('ethiopia', 'sub', 5.27)" id="type-ethiopia-sub" class="ethiopia-btn py-2 text-center border border-brand-border text-brand-text-secondary hover:border-brand-text-primary transition-japandi">Sub (Save 15%)</button>
+            </div>
+
+            <button onclick="addToCart('Ethiopia Guji Uraga (Light Roast)', 'ethiopia')" class="w-full bg-brand-surface-dark text-[#FDFBF8] py-3 text-xs tracking-widest uppercase hover:bg-brand-accent-taupe hover:border-brand-accent-taupe transition-japandi">
+              Add Roast Bag
+            </button>
+          </div>
+        </div>
+
+        <!-- Product Card 3 -->
+        <div class="bg-brand-bg-primary border border-brand-border p-6 flex flex-col justify-between transition-japandi hover:shadow-sm">
+          <div>
+            <div class="relative bg-brand-bg-secondary aspect-square w-full mb-6 overflow-hidden">
+              <span class="absolute top-3 left-3 bg-brand-accent-taupe text-[#FDFBF8] text-[9px] font-bold uppercase tracking-widest px-2.5 py-1 z-10">House Signature</span>
+              <img src="https://images.unsplash.com/photo-1607687314552-e421317a6a94?auto=format&fit=crop&q=80&w=600" alt="The Dot House Blend Bag" class="w-full h-full object-cover grayscale-[10%]">
+            </div>
+            <h3 class="font-serif text-2xl font-medium text-brand-text-primary mb-2">The Dot Blend (Dune Series)</h3>
+            <p class="text-brand-text-secondary text-xs font-light tracking-wide mb-4">Tasting Notes: Warm Chocolate, Almond Praline, Caramelized Fig</p>
+          </div>
+          <div class="space-y-4 pt-4 border-t border-brand-border">
+            <div class="flex justify-between items-center">
+              <span class="text-xs tracking-wider text-brand-text-secondary uppercase">Price</span>
+              <span class="font-semibold text-base">BD 5.800</span>
+            </div>
+
+            <!-- Sub Toggle Simulation -->
+            <div class="grid grid-cols-2 gap-2 text-[10px] tracking-wider uppercase font-semibold">
+              <button onclick="setPurchaseType('blend', 'onetime', 5.8)" id="type-blend-onetime" class="blend-btn py-2 text-center border border-brand-text-primary bg-brand-surface-dark text-white transition-japandi">One-time</button>
+              <button onclick="setPurchaseType('blend', 'sub', 4.93)" id="type-blend-sub" class="blend-btn py-2 text-center border border-brand-border text-brand-text-secondary hover:border-brand-text-primary transition-japandi">Sub (Save 15%)</button>
+            </div>
+
+            <button onclick="addToCart('The Dot Blend (Dune Series)', 'blend')" class="w-full bg-brand-surface-dark text-[#FDFBF8] py-3 text-xs tracking-widest uppercase hover:bg-brand-accent-taupe hover:border-brand-accent-taupe transition-japandi">
+              Add Roast Bag
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: Real-Time Space Status / Vibe Check -->
+  <section id="vibe-check" class="py-20 lg:py-28 border-b border-brand-border">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+      
+      <!-- Text Content Left -->
+      <div class="lg:col-span-6 space-y-6">
+        <p class="text-xs tracking-[0.25em] text-brand-accent-taupe uppercase font-bold">The Vibe Check</p>
+        <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl tracking-wide leading-tight">
+          Before you commute, monitor the atmosphere.
+        </h2>
+        <p class="text-brand-text-secondary text-sm font-light leading-relaxed">
+          Avoid the crowd anxiety. Check live space capacity, network metrics, and acoustic levels from our communal desks in the Saar District. Cultivated to deliver pure focus.
+        </p>
+        
+        <!-- Interactive Live Simulation Tool -->
+        <div class="bg-brand-bg-secondary p-5 border border-brand-border space-y-4">
+          <p class="text-[11px] font-bold text-brand-text-secondary uppercase tracking-widest">Mock Interactive Controller</p>
+          <div class="flex gap-2 flex-wrap">
+            <button onclick="setSimulatedStatus('focused')" class="sim-btn px-4 py-2 border text-xs tracking-wide border-brand-text-primary bg-brand-surface-dark text-white transition-japandi">Focused Hours</button>
+            <button onclick="setSimulatedStatus('lively')" class="sim-btn px-4 py-2 border text-xs tracking-wide border-brand-border bg-brand-bg-primary text-brand-text-secondary transition-japandi">Lively Midday</button>
+            <button onclick="setSimulatedStatus('packed')" class="sim-btn px-4 py-2 border text-xs tracking-wide border-brand-border bg-brand-bg-primary text-brand-text-secondary transition-japandi">High Energy</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive Visual Board Right -->
+      <div class="lg:col-span-6 bg-brand-bg-secondary border border-brand-border p-8 md:p-10 relative overflow-hidden">
+        <!-- Dynamic Status Header -->
+        <div class="flex justify-between items-start border-b border-brand-border pb-6">
+          <div>
+            <span class="text-[10px] tracking-widest text-brand-text-secondary uppercase font-semibold">Status at Saar Cafe</span>
+            <h3 id="status-title" class="font-serif text-2xl font-bold mt-1 text-brand-text-primary">Peaceful & Focused</h3>
+          </div>
+          <div class="flex items-center gap-2 bg-brand-accent-green text-white px-3 py-1.5 text-[10px] uppercase tracking-widest font-bold" id="status-indicator-badge">
+            <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span> Active
+          </div>
+        </div>
+
+        <!-- Live stats counters -->
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-6 py-8 border-b border-brand-border">
+          <div>
+            <p class="text-[10px] tracking-widest text-brand-text-secondary uppercase font-semibold">Occupancy</p>
+            <p id="val-occupancy" class="font-serif text-3xl font-light mt-1">35% Full</p>
+          </div>
+          <div>
+            <p class="text-[10px] tracking-widest text-brand-text-secondary uppercase font-semibold">Wi-Fi Speeds</p>
+            <p id="val-wifi" class="font-serif text-3xl font-light mt-1">210 Mbps</p>
+          </div>
+          <div class="col-span-2 md:col-span-1">
+            <p class="text-[10px] tracking-widest text-brand-text-secondary uppercase font-semibold">Noise Level</p>
+            <p id="val-noise" class="font-serif text-3xl font-light mt-1">Soft Ambient</p>
+          </div>
+        </div>
+
+        <!-- Space Information Footer -->
+        <div class="pt-6 flex flex-col md:flex-row justify-between gap-4 text-xs text-brand-text-secondary">
+          <p class="flex items-center gap-2">
+            <i class="fa-regular fa-clock"></i> Peak Hours: 12 PM - 3 PM
+          </p>
+          <p class="flex items-center gap-2">
+            <i class="fa-solid fa-circle-nodes"></i> Secure Open Access
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: Social Proof & Community Hub -->
+  <section id="community" class="py-20 lg:py-28 bg-brand-bg-primary">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <!-- Heading -->
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <p class="text-xs tracking-[0.25em] text-brand-accent-taupe uppercase font-bold mb-4">The Community Journal</p>
+        <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl tracking-wide">Resonating with Creative Heads</h2>
+      </div>
+
+      <!-- Masonry Grid Style Community Feed -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Review Card 1 -->
+        <div class="bg-brand-bg-secondary p-8 border border-brand-border flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="flex gap-1 text-brand-accent-taupe">
+              <i class="fa-solid fa-star text-xs"></i>
+              <i class="fa-solid fa-star text-xs"></i>
+              <i class="fa-solid fa-star text-xs"></i>
+              <i class="fa-solid fa-star text-xs"></i>
+              <i class="fa-solid fa-star text-xs"></i>
+            </div>
+            <p class="font-serif text-lg italic leading-relaxed text-brand-text-primary">
+              "The single origin pour-overs here are on par with the absolute best micro-roasters in Copenhagen or Tokyo. Plus, the architectural silence feels incredibly restorative."
+            </p>
+          </div>
+          <div class="mt-8 border-t border-brand-border pt-4 flex justify-between items-center text-xs">
+            <span class="font-semibold text-brand-text-primary">Sarah Montgomery</span>
+            <span class="text-brand-text-secondary uppercase tracking-widest">Saar Resident</span>
+          </div>
+        </div>
+
+        <!-- Curated Instagram Visual Card 2 -->
+        <div class="border border-brand-border p-3 bg-brand-bg-secondary flex flex-col">
+          <div class="overflow-hidden relative group aspect-square flex-grow">
+            <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&q=80&w=600" alt="Iced Matcha at The Dot" class="w-full h-full object-cover group-hover:scale-105 transition-japandi">
+            <div class="absolute inset-0 bg-brand-surface-dark/40 opacity-0 group-hover:opacity-100 transition-japandi flex items-center justify-center">
+              <a href="https://instagram.com" target="_blank" class="text-white border border-white px-5 py-2.5 text-xs tracking-widest uppercase hover:bg-white hover:text-brand-surface-dark transition-japandi">
+                View on Instagram
+              </a>
+            </div>
+          </div>
+          <div class="p-4 flex justify-between items-center text-xs">
+            <span class="font-semibold text-brand-text-primary">@thedot.bh</span>
+            <span class="text-brand-text-secondary">1.2k Likes</span>
+          </div>
+        </div>
+
+        <!-- Review Card 3 -->
+        <div class="bg-brand-bg-secondary p-8 border border-brand-border flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="flex gap-1 text-brand-accent-taupe">
+              <i class="fa-solid fa-star text-xs"></i>
+              <i class="fa-solid fa-star text-xs"></i>
+              <i class="fa-solid fa-star text-xs"></i>
+              <i class="fa-solid fa-star text-xs"></i>
+              <i class="fa-solid fa-star text-xs"></i>
+            </div>
+            <p class="font-serif text-lg italic leading-relaxed text-brand-text-primary">
+              "A true architectural gem in Bahrain. Phenomenal enterprise grade internet, beautiful ergonomic chairs, and unmatched matcha lattes. Best spot to compile code and think."
+            </p>
+          </div>
+          <div class="mt-8 border-t border-brand-border pt-4 flex justify-between items-center text-xs">
+            <span class="font-semibold text-brand-text-primary">Ahmed Khalil</span>
+            <span class="text-brand-text-secondary uppercase tracking-widest">Lead Engineer</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 7: Footer (High-Converting & Practical Details) -->
+  <footer class="bg-brand-surface-dark text-[#FDFBF8] pt-20 pb-10 border-t border-brand-border">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <!-- Main Columns Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-16 pb-16 border-b border-brand-border/20">
+        
+        <!-- Brand & Slogan -->
+        <div class="lg:col-span-4 space-y-6">
+          <div class="flex items-center gap-3">
+            <span class="text-xl text-[#FDFBF8]">●</span>
+            <span class="font-serif text-3xl tracking-wider font-semibold uppercase">The Dot</span>
+          </div>
+          <p class="text-[#6B655F] text-sm font-light leading-relaxed max-w-sm">
+            A physical sanctuary and virtual gateway optimized for deliberate coffee preparation, artistic clarity, and deep focus.
+          </p>
+          <!-- Social icons -->
+          <div class="flex gap-4 text-lg text-[#6B655F]">
+            <a href="#" class="hover:text-[#FDFBF8] transition-japandi"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="hover:text-[#FDFBF8] transition-japandi"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="#" class="hover:text-[#FDFBF8] transition-japandi"><i class="fa-brands fa-spotify"></i></a>
+          </div>
+        </div>
+
+        <!-- Hours of Operation -->
+        <div class="lg:col-span-3 space-y-6">
+          <h4 class="text-xs tracking-widest uppercase font-semibold text-[#FDFBF8]">Hours of Operation</h4>
+          <ul class="space-y-3 text-sm font-light text-[#6B655F]">
+            <li class="flex justify-between"><span>Mon - Thu:</span> <span class="text-[#FDFBF8]">7:00 AM - 10:00 PM</span></li>
+            <li class="flex justify-between"><span>Fri - Sat:</span> <span class="text-[#FDFBF8]">8:00 AM - 11:30 PM</span></li>
+            <li class="flex justify-between"><span>Sunday:</span> <span class="text-[#FDFBF8]">7:00 AM - 10:00 PM</span></li>
+          </ul>
+        </div>
+
+        <!-- Navigation Quick Links -->
+        <div class="lg:col-span-2 space-y-6">
+          <h4 class="text-xs tracking-widest uppercase font-semibold text-[#FDFBF8]">Navigation</h4>
+          <ul class="space-y-3 text-sm font-light text-[#6B655F]">
+            <li><a href="#menu" class="hover:text-[#FDFBF8] transition-japandi">Our Live Menu</a></li>
+            <li><a href="#pillars" class="hover:text-[#FDFBF8] transition-japandi">Design & Sourcing</a></li>
+            <li><a href="#shop" class="hover:text-[#FDFBF8] transition-japandi">Shop Raw Beans</a></li>
+            <li><a href="#vibe-check" class="hover:text-[#FDFBF8] transition-japandi">Cafe Capacity Status</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter Form -->
+        <div class="lg:col-span-3 space-y-6">
+          <h4 class="text-xs tracking-widest uppercase font-semibold text-[#FDFBF8]">Subscribe to roast logs</h4>
+          <p class="text-[#6B655F] text-xs font-light leading-relaxed">
+            Gain access to limited-edition coffee bean reserve allocations before release.
+          </p>
+          <form onsubmit="handleNewsletter(event)" class="space-y-3 relative">
+            <input type="email" id="newsletter-email" placeholder="Your email address" required 
+                   class="w-full bg-[#272522] border border-[#3C3934] py-3 px-4 text-sm text-white placeholder-[#6B655F] focus:outline-none focus:border-brand-accent-taupe transition-japandi">
+            <button type="submit" class="w-full bg-brand-accent-taupe text-[#FDFBF8] py-3 text-xs tracking-widest uppercase hover:bg-[#A39281] transition-japandi">
+              Join Reserve List
+            </button>
+          </form>
+          <p id="newsletter-success" class="hidden text-brand-accent-green text-xs font-semibold">Successfully registered. Thank you.</p>
+        </div>
+
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="pt-10 flex flex-col md:flex-row justify-between gap-6 text-xs text-[#6B655F] font-light">
+        <p>© 2024 The Dot Specialty Coffee Bahrain. Carefully crafted for coffee purists and creators.</p>
+        <p class="flex gap-4">
+          <a href="#" class="hover:underline">Privacy Policy</a>
+          <span>●</span>
+          <a href="#" class="hover:underline">Terms of Service</a>
+        </p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Sliding Shopping Cart Drawer Overlay (AJAX Simulated Drawer) -->
+  <div id="cart-drawer-overlay" class="fixed inset-0 bg-black/40 z-50 hidden backdrop-blur-sm transition-opacity duration-300" onclick="toggleCart()"></div>
+  <div id="cart-drawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-brand-bg-primary shadow-2xl z-50 border-l border-brand-border translate-x-full transition-transform duration-500 flex flex-col justify-between">
+    <div>
+      <div class="p-6 border-b border-brand-border flex justify-between items-center bg-brand-bg-secondary">
+        <h4 class="font-serif text-2xl font-medium">Your Roast Selection</h4>
+        <button onclick="toggleCart()" class="text-brand-text-secondary hover:text-brand-text-primary p-2">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+      
+      <!-- Cart items area -->
+      <div id="cart-items-wrapper" class="p-6 space-y-6 overflow-y-auto max-h-[60vh]">
+        <!-- Simulated empty state / items filled dynamically -->
+        <div id="cart-empty-state" class="text-center py-12 text-brand-text-secondary">
+          <i class="fa-solid fa-bag-shopping text-3xl mb-4 text-brand-border"></i>
+          <p class="text-sm font-light">Your coffee bag selection is currently empty.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cart Pricing Summary & Actions -->
+    <div class="p-6 border-t border-brand-border bg-brand-bg-secondary space-y-4">
+      <div class="flex justify-between items-center text-sm">
+        <span class="text-brand-text-secondary">Subtotal</span>
+        <span id="cart-subtotal-val" class="font-semibold text-lg text-brand-text-primary">BD 0.000</span>
+      </div>
+      <p class="text-[10px] text-brand-text-secondary leading-relaxed">
+        * Subscriptions renew automatically. Deliveries are processed directly from our Saar packaging warehouse on selected weekdays.
+      </p>
+      <button onclick="initiateCheckout()" class="w-full bg-brand-surface-dark text-white py-4 text-xs tracking-widest uppercase hover:bg-brand-accent-taupe transition-japandi font-bold">
+        Proceed to Secure Payment
+      </button>
+    </div>
+  </div>
+
+  <!-- Toast notification system -->
+  <div id="toast" class="fixed bottom-6 right-6 bg-brand-surface-dark text-white border border-brand-border/20 px-6 py-4 text-sm tracking-wide z-[60] shadow-xl translate-y-24 opacity-0 transition-japandi pointer-events-none">
+    Item added to Roast selection
+  </div>
+
+  <!-- Dynamic Javascript Ecosystem -->
+  <script>
+    // Static Menu Dataset supporting instant categorization, filtering, and info drawers
+    const MENU_DATA = {
+      'pour-over': [
+        {
+          id: 'po1',
+          name: 'Ethiopia Guji Uraga (Light Roast)',
+          price: 3.200,
+          desc: 'A vibrant filtered cup bursting with peach blossom, tea-like lightness, and elegant lavender finish.',
+          meta: 'Washed | 2,100m Altitude',
+          vegan: true,
+          gf: true
+        },
+        {
+          id: 'po2',
+          name: 'Colombia Finca El Paraiso (Micro-Lot)',
+          price: 4.100,
+          desc: 'Explosive complex profiles featuring candied ginger, wild strawberry yogurt, and natural cinnamon warmth.',
+          meta: 'Double Anaerobic Fermentation',
+          vegan: true,
+          gf: true
+        },
+        {
+          id: 'po3',
+          name: 'Yemen Haraaz (Traditional Natural)',
+          price: 4.500,
+          desc: 'Rich historic profile with notes of dried plum, organic honey, and dark cocoa base.',
+          meta: 'Sun-Dried Natural Arabica',
+          vegan: true,
+          gf: true
+        }
+      ],
+      'espresso': [
+        {
+          id: 'es1',
+          name: 'Flat White (House Roast)',
+          price: 2.600,
+          desc: 'Balanced double shot espresso extraction blanketed under silky sweet steamed pasture milk.',
+          meta: '6oz Balance Metric',
+          vegan: false,
+          gf: true
+        },
+        {
+          id: 'es2',
+          name: 'Iced Charcoal Latte (Signature)',
+          price: 2.900,
+          desc: 'Premium organic espresso extraction combined with active charcoal element, sweet maple syrup, and chilled oat milk.',
+          meta: 'Award-winning combination',
+          vegan: true,
+          gf: true
+        },
+        {
+          id: 'es3',
+          name: 'Spanish Cortado',
+          price: 2.400,
+          desc: 'Rich texture displaying equal components espresso and micro-foamed sweet milk.',
+          meta: '4oz Concentrated Power',
+          vegan: false,
+          gf: true
+        }
+      ],
+      'matcha': [
+        {
+          id: 'ma1',
+          name: 'Ceremonial Uji Matcha Latte',
+          price: 3.000,
+          desc: 'Pure Japanese ceremonial grade stone-ground green tea whisked carefully and balanced with organic milk.',
+          meta: 'Directly sourced from Kyoto',
+          vegan: false,
+          gf: true
+        },
+        {
+          id: 'ma2',
+          name: 'Iced Coconut Matcha Premium',
+          price: 3.200,
+          desc: 'Pure green matcha extraction poured layered over chilled premium organic coconut water and light lime garnish.',
+          meta: 'Refreshing Energy Alternative',
+          vegan: true,
+          gf: true
+        }
+      ],
+      'bakes': [
+        {
+          id: 'bk1',
+          name: 'Pistachio Cardamom Bun',
+          price: 2.500,
+          desc: 'Our famous hand-twisted morning pastry scented with freshly ground green cardamom pods, pure butter, and roasted Iranian pistachios.',
+          meta: 'Fresh baked daily at 6:30 AM',
+          vegan: false,
+          gf: false
+        },
+        {
+          id: 'bk2',
+          name: 'Sourdough Croissant',
+          price: 1.800,
+          desc: 'Classic French style croissant built over 3 days of natural sourdough slow fermentation process. Exceptional crunch.',
+          meta: '100% Normandy Butter Layers',
+          vegan: false,
+          gf: false
+        },
+        {
+          id: 'bk3',
+          name: 'Sea Salt Chocolate Cookie',
+          price: 1.500,
+          desc: 'Gooey raw cane sugar cookie layered with hand-chopped single-origin Ecuador dark chocolate blocks and flake sea salt.',
+          meta: 'Warm served on demand',
+          vegan: false,
+          gf: true
+        }
+      ]
+    };
+
+    // Global State management
+    let activeTab = 'pour-over';
+    let dietaryFilters = {
+      vegan: false,
+      gf: false
+    };
+    let shoppingCart = [];
+    let productsPurchaseType = {
+      colombia: { type: 'onetime', price: 8.5 },
+      ethiopia: { type: 'onetime', price: 6.2 },
+      blend: { type: 'onetime', price: 5.8 }
+    };
+
+    // Switch Menu category with visual sliding indicator layout
+    function switchMenuTab(tabId) {
+      activeTab = tabId;
+      document.querySelectorAll('.menu-tab-btn').forEach(btn => {
+        btn.classList.remove('border-brand-text-primary', 'text-brand-text-primary');
+        btn.classList.add('border-transparent', 'text-brand-text-secondary');
+      });
+      
+      const activeBtn = document.getElementById(`tab-${tabId}`);
+      activeBtn.classList.remove('border-transparent', 'text-brand-text-secondary');
+      activeBtn.classList.add('border-brand-text-primary', 'text-brand-text-primary');
+      
+      renderMenu();
+    }
+
+    // Toggle Dietary Tag filter systems
+    function toggleDietaryFilter(filterId) {
+      dietaryFilters[filterId] = !dietaryFilters[filterId];
+      const btn = document.getElementById(`btn-${filterId}`);
+      if (dietaryFilters[filterId]) {
+        btn.classList.remove('bg-brand-bg-secondary', 'text-brand-text-secondary');
+        btn.classList.add('bg-brand-surface-dark', 'text-white', 'border-brand-surface-dark');
+      } else {
+        btn.classList.add('bg-brand-bg-secondary', 'text-brand-text-secondary');
+        btn.classList.remove('bg-brand-surface-dark', 'text-white', 'border-brand-surface-dark');
+      }
+      renderMenu();
+    }
+
+    // Render Menu elements depending on selected active parameters
+    function renderMenu() {
+      const container = document.getElementById('menu-items-container');
+      container.innerHTML = '';
+      
+      const currentCategoryItems = MENU_DATA[activeTab];
+      
+      // Filter list based on vegan/gf choices
+      const filtered = currentCategoryItems.filter(item => {
+        if (dietaryFilters.vegan && !item.vegan) return false;
+        if (dietaryFilters.gf && !item.gf) return false;
+        return true;
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-2 text-center py-16 text-brand-text-secondary font-light border border-dashed border-brand-border">
+            <p class="mb-2">No beverages match the active dietary filters.</p>
+            <button onclick="resetDietaryFilters()" class="text-xs text-brand-accent-taupe underline">Reset Filter Parameters</button>
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'border-b border-brand-border pb-6 flex justify-between items-start group hover:border-brand-text-primary transition-japandi cursor-pointer';
+        div.setAttribute('onclick', `openMenuDrawer('${item.id}')`);
+        div.innerHTML = `
+          <div class="space-y-2 pr-4">
+            <div class="flex items-center gap-2">
+              <h4 class="font-serif text-xl sm:text-2xl font-semibold text-brand-text-primary group-hover:text-brand-accent-taupe transition-japandi">${item.name}</h4>
+              ${item.vegan ? '<span class="w-2 h-2 rounded-full bg-brand-accent-green" title="Vegan Option"></span>' : ''}
+              ${item.gf ? '<span class="w-2 h-2 rounded-full bg-[#D4AF37]" title="Gluten Free"></span>' : ''}
+            </div>
+            <p class="text-xs text-brand-text-secondary font-light max-w-md">${item.desc}</p>
+            <p class="text-[10px] tracking-widest text-brand-accent-taupe uppercase font-semibold">${item.meta}</p>
+          </div>
+          <div class="text-right flex flex-col items-end">
+            <span class="font-semibold text-base whitespace-nowrap">BD ${item.price.toFixed(3)}</span>
+            <span class="text-[9px] tracking-widest text-brand-accent-taupe uppercase mt-1 opacity-0 group-hover:opacity-100 transition-japandi">Details <i class="fa-solid fa-arrow-right-long ml-1"></i></span>
+          </div>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    function resetDietaryFilters() {
+      dietaryFilters.vegan = false;
+      dietaryFilters.gf = false;
+      
+      const bV = document.getElementById('btn-vegan');
+      bV.classList.add('bg-brand-bg-secondary', 'text-brand-text-secondary');
+      bV.classList.remove('bg-brand-surface-dark', 'text-white', 'border-brand-surface-dark');
+      
+      const bG = document.getElementById('btn-gf');
+      bG.classList.add('bg-brand-bg-secondary', 'text-brand-text-secondary');
+      bG.classList.remove('bg-brand-surface-dark', 'text-white', 'border-brand-surface-dark');
+      
+      renderMenu();
+    }
+
+    // Handle Menu Item Drawer functionality
+    function openMenuDrawer(itemId) {
+      let selectedItem = null;
+      // Find item in all categories
+      for (const cat in MENU_DATA) {
+        const found = MENU_DATA[cat].find(i => i.id === itemId);
+        if (found) {
+          selectedItem = found;
+          break;
+        }
+      }
+
+      if (!selectedItem) return;
+
+      document.getElementById('drawer-title').innerText = selectedItem.name;
+      
+      const contentHTML = `
+        <div class="space-y-6">
+          <div class="aspect-video w-full bg-brand-bg-secondary overflow-hidden border border-brand-border">
+            <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover grayscale-[10%]" alt="Coffee prep detail">
+          </div>
+          
+          <div>
+            <span class="text-[10px] tracking-widest text-brand-text-secondary uppercase font-bold block mb-1">Origin Farm & Processing</span>
+            <p class="font-serif text-lg text-brand-text-primary">${selectedItem.meta}</p>
+          </div>
+
+          <div>
+            <span class="text-[10px] tracking-widest text-brand-text-secondary uppercase font-bold block mb-1">Flavor Journey</span>
+            <p class="text-sm font-light text-brand-text-secondary leading-relaxed">${selectedItem.desc}</p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4 bg-brand-bg-secondary p-4 border border-brand-border">
+            <div>
+              <p class="text-[10px] tracking-widest text-brand-text-secondary uppercase">Dietary Markers</p>
+              <p class="text-xs font-semibold mt-1">${selectedItem.vegan ? 'Vegan Option' : 'Regular'}</p>
+            </div>
+            <div>
+              <p class="text-[10px] tracking-widest text-brand-text-secondary uppercase">Gluten Status</p>
+              <p class="text-xs font-semibold mt-1">${selectedItem.gf ? 'Gluten Free Friendly' : 'Contains Gluten'}</p>
+            </div>
+          </div>
+
+          <div>
+            <p class="text-[10px] tracking-widest text-brand-text-secondary uppercase mb-2">Barista Sourcing Note</p>
+            <p class="text-xs font-light italic text-brand-text-secondary leading-relaxed">
+              "Carefully extracted with targeted soft water profiles at 93°C to unlock delicate floral attributes without bitterness."
+            </p>
+          </div>
+        </div>
+      `;
+      
+      document.getElementById('drawer-content').innerHTML = contentHTML;
+      
+      const drawer = document.getElementById('menu-drawer');
+      drawer.classList.remove('translate-x-full');
+    }
+
+    function closeMenuDrawer() {
+      const drawer = document.getElementById('menu-drawer');
+      drawer.classList.add('translate-x-full');
+    }
+
+    // E-Commerce Product purchase option toggles
+    function setPurchaseType(productId, type, price) {
+      productsPurchaseType[productId] = { type, price };
+      
+      // Reset styles
+      document.querySelectorAll(`.${productId}-btn`).forEach(btn => {
+        btn.classList.remove('border-brand-text-primary', 'bg-brand-surface-dark', 'text-white');
+        btn.classList.add('border-brand-border', 'text-brand-text-secondary');
+      });
+
+      const targetBtn = document.getElementById(`type-${productId}-${type}`);
+      targetBtn.classList.remove('border-brand-border', 'text-brand-text-secondary');
+      targetBtn.classList.add('border-brand-text-primary', 'bg-brand-surface-dark', 'text-white');
+    }
+
+    // Cart Drawer system routines
+    function toggleCart() {
+      const cartDrawer = document.getElementById('cart-drawer');
+      const overlay = document.getElementById('cart-drawer-overlay');
+      
+      if (cartDrawer.classList.contains('translate-x-full')) {
+        cartDrawer.classList.remove('translate-x-full');
+        overlay.classList.remove('hidden');
+      } else {
+        cartDrawer.classList.add('translate-x-full');
+        overlay.classList.add('hidden');
+      }
+    }
+
+    function addToCart(productName, productId) {
+      const selection = productsPurchaseType[productId];
+      const finalName = selection.type === 'sub' ? `${productName} (Weekly Delivery Sub)` : productName;
+      
+      const cartItem = {
+        id: Date.now().toString(),
+        name: finalName,
+        price: selection.price,
+        qty: 1
+      };
+
+      shoppingCart.push(cartItem);
+      updateCartUI();
+      triggerToast(`Added: ${productName}`);
+    }
+
+    function removeFromCart(itemId) {
+      shoppingCart = shoppingCart.filter(i => i.id !== itemId);
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      const emptyState = document.getElementById('cart-empty-state');
+      const itemsWrapper = document.getElementById('cart-items-wrapper');
+      const cartCountBadge = document.getElementById('cart-count');
+      const subtotalVal = document.getElementById('cart-subtotal-val');
+      
+      // Update quantity
+      const count = shoppingCart.reduce((total, item) => total + item.qty, 0);
+      cartCountBadge.innerText = count;
+
+      // Generate markup
+      if (shoppingCart.length === 0) {
+        emptyState.classList.remove('hidden');
+        // Remove previous items
+        document.querySelectorAll('.added-cart-item').forEach(el => el.remove());
+        subtotalVal.innerText = 'BD 0.000';
+      } else {
+        emptyState.classList.add('hidden');
+        document.querySelectorAll('.added-cart-item').forEach(el => el.remove());
+        
+        let subtotal = 0;
+        shoppingCart.forEach(item => {
+          subtotal += item.price * item.qty;
+          
+          const itemDiv = document.createElement('div');
+          itemDiv.className = 'added-cart-item flex justify-between items-center border-b border-brand-border pb-4';
+          itemDiv.innerHTML = `
+            <div class="space-y-1 pr-3">
+              <h5 class="text-sm font-semibold text-brand-text-primary">${item.name}</h5>
+              <p class="text-xs text-brand-text-secondary">BD ${item.price.toFixed(3)} each</p>
+            </div>
+            <div class="flex items-center gap-3">
+              <button onclick="removeFromCart('${item.id}')" class="text-brand-text-secondary hover:text-red-600 transition-japandi">
+                <i class="fa-regular fa-trash-can text-sm"></i>
+              </button>
+            </div>
+          `;
+          itemsWrapper.appendChild(itemDiv);
+        });
+        
+        subtotalVal.innerText = `BD ${subtotal.toFixed(3)}`;
+      }
+    }
+
+    function triggerToast(text) {
+      const toast = document.getElementById('toast');
+      toast.innerText = text;
+      toast.classList.remove('opacity-0', 'translate-y-24');
+      toast.classList.add('opacity-100', 'translate-y-0');
+      
+      setTimeout(() => {
+        toast.classList.remove('opacity-100', 'translate-y-0');
+        toast.classList.add('opacity-0', 'translate-y-24');
+      }, 3000);
+    }
+
+    function initiateCheckout() {
+      if (shoppingCart.length === 0) {
+        alert('Cart selection is empty.');
+        return;
+      }
+      alert('Proceeding to integrated local card payment portal (BenefitPay / Debit Cards). Subscriptions processed successfully.');
+      shoppingCart = [];
+      updateCartUI();
+      toggleCart();
+    }
+
+    // Vibe Check Simulator controller dynamic outputs
+    const STATIONS = {
+      focused: {
+        title: 'Peaceful & Focused',
+        occupancy: '35% Full',
+        wifi: '210 Mbps',
+        noise: 'Soft Ambient',
+        badgeClass: 'bg-brand-accent-green',
+        badgeText: 'Ideal for Work'
+      },
+      lively: {
+        title: 'Lively & Inspiring',
+        occupancy: '70% Full',
+        wifi: '185 Mbps',
+        noise: 'Humming / Upbeat',
+        badgeClass: 'bg-brand-accent-taupe',
+        badgeText: 'Social Peak'
+      },
+      packed: {
+        title: 'High Energy',
+        occupancy: '95% Full',
+        wifi: '140 Mbps',
+        noise: 'Loud / Energetic',
+        badgeClass: 'bg-red-900',
+        badgeText: 'Extremely Busy'
+      }
+    };
+
+    function setSimulatedStatus(statusKey) {
+      const settings = STATIONS[statusKey];
+      
+      // Change simulated state controller highlights
+      document.querySelectorAll('.sim-btn').forEach(b => {
+        b.classList.remove('border-brand-text-primary', 'bg-brand-surface-dark', 'text-white');
+        b.classList.add('border-brand-border', 'bg-brand-bg-primary', 'text-brand-text-secondary');
+      });
+      
+      event.currentTarget.classList.add('border-brand-text-primary', 'bg-brand-surface-dark', 'text-white');
+      event.currentTarget.classList.remove('border-brand-border', 'bg-brand-bg-primary', 'text-brand-text-secondary');
+
+      // Update dynamic widget items
+      document.getElementById('status-title').innerText = settings.title;
+      document.getElementById('val-occupancy').innerText = settings.occupancy;
+      document.getElementById('val-wifi').innerText = settings.wifi;
+      document.getElementById('val-noise').innerText = settings.noise;
+      
+      const badge = document.getElementById('status-indicator-badge');
+      badge.className = `flex items-center gap-2 text-white px-3 py-1.5 text-[10px] uppercase tracking-widest font-bold ${settings.badgeClass}`;
+      badge.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span> ${settings.badgeText}`;
+    }
+
+    // Mobile Nav Drawer Toggle
+    function toggleMobileNav() {
+      const menu = document.getElementById('mobile-nav');
+      const icon = document.getElementById('mobile-nav-icon');
+      if (menu.classList.contains('hidden')) {
+        menu.classList.remove('hidden');
+        icon.className = 'fa-solid fa-xmark text-xl';
+      } else {
+        menu.classList.add('hidden');
+        icon.className = 'fa-solid fa-bars text-xl';
+      }
+    }
+
+    // Simple Form Validation & Success Display
+    function handleNewsletter(event) {
+      event.preventDefault();
+      document.getElementById('newsletter-email').value = '';
+      document.getElementById('newsletter-success').classList.remove('hidden');
+    }
+
+    // Initial state loading
+    window.onload = function() {
+      renderMenu();
+    };
+  </script>
+</body>
+</html>
