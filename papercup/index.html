@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Papercup | Specialty Coffee & Subscriptions | Saar, Bahrain</title>
+    <!-- Tailwind CSS & Configuration -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        alabaster: '#FBFBF9',
+                        charcoal: '#1C1A19',
+                        ochre: {
+                            DEFAULT: '#B88A5B',
+                            light: '#C69D72',
+                            dark: '#9A7145'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Cormorant Garamond', 'serif'],
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .glassmorphism {
+            background: rgba(251, 251, 249, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        /* Hide scrollbars for clean custom horizontal tabs */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-alabaster text-charcoal font-sans antialiased selection:bg-ochre selection:text-white">
+
+    <!-- Global Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 border-b border-charcoal/5 glassmorphism transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Left Navigation Links (Desktop) -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#menu" class="text-sm font-medium tracking-wide hover:text-ochre transition-colors duration-200">Menu</a>
+                    <a href="#shop" class="text-sm font-medium tracking-wide hover:text-ochre transition-colors duration-200">Shop Beans</a>
+                    <a href="#subscription" class="text-sm font-medium tracking-wide hover:text-ochre transition-colors duration-200">Subscriptions</a>
+                    <a href="#catering" class="text-sm font-medium tracking-wide hover:text-ochre transition-colors duration-200">Catering</a>
+                </div>
+
+                <!-- Logo (Center on desktop, Left on mobile) -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="font-serif text-2xl font-bold tracking-widest text-charcoal hover:opacity-90 transition-opacity">
+                        PAPERCUP
+                    </a>
+                </div>
+
+                <!-- Right Navigation Elements -->
+                <div class="flex items-center space-x-6">
+                    <!-- Status Indicator -->
+                    <div class="hidden lg:flex items-center space-x-2 bg-charcoal/[0.03] border border-charcoal/5 px-3.5 py-1.5 rounded-full">
+                        <span class="relative flex h-2 w-2">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                        </span>
+                        <span class="text-xs font-semibold tracking-wider text-charcoal/80 uppercase">Open Until 11:00 PM</span>
+                    </div>
+                    <!-- Primary CTA Button -->
+                    <a href="#menu" class="bg-ochre hover:bg-ochre-dark text-white px-5 py-2.5 rounded-none text-xs font-semibold tracking-widest uppercase transition-all duration-200 shadow-sm">
+                        Order Pickup
+                    </a>
+                    <!-- Mobile Menu Button -->
+                    <button id="mobile-menu-btn" class="md:hidden text-charcoal hover:text-ochre p-1 focus:outline-none">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-charcoal/5 bg-alabaster/95 backdrop-blur-lg px-4 pt-4 pb-6 space-y-3">
+            <a href="#menu" class="block px-3 py-2.5 text-base font-medium text-charcoal hover:bg-charcoal/[0.03] transition-colors">Menu</a>
+            <a href="#shop" class="block px-3 py-2.5 text-base font-medium text-charcoal hover:bg-charcoal/[0.03] transition-colors">Shop Beans</a>
+            <a href="#subscription" class="block px-3 py-2.5 text-base font-medium text-charcoal hover:bg-charcoal/[0.03] transition-colors">Subscriptions</a>
+            <a href="#catering" class="block px-3 py-2.5 text-base font-medium text-charcoal hover:bg-charcoal/[0.03] transition-colors">Catering & Events</a>
+            <div class="pt-4 border-t border-charcoal/5 flex items-center justify-between px-3">
+                <span class="text-xs font-semibold tracking-wider text-charcoal/60 uppercase">Status</span>
+                <span class="text-xs font-semibold text-emerald-600">● OPEN UNTIL 11:00 PM</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Floating Quick Cart Indicator -->
+    <div id="cart-widget" class="fixed bottom-6 right-6 z-40 transform translate-y-24 opacity-0 transition-all duration-500 ease-out">
+        <button onclick="openCartModal()" class="flex items-center space-x-3 bg-charcoal hover:bg-ochre text-white px-6 py-4 rounded-full shadow-2xl transition-all duration-300 group">
+            <div class="relative">
+                <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+                <span id="cart-count" class="absolute -top-2.5 -right-2.5 bg-ochre group-hover:bg-charcoal text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border border-alabaster transition-colors">0</span>
+            </div>
+            <span class="text-xs font-bold tracking-widest uppercase">View Direct Cup</span>
+        </button>
+    </div>
+
+    <!-- Main Hero Section -->
+    <header class="relative pt-20 overflow-hidden min-h-screen flex items-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                
+                <!-- Hero Content (Left) -->
+                <div class="lg:col-span-6 space-y-8 z-10">
+                    <div class="inline-flex items-center space-x-3 bg-ochre/10 border border-ochre/25 px-4 py-1.5 rounded-full">
+                        <i data-lucide="map-pin" class="w-3.5 h-3.5 text-ochre"></i>
+                        <span class="text-xs font-semibold tracking-widest text-ochre uppercase">Crafted in Saar, Bahrain</span>
+                    </div>
+                    <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-medium text-charcoal leading-[1.1]">
+                        Your Morning Ritual, <br class="hidden sm:inline"><span class="italic font-normal text-ochre">Mastered</span>.
+                    </h1>
+                    <p class="text-base sm:text-lg text-charcoal/70 leading-relaxed max-w-xl">
+                        Experience micro-lot single-origin coffee, roasted to perfection and brewed with absolute precision at Nakheel Centre. Skip the wait—order for direct pickup or have fresh bags delivered to your doorstep.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 pt-2">
+                        <a href="#menu" class="bg-charcoal hover:bg-ochre text-white px-8 py-4 rounded-none text-xs font-semibold tracking-widest uppercase text-center transition-all duration-300 shadow-md">
+                            Order Fresh Coffee
+                        </a>
+                        <a href="#shop" class="border border-charcoal/20 hover:border-ochre hover:text-ochre text-charcoal px-8 py-4 rounded-none text-xs font-semibold tracking-widest uppercase text-center transition-all duration-300">
+                            Explore Roasted Beans
+                        </a>
+                    </div>
+                    <!-- Hero Trust Elements -->
+                    <div class="pt-8 border-t border-charcoal/5 grid grid-cols-3 gap-6">
+                        <div>
+                            <p class="font-serif text-2xl font-bold text-charcoal">100%</p>
+                            <p class="text-[11px] tracking-widest uppercase text-charcoal/50 mt-1">Arabica Specialty</p>
+                        </div>
+                        <div>
+                            <p class="font-serif text-2xl font-bold text-charcoal">Fresh</p>
+                            <p class="text-[11px] tracking-widest uppercase text-charcoal/50 mt-1">Roast Guarantee</p>
+                        </div>
+                        <div>
+                            <p class="font-serif text-2xl font-bold text-charcoal">Local</p>
+                            <p class="text-[11px] tracking-widest uppercase text-charcoal/50 mt-1">Saar Curbside</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Visual (Right) -->
+                <div class="lg:col-span-6 relative h-[450px] sm:h-[550px] w-full rounded-2xl overflow-hidden group shadow-2xl">
+                    <!-- Decorative warm light aura -->
+                    <div class="absolute -top-12 -left-12 w-48 h-48 bg-ochre/10 rounded-full blur-3xl"></div>
+                    <!-- High resolution aesthetic visual -->
+                    <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=1200&q=80" 
+                         alt="Pour over specialty coffee prep at Papercup Bahrain" 
+                         class="absolute inset-0 w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-transform duration-1000">
+                    
+                    <!-- Overlay design elements mimicking physical cafe window reflections -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/10 to-transparent"></div>
+                    
+                    <!-- Interactive Brew Card Floating on Image -->
+                    <div class="absolute bottom-6 left-6 right-6 bg-alabaster/95 backdrop-blur-md p-6 border border-white/20 shadow-lg">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <span class="text-[10px] tracking-widest font-semibold text-ochre uppercase">Currently Pouring</span>
+                                <h3 class="font-serif text-lg font-bold text-charcoal mt-1">Ethiopia Yirgacheffe</h3>
+                                <p class="text-xs text-charcoal/60 mt-1">Organic | Washed | Jasmine & Lemon Custard</p>
+                            </div>
+                            <span class="bg-charcoal text-white text-[10px] font-semibold px-2.5 py-1 uppercase tracking-wider">Light Roast</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- Section 2: The Living Menu & Origin Board -->
+    <section id="menu" class="py-24 bg-charcoal/[0.01] border-y border-charcoal/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Section Header -->
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <p class="text-xs font-semibold tracking-widest text-ochre uppercase">Craft & Calibration</p>
+                <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-medium text-charcoal mt-3">The Living Menu</h2>
+                <p class="text-sm text-charcoal/60 mt-4 leading-relaxed">
+                    Always fresh, strictly calibrated. Add items to your direct-pickup list to skip the queue with direct-to-barista WhatsApp ordering.
+                </p>
+            </div>
+
+            <!-- Main Layout: 2/3 Menu Items, 1/3 Now Brewing Panel -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                
+                <!-- Interactive Menu (Left/Mid) -->
+                <div class="lg:col-span-8 space-y-8">
+                    <!-- Tab Categories -->
+                    <div class="flex border-b border-charcoal/10 overflow-x-auto no-scrollbar scroll-smooth space-x-8 pb-3">
+                        <button onclick="switchMenuTab('espresso')" id="tab-btn-espresso" class="menu-tab-btn active text-sm font-semibold tracking-wider uppercase whitespace-nowrap pb-2 border-b-2 border-ochre text-ochre transition-all">Espresso Bar</button>
+                        <button onclick="switchMenuTab('filter')" id="tab-btn-filter" class="menu-tab-btn text-sm font-semibold tracking-wider uppercase whitespace-nowrap pb-2 border-b-2 border-transparent text-charcoal/40 hover:text-charcoal transition-all">Filter & Single Origin</button>
+                        <button onclick="switchMenuTab('cold')" id="tab-btn-cold" class="menu-tab-btn text-sm font-semibold tracking-wider uppercase whitespace-nowrap pb-2 border-b-2 border-transparent text-charcoal/40 hover:text-charcoal transition-all">Cold Brew</button>
+                        <button onclick="switchMenuTab('savory')" id="tab-btn-savory" class="menu-tab-btn text-sm font-semibold tracking-wider uppercase whitespace-nowrap pb-2 border-b-2 border-transparent text-charcoal/40 hover:text-charcoal transition-all">Sweet & Savory</button>
+                    </div>
+
+                    <!-- Menu Lists Container -->
+                    <div>
+                        <!-- ESPRESSO TAB -->
+                        <div id="menu-tab-espresso" class="menu-content grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-8">
+                            <!-- Item 1 -->
+                            <div class="group flex flex-col justify-between p-4 border-b border-charcoal/5 hover:bg-charcoal/[0.02] transition-colors">
+                                <div class="flex justify-between items-start">
+                                    <h4 class="font-serif text-lg font-bold text-charcoal group-hover:text-ochre transition-colors">Flat White</h4>
+                                    <span class="font-medium text-charcoal">2.400 BHD</span>
+                                </div>
+                                <p class="text-xs text-charcoal/60 mt-2">Perfect double shot balance with rich, silky steamed milk.</p>
+                                <button onclick="addToCart('Flat White', 2.400)" class="mt-4 inline-flex items-center text-[10px] font-bold tracking-widest uppercase text-ochre hover:text-charcoal transition-colors">
+                                    + Add to Pickup Cup
+                                </button>
+                            </div>
+                            <!-- Item 2 -->
+                            <div class="group flex flex-col justify-between p-4 border-b border-charcoal/5 hover:bg-charcoal/[0.02] transition-colors">
+                                <div class="flex justify-between items-start">
+                                    <h4 class="font-serif text-lg font-bold text-charcoal group-hover:text-ochre transition-colors">Spanish Latte</h4>
+                                    <span class="font-medium text-charcoal">2.800 BHD</span>
+                                </div>
+                                <p class="text-xs text-charcoal/60 mt-2">Smooth espresso blended with our signature condensed sweet milk blend.</p>
+                                <button onclick="addToCart('Spanish Latte', 2.800)" class="mt-4 inline-flex items-center text-[10px] font-bold tracking-widest uppercase text-ochre hover:text-charcoal transition-colors">
+                                    + Add to Pickup Cup
+                                </button>
+                            </div>
+                            <!-- Item 3 -->
+                            <div class="group flex flex-col justify-between p-4 border-b border-charcoal/5 hover:bg-charcoal/[0.02] transition-colors">
+                                <div class="flex justify-between items-start">
+                                    <h4 class="font-serif text-lg font-bold text-charcoal group-hover:text-ochre transition-colors">Cortado</h4>
+                                    <span class="font-medium text-charcoal">2.200 BHD</span>
+                                </div>
+                                <p class="text-xs text-charcoal/60 mt-2">Equal parts intense espresso and warm silky milk texture.</p>
+                                <button onclick="addToCart('Cortado', 2.200)" class="mt-4 inline-flex items-center text-[10px] font-bold tracking-widest uppercase text-ochre hover:text-charcoal transition-colors">
+                                    + Add to Pickup Cup
+                                </button>
+                            </div>
+                            <!-- Item 4 -->
+                            <div class="group flex flex-col justify-between p-4 border-b border-charcoal/5 hover:bg-charcoal/[0.02] transition-colors">
+                                <div class="flex justify-between items-start">
+                                    <h4 class="font-serif text-lg font-bold text-charcoal group-hover:text-ochre transition-colors">Rose Cardamom Latte</h4>
+                                    <span class="font-medium text-charcoal">2.900 BHD</span>
+                                </div>
+                                <p class="text-xs text-charcoal/60 mt-2">A classic Middle Eastern twist utilizing premium local floral essences.</p>
+                                <button onclick="addToCart('Rose Cardamom Latte', 2.900)" class="mt-4 inline-flex items-center text-[10px] font-bold tracking-widest uppercase text-ochre hover:text-charcoal transition-colors">
+                                    + Add to Pickup Cup
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- FILTER TAB -->
+                        <div id="menu-tab-filter" class="menu-content hidden grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-8">
+                            <div class="group flex flex-col justify-between p-4 border-b border-charcoal/5 hover:bg-charcoal/[0.02] transition-colors">
+                                <div class="flex justify-between items-start">
+                                    <h4 class="font-serif text-lg font-bold text-charcoal">V60 Geisha (Panama)</h4>
+                                    <span class="font-medium text-charcoal">4.500 BHD</span>
+                                </div>
+                                <p class="text-xs text-charcoal/60 mt-2">Exquisite jasmine florality, white peach, bergamot, long dynamic sweetness.</p>
+                                <button onclick="addToCart('V60 Geisha (Panama)', 4.500)" class="mt-4 inline-flex items-center text-[10px] font-bold tracking-widest uppercase text-ochre hover:text-charcoal transition-colors">
+                                    + Add to Pickup Cup
+                                </button>
+                            </div>
+                            <div class="group flex flex-col justify-between p-4 border-b border-charcoal/5 hover:bg-charcoal/[0.02] transition-colors">
+                                <div class="flex justify-between items-start">
+                                    <h4 class="font-serif text-lg font-bold text-charcoal">Chemex Colombia El Paraiso</h4>
+                                    <span class="font-medium text-charcoal">3.800 BHD</span>
+                                </div>
+                                <p class="text-xs text-charcoal/60 mt-2">Anaerobic fermentation yield of intense strawberry, cream, and passionfruit.</p>
+                                <button onclick="addToCart('Chemex Colombia El Paraiso', 3.800)" class="mt-4 inline-flex items-center text-[10px] font-bold tracking-widest uppercase text-ochre hover:text-charcoal transition-colors">
+                                    + Add to Pickup Cup
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- COLD BREW TAB -->
+                        <div id="menu-tab-cold" class="menu-content hidden grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-8">
+                            <div class="group flex flex-col justify-between p-4 border-b border-charcoal/5 hover:bg-charcoal/[0.02] transition-colors">
+                                <div class="flex justify-between items-start">
+                                    <h4 class="font-serif text-lg font-bold text-charcoal">Classic Cold Brew</h4>
+                                    <span class="font-medium text-charcoal">2.600 BHD</span>
+                                </div>
+                                <p class="text-xs text-charcoal/60 mt-2">18-hour cold drip extraction using specialty dark chocolate profile beans.</p>
+                                <button onclick="addToCart('Classic Cold Brew', 2.600)" class="mt-4 inline-flex items-center text-[10px] font-bold tracking-widest uppercase text-ochre hover:text-charcoal transition-colors">
+                                    + Add to Pickup Cup
+                                </button>
+                            </div>
+                            <div class="group flex flex-col justify-between p-4 border-b border-charcoal/5 hover:bg-charcoal/[0.02] transition-colors">
+                                <div class="flex justify-between items-start">
+                                    <h4 class="font-serif text-lg font-bold text-charcoal">Nitro Cold Brew</h4>
+                                    <span class="font-medium text-charcoal">3.000 BHD</span>
+                                </div>
+                                <p class="text-xs text-charcoal/60 mt-2">Infused with pure nitrogen for an ultra-creamy, cascading stout-like pour.</p>
+                                <button onclick="addToCart('Nitro Cold Brew', 3.000)" class="mt-4 inline-flex items-center text-[10px] font-bold tracking-widest uppercase text-ochre hover:text-charcoal transition-colors">
+                                    + Add to Pickup Cup
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- SAVORY TAB -->
+                        <div id="menu-tab-savory" class="menu-content hidden grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-8">
+                            <div class="group flex flex-col justify-between p-4 border-b border-charcoal/5 hover:bg-charcoal/[0.02] transition-colors">
+                                <div class="flex justify-between items-start">
+                                    <h4 class="font-serif text-lg font-bold text-charcoal">Almond Twice-Baked Croissant</h4>
+                                    <span class="font-medium text-charcoal">2.200 BHD</span>
+                                </div>
+                                <p class="text-xs text-charcoal/60 mt-2">Flaky butter pastry baked twice filled with sweet premium frangipane.</p>
+                                <button onclick="addToCart('Almond Twice-Baked Croissant', 2.200)" class="mt-4 inline-flex items-center text-[10px] font-bold tracking-widest uppercase text-ochre hover:text-charcoal transition-colors">
+                                    + Add to Pickup Cup
+                                </button>
+                            </div>
+                            <div class="group flex flex-col justify-between p-4 border-b border-charcoal/5 hover:bg-charcoal/[0.02] transition-colors">
+                                <div class="flex justify-between items-start">
+                                    <h4 class="font-serif text-lg font-bold text-charcoal">Salted Caramel Babka</h4>
+                                    <span class="font-medium text-charcoal">2.000 BHD</span>
+                                </div>
+                                <p class="text-xs text-charcoal/60 mt-2">Rich laminated brioche swirled with dense home-made salted caramel.</p>
+                                <button onclick="addToCart('Salted Caramel Babka', 2.000)" class="mt-4 inline-flex items-center text-[10px] font-bold tracking-widest uppercase text-ochre hover:text-charcoal transition-colors">
+                                    + Add to Pickup Cup
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Now Brewing Panel (Right) -->
+                <div class="lg:col-span-4">
+                    <div class="bg-charcoal text-white p-8 rounded-none border border-white/10 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-ochre/10 rounded-full blur-2xl"></div>
+                        
+                        <!-- Packaging representation mockup -->
+                        <div class="flex justify-center mb-8">
+                            <div class="w-44 h-60 bg-gradient-to-b from-charcoal to-neutral-900 border border-white/20 relative shadow-xl flex flex-col justify-between p-5">
+                                <div class="flex justify-between items-start">
+                                    <span class="text-[8px] tracking-widest font-bold uppercase text-ochre border border-ochre/40 px-1.5 py-0.5">Origin Reserve</span>
+                                    <span class="text-[8px] font-bold text-neutral-400">250G</span>
+                                </div>
+                                <div class="text-center space-y-1.5">
+                                    <h5 class="font-serif text-xl tracking-wider text-alabaster">YIRGACHEFFE</h5>
+                                    <p class="text-[9px] uppercase tracking-widest text-ochre">Ethiopia Micro-Lot</p>
+                                </div>
+                                <div class="border-t border-white/10 pt-2 flex justify-between text-[7px] text-neutral-400 tracking-wider">
+                                    <span>ROAST: LIGHT</span>
+                                    <span>PROCESS: NATURAL</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4">
+                            <span class="text-[10px] tracking-widest font-semibold text-ochre uppercase">In the Grinder Today</span>
+                            <h3 class="font-serif text-2xl font-semibold">Ethiopia Yirgacheffe</h3>
+                            <p class="text-xs text-neutral-400 leading-relaxed">
+                                Sourced sustainably through premium fair-trade cooperatives, highlighting beautiful floral aromas characteristic of the highest elevation fields in Gedeo.
+                            </p>
+                            <div class="border-t border-white/10 pt-4">
+                                <p class="text-[10px] tracking-widest uppercase text-neutral-400 mb-2">Tasting Attributes:</p>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="text-[10px] bg-white/5 border border-white/10 px-2.5 py-1 text-alabaster">Jasmine</span>
+                                    <span class="text-[10px] bg-white/5 border border-white/10 px-2.5 py-1 text-alabaster">White Peach</span>
+                                    <span class="text-[10px] bg-white/5 border border-white/10 px-2.5 py-1 text-alabaster">Bergamot</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: The Subscription Engine & Retail Shop -->
+    <section id="shop" class="py-24 bg-alabaster">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Section Header -->
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <p class="text-xs font-semibold tracking-widest text-ochre uppercase">E-Commerce & Subscriptions</p>
+                <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-medium text-charcoal mt-3">Freshly Roasted To Order</h2>
+                <p class="text-sm text-charcoal/60 mt-4 leading-relaxed">
+                    Bring the elite taste of Papercup's micro-lots straight to your home setup. Select flat purchases or unlock premium recurring automated deliveries.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Bag 1 -->
+                <div class="bg-white border border-charcoal/5 p-6 flex flex-col justify-between group hover:shadow-xl transition-all duration-300">
+                    <div>
+                        <div class="relative bg-charcoal/[0.02] aspect-square flex items-center justify-center overflow-hidden mb-6">
+                            <img src="https://images.unsplash.com/photo-1559056131-05a9d16d51a1?auto=format&fit=crop&w=400&h=400&q=80" 
+                                 alt="Papercup Specialty Beans House Espresso" 
+                                 class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-4 left-4 bg-charcoal text-white text-[9px] font-bold tracking-widest uppercase px-2.5 py-1">Bestseller</span>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-charcoal">Aura House Espresso</h3>
+                        <p class="text-xs text-charcoal/50 mt-1">Origin: Brazil & Guatemala Blend</p>
+                        <p class="text-xs text-charcoal/70 mt-3 line-clamp-2">A classic rich chocolate, almond butter profile designed for incredible balance with milk.</p>
+                        <div class="mt-4">
+                            <label class="text-[10px] tracking-widest uppercase text-charcoal/40 block mb-1">Grind Option</label>
+                            <select id="grind-house" class="bg-alabaster border border-charcoal/10 text-xs text-charcoal p-2 w-full focus:outline-none focus:border-ochre">
+                                <option>Whole Beans</option>
+                                <option>Espresso Grind</option>
+                                <option>V60 / Pour Over</option>
+                                <option>Aeropress</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-charcoal/5 flex items-center justify-between">
+                        <span class="font-serif text-lg font-bold text-charcoal">5.500 BHD</span>
+                        <button onclick="addBagToCart('Aura House Espresso Blend', 5.500, 'grind-house')" class="bg-charcoal hover:bg-ochre text-white px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-colors duration-200">
+                            Add To Bag
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Bag 2 -->
+                <div class="bg-white border border-charcoal/5 p-6 flex flex-col justify-between group hover:shadow-xl transition-all duration-300">
+                    <div>
+                        <div class="relative bg-charcoal/[0.02] aspect-square flex items-center justify-center overflow-hidden mb-6">
+                            <img src="https://images.unsplash.com/photo-1580933187699-54bc7cc341f6?auto=format&fit=crop&w=400&h=400&q=80" 
+                                 alt="Papercup Specialty Beans Ethiopia" 
+                                 class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-4 left-4 bg-ochre text-white text-[9px] font-bold tracking-widest uppercase px-2.5 py-1">Limited Reserve</span>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-charcoal">Ethiopia Yirgacheffe</h3>
+                        <p class="text-xs text-charcoal/50 mt-1">Origin: Single Origin (Natural)</p>
+                        <p class="text-xs text-charcoal/70 mt-3 line-clamp-2">Incredibly light & elegant floral aromas with notes of wild blueberries, lavender and bergamot finish.</p>
+                        <div class="mt-4">
+                            <label class="text-[10px] tracking-widest uppercase text-charcoal/40 block mb-1">Grind Option</label>
+                            <select id="grind-ethiopia" class="bg-alabaster border border-charcoal/10 text-xs text-charcoal p-2 w-full focus:outline-none focus:border-ochre">
+                                <option>Whole Beans</option>
+                                <option>Espresso Grind</option>
+                                <option>V60 / Pour Over</option>
+                                <option>Aeropress</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-charcoal/5 flex items-center justify-between">
+                        <span class="font-serif text-lg font-bold text-charcoal">6.800 BHD</span>
+                        <button onclick="addBagToCart('Ethiopia Yirgacheffe Reserve', 6.800, 'grind-ethiopia')" class="bg-charcoal hover:bg-ochre text-white px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-colors duration-200">
+                            Add To Bag
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Bag 3 / Featured Subscription Model -->
+                <div id="subscription" class="bg-white border-2 border-ochre p-6 flex flex-col justify-between relative shadow-xl">
+                    <span class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-ochre text-white text-[10px] font-bold tracking-widest uppercase px-4 py-1.5 shadow">Most Popular</span>
+                    <div>
+                        <div class="bg-charcoal text-white p-6 mb-6 text-center space-y-2">
+                            <i data-lucide="repeat" class="w-8 h-8 text-ochre mx-auto animate-spin-slow"></i>
+                            <h4 class="font-serif text-lg tracking-wide">The Papercup Subscription</h4>
+                            <p class="text-[10px] text-ochre uppercase font-bold tracking-widest">Delivered in Saar Every 14 Days</p>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-charcoal">Papercup Coffee Club</h3>
+                        <p class="text-xs text-charcoal/70 mt-3 leading-relaxed">
+                            Never run out. Freshly roasted premium micro-lots hand-delivered direct to your door. Access 15% off retail pricing plus priority limited micro-lot releases.
+                        </p>
+                        
+                        <ul class="mt-5 space-y-2.5 text-xs text-charcoal/80">
+                            <li class="flex items-center space-x-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-ochre"></i>
+                                <span>15% off plus free shipping in Saar</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-ochre"></i>
+                                <span>Pause, skip or cancel anytime</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-ochre"></i>
+                                <span>Exclusive community brewing workshops</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mt-8">
+                        <button onclick="openSubModal()" class="w-full bg-ochre hover:bg-ochre-dark text-white py-3.5 text-xs font-semibold uppercase tracking-widest transition-all duration-300 text-center">
+                            Customize Subscription
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Corporate Catering & Private Events -->
+    <section id="catering" class="py-24 bg-charcoal text-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-ochre/5 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-charcoal/20 rounded-full blur-3xl"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                
+                <!-- Editorial Image Setup (Left) -->
+                <div class="lg:col-span-6 relative rounded-2xl overflow-hidden shadow-2xl h-[450px] group">
+                    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1000&q=80" 
+                         alt="Papercup Premium Mobile Coffee Cart setup at private event" 
+                         class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-charcoal via-transparent to-transparent"></div>
+                    <div class="absolute bottom-6 left-6">
+                        <span class="text-[9px] tracking-widest font-bold text-ochre uppercase">Events & Boardrooms</span>
+                        <h3 class="font-serif text-2xl font-semibold mt-1">Bespoke Specialty Coffee Bar</h3>
+                    </div>
+                </div>
+
+                <!-- Form / Copy (Right) -->
+                <div class="lg:col-span-6 space-y-8">
+                    <div>
+                        <p class="text-xs font-semibold tracking-widest text-ochre uppercase">High-Margin B2B Premium</p>
+                        <h2 class="font-serif text-3xl sm:text-4xl font-medium mt-3">Bring Papercup To Your Event</h2>
+                        <p class="text-xs sm:text-sm text-neutral-400 mt-4 leading-relaxed">
+                            From private compounds to corporate headquarters, elevate your next physical gathering with our mobile extraction setup, complete with state-of-the-art machinery and professional baristas.
+                        </p>
+                    </div>
+
+                    <!-- Inquire Micro-Form -->
+                    <form id="catering-form" onsubmit="handleCateringSubmit(event)" class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="text-[10px] tracking-widest uppercase text-neutral-400 block mb-1.5">Name / Company</label>
+                                <input type="text" required id="cat-name" class="bg-white/5 border border-white/10 text-sm text-white p-3 w-full focus:outline-none focus:border-ochre transition-colors">
+                            </div>
+                            <div>
+                                <label class="text-[10px] tracking-widest uppercase text-neutral-400 block mb-1.5">Contact Number</label>
+                                <input type="tel" required id="cat-phone" class="bg-white/5 border border-white/10 text-sm text-white p-3 w-full focus:outline-none focus:border-ochre transition-colors">
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="text-[10px] tracking-widest uppercase text-neutral-400 block mb-1.5">Expected Guests</label>
+                                <select id="cat-guests" class="bg-neutral-900 border border-white/10 text-sm text-white p-3 w-full focus:outline-none focus:border-ochre transition-colors">
+                                    <option>Under 50 Guests</option>
+                                    <option>50 - 150 Guests</option>
+                                    <option>150+ Guests</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="text-[10px] tracking-widest uppercase text-neutral-400 block mb-1.5">Event Type</label>
+                                <select id="cat-type" class="bg-neutral-900 border border-white/10 text-sm text-white p-3 w-full focus:outline-none focus:border-ochre transition-colors">
+                                    <option>Corporate Boardroom</option>
+                                    <option>Private Residence / Gathering</option>
+                                    <option>Salon / Retail Launch</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="w-full bg-och hover:bg-ochre-dark bg-ochre text-white py-4 text-xs font-semibold uppercase tracking-widest transition-all duration-300">
+                            Inquire About Catering
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: The Digital Vibe & Community (Social Proof) -->
+    <section class="py-24 bg-alabaster overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+                
+                <!-- Google Reviews (Left) -->
+                <div class="lg:col-span-6 space-y-8">
+                    <div>
+                        <p class="text-xs font-semibold tracking-widest text-ochre uppercase">Established Credibility</p>
+                        <h2 class="font-serif text-3xl font-medium mt-3">Physical Space Community</h2>
+                        <div class="flex items-center space-x-3 mt-4">
+                            <div class="flex text-ochre">
+                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            </div>
+                            <span class="text-sm text-charcoal font-bold">4.8 out of 5</span>
+                            <span class="text-xs text-charcoal/50">(300+ Verified Google Reviews)</span>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial Slider Mockup -->
+                    <div class="bg-white border border-charcoal/5 p-8 relative shadow-sm">
+                        <i data-lucide="quote" class="w-10 h-10 text-ochre/15 absolute top-6 right-6"></i>
+                        <div id="testimonial-container" class="space-y-4">
+                            <p id="test-text" class="italic text-charcoal/80 text-sm leading-relaxed">
+                                "By far the most consistent, perfectly calibrated V60 drip in Bahrain. The staff is highly educated on roastery genetics and flavor notes. The space at Nakheel Centre is bright, peaceful, and absolutely perfect for working."
+                            </p>
+                            <div>
+                                <p id="test-author" class="font-bold text-xs tracking-wider uppercase text-charcoal">Salman K. - Local Guide</p>
+                                <p id="test-date" class="text-[10px] text-charcoal/40 mt-0.5">Google Verified Review • 2 weeks ago</p>
+                            </div>
+                        </div>
+                        <!-- Slider Navigation dots -->
+                        <div class="flex space-x-2 mt-6">
+                            <button onclick="switchTestimonial(0)" class="test-dot w-2 h-2 rounded-full bg-ochre"></button>
+                            <button onclick="switchTestimonial(1)" class="test-dot w-2 h-2 rounded-full bg-charcoal/20"></button>
+                            <button onclick="switchTestimonial(2)" class="test-dot w-2 h-2 rounded-full bg-charcoal/20"></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Instagram Grid Mockup (Right) -->
+                <div class="lg:col-span-6 space-y-6">
+                    <div class="flex justify-between items-baseline">
+                        <h3 class="font-serif text-xl font-bold">Instagram Vibe</h3>
+                        <a href="https://instagram.com/papercupbh" target="_blank" class="text-xs font-semibold text-ochre hover:text-charcoal transition-colors">@papercupbh &rarr;</a>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="relative group aspect-square bg-charcoal overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=400&h=400&q=80" 
+                                 alt="Fresh pour over aesthetic" 
+                                 class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-charcoal/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center p-4">
+                                <p class="text-xs text-white text-center font-medium">"Dialing in the morning shift. Every cup tested and verified."</p>
+                            </div>
+                        </div>
+                        <div class="relative group aspect-square bg-charcoal overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1507133750040-4a8f57021571?auto=format&fit=crop&w=400&h=400&q=80" 
+                                 alt="Espresso extraction" 
+                                 class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-charcoal/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center p-4">
+                                <p class="text-xs text-white text-center font-medium">"A flawless extraction makes the morning ritual absolute perfection."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: Final Conversion Zone -->
+    <section class="py-24 bg-charcoal text-white text-center relative overflow-hidden border-t border-white/5">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-ochre/10 rounded-full blur-3xl"></div>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-8">
+            <p class="text-xs font-semibold tracking-widest text-ochre uppercase">Your Cup Awaits</p>
+            <h2 class="font-serif text-4xl sm:text-5xl font-medium leading-[1.1]">Skip the Queue. <br>Experience Coffee Differently Today.</h2>
+            <p class="text-sm text-neutral-300 max-w-xl mx-auto leading-relaxed">
+                Place your pickup request online for direct curbside collection at Nakheel Centre, or register for premium subscription home deliveries today.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 pt-4">
+                <a href="#menu" class="bg-ochre hover:bg-ochre-dark text-white px-8 py-4 rounded-none text-xs font-semibold tracking-widest uppercase transition-all duration-300 shadow-md">
+                    Order Direct Pickup Now
+                </a>
+                <a href="#subscription" class="border border-white/20 hover:border-ochre hover:text-ochre text-white px-8 py-4 rounded-none text-xs font-semibold tracking-widest uppercase transition-all duration-300">
+                    Start Your Subscription
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Local SEO Powerhouse -->
+    <footer class="bg-charcoal text-white pt-20 pb-12 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-12 gap-12 pb-16">
+            
+            <!-- Left: Newsletter & Branding -->
+            <div class="md:col-span-5 space-y-6">
+                <h3 class="font-serif text-2xl tracking-widest font-bold">PAPERCUP</h3>
+                <p class="text-xs text-neutral-400 max-w-sm leading-relaxed">
+                    Join the Papercup Club. Get early access to limited single-origin micro-lots, home-brewing masterclasses, and community event access.
+                </p>
+                <form onsubmit="handleNewsletterSubmit(event)" class="flex max-w-sm">
+                    <input type="email" required id="news-email" placeholder="Your email address" class="bg-white/5 border border-white/10 text-xs text-white p-3 w-full focus:outline-none focus:border-ochre">
+                    <button type="submit" class="bg-ochre hover:bg-ochre-dark text-white px-5 transition-colors">
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Middle: Local SEO Footprint -->
+            <div class="md:col-span-4 space-y-4">
+                <h4 class="text-xs font-semibold tracking-widest uppercase text-ochre">Nakheel Centre Lounge</h4>
+                <p class="text-xs text-neutral-300 leading-relaxed">
+                    Ground Floor, Nakheel Centre,<br>
+                    Saar Road, Saar, Kingdom of Bahrain.
+                </p>
+                <p class="text-xs text-neutral-400">
+                    Sunday - Saturday: 7:00 AM - 11:00 PM
+                </p>
+                <a href="https://maps.google.com/?q=Nakheel+Centre+Saar" target="_blank" class="inline-flex items-center space-x-2 text-xs font-semibold text-ochre hover:underline">
+                    <i data-lucide="navigation" class="w-3.5 h-3.5"></i>
+                    <span>Open in Google Maps Directions</span>
+                </a>
+            </div>
+
+            <!-- Right: Links & Contacts -->
+            <div class="md:col-span-3 space-y-4">
+                <h4 class="text-xs font-semibold tracking-widest uppercase text-ochre">Connect Directly</h4>
+                <ul class="space-y-3 text-xs text-neutral-300">
+                    <li>
+                        <a href="https://wa.me/97317000000" class="hover:text-ochre flex items-center space-x-2">
+                            <i data-lucide="message-square" class="w-3.5 h-3.5"></i>
+                            <span>Barista Support (WhatsApp)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://instagram.com/papercupbh" class="hover:text-ochre flex items-center space-x-2">
+                            <i data-lucide="instagram" class="w-3.5 h-3.5"></i>
+                            <span>Follow @papercupbh</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center text-[10px] text-neutral-500 space-y-4 sm:space-y-0">
+            <p>&copy; 2025 Papercup Specialty Coffee. All rights reserved.</p>
+            <p class="tracking-wider uppercase">Designed by InfoLand Lead UX System</p>
+        </div>
+    </footer>
+
+    <!-- DIRECT PICKUP CUP MODAL (THE DIGITAL SMART CART) -->
+    <div id="cart-modal" class="fixed inset-0 z-50 overflow-y-auto hidden">
+        <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+                <div class="absolute inset-0 bg-charcoal/80 backdrop-blur-sm"></div>
+            </div>
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+            <div class="inline-block align-bottom bg-alabaster text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full rounded-none border border-charcoal/10">
+                <div class="p-6 space-y-6">
+                    <div class="flex justify-between items-center border-b border-charcoal/10 pb-4">
+                        <div class="flex items-center space-x-2">
+                            <i data-lucide="shopping-bag" class="w-5 h-5 text-ochre"></i>
+                            <h3 class="font-serif text-xl font-bold text-charcoal">Your Pickup Cup</h3>
+                        </div>
+                        <button onclick="closeCartModal()" class="text-charcoal hover:text-ochre">
+                            <i data-lucide="x" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+                    
+                    <!-- Cart Items Container -->
+                    <div id="cart-items" class="space-y-4 max-h-[300px] overflow-y-auto">
+                        <!-- Populated dynamically via JS -->
+                    </div>
+
+                    <!-- Cart Totals -->
+                    <div class="border-t border-charcoal/10 pt-4 space-y-2">
+                        <div class="flex justify-between text-xs text-charcoal/60">
+                            <span>Subtotal</span>
+                            <span id="cart-subtotal">0.000 BHD</span>
+                        </div>
+                        <div class="flex justify-between text-xs font-bold text-charcoal">
+                            <span>Total Direct Checkout</span>
+                            <span id="cart-total">0.000 BHD</span>
+                        </div>
+                        <p class="text-[9px] text-ochre uppercase font-bold tracking-wider mt-1">● Zero Commission Platform Fees Applied</p>
+                    </div>
+
+                    <!-- CTA Direct Checkout Link -->
+                    <button onclick="checkoutWhatsApp()" class="w-full bg-charcoal hover:bg-ochre text-white py-4 text-xs font-semibold uppercase tracking-widest transition-all duration-300">
+                        Checkout Direct to Barista via WhatsApp
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SUBSCRIPTION CUSTOMIZATION MODAL -->
+    <div id="sub-modal" class="fixed inset-0 z-50 overflow-y-auto hidden">
+        <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+                <div class="absolute inset-0 bg-charcoal/80 backdrop-blur-sm"></div>
+            </div>
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+            <div class="inline-block align-bottom bg-alabaster text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:align-middle sm:max-w-md sm:w-full">
+                <div class="p-6 space-y-6">
+                    <div class="flex justify-between items-center border-b border-charcoal/10 pb-4">
+                        <h3 class="font-serif text-xl font-bold text-charcoal">Customize Club Subscription</h3>
+                        <button onclick="closeSubModal()" class="text-charcoal hover:text-ochre">
+                            <i data-lucide="x" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+                    
+                    <!-- Step Options -->
+                    <div class="space-y-4">
+                        <div>
+                            <label class="text-[10px] tracking-widest uppercase text-charcoal/60 block mb-1.5">Step 1: Select Grind Preference</label>
+                            <select id="sub-grind" class="bg-white border border-charcoal/10 text-sm text-charcoal p-3 w-full focus:outline-none">
+                                <option>Whole Bean</option>
+                                <option>Espresso</option>
+                                <option>V60 / Pour Over</option>
+                                <option>French Press</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="text-[10px] tracking-widest uppercase text-charcoal/60 block mb-1.5">Step 2: Frequency Choice</label>
+                            <select id="sub-freq" class="bg-white border border-charcoal/10 text-sm text-charcoal p-3 w-full focus:outline-none">
+                                <option>Every 14 Days (Recommended)</option>
+                                <option>Every Month</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="text-[10px] tracking-widest uppercase text-charcoal/60 block mb-1.5">Step 3: Quantity</label>
+                            <select id="sub-qty" class="bg-white border border-charcoal/10 text-sm text-charcoal p-3 w-full focus:outline-none">
+                                <option>1 Bag (250g) - 5.100 BHD</option>
+                                <option>2 Bags (500g) - 9.800 BHD</option>
+                                <option>4 Bags (1Kg) - 18.500 BHD</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button onclick="submitSubscription()" class="w-full bg-ochre hover:bg-ochre-dark text-white py-4 text-xs font-semibold uppercase tracking-widest transition-all duration-300">
+                        Activate Club Subscription
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Lucide Icon Initializations
+        lucide.createIcons();
+
+        // Mobile Menu Toggling
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smart Direct Menu Shopping Cart System
+        let cart = [];
+
+        function updateCartWidget() {
+            const cartWidget = document.getElementById('cart-widget');
+            const cartCount = document.getElementById('cart-count');
+            
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+
+            if (totalItems > 0) {
+                cartWidget.classList.remove('translate-y-24', 'opacity-0');
+                cartWidget.classList.add('translate-y-0', 'opacity-100');
+            } else {
+                cartWidget.classList.add('translate-y-24', 'opacity-0');
+                cartWidget.classList.remove('translate-y-0', 'opacity-100');
+            }
+        }
+
+        function addToCart(name, price) {
+            const existingItemIndex = cart.findIndex(item => item.name === name);
+            if (existingItemIndex > -1) {
+                cart[existingItemIndex].quantity += 1;
+            } else {
+                cart.push({ name, price, quantity: 1, type: 'drink' });
+            }
+            updateCartWidget();
+            showToast(`${name} added to direct pickup cup.`);
+        }
+
+        function addBagToCart(name, price, grindSelectId) {
+            const grind = document.getElementById(grindSelectId).value;
+            const itemKey = `${name} (${grind})`;
+            const existingItemIndex = cart.findIndex(item => item.name === itemKey);
+            if (existingItemIndex > -1) {
+                cart[existingItemIndex].quantity += 1;
+            } else {
+                cart.push({ name: itemKey, price, quantity: 1, type: 'bag' });
+            }
+            updateCartWidget();
+            showToast(`${itemKey} added to direct cup.`);
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartWidget();
+            renderCart();
+        }
+
+        function renderCart() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartSubtotalEl = document.getElementById('cart-subtotal');
+            const cartTotalEl = document.getElementById('cart-total');
+            
+            cartItemsContainer.innerHTML = '';
+            let total = 0;
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p class="text-xs text-charcoal/50 text-center py-8">Your direct pickup cup is currently empty.</p>';
+            } else {
+                cart.forEach((item, index) => {
+                    const itemCost = item.price * item.quantity;
+                    total += itemCost;
+                    cartItemsContainer.innerHTML += `
+                        <div class="flex justify-between items-center bg-white p-3.5 border border-charcoal/5">
+                            <div>
+                                <h4 class="text-xs font-bold text-charcoal">${item.name}</h4>
+                                <p class="text-[10px] text-charcoal/50 mt-0.5">${item.quantity}x @ ${item.price.toFixed(3)} BHD</p>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <span class="text-xs font-semibold text-charcoal">${itemCost.toFixed(3)} BHD</span>
+                                <button onclick="removeFromCart(${index})" class="text-red-500 hover:text-red-700">
+                                    <i data-lucide="trash-2" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+            
+            cartSubtotalEl.textContent = `${total.toFixed(3)} BHD`;
+            cartTotalEl.textContent = `${total.toFixed(3)} BHD`;
+            lucide.createIcons();
+        }
+
+        function openCartModal() {
+            document.getElementById('cart-modal').classList.remove('hidden');
+            renderCart();
+        }
+
+        function closeCartModal() {
+            document.getElementById('cart-modal').classList.add('hidden');
+        }
+
+        function checkoutWhatsApp() {
+            if (cart.length === 0) return;
+            
+            let message = "Hi Papercup Bahrain! I would like to order the following items for direct pickup:\n\n";
+            let total = 0;
+            cart.forEach(item => {
+                const cost = item.price * item.quantity;
+                total += cost;
+                message += `• ${item.quantity}x ${item.name} (${cost.toFixed(3)} BHD)\n`;
+            });
+            
+            message += `\nTotal Order Price: ${total.toFixed(3)} BHD\n`;
+            message += "Please confirm wait-time for curbside retrieval at Nakheel Centre. Thanks!";
+            
+            const encodedText = encodeURIComponent(message);
+            window.open(`https://wa.me/97317000000?text=${encodedText}`, '_blank');
+            closeCartModal();
+        }
+
+        // Menu Tab Switcher
+        function switchMenuTab(tabName) {
+            document.querySelectorAll('.menu-tab-btn').forEach(btn => {
+                btn.classList.remove('active', 'border-b-2', 'border-ochre', 'text-ochre');
+                btn.classList.add('border-transparent', 'text-charcoal/40');
+            });
+            document.querySelectorAll('.menu-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+            
+            const activeBtn = document.getElementById(`tab-btn-${tabName}`);
+            activeBtn.classList.add('active', 'border-b-2', 'border-ochre', 'text-ochre');
+            activeBtn.classList.remove('border-transparent', 'text-charcoal/40');
+            
+            document.getElementById(`menu-tab-${tabName}`).classList.remove('hidden');
+        }
+
+        // Toast Notification system
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = "fixed bottom-24 right-6 z-50 bg-charcoal text-white text-xs px-6 py-3.5 rounded-none shadow-xl border-l-4 border-ochre transition-all duration-300 transform translate-y-10 opacity-0";
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            setTimeout(() => {
+                toast.classList.remove('translate-y-10', 'opacity-0');
+            }, 100);
+            setTimeout(() => {
+                toast.classList.add('translate-y-10', 'opacity-0');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        // Subscription Modal control
+        function openSubModal() {
+            document.getElementById('sub-modal').classList.remove('hidden');
+        }
+        
+        function closeSubModal() {
+            document.getElementById('sub-modal').classList.add('hidden');
+        }
+
+        function submitSubscription() {
+            const grind = document.getElementById('sub-grind').value;
+            const freq = document.getElementById('sub-freq').value;
+            const qty = document.getElementById('sub-qty').value;
+            
+            let message = `Hi Papercup! I would like to setup an automated Coffee Club Subscription:\n\n• Grind Preference: ${grind}\n• Delivery Frequency: ${freq}\n• Pack Choice: ${qty}\n\nPlease let me know the payment link to authorize recurrent activations!`;
+            const encodedText = encodeURIComponent(message);
+            window.open(`https://wa.me/97317000000?text=${encodedText}`, '_blank');
+            closeSubModal();
+        }
+
+        // Catering Inquiries Submission
+        function handleCateringSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('cat-name').value;
+            const phone = document.getElementById('cat-phone').value;
+            const guests = document.getElementById('cat-guests').value;
+            const type = document.getElementById('cat-type').value;
+
+            let message = `Hi Papercup Events Department! I am interested in booking your mobile coffee catering services:\n\n• Contact Person/Company: ${name}\n• Callback phone: ${phone}\n• Group Size estimation: ${guests}\n• Aesthetic setting type: ${type}\n\nPlease provide details on layout packages and slot availability!`;
+            const encodedText = encodeURIComponent(message);
+            window.open(`https://wa.me/97317000000?text=${encodedText}`, '_blank');
+            
+            document.getElementById('catering-form').reset();
+            showToast("Catering Request processed successfully!");
+        }
+
+        // Newsletter signup success simulation
+        function handleNewsletterSubmit(e) {
+            e.preventDefault();
+            const email = document.getElementById('news-email').value;
+            showToast(`Success! ${email} has been subscribed to the Papercup Club.`);
+            document.getElementById('news-email').value = '';
+        }
+
+        // Testimonial Data & Slider Control
+        const testimonials = [
+            {
+                text: '"By far the most consistent, perfectly calibrated V60 drip in Bahrain. The staff is highly educated on roastery genetics and flavor notes. The space at Nakheel Centre is bright, peaceful, and absolutely perfect for working."',
+                author: "Salman K. - Local Guide",
+                date: "Google Verified Review • 2 weeks ago"
+            },
+            {
+                text: '"Outstanding Espresso Bar setup. Their signature Spanish Latte balances flavor notes cleanly without feeling overly sugary. Curbside pickup order via messaging was flawless and ready in under 5 minutes."',
+                author: "Fatima Al-Subah",
+                date: "Google Verified Review • 1 month ago"
+            },
+            {
+                text: '"Superb subscription system. Fresh light-roast single origin delivered to our doorstep in Saar like clockwork. Extremely convenient with a roasted-on date guarantee."',
+                author: "James Harrison",
+                date: "Google Verified Review • 3 weeks ago"
+            }
+        ];
+
+        function switchTestimonial(index) {
+            const textEl = document.getElementById('test-text');
+            const authorEl = document.getElementById('test-author');
+            const dateEl = document.getElementById('test-date');
+            
+            textEl.textContent = testimonials[index].text;
+            authorEl.textContent = testimonials[index].author;
+            dateEl.textContent = testimonials[index].date;
+
+            document.querySelectorAll('.test-dot').forEach((dot, idx) => {
+                if (idx === index) {
+                    dot.classList.add('bg-ochre');
+                    dot.classList.remove('bg-charcoal/20');
+                } else {
+                    dot.classList.remove('bg-ochre');
+                    dot.classList.add('bg-charcoal/20');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
