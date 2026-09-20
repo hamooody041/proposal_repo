@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>66 Cups | Pioneer Specialty Coffee in Seef, Bahrain</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Alpine.js CDN for interactive state management -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- FontAwesome for high-end icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        obsidian: '#0B0B0C',
+                        steel: '#8E9296',
+                        cyanAccent: '#00E5FF'
+                    },
+                    fontFamily: {
+                        space: ['Space Grotesk', 'sans-serif'],
+                        inter: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Glassmorphism */
+        .glass-panel {
+            background: rgba(11, 11, 12, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-nav {
+            background: rgba(11, 11, 12, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        /* Pulsing Glow Effect */
+        .glow-pulse {
+            box-shadow: 0 0 0 0 rgba(0, 229, 255, 0.5);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(0, 229, 255, 0.6);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(0, 229, 255, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 229, 255, 0);
+            }
+        }
+        /* Subtle scanning lines for futuristic vibe */
+        .grid-bg {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+        }
+    </style>
+</head>
+<body class="bg-obsidian text-white font-inter grid-bg selection:bg-cyanAccent selection:text-obsidian" x-data="globalApp()">
+
+    <!-- 1. GLOBAL NAVIGATION BAR -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-nav">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center space-x-2 group">
+                <span class="font-space text-2xl font-bold tracking-widest text-white group-hover:text-cyanAccent transition-colors">
+                    66 CUPS
+                </span>
+                <span class="h-2 w-2 rounded-full bg-cyanAccent animate-ping"></span>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#menu" class="font-space text-sm tracking-wider text-steel hover:text-white transition-colors">MENU</a>
+                <a href="#our-space" class="font-space text-sm tracking-wider text-steel hover:text-white transition-colors">OUR SPACE</a>
+                <a href="#catering" class="font-space text-sm tracking-wider text-steel hover:text-white transition-colors">CORPORATE CATERING</a>
+                <a href="#find-us" class="font-space text-sm tracking-wider text-steel hover:text-white transition-colors">FIND US</a>
+            </nav>
+
+            <!-- Actions (Desktop) -->
+            <div class="hidden md:flex items-center space-x-4">
+                <!-- Direct Order Button with Pulse -->
+                <button @click="isCartOpen = true" class="glow-pulse bg-cyanAccent text-obsidian px-6 py-2.5 rounded-none font-space font-bold text-xs tracking-widest hover:bg-white hover:text-obsidian transition-all duration-300">
+                    ORDER DIRECT
+                </button>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden text-white hover:text-cyanAccent transition-colors focus:outline-none">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path x-show="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    <path x-show="mobileMenuOpen" x-cloak stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div x-show="mobileMenuOpen"
+             x-transition:enter="transition ease-out duration-300 transform"
+             x-transition:enter-start="-translate-y-full opacity-0"
+             x-transition:enter-end="translate-y-0 opacity-100"
+             x-transition:leave="transition ease-in duration-200 transform"
+             x-transition:leave-start="translate-y-0 opacity-100"
+             x-transition:leave-end="-translate-y-full opacity-0"
+             class="absolute top-20 left-0 right-0 bg-obsidian/95 border-b border-white/10 px-4 py-8 space-y-6 md:hidden flex flex-col items-center justify-center text-center">
+            
+            <a href="#menu" @click="mobileMenuOpen = false" class="font-space text-lg tracking-wider text-steel hover:text-white transition-colors w-full py-2">MENU</a>
+            <a href="#our-space" @click="mobileMenuOpen = false" class="font-space text-lg tracking-wider text-steel hover:text-white transition-colors w-full py-2">OUR SPACE</a>
+            <a href="#catering" @click="mobileMenuOpen = false" class="font-space text-lg tracking-wider text-steel hover:text-white transition-colors w-full py-2">CORPORATE CATERING</a>
+            <a href="#find-us" @click="mobileMenuOpen = false" class="font-space text-lg tracking-wider text-steel hover:text-white transition-colors w-full py-2">FIND US</a>
+            
+            <button @click="mobileMenuOpen = false; isCartOpen = true" class="glow-pulse bg-cyanAccent text-obsidian w-full py-4 rounded-none font-space font-bold tracking-widest text-sm">
+                ORDER DIRECT
+            </button>
+        </div>
+    </header>
+
+    <!-- 2. HERO SECTION -->
+    <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden border-b border-white/10">
+        <!-- Dark video/abstract background overlay -->
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,229,255,0.08),transparent_60%)] z-0"></div>
+        <div class="absolute inset-0 z-0 opacity-40">
+            <!-- Interactive digital background block mockup -->
+            <div class="w-full h-full bg-gradient-to-tr from-black via-zinc-900 to-black relative">
+                <div class="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-cyanAccent/5 filter blur-3xl"></div>
+                <div class="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-white/5 filter blur-3xl"></div>
+            </div>
+        </div>
+
+        <!-- Geolocation Simulator Toggle (CRO Feature: Lets users play with physical location state) -->
+        <div class="absolute top-24 left-4 z-20 hidden lg:block glass-panel px-4 py-2 text-xs">
+            <span class="text-steel mr-2">SIMULATED GEO-ZONE:</span>
+            <button @click="isSeef = true" 
+                    :class="isSeef ? 'text-cyanAccent border-cyanAccent' : 'text-steel border-transparent'" 
+                    class="px-2 py-1 border transition-all mr-1 font-mono">INSIDE SEEF</button>
+            <button @click="isSeef = false" 
+                    :class="!isSeef ? 'text-cyanAccent border-cyanAccent' : 'text-steel border-transparent'" 
+                    class="px-2 py-1 border transition-all font-mono">OUTSIDE SEEF</button>
+        </div>
+
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center py-20">
+            <!-- Tag -->
+            <div class="inline-flex items-center space-x-2 border border-cyanAccent/30 bg-cyanAccent/5 px-4 py-1.5 mb-8">
+                <span class="h-2 w-2 rounded-full bg-cyanAccent animate-pulse"></span>
+                <span class="font-space text-xs tracking-widest text-cyanAccent uppercase">Pioneer Specialty Coffee in Seef</span>
+            </div>
+
+            <!-- Headline -->
+            <h1 class="font-space text-5xl md:text-8xl font-bold tracking-tight mb-8 leading-none">
+                FUTURISTIC BREWING.<br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-steel">FLAWLESS COFFEE.</span>
+            </h1>
+
+            <!-- Dynamic Geo-Targeted Subheading -->
+            <p class="text-lg md:text-xl text-steel max-w-2xl mx-auto mb-12 font-light tracking-wide leading-relaxed min-h-[3.5rem] flex items-center justify-center">
+                <span x-show="isSeef" x-transition class="text-white">
+                    Sip high-grade, single-origin brews crafted for Seef's fast-moving minds.
+                </span>
+                <span x-show="!isSeef" x-transition class="text-steel">
+                    Bahrain's benchmark specialty coffee. Located in the heart of Seef District.
+                </span>
+            </p>
+
+            <!-- CTAs -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <button @click="isCartOpen = true" class="w-full sm:w-auto bg-white text-obsidian hover:bg-cyanAccent transition-all duration-300 font-space font-bold tracking-widest text-sm px-8 py-5 flex items-center justify-center space-x-3">
+                    <span>⚡ ORDER CLICK & COLLECT</span>
+                </button>
+                <a href="#menu" class="w-full sm:w-auto border border-white hover:border-cyanAccent text-white hover:text-cyanAccent transition-all duration-300 font-space font-bold tracking-widest text-sm px-8 py-5 inline-block text-center">
+                    EXPLORE THE MENU
+                </a>
+            </div>
+
+            <!-- No app required / frictionless banner -->
+            <p class="mt-8 text-xs text-steel tracking-wide font-mono">
+                * Skip the lines. No app downloads. BHD 0.000 Delivery inside Seef.
+            </p>
+        </div>
+    </section>
+
+    <!-- 3. BRAND PILLARS / VALUE PROPS -->
+    <section class="py-24 border-b border-white/10 relative overflow-hidden bg-obsidian/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Pillar 1 -->
+                <div class="group border border-white/10 p-8 hover:border-cyanAccent/50 transition-all duration-500 glass-panel transform hover:-translate-y-1">
+                    <div class="flex justify-between items-start mb-12">
+                        <span class="font-space text-xs text-cyanAccent tracking-widest font-mono">01 // HIGH-GRADE BEANS</span>
+                        <i class="fa-solid fa-seedling text-lg text-steel group-hover:text-cyanAccent transition-colors"></i>
+                    </div>
+                    <h3 class="font-space text-xl font-bold tracking-wider mb-4">DIRECTLY SOURCED MICRO-LOTS</h3>
+                    <p class="text-steel font-light text-sm leading-relaxed">
+                        Directly sourced single-origin beans roasted to meticulous specifications. Taste pure regional terroir with zero dilution.
+                    </p>
+                </div>
+
+                <!-- Pillar 2 -->
+                <div class="group border border-white/10 p-8 hover:border-cyanAccent/50 transition-all duration-500 glass-panel transform hover:-translate-y-1">
+                    <div class="flex justify-between items-start mb-12">
+                        <span class="font-space text-xs text-cyanAccent tracking-widest font-mono">02 // CO-WORKING HUB</span>
+                        <i class="fa-solid fa-wifi text-lg text-steel group-hover:text-cyanAccent transition-colors"></i>
+                    </div>
+                    <h3 class="font-space text-xl font-bold tracking-wider mb-4">SEEF'S SILENT POWER-BASE</h3>
+                    <p class="text-steel font-light text-sm leading-relaxed">
+                        Ultra-fast symmetric Wi-Fi, hidden AC/USB outlets at every seat, & inspiring geometric aesthetics engineered for high productivity.
+                    </p>
+                </div>
+
+                <!-- Pillar 3 -->
+                <div class="group border border-white/10 p-8 hover:border-cyanAccent/50 transition-all duration-500 glass-panel transform hover:-translate-y-1">
+                    <div class="flex justify-between items-start mb-12">
+                        <span class="font-space text-xs text-cyanAccent tracking-widest font-mono">03 // ZERO COMMISSION</span>
+                        <i class="fa-solid fa-ban text-lg text-steel group-hover:text-cyanAccent transition-colors"></i>
+                    </div>
+                    <h3 class="font-space text-xl font-bold tracking-wider mb-4">BYPASS AGGREGATOR FEES</h3>
+                    <p class="text-steel font-light text-sm leading-relaxed">
+                        Ordering directly on our portal guarantees 100% direct shop-to-cup speed. No inflated menu markups, ever.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. INTERACTIVE VISUAL MENU -->
+    <section id="menu" class="py-24 border-b border-white/10 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Section Title -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+                <div>
+                    <span class="font-space text-xs text-cyanAccent tracking-widest uppercase block mb-2">[ DISCOVER FLAVOR ]</span>
+                    <h2 class="font-space text-4xl font-bold tracking-tight">THE 66 CUPS FORMULARY</h2>
+                </div>
+                
+                <!-- Diet & Allergy Quick-Toggles -->
+                <div class="mt-6 md:mt-0 flex flex-wrap items-center gap-3">
+                    <span class="text-xs text-steel tracking-widest font-mono mr-2">FILTERS:</span>
+                    <button @click="dietToggle('vegan')" :class="diets.vegan ? 'border-cyanAccent text-cyanAccent' : 'border-white/10 text-steel hover:border-white'" class="border text-xs px-3 py-1 font-mono transition-all">
+                        VEGAN
+                    </button>
+                    <button @click="dietToggle('nutFree')" :class="diets.nutFree ? 'border-cyanAccent text-cyanAccent' : 'border-white/10 text-steel hover:border-white'" class="border text-xs px-3 py-1 font-mono transition-all">
+                        NUT-FREE
+                    </button>
+                    <button @click="dietToggle('glutenFree')" :class="diets.glutenFree ? 'border-cyanAccent text-cyanAccent' : 'border-white/10 text-steel hover:border-white'" class="border text-xs px-3 py-1 font-mono transition-all">
+                        GLUTEN-FREE
+                    </button>
+                </div>
+            </div>
+
+            <!-- Category Menu Toggles -->
+            <div class="flex flex-wrap gap-2 mb-12 border-b border-white/5 pb-6">
+                <template x-for="cat in categories">
+                    <button @click="activeCategory = cat.id"
+                            :class="activeCategory === cat.id ? 'bg-white text-obsidian' : 'bg-transparent text-steel border border-white/10 hover:border-white hover:text-white'"
+                            class="px-6 py-3 font-space text-xs tracking-widest uppercase transition-all duration-300">
+                        <span x-text="cat.name"></span>
+                    </button>
+                </template>
+            </div>
+
+            <!-- Menu Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <template x-for="item in filteredItems()" :key="item.id">
+                    <div class="group border border-white/10 glass-panel flex flex-col justify-between h-full hover:border-cyanAccent/50 transition-all duration-300">
+                        
+                        <!-- Visual representation of products without heavy outside image links, using beautiful dynamic CSS layouts -->
+                        <div class="relative h-64 bg-zinc-950 flex items-center justify-center overflow-hidden border-b border-white/10">
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10"></div>
+                            
+                            <!-- Abstract minimal layout matching each drink class -->
+                            <div class="w-32 h-32 rounded-full opacity-60 filter blur-xl animate-pulse" :class="item.color"></div>
+                            <div class="z-20 text-center">
+                                <i :class="item.icon" class="text-5xl text-white mb-3 block opacity-80 group-hover:scale-110 transition-transform duration-300"></i>
+                                <span class="text-[10px] tracking-widest text-steel uppercase font-mono" x-text="item.category"></span>
+                            </div>
+
+                            <!-- Badge Indicator -->
+                            <div class="absolute top-4 right-4 z-20 flex space-x-1">
+                                <span x-show="item.vegan" class="text-[9px] bg-green-950/80 border border-green-500/50 text-green-400 px-2 py-0.5 font-mono">VEG</span>
+                                <span x-show="item.nutFree" class="text-[9px] bg-blue-950/80 border border-blue-500/50 text-blue-400 px-2 py-0.5 font-mono">NUT FREE</span>
+                                <span x-show="item.glutenFree" class="text-[9px] bg-yellow-950/80 border border-yellow-500/50 text-yellow-400 px-2 py-0.5 font-mono">GF</span>
+                            </div>
+                        </div>
+
+                        <div class="p-6 flex-1 flex flex-col justify-between">
+                            <div class="mb-6">
+                                <div class="flex justify-between items-start gap-4 mb-2">
+                                    <h3 class="font-space text-lg font-bold tracking-wide text-white group-hover:text-cyanAccent transition-colors" x-text="item.name"></h3>
+                                    <span class="font-mono text-cyanAccent font-medium text-sm whitespace-nowrap" x-text="'BHD ' + item.price.toFixed(3)"></span>
+                                </div>
+                                <p class="text-steel text-xs font-light tracking-wide leading-relaxed" x-text="item.description"></p>
+                            </div>
+
+                            <button @click="addToCart(item)" class="w-full border border-white group-hover:bg-white group-hover:text-obsidian transition-all duration-300 font-space font-bold text-xs tracking-widest py-3 flex items-center justify-center space-x-2">
+                                <i class="fa-solid fa-plus"></i>
+                                <span>ADD TO ORDER</span>
+                            </button>
+                        </div>
+
+                    </div>
+                </template>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 5. CORPORATE CATERING PORTAL (High-Value B2B Lead Gen) -->
+    <section id="catering" class="py-24 border-b border-white/10 relative bg-zinc-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                
+                <!-- Text Intro -->
+                <div>
+                    <span class="font-space text-xs text-cyanAccent tracking-widest uppercase block mb-2">[ B2B EXECUTIVE SERVICE ]</span>
+                    <h2 class="font-space text-4xl md:text-5xl font-bold tracking-tight mb-6 leading-tight">
+                        ELEVATE YOUR<br>BOARDROOM MEETINGS
+                    </h2>
+                    <p class="text-steel font-light text-sm leading-relaxed mb-8">
+                        Impress your executive clients and high-performing internal teams. We deliver state-of-the-art mobile espresso cart setups, physical baristas, and artisanal morning pastry platters directly into the core corporate towers of the Seef District.
+                    </p>
+                    <div class="space-y-4 border-l border-cyanAccent/40 pl-6">
+                        <p class="text-xs tracking-wide text-white font-mono"><span class="text-cyanAccent">✓</span> Premium physical cart integration with clean footprint</p>
+                        <p class="text-xs tracking-wide text-white font-mono"><span class="text-cyanAccent">✓</span> Professional SCA-Certified baristas</p>
+                        <p class="text-xs tracking-wide text-white font-mono"><span class="text-cyanAccent">✓</span> Direct corporate billing & seamless recurring events</p>
+                    </div>
+                </div>
+
+                <!-- Interactive Lead Calculator / Form -->
+                <div class="glass-panel p-8 md:p-10 relative">
+                    <h3 class="font-space text-xl font-bold tracking-wider mb-6 text-white">INSTANT CATERING ESTIMATOR</h3>
+                    
+                    <form @submit.prevent="submitCatering()" class="space-y-6">
+                        
+                        <!-- Guest Slider -->
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <label class="text-xs tracking-wider text-steel font-mono">EXPECTED GUEST COUNT</label>
+                                <span class="text-cyanAccent font-mono text-sm font-bold" x-text="cateringGuests + ' Guests'"></span>
+                            </div>
+                            <input type="range" min="10" max="200" step="5" x-model="cateringGuests"
+                                   class="w-full h-1 bg-white/10 accent-cyanAccent appearance-none cursor-pointer rounded">
+                        </div>
+
+                        <!-- Setup Type Dropdown -->
+                        <div>
+                            <label class="text-xs tracking-wider text-steel font-mono block mb-2">SETUP PREFERENCE</label>
+                            <select x-model="cateringSetup"
+                                    class="w-full bg-obsidian border border-white/15 focus:border-cyanAccent rounded-none px-4 py-3 text-sm focus:outline-none text-white font-space">
+                                <option value="espresso-bar">Full Espresso Bar Setup (BHD 4.500 / head)</option>
+                                <option value="pastries">Artisanal Pastries Platter Only (BHD 2.500 / head)</option>
+                                <option value="combo">Premium Espresso & Pastries Combo (BHD 6.000 / head)</option>
+                            </select>
+                        </div>
+
+                        <!-- Corporate Email & Date Grid -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="text-xs tracking-wider text-steel font-mono block mb-2">EVENT DATE</label>
+                                <input type="date" required x-model="cateringDate"
+                                       class="w-full bg-obsidian border border-white/15 focus:border-cyanAccent rounded-none px-4 py-3 text-sm focus:outline-none text-white font-space">
+                            </div>
+                            <div>
+                                <label class="text-xs tracking-wider text-steel font-mono block mb-2">CORPORATE EMAIL</label>
+                                <input type="email" placeholder="executive@company.com" required x-model="cateringEmail"
+                                       class="w-full bg-obsidian border border-white/15 focus:border-cyanAccent rounded-none px-4 py-3 text-sm focus:outline-none text-white font-space">
+                            </div>
+                        </div>
+
+                        <!-- Live Calculated Cost Visual -->
+                        <div class="bg-white/[0.02] border border-white/5 p-4 flex justify-between items-center">
+                            <span class="text-xs text-steel font-mono">ESTIMATED COST:</span>
+                            <span class="text-2xl font-space font-bold text-cyanAccent" x-text="'BHD ' + calculateEstimate().toFixed(3)"></span>
+                        </div>
+
+                        <!-- Form Submit Button -->
+                        <button type="submit" 
+                                class="w-full bg-cyanAccent text-obsidian hover:bg-white hover:text-obsidian transition-colors font-space font-bold text-xs tracking-widest py-4">
+                            GET AN INSTANT QUOTE & PACKAGES
+                        </button>
+                    </form>
+
+                    <!-- Success Alert Modal Overlay inside block -->
+                    <div x-show="cateringSuccess" x-cloak class="absolute inset-0 bg-obsidian/95 z-20 flex flex-col items-center justify-center p-6 text-center">
+                        <i class="fa-regular fa-circle-check text-5xl text-cyanAccent mb-4"></i>
+                        <h4 class="font-space text-lg font-bold tracking-wide mb-2">PROPOSAL SYSTEM INITIALIZED</h4>
+                        <p class="text-steel text-xs font-light max-w-sm mb-6">
+                            An interactive corporate menu PDF and live estimation sheet has been dispatched to <strong class="text-white" x-text="cateringEmail"></strong>.
+                        </p>
+                        <button @click="cateringSuccess = false" class="border border-white hover:border-cyanAccent text-white hover:text-cyanAccent px-6 py-2 text-xs font-space font-bold tracking-wider">
+                            DISMISS
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. SOCIAL PROOF & LOCAL INTEGRATION -->
+    <section id="our-space" class="py-24 border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Ratings & Heading -->
+            <div class="text-center mb-16">
+                <span class="font-space text-xs text-cyanAccent tracking-widest uppercase block mb-2">[ VERIFIED SEEF SENTIMENT ]</span>
+                <h2 class="font-space text-4xl font-bold mb-4 tracking-tight">TRUSTED BY HIGH-PERFORMERS</h2>
+                <div class="flex items-center justify-center space-x-2 text-yellow-400 text-sm">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half-stroke"></i>
+                    <span class="text-white font-mono text-sm ml-2">4.5 Stars (Google Reviews)</span>
+                </div>
+            </div>
+
+            <!-- Feedbacks -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+                
+                <!-- Testimonial 1 -->
+                <div class="border border-white/10 p-8 glass-panel flex flex-col justify-between">
+                    <p class="text-steel font-light text-sm leading-relaxed mb-8">
+                        "My absolute daily workspace of choice. Ultra-fast Wi-Fi, hidden charging slots beneath the stone surface, and flawless micro-lot filter coffee that keeps my engineering workflow running perfectly."
+                    </p>
+                    <div>
+                        <p class="font-space text-sm font-bold text-white">Sarah M.</p>
+                        <p class="text-xs text-cyanAccent font-mono">Corporate Lawyer, Seef District</p>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="border border-white/10 p-8 glass-panel flex flex-col justify-between">
+                    <p class="text-steel font-light text-sm leading-relaxed mb-8">
+                        "Finally, a specialty cafe that respects single-origin profiles. Dynamic brewing methods are flawless. Plus, bypassing aggregator commissions by ordering direct is incredibly smooth."
+                    </p>
+                    <div>
+                        <p class="font-space text-sm font-bold text-white">Khalid A.</p>
+                        <p class="text-xs text-cyanAccent font-mono">Senior Architect & Designer</p>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="border border-white/10 p-8 glass-panel flex flex-col justify-between">
+                    <p class="text-steel font-light text-sm leading-relaxed mb-8">
+                        "The V60 selections here are outstanding. Incredible space to think or execute. Accessing ample parking right at The Courtyard keeps this friction-free every single time."
+                    </p>
+                    <div>
+                        <p class="font-space text-sm font-bold text-white">Ahmed K.</p>
+                        <p class="text-xs text-cyanAccent font-mono">Venture Investor</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Instagram Grid Aesthetic Link -->
+            <div class="border border-white/10 glass-panel p-8">
+                <div class="flex flex-col md:flex-row items-center justify-between mb-8 pb-6 border-b border-white/10">
+                    <div>
+                        <span class="text-xs text-cyanAccent font-mono tracking-widest block">[ LIVE AESTHETIC ]</span>
+                        <p class="font-space text-lg font-bold mt-1">FOLLOW US @66CUPS</p>
+                    </div>
+                    <a href="https://instagram.com/66cups" target="_blank" class="mt-4 md:mt-0 font-space text-xs tracking-widest border border-white hover:border-cyanAccent text-white hover:text-cyanAccent px-6 py-3 transition-colors">
+                        VIEW INSTAGRAM
+                    </a>
+                </div>
+
+                <!-- Grid of 4 beautiful responsive abstract photos -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <!-- Aesthetic Photo 1 -->
+                    <div class="relative group aspect-square bg-zinc-900 border border-white/5 overflow-hidden flex items-center justify-center">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-cyanAccent/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+                        <i class="fa-brands fa-instagram text-2xl text-white/20 group-hover:text-cyanAccent group-hover:scale-125 transition-all duration-300 z-20"></i>
+                        <!-- Minimal geometric elements to replace raw photos with stark high-end brand feel -->
+                        <div class="absolute w-12 h-12 border border-white/10 group-hover:rotate-45 transition-transform duration-500"></div>
+                    </div>
+                    <!-- Aesthetic Photo 2 -->
+                    <div class="relative group aspect-square bg-zinc-950 border border-white/5 overflow-hidden flex items-center justify-center">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-cyanAccent/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+                        <i class="fa-brands fa-instagram text-2xl text-white/20 group-hover:text-cyanAccent group-hover:scale-125 transition-all duration-300 z-20"></i>
+                        <div class="absolute w-8 h-8 rounded-full border border-white/10 group-hover:scale-150 transition-transform duration-500"></div>
+                    </div>
+                    <!-- Aesthetic Photo 3 -->
+                    <div class="relative group aspect-square bg-zinc-900 border border-white/5 overflow-hidden flex items-center justify-center">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-cyanAccent/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+                        <i class="fa-brands fa-instagram text-2xl text-white/20 group-hover:text-cyanAccent group-hover:scale-125 transition-all duration-300 z-20"></i>
+                        <div class="absolute w-16 h-1 border-t border-white/10 group-hover:rotate-90 transition-transform duration-500"></div>
+                    </div>
+                    <!-- Aesthetic Photo 4 -->
+                    <div class="relative group aspect-square bg-zinc-950 border border-white/5 overflow-hidden flex items-center justify-center">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-cyanAccent/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+                        <i class="fa-brands fa-instagram text-2xl text-white/20 group-hover:text-cyanAccent group-hover:scale-125 transition-all duration-300 z-20"></i>
+                        <div class="absolute w-10 h-10 border border-cyanAccent/20 group-hover:scale-110 transition-transform duration-500"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 7. INTERACTIVE LOCATION & ACTION FOOTER -->
+    <section id="find-us" class="py-24 border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                
+                <!-- Custom Stark Styled Dark Map Placeholder -->
+                <div class="relative border border-white/10 aspect-video lg:aspect-auto lg:h-[400px] bg-zinc-950 flex flex-col items-center justify-center p-8 text-center group overflow-hidden">
+                    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,229,255,0.05),transparent_60%)]"></div>
+                    
+                    <!-- Minimal Styled Map UI Elements -->
+                    <div class="z-10">
+                        <i class="fa-solid fa-location-crosshairs text-4xl text-cyanAccent mb-4 animate-pulse"></i>
+                        <h4 class="font-space text-lg font-bold tracking-wider text-white mb-2">THE COURTYARD, SEEF</h4>
+                        <p class="text-steel text-xs font-light max-w-sm mx-auto mb-6">
+                            Click below to load exact directions and dynamic route layouts on external Google Maps interfaces.
+                        </p>
+                        <a href="https://maps.google.com/?q=The+Courtyard+Seef+Bahrain" target="_blank" 
+                           class="inline-flex items-center space-x-2 bg-white text-obsidian hover:bg-cyanAccent hover:text-obsidian transition-colors px-6 py-4 font-space font-bold text-xs tracking-widest">
+                            <i class="fa-solid fa-map-location-dot"></i>
+                            <span>GET DIRECTIONS VIA GOOGLE MAPS</span>
+                        </a>
+                    </div>
+                    
+                    <!-- Map wire lines mockup decoration -->
+                    <div class="absolute bottom-0 right-0 w-32 h-32 border-b border-r border-white/5"></div>
+                    <div class="absolute top-0 left-0 w-32 h-32 border-t border-l border-white/5"></div>
+                </div>
+
+                <!-- Location Details & Action Buttons -->
+                <div class="flex flex-col justify-between">
+                    <div>
+                        <span class="font-space text-xs text-cyanAccent tracking-widest uppercase block mb-2">[ OPERATING STATUS ]</span>
+                        <h3 class="font-space text-3xl font-bold mb-6">VISIT THE BREW BAR</h3>
+                        
+                        <!-- Contact Grid -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-8">
+                            <div>
+                                <span class="text-xs text-steel tracking-wider font-mono block mb-2">BREW BAR HOURS</span>
+                                <p class="text-sm text-white font-medium">Everyday: 7:00 AM - Midnight</p>
+                                <p class="text-xs text-steel mt-1">Extended setups available during holy month.</p>
+                            </div>
+                            <div>
+                                <span class="text-xs text-steel tracking-wider font-mono block mb-2">PHYSICAL ADDRESS</span>
+                                <p class="text-sm text-white font-medium">The Courtyard Complex</p>
+                                <p class="text-xs text-steel mt-1">Seef District, Kingdom of Bahrain</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Direct Links Trigger -->
+                    <div class="space-y-4">
+                        <a href="tel:+97317000000" class="w-full border border-white/10 hover:border-cyanAccent/50 flex items-center justify-between p-4 glass-panel group transition-colors">
+                            <span class="text-xs tracking-wider text-steel group-hover:text-white transition-colors font-mono">DIRECT BREW LAB CALL:</span>
+                            <span class="font-space text-sm font-bold text-white group-hover:text-cyanAccent transition-colors">+973 1766 6666</span>
+                        </a>
+                        
+                        <a href="https://wa.me/97317666666" target="_blank" class="w-full border border-white/10 hover:border-cyanAccent/50 flex items-center justify-between p-4 glass-panel group transition-colors">
+                            <span class="text-xs tracking-wider text-steel group-hover:text-white transition-colors font-mono">LIVE BARISTA WHATSAPP SUPPORT:</span>
+                            <span class="font-space text-sm font-bold text-white group-hover:text-cyanAccent transition-colors">OPEN CHAT <i class="fa-brands fa-whatsapp ml-1"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER LICENSE BAR -->
+    <footer class="bg-obsidian py-12 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <p class="text-xs text-steel tracking-wider font-mono">
+                &copy; 2026 66 Cups. All rights reserved. Registered under Bahrain Commerce CR-66000.
+            </p>
+            <div class="flex items-center space-x-6 text-xs text-steel font-mono">
+                <a href="#" class="hover:text-cyanAccent transition-colors">Privacy Framework</a>
+                <a href="#" class="hover:text-cyanAccent transition-colors">Terms of Dispatch</a>
+                <a href="#" class="hover:text-cyanAccent transition-colors">Bypass Aggregators</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE SLIDE-OUT CART ENGINE / CHECKOUT DRAWERS -->
+    <div x-show="isCartOpen" x-cloak class="fixed inset-0 z-50 overflow-hidden" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
+        <div class="absolute inset-0 overflow-hidden">
+            <!-- Backdrop -->
+            <div @click="isCartOpen = false" class="absolute inset-0 bg-black/80 backdrop-blur-sm transition-opacity"></div>
+
+            <div class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
+                <div class="pointer-events-auto w-screen max-w-md">
+                    <div class="flex h-full flex-col bg-obsidian border-l border-white/10 shadow-xl">
+                        
+                        <!-- Header -->
+                        <div class="flex items-center justify-between px-6 py-6 border-b border-white/10">
+                            <h3 class="font-space text-lg font-bold tracking-wider">YOUR ORDER MANIFEST</h3>
+                            <button @click="isCartOpen = false" class="text-steel hover:text-white transition-colors">
+                                <i class="fa-solid fa-xmark text-lg"></i>
+                            </button>
+                        </div>
+
+                        <!-- Cart Item List -->
+                        <div class="flex-1 overflow-y-auto px-6 py-6 space-y-6">
+                            <template x-if="cart.length === 0">
+                                <div class="h-full flex flex-col items-center justify-center text-center">
+                                    <i class="fa-solid fa-mug-hot text-4xl text-steel/20 mb-4 animate-bounce"></i>
+                                    <p class="font-space text-sm tracking-wide text-steel">Your dispatch list is currently empty.</p>
+                                    <button @click="isCartOpen = false" class="mt-4 text-xs font-space font-bold text-cyanAccent hover:underline">VIEW FORMULARY</button>
+                                </div>
+                            </template>
+
+                            <template x-for="(item, index) in cart" :key="index">
+                                <div class="flex items-center justify-between border-b border-white/5 pb-4">
+                                    <div>
+                                        <h4 class="font-space text-sm font-bold" x-text="item.name"></h4>
+                                        <p class="text-xs text-cyanAccent font-mono mt-1" x-text="'BHD ' + item.price.toFixed(3)"></p>
+                                    </div>
+                                    <div class="flex items-center space-x-3">
+                                        <button @click="decrementQuantity(item)" class="w-6 h-6 border border-white/15 hover:border-white text-steel hover:text-white flex items-center justify-center text-xs font-mono">-</button>
+                                        <span class="font-mono text-xs text-white" x-text="item.quantity"></span>
+                                        <button @click="incrementQuantity(item)" class="w-6 h-6 border border-white/15 hover:border-white text-steel hover:text-white flex items-center justify-center text-xs font-mono">+</button>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+
+                        <!-- Footer & Pricing Operations -->
+                        <div class="border-t border-white/10 px-6 py-6 space-y-6 bg-zinc-950">
+                            <div class="space-y-1.5">
+                                <div class="flex justify-between text-xs text-steel font-mono">
+                                    <span>SUBTOTAL:</span>
+                                    <span class="text-white" x-text="'BHD ' + getSubtotal().toFixed(3)"></span>
+                                </div>
+                                <div class="flex justify-between text-xs text-steel font-mono">
+                                    <span>PLATFORM FEE (DIRECT COOP):</span>
+                                    <span class="text-green-400 font-bold">BHD 0.000</span>
+                                </div>
+                                <div class="flex justify-between text-xs text-steel font-mono">
+                                    <span>SEEF DISTRICT DELIVERY:</span>
+                                    <span class="text-green-400 font-bold">BHD 0.000</span>
+                                </div>
+                                <div class="border-t border-white/5 pt-3 flex justify-between text-sm font-space font-bold">
+                                    <span>TOTAL DISPATCH VALUE:</span>
+                                    <span class="text-cyanAccent" x-text="'BHD ' + getSubtotal().toFixed(3)"></span>
+                                </div>
+                            </div>
+
+                            <!-- Form Input Elements -->
+                            <div class="space-y-3">
+                                <input type="text" placeholder="RECIPIENT NAME" required 
+                                       class="w-full bg-obsidian border border-white/10 focus:border-cyanAccent text-xs px-4 py-3 rounded-none text-white font-mono">
+                                <input type="text" placeholder="DELIVERY / OFFICE LOCATION inside SEEF" required 
+                                       class="w-full bg-obsidian border border-white/10 focus:border-cyanAccent text-xs px-4 py-3 rounded-none text-white font-mono">
+                            </div>
+
+                            <!-- Submit Order -->
+                            <button @click="completeOrder()" :disabled="cart.length === 0"
+                                    class="w-full bg-cyanAccent text-obsidian disabled:bg-white/10 disabled:text-steel transition-colors font-space font-bold text-xs tracking-widest py-4 text-center block">
+                                INITIATE EXPRESS CLICK & COLLECT
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ORDER SUCCESS INTERACTIVE BANNER -->
+    <div x-show="orderDone" x-cloak class="fixed bottom-8 right-8 z-50 glass-panel p-6 max-w-sm border-cyanAccent shadow-lg">
+        <div class="flex items-start space-x-4">
+            <div class="bg-cyanAccent/10 text-cyanAccent p-2 rounded-full">
+                <i class="fa-solid fa-bolt"></i>
+            </div>
+            <div>
+                <h4 class="font-space text-sm font-bold">DISPATCH SEQUENCE SUCCESS</h4>
+                <p class="text-xs text-steel mt-1 leading-relaxed">
+                    Order transmitted directly to our brew-station at The Courtyard. Expect instant hand-delivery or rapid ready-alert inside 10 minutes.
+                </p>
+                <button @click="orderDone = false" class="mt-4 text-xs font-space font-bold text-cyanAccent hover:underline">
+                    ACKNOWLEDGEMENT
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function globalApp() {
+            return {
+                mobileMenuOpen: false,
+                isCartOpen: false,
+                isSeef: true,
+                activeCategory: 'all',
+                cateringGuests: 25,
+                cateringSetup: 'espresso-bar',
+                cateringDate: '',
+                cateringEmail: '',
+                cateringSuccess: false,
+                orderDone: false,
+                cart: [],
+                diets: {
+                    vegan: false,
+                    nutFree: false,
+                    glutenFree: false
+                },
+                categories: [
+                    { id: 'all', name: 'ALL FORMULAS' },
+                    { id: 'cold', name: 'SIGNATURE COLD' },
+                    { id: 'espresso', name: 'ESPRESSO-BASED' },
+                    { id: 'bakery', name: 'ARTISANAL BAKERY' }
+                ],
+                items: [
+                    {
+                        id: 1,
+                        name: '66 Cold Signature Spanish Latte',
+                        category: 'cold',
+                        price: 2.800,
+                        description: 'Rich dark espresso brewed over custom chilled sweet milk and micro-infused organic extracts.',
+                        vegan: true,
+                        nutFree: true,
+                        glutenFree: true,
+                        icon: 'fa-solid fa-snowflake',
+                        color: 'bg-cyan-500'
+                    },
+                    {
+                        id: 2,
+                        name: 'V60 Pour-Over Single-Origin',
+                        category: 'espresso',
+                        price: 3.200,
+                        description: 'Rotating micro-lot heirloom beans. Delicate profiles extracted using precise mathematical flow-rates.',
+                        vegan: true,
+                        nutFree: true,
+                        glutenFree: true,
+                        icon: 'fa-solid fa-droplet',
+                        color: 'bg-yellow-500'
+                    },
+                    {
+                        id: 3,
+                        name: 'Pistachio Croissant',
+                        category: 'bakery',
+                        price: 2.400,
+                        description: 'Flaky architectural layers filled with pure Sicilian stone-ground pistachio paste, baked daily.',
+                        vegan: false,
+                        nutFree: false,
+                        glutenFree: false,
+                        icon: 'fa-solid fa-bread-slice',
+                        color: 'bg-emerald-500'
+                    },
+                    {
+                        id: 4,
+                        name: 'Saffron Rose Cold Brew',
+                        category: 'cold',
+                        price: 2.900,
+                        description: '18-hour slow cold drip extraction infused with hand-selected local saffron threads & premium rose hydrosols.',
+                        vegan: true,
+                        nutFree: true,
+                        glutenFree: true,
+                        icon: 'fa-solid fa-flask',
+                        color: 'bg-rose-500'
+                    },
+                    {
+                        id: 5,
+                        name: 'Corporate Double-Shot Flat White',
+                        category: 'espresso',
+                        price: 2.200,
+                        description: 'Short pulled double ristretto topped with ultra-glossy, high-definition microfoam.',
+                        vegan: false,
+                        nutFree: true,
+                        glutenFree: true,
+                        icon: 'fa-solid fa-mug-saucer',
+                        color: 'bg-amber-600'
+                    },
+                    {
+                        id: 6,
+                        name: 'Gluten-Free Almond Baklava Tart',
+                        category: 'bakery',
+                        price: 2.600,
+                        description: 'Stark-minimalist circular tart composed of light almond meal, wild mountain honey, and gluten-free crust.',
+                        vegan: false,
+                        nutFree: false,
+                        glutenFree: true,
+                        icon: 'fa-solid fa-cookie',
+                        color: 'bg-orange-500'
+                    }
+                ],
+                dietToggle(type) {
+                    this.diets[type] = !this.diets[type];
+                },
+                filteredItems() {
+                    return this.items.filter(item => {
+                        // Category filtering
+                        if (this.activeCategory !== 'all' && item.category !== this.activeCategory) {
+                            return false;
+                        }
+                        // Diet filtering
+                        if (this.diets.vegan && !item.vegan) return false;
+                        if (this.diets.nutFree && !item.nutFree) return false;
+                        if (this.diets.glutenFree && !item.glutenFree) return false;
+                        return true;
+                    });
+                },
+                addToCart(item) {
+                    let existingItem = this.cart.find(c => c.id === item.id);
+                    if (existingItem) {
+                        existingItem.quantity++;
+                    } else {
+                        this.cart.push({ ...item, quantity: 1 });
+                    }
+                    this.isCartOpen = true;
+                },
+                incrementQuantity(item) {
+                    item.quantity++;
+                },
+                decrementQuantity(item) {
+                    if (item.quantity > 1) {
+                        item.quantity--;
+                    } else {
+                        this.cart = this.cart.filter(c => c.id !== item.id);
+                    }
+                },
+                getSubtotal() {
+                    return this.cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+                },
+                calculateEstimate() {
+                    let rate = 4.5;
+                    if (this.cateringSetup === 'pastries') rate = 2.5;
+                    if (this.cateringSetup === 'combo') rate = 6.0;
+                    return this.cateringGuests * rate;
+                },
+                submitCatering() {
+                    if (!this.cateringEmail || !this.cateringDate) return;
+                    this.cateringSuccess = true;
+                    // In raw production, an endpoint webhook would accept this state payload here.
+                },
+                completeOrder() {
+                    this.cart = [];
+                    this.isCartOpen = false;
+                    this.orderDone = true;
+                    setTimeout(() => {
+                        this.orderDone = false;
+                    }, 9000);
+                }
+            };
+        }
+    </script>
+</body>
+</html>
