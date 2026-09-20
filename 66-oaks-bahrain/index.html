@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>66 Oaks Bahrain - Biophilic Brunch & Specialty Coffee Escape</title>
+    <meta name="description" content="Dine under the oak canopy at 66 Oaks in Seef District, Bahrain. Experience modern biophilic luxury, award-winning all-day brunch, and artisanal specialty coffee.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        forest: '#1C352D',
+                        gold: '#D4AF37',
+                        oatmeal: '#F5EFE6',
+                        charcoal: '#222222',
+                    },
+                    fontFamily: {
+                        serif: ['Cormorant Garamond', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS for Premium Overlays and Fonts -->
+    <style>
+        .font-heading {
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .font-body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Smooth scroll and premium custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F5EFE6;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1C352D;
+            border-radius: 4px;
+        }
+        /* Glassmorphism class */
+        .glass {
+            background: rgba(28, 53, 45, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .glass-light {
+            background: rgba(245, 239, 230, 0.9);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+
+    <!-- Local SEO Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": "66 Oaks Bahrain",
+      "image": "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=1200",
+      "@id": "",
+      "url": "https://66oaks.bh",
+      "telephone": "+97317666066",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Road 2803, Block 428",
+        "addressLocality": "Seef District, Manama",
+        "addressCountry": "BH"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 26.2429,
+        "longitude": 50.5401
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "07:30",
+        "closes": "23:30"
+      },
+      "menu": "https://66oaks.bh#menu",
+      "servesCuisine": "Modern European, All-Day Brunch, Specialty Coffee",
+      "priceRange": "$$"
+    }
+    </script>
+</head>
+<body class="bg-[#F5EFE6] text-charcoal font-body antialiased selection:bg-[#D4AF37] selection:text-[#1C352D]">
+
+    <!-- 1. Sticky Navigation Header -->
+    <header id="main-header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 py-4 px-6 md:px-12 flex justify-between items-center bg-transparent">
+        <!-- Brand Logo -->
+        <a href="#" class="flex items-center space-x-2">
+            <div class="h-12 w-12 rounded-full border border-gold flex items-center justify-center bg-forest">
+                <span class="font-heading font-semibold text-xl text-gold tracking-widest">66</span>
+            </div>
+            <div class="flex flex-col">
+                <span class="font-heading font-bold text-lg leading-tight tracking-wider text-white" id="logo-text-primary">66 OAKS</span>
+                <span class="text-[9px] uppercase tracking-widest text-[#D4AF37]" id="logo-text-secondary">Bahrain</span>
+            </div>
+        </a>
+
+        <!-- Desktop Navigation Anchor Links -->
+        <nav class="hidden lg:flex items-center space-x-8 text-sm font-medium tracking-wide uppercase text-white" id="desktop-nav">
+            <a href="#experience" class="hover:text-gold transition-colors duration-200">The Experience</a>
+            <a href="#menu" class="hover:text-gold transition-colors duration-200">Menu</a>
+            <a href="#reservations" class="hover:text-gold transition-colors duration-200">Table Bookings</a>
+            <a href="#catering" class="hover:text-gold transition-colors duration-200">Corporate Catering</a>
+            <a href="#social" class="hover:text-gold transition-colors duration-200">Gallery</a>
+        </nav>
+
+        <!-- Header CTA and Language Selection -->
+        <div class="hidden md:flex items-center space-x-4">
+            <!-- Interactive Language Switcher -->
+            <button onclick="toggleLanguage()" class="text-xs tracking-widest uppercase py-1 px-3 border border-gold text-gold hover:bg-gold hover:text-forest transition-all rounded duration-300 font-semibold" id="lang-switch">
+                EN | AR
+            </button>
+            <a href="#reservations" class="px-5 py-2.5 bg-transparent border border-white text-white hover:border-gold hover:bg-gold hover:text-forest text-xs tracking-widest uppercase transition-all duration-300 font-semibold rounded">
+                Reserve Table
+            </a>
+            <a href="#menu" class="px-5 py-2.5 bg-[#D4AF37] text-[#1C352D] hover:bg-white hover:text-forest text-xs tracking-widest uppercase transition-all duration-300 font-bold rounded shadow-lg shadow-black/10">
+                Order Direct
+            </a>
+        </div>
+
+        <!-- Mobile Hamburger Button -->
+        <button id="mobile-menu-btn" class="lg:hidden focus:outline-none p-2 text-white">
+            <i class="fa-solid fa-bars-staggered text-2xl" id="hamburger-icon"></i>
+        </button>
+    </header>
+
+    <!-- Mobile Slideover Navigation Menu -->
+    <div id="mobile-nav-panel" class="fixed inset-0 bg-[#1C352D] z-40 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between p-8">
+        <div class="flex justify-between items-center mt-16">
+            <span class="font-heading text-2xl text-gold font-bold">66 OAKS</span>
+            <button onclick="toggleLanguage()" class="text-xs tracking-widest py-1 px-3 border border-gold text-gold rounded font-bold">EN | AR</button>
+        </div>
+        
+        <nav class="flex flex-col space-y-6 my-auto text-left">
+            <a href="#experience" onclick="closeMobileMenu()" class="font-heading text-3xl text-white hover:text-gold">The Experience</a>
+            <a href="#menu" onclick="closeMobileMenu()" class="font-heading text-3xl text-white hover:text-gold">Interactive Menu</a>
+            <a href="#reservations" onclick="closeMobileMenu()" class="font-heading text-3xl text-white hover:text-gold">Reserve Table</a>
+            <a href="#catering" onclick="closeMobileMenu()" class="font-heading text-3xl text-white hover:text-gold">Catering</a>
+            <a href="#social" onclick="closeMobileMenu()" class="font-heading text-3xl text-white hover:text-gold">Social Grid</a>
+        </nav>
+
+        <div class="flex flex-col space-y-3">
+            <a href="#menu" onclick="closeMobileMenu()" class="w-full text-center py-4 bg-gold text-forest font-bold tracking-widest uppercase rounded">Order Delivery / Pickup</a>
+            <a href="#reservations" onclick="closeMobileMenu()" class="w-full text-center py-4 border border-gold text-gold font-semibold tracking-widest uppercase rounded">Reserve Table</a>
+        </div>
+    </div>
+
+    <!-- 2. Hero Section (Above the Fold) -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-forest pt-24 pb-16">
+        <!-- High-quality Ambient Background Image with overlay simulating greenhouse canopy -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1543007630-9710e4a00a20?auto=format&fit=crop&q=80&w=1920" alt="Luxury biophilic restaurant design atmosphere" class="w-full h-full object-cover opacity-35 mix-blend-multiply transition-scale duration-1000">
+            <div class="absolute inset-0 bg-gradient-to-t from-forest via-forest/80 to-transparent"></div>
+        </div>
+
+        <div class="relative z-10 max-w-5xl mx-auto px-6 text-center text-white flex flex-col items-center">
+            <!-- Star Rating Badging -->
+            <div class="inline-flex items-center bg-[#1C352D]/80 backdrop-blur border border-[#D4AF37]/30 px-4 py-2 rounded-full mb-6 space-x-3 text-xs tracking-wider uppercase shadow-md">
+                <span class="text-gold flex items-center"><i class="fa-solid fa-star mr-1"></i> 4.4 / 5 (850+ Reviews)</span>
+                <span class="text-[#F5EFE6]/50">|</span>
+                <span class="text-white flex items-center"><i class="fa-solid fa-location-dot mr-1 text-gold"></i> Seef District, Bahrain</span>
+            </div>
+
+            <!-- Elegant Headings -->
+            <h1 class="font-heading text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight leading-[1.1] mb-6 max-w-4xl">
+                Dine Under <br class="hidden md:inline">
+                <span class="italic font-light text-gold">The Oak Canopy</span>
+            </h1>
+            
+            <p class="font-body text-base md:text-xl text-[#F5EFE6] max-w-2xl mb-10 leading-relaxed font-light">
+                Welcome to Bahrain's premier biophilic sanctuary. Reconnect with nature inside a lush greenhouse oasis while exploring our artisanal brunch and meticulously hand-crafted specialty coffee.
+            </p>
+
+            <!-- Dual Action Premium Conversion Buttons -->
+            <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 w-full justify-center max-w-md">
+                <a href="#reservations" class="flex-1 px-8 py-4 bg-transparent border-2 border-[#D4AF37] text-white hover:bg-gold hover:text-forest font-bold tracking-widest text-xs uppercase rounded transition-all duration-300 flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    <span>Book A Table</span>
+                </a>
+                <a href="#menu" class="flex-1 px-8 py-4 bg-gold text-[#1C352D] hover:bg-white hover:text-forest font-bold tracking-widest text-xs uppercase rounded shadow-xl transition-all duration-300 flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span>Order Direct</span>
+                </a>
+            </div>
+
+            <!-- Dynamic Down Indicator -->
+            <a href="#experience" class="mt-16 text-[#F5EFE6]/50 hover:text-gold transition-colors duration-200 animate-bounce">
+                <span class="text-xs tracking-widest block uppercase mb-2">The Oasis Awaits</span>
+                <i class="fa-solid fa-chevron-down text-lg"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- 3. The Biophilic Experience (Value Proposition) -->
+    <section id="experience" class="py-24 px-6 md:px-12 lg:px-24 bg-white relative overflow-hidden">
+        <!-- Botanical Background Accents -->
+        <div class="absolute -left-20 top-10 text-forest/5 pointer-events-none">
+            <i class="fa-solid fa-leaf text-[20rem]"></i>
+        </div>
+
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <!-- Left: Beautiful Collage Stack -->
+            <div class="relative grid grid-cols-2 gap-4 h-[400px] md:h-[550px]">
+                <div class="rounded-2xl overflow-hidden shadow-xl transform hover:scale-105 transition duration-500">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=600" alt="Artisanal Brunch Atmosphere" class="w-full h-full object-cover">
+                </div>
+                <div class="rounded-2xl overflow-hidden shadow-xl transform translate-y-10 hover:scale-105 transition duration-500">
+                    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=600" alt="Specialty Latte Barista" class="w-full h-full object-cover">
+                </div>
+                <div class="rounded-2xl overflow-hidden shadow-xl transform -translate-y-6 hover:scale-105 transition duration-500">
+                    <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&q=80&w=600" alt="Greenhouse Garden Seating" class="w-full h-full object-cover">
+                </div>
+                <div class="rounded-2xl overflow-hidden shadow-xl transform translate-y-4 hover:scale-105 transition duration-500">
+                    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&q=80&w=600" alt="House Bakery and Pastries" class="w-full h-full object-cover">
+                </div>
+            </div>
+
+            <!-- Right: Elegant Copy -->
+            <div class="flex flex-col justify-center space-y-8 z-10">
+                <div class="space-y-4">
+                    <span class="text-gold font-semibold uppercase tracking-widest text-xs">Modern Biophilic Luxury</span>
+                    <h2 class="font-heading text-4xl md:text-5xl lg:text-6xl text-forest font-semibold leading-tight">
+                        An Sanctuary for the Senses in Seef
+                    </h2>
+                    <div class="w-24 h-0.5 bg-gold"></div>
+                </div>
+                
+                <p class="text-charcoal/80 leading-relaxed font-light text-base md:text-lg">
+                    We engineered 66 Oaks as a living space—a refuge designed with a high concentration of live oak trees, continuous natural light wells, and soundscapes designed to buffer out the rush of Manama’s premier business core.
+                </p>
+
+                <!-- Three Pillars -->
+                <div class="space-y-6">
+                    <!-- Pillar 1 -->
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-[#F5EFE6] p-3 rounded-xl text-forest">
+                            <i class="fa-solid fa-tree text-xl text-gold"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-xl text-forest font-semibold mb-1">The Green Sanctuary</h3>
+                            <p class="text-charcoal/70 text-sm leading-relaxed">Dine among living trees and high-ceilings that welcome natural daylight, creating an active sanctuary of calm and high productivity.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Pillar 2 -->
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-[#F5EFE6] p-3 rounded-xl text-forest">
+                            <i class="fa-solid fa-mug-hot text-xl text-gold"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-xl text-forest font-semibold mb-1">Signature Specialty Coffee</h3>
+                            <p class="text-charcoal/70 text-sm leading-relaxed">Sourcing single-origin estate beans. Meticulously roasted and poured by certified, passionate baristas using state-of-the-art tech.</p>
+                        </div>
+                    </div>
+
+                    <!-- Pillar 3 -->
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-[#F5EFE6] p-3 rounded-xl text-forest">
+                            <i class="fa-solid fa-utensils text-xl text-gold"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-xl text-forest font-semibold mb-1">Elevated All-Day Brunch</h3>
+                            <p class="text-charcoal/70 text-sm leading-relaxed">Classic preparations infused with sophisticated local and international techniques, served on custom ceramics.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Interactive Live Menu (Zero-Friction Ordering Concept) -->
+    <section id="menu" class="py-24 px-6 md:px-12 lg:px-24 bg-[#F5EFE6] relative">
+        <div class="max-w-7xl mx-auto">
+            
+            <!-- Header Info -->
+            <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+                <span class="text-gold font-semibold uppercase tracking-widest text-xs">Chef-Driven Selections</span>
+                <h2 class="font-heading text-4xl md:text-5xl lg:text-6xl text-forest font-semibold">
+                    Discover Our Menu
+                </h2>
+                <div class="w-16 h-0.5 bg-gold mx-auto"></div>
+                <p class="text-charcoal/70 font-light text-sm md:text-base">
+                    No generic PDF files. Simply explore, tap individual items, and order directly for table pickup or quick-delivery with zero commission fees.
+                </p>
+            </div>
+
+            <!-- Menu Tab Buttons -->
+            <div class="flex flex-wrap justify-center gap-2 md:gap-4 mb-12">
+                <button onclick="switchMenuTab('brunch')" id="tab-brunch" class="px-6 py-3 rounded-full text-sm font-semibold tracking-wider uppercase transition-all duration-300 bg-forest text-white shadow-md">
+                    🌿 All-Day Brunch
+                </button>
+                <button onclick="switchMenuTab('coffee')" id="tab-coffee" class="px-6 py-3 rounded-full text-sm font-semibold tracking-wider uppercase transition-all duration-300 bg-white text-forest hover:bg-forest hover:text-white">
+                    ☕ Specialty Coffee
+                </button>
+                <button onclick="switchMenuTab('bakery')" id="tab-bakery" class="px-6 py-3 rounded-full text-sm font-semibold tracking-wider uppercase transition-all duration-300 bg-white text-forest hover:bg-forest hover:text-white">
+                    🥐 Artisanal Bakery
+                </button>
+            </div>
+
+            <!-- Interactive Menu Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="menu-items-grid">
+                <!-- Menu Cards will dynamic display or filter based on JS -->
+                <!-- Brunch Items -->
+                <div class="menu-card brunch bg-white rounded-2xl overflow-hidden shadow-lg border border-black/5 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="h-56 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&q=80&w=600" alt="Truffle Scrambled Benedict" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-4 right-4 bg-forest text-gold text-xs px-3 py-1 rounded-full font-bold shadow-md">BHD 4.800</span>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <div class="flex justify-between items-start">
+                                <h3 class="font-heading text-2xl text-forest font-semibold">Truffle Scrambled Benedict</h3>
+                            </div>
+                            <p class="text-charcoal/70 text-sm leading-relaxed font-light">Velvety organic scrambled eggs, premium shaved black truffle, rich buttery brioche, artisanal sauce hollandaise.</p>
+                            <div class="flex space-x-2">
+                                <span class="text-[10px] bg-forest/5 text-forest/70 px-2 py-0.5 rounded font-semibold uppercase">Signature</span>
+                                <span class="text-[10px] bg-forest/5 text-forest/70 px-2 py-0.5 rounded font-semibold uppercase">Vegetarian</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <button onclick="addToCart('Truffle Scrambled Benedict', 4.800)" class="w-full py-3 bg-forest hover:bg-gold text-[#F5EFE6] hover:text-forest transition-colors duration-300 font-bold uppercase tracking-wider text-xs rounded-xl flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-plus"></i>
+                            <span>Add to Bag</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="menu-card brunch bg-white rounded-2xl overflow-hidden shadow-lg border border-black/5 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="h-56 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1484723091739-30a097e8f929?auto=format&fit=crop&q=80&w=600" alt="Classic French Toast" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-4 right-4 bg-forest text-gold text-xs px-3 py-1 rounded-full font-bold shadow-md">BHD 4.200</span>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <div class="flex justify-between items-start">
+                                <h3 class="font-heading text-2xl text-forest font-semibold">Classic French Toast</h3>
+                            </div>
+                            <p class="text-charcoal/70 text-sm leading-relaxed font-light">Thick-sliced brioche soaked in vanilla bean custard, caramelised berries, pure organic Canadian maple syrup.</p>
+                            <div class="flex space-x-2">
+                                <span class="text-[10px] bg-forest/5 text-forest/70 px-2 py-0.5 rounded font-semibold uppercase">Popular</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <button onclick="addToCart('Classic French Toast', 4.200)" class="w-full py-3 bg-forest hover:bg-gold text-[#F5EFE6] hover:text-forest transition-colors duration-300 font-bold uppercase tracking-wider text-xs rounded-xl flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-plus"></i>
+                            <span>Add to Bag</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="menu-card brunch bg-white rounded-2xl overflow-hidden shadow-lg border border-black/5 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="h-56 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1541532713592-79a0317b6b77?auto=format&fit=crop&q=80&w=600" alt="Avocado Toast on Sourdough" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-4 right-4 bg-forest text-gold text-xs px-3 py-1 rounded-full font-bold shadow-md">BHD 3.900</span>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <div class="flex justify-between items-start">
+                                <h3 class="font-heading text-2xl text-forest font-semibold">Avocado on Sourdough</h3>
+                            </div>
+                            <p class="text-charcoal/70 text-sm leading-relaxed font-light">Fresh mashed organic avocado, heirloom cherry tomatoes, greek feta crumbles, premium extra virgin olive oil.</p>
+                            <div class="flex space-x-2">
+                                <span class="text-[10px] bg-forest/5 text-forest/70 px-2 py-0.5 rounded font-semibold uppercase">Vegan Option</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <button onclick="addToCart('Avocado on Sourdough', 3.900)" class="w-full py-3 bg-forest hover:bg-gold text-[#F5EFE6] hover:text-forest transition-colors duration-300 font-bold uppercase tracking-wider text-xs rounded-xl flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-plus"></i>
+                            <span>Add to Bag</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Coffee Items (Hidden initially by CSS logic) -->
+                <div class="menu-card coffee bg-white rounded-2xl overflow-hidden shadow-lg border border-black/5 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group hidden">
+                    <div>
+                        <div class="h-56 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1577968897966-3d4325b36b61?auto=format&fit=crop&q=80&w=600" alt="Signature Rose Latte" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-4 right-4 bg-forest text-gold text-xs px-3 py-1 rounded-full font-bold shadow-md">BHD 2.800</span>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <div class="flex justify-between items-start">
+                                <h3 class="font-heading text-2xl text-forest font-semibold">66 Oaks Gold Latte</h3>
+                            </div>
+                            <p class="text-charcoal/70 text-sm leading-relaxed font-light">Artisanal double shot espresso, velvety micro-foamed milk infused with subtle organic blossom honey and 24k gold leaf.</p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <button onclick="addToCart('66 Oaks Gold Latte', 2.800)" class="w-full py-3 bg-forest hover:bg-gold text-[#F5EFE6] hover:text-forest transition-colors duration-300 font-bold uppercase tracking-wider text-xs rounded-xl flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-plus"></i>
+                            <span>Add to Bag</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="menu-card coffee bg-white rounded-2xl overflow-hidden shadow-lg border border-black/5 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group hidden">
+                    <div>
+                        <div class="h-56 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&q=80&w=600" alt="V60 Single Origin" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-4 right-4 bg-forest text-gold text-xs px-3 py-1 rounded-full font-bold shadow-md">BHD 3.200</span>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <div class="flex justify-between items-start">
+                                <h3 class="font-heading text-2xl text-forest font-semibold">V60 Ethiopian Yirgacheffe</h3>
+                            </div>
+                            <p class="text-charcoal/70 text-sm leading-relaxed font-light">Crafted hand-pour coffee displaying nuanced notes of jasmine, lemon blossoms, and light wild berry sweetness.</p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <button onclick="addToCart('V60 Ethiopian', 3.200)" class="w-full py-3 bg-forest hover:bg-gold text-[#F5EFE6] hover:text-forest transition-colors duration-300 font-bold uppercase tracking-wider text-xs rounded-xl flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-plus"></i>
+                            <span>Add to Bag</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="menu-card coffee bg-white rounded-2xl overflow-hidden shadow-lg border border-black/5 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group hidden">
+                    <div>
+                        <div class="h-56 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&q=80&w=600" alt="Premium Flat White" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-4 right-4 bg-forest text-gold text-xs px-3 py-1 rounded-full font-bold shadow-md">BHD 2.400</span>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <div class="flex justify-between items-start">
+                                <h3 class="font-heading text-2xl text-forest font-semibold">Premium Flat White</h3>
+                            </div>
+                            <p class="text-charcoal/70 text-sm leading-relaxed font-light">Carefully extracted double shot of our house seasonal blend, topped with silk-like textured milk microfoam.</p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <button onclick="addToCart('Premium Flat White', 2.400)" class="w-full py-3 bg-forest hover:bg-gold text-[#F5EFE6] hover:text-forest transition-colors duration-300 font-bold uppercase tracking-wider text-xs rounded-xl flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-plus"></i>
+                            <span>Add to Bag</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Bakery Items (Hidden initially by CSS logic) -->
+                <div class="menu-card bakery bg-white rounded-2xl overflow-hidden shadow-lg border border-black/5 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group hidden">
+                    <div>
+                        <div class="h-56 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&q=80&w=600" alt="Pistachio Croissant" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-4 right-4 bg-forest text-gold text-xs px-3 py-1 rounded-full font-bold shadow-md">BHD 2.200</span>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <div class="flex justify-between items-start">
+                                <h3 class="font-heading text-2xl text-forest font-semibold">Pistachio Almond Croissant</h3>
+                            </div>
+                            <p class="text-charcoal/70 text-sm leading-relaxed font-light">Double-baked buttery croissant filled with rich Iranian green pistachio paste, decorated with toasted almond flakes.</p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <button onclick="addToCart('Pistachio Croissant', 2.200)" class="w-full py-3 bg-forest hover:bg-gold text-[#F5EFE6] hover:text-forest transition-colors duration-300 font-bold uppercase tracking-wider text-xs rounded-xl flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-plus"></i>
+                            <span>Add to Bag</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="menu-card bakery bg-white rounded-2xl overflow-hidden shadow-lg border border-black/5 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group hidden">
+                    <div>
+                        <div class="h-56 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1608039829572-78524f79c4c7?auto=format&fit=crop&q=80&w=600" alt="Organic Sourdough" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-4 right-4 bg-forest text-gold text-xs px-3 py-1 rounded-full font-bold shadow-md">BHD 2.500</span>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <div class="flex justify-between items-start">
+                                <h3 class="font-heading text-2xl text-forest font-semibold">Artisanal Sourdough Loaf</h3>
+                            </div>
+                            <p class="text-charcoal/70 text-sm leading-relaxed font-light">House-baked daily over 36-hours slow ferment. Incredible crust and moist, airy structure. Unbleached organic flour.</p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <button onclick="addToCart('Sourdough Loaf', 2.500)" class="w-full py-3 bg-forest hover:bg-gold text-[#F5EFE6] hover:text-forest transition-colors duration-300 font-bold uppercase tracking-wider text-xs rounded-xl flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-plus"></i>
+                            <span>Add to Bag</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="menu-card bakery bg-white rounded-2xl overflow-hidden shadow-lg border border-black/5 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group hidden">
+                    <div>
+                        <div class="h-56 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1549931319-a545dcf3bc73?auto=format&fit=crop&q=80&w=600" alt="Cinnamon Cardamom Roll" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-4 right-4 bg-forest text-gold text-xs px-3 py-1 rounded-full font-bold shadow-md">BHD 1.900</span>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <div class="flex justify-between items-start">
+                                <h3 class="font-heading text-2xl text-forest font-semibold">Cardamom Bun</h3>
+                            </div>
+                            <p class="text-charcoal/70 text-sm leading-relaxed font-light">Traditional Nordic-style twisted bun with rich freshly crushed organic cardamom and sweet sugar glaze.</p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <button onclick="addToCart('Cardamom Bun', 1.900)" class="w-full py-3 bg-forest hover:bg-gold text-[#F5EFE6] hover:text-forest transition-colors duration-300 font-bold uppercase tracking-wider text-xs rounded-xl flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-plus"></i>
+                            <span>Add to Bag</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Interactive Mini-Cart Overlay Drawer -->
+    <div id="cart-drawer" class="fixed right-0 top-0 h-full w-full max-w-md bg-white z-50 shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between hidden">
+        <div class="p-6 border-b border-gray-200 flex justify-between items-center bg-forest text-white">
+            <h3 class="font-heading text-2xl font-bold">Your Bag</h3>
+            <button onclick="toggleCart()" class="text-white hover:text-gold text-xl"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <!-- Scrollable Order Items list -->
+        <div class="p-6 flex-1 overflow-y-auto space-y-4" id="cart-items-list">
+            <!-- Empty State -->
+            <div id="cart-empty-state" class="text-center py-12 text-gray-400 space-y-2">
+                <i class="fa-solid fa-bag-shopping text-4xl text-gray-300"></i>
+                <p class="text-sm">No premium items in your bag yet.</p>
+            </div>
+        </div>
+        <!-- Checkout Pricing Info -->
+        <div class="p-6 border-t border-gray-100 bg-[#F5EFE6] space-y-4">
+            <div class="flex justify-between text-sm font-semibold">
+                <span>Subtotal</span>
+                <span id="cart-subtotal">BHD 0.000</span>
+            </div>
+            <div class="flex justify-between text-xs text-gray-500">
+                <span>Includes direct pickup preparation</span>
+                <span class="text-green-600 font-semibold">Free</span>
+            </div>
+            <button onclick="simulateCheckout()" class="w-full py-4 bg-forest hover:bg-gold text-[#F5EFE6] hover:text-forest transition-colors duration-300 font-bold tracking-widest uppercase text-xs rounded-xl flex items-center justify-center space-x-2 shadow-lg">
+                <i class="fa-solid fa-circle-check"></i>
+                <span>Proceed To Direct Order</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Cart Floating Bubble -->
+    <div id="cart-bubble" class="fixed bottom-24 right-6 md:right-12 z-40 hidden">
+        <button onclick="toggleCart()" class="bg-gold hover:bg-forest text-forest hover:text-white p-4 rounded-full shadow-2xl transition-all duration-300 relative flex items-center justify-center w-14 h-14">
+            <i class="fa-solid fa-shopping-bag text-xl"></i>
+            <span id="cart-badge-count" class="absolute -top-1 -right-1 bg-red-600 text-white font-bold text-xs rounded-full w-6 h-6 flex items-center justify-center border-2 border-white">0</span>
+        </button>
+    </div>
+
+    <!-- 5. Table Booking & Waitlist Integration -->
+    <section id="reservations" class="py-24 px-6 md:px-12 lg:px-24 bg-forest text-[#F5EFE6] relative overflow-hidden">
+        <!-- Dynamic Gold Leaf Vector Accent -->
+        <div class="absolute right-0 bottom-0 text-gold/5 pointer-events-none transform translate-y-12 translate-x-12">
+            <i class="fa-solid fa-seedling text-[30rem]"></i>
+        </div>
+
+        <div class="max-w-4xl mx-auto relative z-10">
+            <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+                <span class="text-gold font-semibold uppercase tracking-widest text-xs">Instant Confirmation</span>
+                <h2 class="font-heading text-4xl md:text-5xl lg:text-6xl text-white font-semibold">
+                    Reserve Your Space
+                </h2>
+                <div class="w-16 h-0.5 bg-gold mx-auto"></div>
+                <p class="text-[#F5EFE6]/80 font-light text-sm md:text-base">
+                    Skip weekend congestion. Live sync connection to our host dashboard ensures priority green seating and no queue wait times.
+                </p>
+            </div>
+
+            <!-- Urgency Banner -->
+            <div class="bg-gold/10 border border-[#D4AF37]/30 p-4 rounded-xl mb-10 flex items-center justify-center space-x-3 text-xs md:text-sm text-[#D4AF37]">
+                <i class="fa-solid fa-triangle-exclamation animate-pulse"></i>
+                <span>Highly Demanded: Only 4 tables remaining for prime weekend brunch times!</span>
+            </div>
+
+            <!-- Reservation Form Wizard (EatApp feel) -->
+            <form id="booking-form" onsubmit="handleBooking(event)" class="bg-white/5 backdrop-blur border border-white/10 rounded-2xl p-8 space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Date Selector -->
+                    <div class="space-y-2">
+                        <label class="block text-xs uppercase tracking-wider text-gold font-semibold">Select Date</label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gold">
+                                <i class="fa-solid fa-calendar-days"></i>
+                            </span>
+                            <input type="date" required class="w-full bg-[#1C352D] border border-white/20 rounded-xl py-3 pl-10 pr-4 text-white focus:outline-none focus:border-gold text-sm">
+                        </div>
+                    </div>
+                    
+                    <!-- Time Selector -->
+                    <div class="space-y-2">
+                        <label class="block text-xs uppercase tracking-wider text-gold font-semibold">Select Time</label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gold">
+                                <i class="fa-solid fa-clock"></i>
+                            </span>
+                            <select required class="w-full bg-[#1C352D] border border-white/20 rounded-xl py-3 pl-10 pr-4 text-white focus:outline-none focus:border-gold text-sm">
+                                <option value="" disabled selected>Choose Time Slot</option>
+                                <option value="08:00">08:00 AM (Brunch)</option>
+                                <option value="09:30">09:30 AM (Brunch)</option>
+                                <option value="11:00">11:00 AM (Brunch)</option>
+                                <option value="12:30">12:30 PM (Peak Brunch)</option>
+                                <option value="14:00">02:00 PM (Lunch)</option>
+                                <option value="16:00">04:00 PM (Coffee & High Tea)</option>
+                                <option value="18:00">06:00 PM (Dinner)</option>
+                                <option value="20:00">08:00 PM (Dinner)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Guest Picker -->
+                    <div class="space-y-2">
+                        <label class="block text-xs uppercase tracking-wider text-gold font-semibold">Size of Party</label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gold">
+                                <i class="fa-solid fa-user-group"></i>
+                            </span>
+                            <select required class="w-full bg-[#1C352D] border border-white/20 rounded-xl py-3 pl-10 pr-4 text-white focus:outline-none focus:border-gold text-sm">
+                                <option value="1">1 Guest</option>
+                                <option value="2" selected>2 Guests</option>
+                                <option value="3">3 Guests</option>
+                                <option value="4">4 Guests</option>
+                                <option value="5">5 Guests</option>
+                                <option value="6">6+ Guests (Large Group)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Name Input -->
+                    <div class="space-y-2">
+                        <label class="block text-xs uppercase tracking-wider text-gold font-semibold">Full Name</label>
+                        <input type="text" placeholder="e.g., Hamad Al Khalifa" required class="w-full bg-[#1C352D] border border-white/20 rounded-xl py-3 px-4 text-white focus:outline-none focus:border-gold text-sm">
+                    </div>
+
+                    <!-- Contact Info with automatic Bahrain prefix -->
+                    <div class="space-y-2">
+                        <label class="block text-xs uppercase tracking-wider text-gold font-semibold">Contact Mobile</label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gold font-bold text-xs">
+                                +973
+                            </span>
+                            <input type="tel" placeholder="39XX XXXX" pattern="[3,6][0-9]{7}" required class="w-full bg-[#1C352D] border border-white/20 rounded-xl py-3 pl-14 pr-4 text-white focus:outline-none focus:border-gold text-sm">
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full py-4 bg-gold text-forest hover:bg-white hover:text-forest transition-all duration-300 font-bold uppercase tracking-widest text-xs rounded-xl shadow-lg flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span>Check Live Availability & Confirm</span>
+                </button>
+
+                <p class="text-center text-xs text-[#F5EFE6]/50">
+                    Powered securely by EatApp API. Confirmation is sent instantly via SMS and Email.
+                </p>
+            </form>
+
+            <!-- Success State Simulation Modal -->
+            <div id="booking-success-modal" class="hidden mt-6 bg-green-900/30 border border-green-500/50 p-6 rounded-2xl flex flex-col items-center text-center space-y-4">
+                <i class="fa-solid fa-circle-check text-4xl text-green-400"></i>
+                <div>
+                    <h4 class="font-heading text-2xl text-white font-semibold">Booking Confirmed!</h4>
+                    <p class="text-sm text-[#F5EFE6]/80 mt-2">We've blocked out an premium table under the oak tree for you. A digital entry card has been text-messaged to your mobile.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Corporate Catering Portal (B2B Lead Engine) -->
+    <section id="catering" class="py-24 px-6 md:px-12 lg:px-24 bg-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                
+                <!-- Left: Corporate-specific Visual Copy -->
+                <div class="space-y-6">
+                    <span class="text-gold font-semibold uppercase tracking-widest text-xs">Office Delivery & Event Boxes</span>
+                    <h2 class="font-heading text-4xl md:text-5xl lg:text-6xl text-forest font-semibold leading-tight">
+                        Elevating Seef’s Boardrooms
+                    </h2>
+                    <div class="w-20 h-0.5 bg-gold"></div>
+                    <p class="text-charcoal/80 leading-relaxed font-light text-base">
+                        Surprise your executive team, stakeholders, or office guests with premium hand-crafted catering. We deliver luxury "66 Oaks Coffee & Pastry Boxes" and premium custom brunch platters directly to major towers across the Seef District.
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-4 pt-4">
+                        <div class="p-4 border border-gold/20 bg-[#F5EFE6]/50 rounded-xl space-y-2">
+                            <i class="fa-solid fa-boxes-packing text-2xl text-gold"></i>
+                            <h4 class="font-heading font-semibold text-lg text-forest">Signature Coffee Boxes</h4>
+                            <p class="text-xs text-charcoal/70">Hot or cold specialty brew carafes designed to keep beverages fresh for 4+ hours.</p>
+                        </div>
+                        <div class="p-4 border border-gold/20 bg-[#F5EFE6]/50 rounded-xl space-y-2">
+                            <i class="fa-solid fa-business-time text-2xl text-gold"></i>
+                            <h4 class="font-heading font-semibold text-lg text-forest">Mobile Barista Station</h4>
+                            <p class="text-xs text-charcoal/70">Book a live barista station right in your office lobby or exclusive boardroom suite.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Custom Corporate Lead Generation Form -->
+                <div class="bg-[#F5EFE6] rounded-2xl p-8 border border-black/5 shadow-xl">
+                    <h3 class="font-heading text-2xl text-forest font-bold mb-2">Corporate Quote Inquiry</h3>
+                    <p class="text-xs text-charcoal/60 mb-6">Receive a fully personalized B2B service quote proposal within 2 hours.</p>
+                    
+                    <form id="catering-form" onsubmit="handleCateringSubmit(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-xs uppercase tracking-wider text-charcoal/80 mb-1 font-semibold">Company / Organization Name</label>
+                            <input type="text" placeholder="e.g., Almoayyed Tower Group" required class="w-full bg-white border border-gray-200 rounded-lg p-3 text-sm focus:outline-none focus:border-gold">
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs uppercase tracking-wider text-charcoal/80 mb-1 font-semibold">Estimated Headcount</label>
+                                <select required class="w-full bg-white border border-gray-200 rounded-lg p-3 text-sm focus:outline-none focus:border-gold">
+                                    <option value="10-25">10 - 25 Guests</option>
+                                    <option value="26-50">26 - 50 Guests</option>
+                                    <option value="51-100">51 - 100 Guests</option>
+                                    <option value="100+">100+ Guests</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs uppercase tracking-wider text-charcoal/80 mb-1 font-semibold">Preferred Date</label>
+                                <input type="date" required class="w-full bg-white border border-gray-200 rounded-lg p-3 text-sm focus:outline-none focus:border-gold">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs uppercase tracking-wider text-charcoal/80 mb-1 font-semibold">Catering Option Required</label>
+                            <select required class="w-full bg-white border border-gray-200 rounded-lg p-3 text-sm focus:outline-none focus:border-gold">
+                                <option value="box-deliveries">Drop-off Pastry & Coffee Boxes</option>
+                                <option value="barista-live">Full Live Barista & Dessert Bar</option>
+                                <option value="both">Full-Day VIP Brunch Catering Package</option>
+                            </select>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs uppercase tracking-wider text-charcoal/80 mb-1 font-semibold">Contact Work Email</label>
+                                <input type="email" placeholder="executive.assistant@domain.bh" required class="w-full bg-white border border-gray-200 rounded-lg p-3 text-sm focus:outline-none focus:border-gold">
+                            </div>
+                            <div>
+                                <label class="block text-xs uppercase tracking-wider text-charcoal/80 mb-1 font-semibold">Contact Phone</label>
+                                <input type="tel" placeholder="+973 39XX XXXX" required class="w-full bg-white border border-gray-200 rounded-lg p-3 text-sm focus:outline-none focus:border-gold">
+                            </div>
+                        </div>
+
+                        <button type="submit" class="w-full py-3.5 bg-forest text-[#F5EFE6] hover:bg-gold hover:text-forest transition-colors duration-300 font-bold uppercase tracking-widest text-xs rounded-lg shadow-md">
+                            Submit Corporate Inquiry
+                        </button>
+                    </form>
+
+                    <!-- Form Success Message -->
+                    <div id="catering-success" class="hidden mt-4 p-4 bg-green-500/10 border border-green-500 text-green-700 rounded-xl text-sm text-center">
+                        <i class="fa-solid fa-paper-plane mr-2"></i> Inquiry Sent! Our catering concierge will call you within the next 2 hours.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Social Proof & Community Grid -->
+    <section id="social" class="py-24 px-6 md:px-12 lg:px-24 bg-[#F5EFE6]">
+        <div class="max-w-7xl mx-auto">
+            
+            <!-- Header Info -->
+            <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+                <span class="text-gold font-semibold uppercase tracking-widest text-xs">Unfiltered Guest Stories</span>
+                <h2 class="font-heading text-4xl md:text-5xl lg:text-6xl text-forest font-semibold">
+                    Loved by Bahrain's Sophisticated Foodies
+                </h2>
+                <div class="w-16 h-0.5 bg-gold mx-auto"></div>
+            </div>
+
+            <!-- Live Interactive Review Carousel Area -->
+            <div class="relative max-w-4xl mx-auto mb-16 bg-white rounded-2xl shadow-xl p-8 md:p-12 border border-black/5">
+                <!-- Arrow Controls -->
+                <div class="absolute top-1/2 -translate-y-1/2 left-2 md:-left-6">
+                    <button onclick="prevReview()" class="w-10 h-10 rounded-full bg-forest text-gold flex items-center justify-center shadow-lg hover:bg-gold hover:text-forest transition-colors">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                </div>
+                <div class="absolute top-1/2 -translate-y-1/2 right-2 md:-right-6">
+                    <button onclick="nextReview()" class="w-10 h-10 rounded-full bg-forest text-gold flex items-center justify-center shadow-lg hover:bg-gold hover:text-forest transition-colors">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+
+                <!-- Simulated Review Cards Content Container -->
+                <div class="text-center space-y-6">
+                    <div class="flex justify-center text-gold space-x-1 text-lg">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    
+                    <p id="review-quote" class="font-heading text-xl md:text-2xl text-charcoal italic leading-relaxed">
+                        "The best French Toast in Seef, hands down. The physical canopy space is highly therapeutic. Reserve ahead on their website to escape weekend queues!"
+                    </p>
+
+                    <div>
+                        <h4 id="review-author" class="font-semibold text-sm text-forest uppercase tracking-wider">Sarah M., Manama</h4>
+                        <span class="text-xs text-gray-400">Verified Local Google Reviewer</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Premium Instagram Style Aesthetic Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="relative group overflow-hidden rounded-xl aspect-square shadow-md">
+                    <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&q=80&w=600" alt="Specialty Pour Over Prep" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-forest/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center text-white p-4 text-center">
+                        <i class="fa-brands fa-instagram text-2xl text-gold mb-2"></i>
+                        <span class="text-xs tracking-widest uppercase font-semibold">@66Oaks.bh</span>
+                        <span class="text-[10px] text-white/70 mt-1">"Coffee is pure art here"</span>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-xl aspect-square shadow-md">
+                    <img src="https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&q=80&w=600" alt="Diner enjoying food" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-forest/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center text-white p-4 text-center">
+                        <i class="fa-brands fa-instagram text-2xl text-gold mb-2"></i>
+                        <span class="text-xs tracking-widest uppercase font-semibold">@66Oaks.bh</span>
+                        <span class="text-[10px] text-white/70 mt-1">"That interior canopy lighting..."</span>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-xl aspect-square shadow-md">
+                    <img src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?auto=format&fit=crop&q=80&w=600" alt="Artisanal pastries on counter" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-forest/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center text-white p-4 text-center">
+                        <i class="fa-brands fa-instagram text-2xl text-gold mb-2"></i>
+                        <span class="text-xs tracking-widest uppercase font-semibold">@66Oaks.bh</span>
+                        <span class="text-[10px] text-white/70 mt-1">"Cruising into the weekend"</span>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-xl aspect-square shadow-md">
+                    <img src="https://images.unsplash.com/photo-1463796113310-bf9a9ecf80f0?auto=format&fit=crop&q=80&w=600" alt="Biophilic workspace view" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-forest/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center text-white p-4 text-center">
+                        <i class="fa-brands fa-instagram text-2xl text-gold mb-2"></i>
+                        <span class="text-xs tracking-widest uppercase font-semibold">@66Oaks.bh</span>
+                        <span class="text-[10px] text-white/70 mt-1">"My remote office of choice"</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Sticky Mobile Bottom-Bar (High-Intent Action Anchor) -->
+    <div id="mobile-sticky-bar" class="fixed bottom-0 left-0 w-full bg-forest border-t border-[#D4AF37]/30 z-30 py-3 px-4 flex md:hidden items-center justify-between space-x-3 shadow-2xl transition-transform duration-300 translate-y-full">
+        <a href="#reservations" class="flex-1 py-3 bg-[#D4AF37] text-[#1C352D] font-bold text-center rounded-xl text-xs tracking-widest uppercase flex items-center justify-center space-x-2 shadow-lg">
+            <i class="fa-solid fa-calendar-days"></i>
+            <span>Book Table</span>
+        </a>
+        <a href="#menu" class="flex-1 py-3 bg-white hover:bg-gold text-forest hover:text-forest font-bold text-center rounded-xl text-xs tracking-widest uppercase flex items-center justify-center space-x-2 shadow-lg">
+            <i class="fa-solid fa-bag-shopping"></i>
+            <span>Order Now</span>
+        </a>
+    </div>
+
+    <!-- 9. Footer & Location/Map Section -->
+    <footer class="bg-forest text-[#F5EFE6] pt-20 pb-12 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
+            
+            <!-- Top footer section -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-16">
+                
+                <!-- Col 1: Branding & Philosophy -->
+                <div class="space-y-6">
+                    <div class="flex items-center space-x-3">
+                        <div class="h-10 w-10 rounded-full border border-gold flex items-center justify-center bg-white/5">
+                            <span class="font-heading font-bold text-lg text-gold">66</span>
+                        </div>
+                        <span class="font-heading text-2xl text-white font-semibold">66 OAKS</span>
+                    </div>
+                    <p class="text-sm text-[#F5EFE6]/70 leading-relaxed font-light">
+                        Fusing modern architectural greenhouse spaces with exceptional, award-winning specialty coffee & artisanal all-day brunch inside Seef District, Bahrain.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="h-9 w-9 rounded-full border border-white/20 hover:border-gold hover:text-gold flex items-center justify-center text-sm transition-colors duration-200"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="h-9 w-9 rounded-full border border-white/20 hover:border-gold hover:text-gold flex items-center justify-center text-sm transition-colors duration-200"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="#" class="h-9 w-9 rounded-full border border-white/20 hover:border-gold hover:text-gold flex items-center justify-center text-sm transition-colors duration-200"><i class="fa-brands fa-facebook-f"></i></a>
+                    </div>
+                </div>
+
+                <!-- Col 2: Operating Hours & Direct Contact -->
+                <div class="space-y-6">
+                    <h4 class="font-heading text-xl text-white font-semibold tracking-wide">Hours & Inquiries</h4>
+                    <div class="space-y-3 text-sm text-[#F5EFE6]/70 font-light">
+                        <div class="flex justify-between">
+                            <span>Sunday - Thursday</span>
+                            <span>07:30 AM - 11:30 PM</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Friday - Saturday</span>
+                            <span>08:00 AM - Midnight</span>
+                        </div>
+                        <div class="border-t border-white/10 my-3"></div>
+                        <p class="flex items-center"><i class="fa-solid fa-phone text-gold mr-3 text-xs"></i> +973 1766 6066</p>
+                        <p class="flex items-center"><i class="fa-solid fa-envelope text-gold mr-3 text-xs"></i> hello@66oaks.bh</p>
+                        <p class="flex items-center"><i class="fa-solid fa-location-dot text-gold mr-3 text-xs"></i> Road 2803, Block 428, Seef, Bahrain</p>
+                    </div>
+                </div>
+
+                <!-- Col 3: Premium VIP Newsletter signup -->
+                <div class="space-y-6">
+                    <h4 class="font-heading text-xl text-white font-semibold tracking-wide">Join the VIP Circle</h4>
+                    <p class="text-sm text-[#F5EFE6]/70 font-light leading-relaxed">
+                        Subscribe to unlock early-weekend booking priority, invite-only menu testing nights, and exclusive barista masterclass opportunities.
+                    </p>
+                    <form id="newsletter-form" onsubmit="handleNewsletter(event)" class="space-y-2">
+                        <div class="relative">
+                            <input type="email" placeholder="Your email address" required class="w-full bg-white/5 border border-white/25 rounded-lg py-3 px-4 text-sm text-white focus:outline-none focus:border-gold">
+                        </div>
+                        <button type="submit" class="w-full py-2.5 bg-gold text-forest font-bold tracking-widest text-xs uppercase rounded-lg hover:bg-white hover:text-forest transition-colors duration-200">
+                            Subscribe Now
+                        </button>
+                    </form>
+                    <div id="newsletter-success" class="hidden text-xs text-green-400"><i class="fa-solid fa-circle-check"></i> Thank you! You're added to our premium list.</div>
+                </div>
+
+            </div>
+            
+            <!-- Bottom Legal Bar -->
+            <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 text-xs text-[#F5EFE6]/50">
+                <p>&copy; 2024 66 Oaks Restaurant & Cafe. All Rights Reserved. Manama, Kingdom of Bahrain.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:text-gold transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-gold transition-colors">Terms of Use</a>
+                    <a href="#" class="hover:text-gold transition-colors">EatApp API Legal</a>
+                </div>
+            </div>
+            
+        </div>
+    </footer>
+
+    <!-- Vanilla JavaScript for High-Fidelity UI Interactions -->
+    <script>
+        // 1. Language Toggle Simulation
+        let currentLang = 'EN';
+        function toggleLanguage() {
+            currentLang = currentLang === 'EN' ? 'AR' : 'EN';
+            alert(`Language switched to ${currentLang}. Page structure and layout dynamically remapped!`);
+            // Real-world implementation would translate text strings and toggle HTML dir attribute
+            document.documentElement.dir = currentLang === 'AR' ? 'rtl' : 'ltr';
+        }
+
+        // 2. Mobile Menu Control
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileNavPanel = document.getElementById('mobile-nav-panel');
+        const hamburgerIcon = document.getElementById('hamburger-icon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            const isOpen = mobileNavPanel.classList.contains('translate-x-0');
+            if (isOpen) {
+                closeMobileMenu();
+            } else {
+                openMobileMenu();
+            }
+        });
+
+        function openMobileMenu() {
+            mobileNavPanel.classList.remove('translate-x-full');
+            mobileNavPanel.classList.add('translate-x-0');
+            hamburgerIcon.classList.remove('fa-bars-staggered');
+            hamburgerIcon.classList.add('fa-xmark');
+        }
+
+        function closeMobileMenu() {
+            mobileNavPanel.classList.remove('translate-x-0');
+            mobileNavPanel.classList.add('translate-x-full');
+            hamburgerIcon.classList.remove('fa-xmark');
+            hamburgerIcon.classList.add('fa-bars-staggered');
+        }
+
+        // 3. Scroll effects for glass sticky header & mobile bottom bar visibility
+        const mainHeader = document.getElementById('main-header');
+        const mobileStickyBar = document.getElementById('mobile-sticky-bar');
+        const logoText1 = document.getElementById('logo-text-primary');
+        const logoText2 = document.getElementById('logo-text-secondary');
+        const desktopNav = document.getElementById('desktop-nav');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                mainHeader.classList.add('glass', 'shadow-md', 'py-3');
+                mainHeader.classList.remove('bg-transparent', 'py-4');
+                logoText1.classList.remove('text-white');
+                logoText1.classList.add('text-gold');
+                
+                // Show mobile bottom bar
+                mobileStickyBar.classList.remove('translate-y-full');
+                mobileStickyBar.classList.add('translate-y-0');
+            } else {
+                mainHeader.classList.remove('glass', 'shadow-md', 'py-3');
+                mainHeader.classList.add('bg-transparent', 'py-4');
+                logoText1.classList.add('text-white');
+                logoText1.classList.remove('text-gold');
+                
+                // Hide mobile bottom bar
+                mobileStickyBar.classList.add('translate-y-full');
+                mobileStickyBar.classList.remove('translate-y-0');
+            }
+        });
+
+        // 4. Interactive Live Menu Tab Switching
+        function switchMenuTab(category) {
+            // Update Active Tab Button Styles
+            const tabs = ['brunch', 'coffee', 'bakery'];
+            tabs.forEach(tab => {
+                const btn = document.getElementById(`tab-${tab}`);
+                if (tab === category) {
+                    btn.className = "px-6 py-3 rounded-full text-sm font-semibold tracking-wider uppercase transition-all duration-300 bg-forest text-white shadow-md";
+                } else {
+                    btn.className = "px-6 py-3 rounded-full text-sm font-semibold tracking-wider uppercase transition-all duration-300 bg-white text-forest hover:bg-forest hover:text-white";
+                }
+            });
+
+            // Filter Menu Card Elements
+            const cards = document.getElementsByClassName('menu-card');
+            for (let card of cards) {
+                if (card.classList.contains(category)) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            }
+        }
+
+        // 5. High-Converting Direct Cart Ordering System (Simulated)
+        let cart = [];
+        
+        function toggleCart() {
+            const drawer = document.getElementById('cart-drawer');
+            drawer.classList.toggle('translate-x-full');
+            drawer.classList.toggle('hidden');
+        }
+
+        function addToCart(itemName, price) {
+            // Add item object to cart array
+            cart.push({ name: itemName, price: price });
+            updateCartUI();
+            
+            // Open/Show feedback bubble & slide visual state
+            const bubble = document.getElementById('cart-bubble');
+            bubble.classList.remove('hidden');
+            
+            // Subtle visual toast animation/feedback
+            alert(`Added "${itemName}" to your ordering bag! Tap the bag icon in the bottom right to complete pickup order.`);
+        }
+
+        function updateCartUI() {
+            const list = document.getElementById('cart-items-list');
+            const badge = document.getElementById('cart-badge-count');
+            const emptyState = document.getElementById('cart-empty-state');
+            const subtotalEl = document.getElementById('cart-subtotal');
+            
+            badge.innerText = cart.length;
+            
+            if (cart.length === 0) {
+                emptyState.classList.remove('hidden');
+                list.innerHTML = '';
+                list.appendChild(emptyState);
+                subtotalEl.innerText = 'BHD 0.000';
+                return;
+            }
+            
+            emptyState.classList.add('hidden');
+            list.innerHTML = '';
+            
+            let total = 0;
+            cart.forEach((item, index) => {
+                total += item.price;
+                const itemRow = document.createElement('div');
+                itemRow.className = "flex justify-between items-center py-3 border-b border-gray-100";
+                itemRow.innerHTML = `
+                    <div class="flex flex-col">
+                        <span class="font-medium text-sm text-forest">${item.name}</span>
+                        <span class="text-xs text-gray-400">Quantity: 1</span>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <span class="font-semibold text-sm text-charcoal">BHD ${item.price.toFixed(3)}</span>
+                        <button onclick="removeFromCart(${index})" class="text-red-500 text-xs hover:text-red-700"><i class="fa-regular fa-trash-can"></i></button>
+                    </div>
+                `;
+                list.appendChild(itemRow);
+            });
+            
+            subtotalEl.innerText = `BHD ${total.toFixed(3)}`;
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+            if (cart.length === 0) {
+                document.getElementById('cart-bubble').classList.add('hidden');
+                toggleCart();
+            }
+        }
+
+        function simulateCheckout() {
+            alert("Simulated Gateway: Seamless direct order routed to our Sapaad POS system. Preparing pickup order within 15 minutes! Thank you.");
+            cart = [];
+            updateCartUI();
+            document.getElementById('cart-bubble').classList.add('hidden');
+            toggleCart();
+        }
+
+        // 6. Reservation Engine Wizard Logic
+        function handleBooking(event) {
+            event.preventDefault();
+            const form = document.getElementById('booking-form');
+            const successModal = document.getElementById('booking-success-modal');
+            
+            form.classList.add('hidden');
+            successModal.classList.remove('hidden');
+        }
+
+        // 7. Corporate Catering Portal B2B Logic
+        function handleCateringSubmit(event) {
+            event.preventDefault();
+            const successText = document.getElementById('catering-success');
+            successText.classList.remove('hidden');
+            document.getElementById('catering-form').reset();
+        }
+
+        // 8. Interactive Review Carousel Logic
+        const reviews = [
+            {
+                quote: "\"The best French Toast in Seef, hands down. The physical canopy space is highly therapeutic. Reserve ahead on their website to escape weekend queues!\"",
+                author: "Sarah M., Manama"
+            },
+            {
+                quote: "\"A sanctuary of focus. The biophilic architecture design actually lets you breathe. Their single-origin drip coffee is unparalleled in Bahrain.\"",
+                author: "Tareq Al-Sayegh, Seef Office District"
+            },
+            {
+                quote: "\"Unbelievable aesthetic. The pastries are premium, flaky, and fresh out of the deck oven. This is our team's go-to brunch spot every single weekend.\"",
+                author: "Hassan K., Juffair"
+            }
+        ];
+        let currentReviewIndex = 0;
+
+        function updateReview() {
+            const quoteEl = document.getElementById('review-quote');
+            const authorEl = document.getElementById('review-author');
+            
+            // Smooth exit-enter animation concept via classes if wanted
+            quoteEl.innerText = reviews[currentReviewIndex].quote;
+            authorEl.innerText = reviews[currentReviewIndex].author;
+        }
+
+        function nextReview() {
+            currentReviewIndex = (currentReviewIndex + 1) % reviews.length;
+            updateReview();
+        }
+
+        function prevReview() {
+            currentReviewIndex = (currentReviewIndex - 1 + reviews.length) % reviews.length;
+            updateReview();
+        }
+
+        // 9. Newsletter Handler
+        function handleNewsletter(event) {
+            event.preventDefault();
+            document.getElementById('newsletter-success').classList.remove('hidden');
+            event.target.reset();
+        }
+    </script>
+</body>
+</html>
