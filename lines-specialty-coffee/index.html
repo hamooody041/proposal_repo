@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lines Specialty Coffee | لاينز كافيه - Riyadh</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0C0B0A',
+                            card: '#141311',
+                            gold: {
+                                light: '#C5A880',
+                                DEFAULT: '#B3946E',
+                                dark: '#967853'
+                            },
+                            sand: '#E5D3BD',
+                            muted: '#8E857B'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Inter"', 'sans-serif'],
+                        arabic: ['"Tajawal"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        .font-inter { font-family: 'Inter', sans-serif; }
+        .font-arabic { font-family: 'Tajawal', sans-serif; }
+        
+        /* Gold gradient outline and text hover effects */
+        .gold-gradient-bg {
+            background: linear-gradient(135deg, #C5A880 0%, #967853 100%);
+        }
+        .gold-border-glow:focus, .gold-border-glow:hover {
+            box-shadow: 0 0 15px rgba(197, 168, 128, 0.25);
+            border-color: #C5A880;
+        }
+        /* Hide scrollbar for custom elements */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-brand-dark text-brand-sand font-sans min-h-screen selection:bg-brand-gold selection:text-brand-dark overflow-x-hidden" id="body-root" dir="ltr">
+
+    <!-- Language Switcher & Localization Data Holder -->
+    <script>
+        const translations = {
+            en: {
+                nav_order: "Order Ahead",
+                nav_menu: "Menu",
+                nav_experience: "The Experience",
+                nav_locations: "Locations",
+                hero_title: "Elevating Riyadh's Coffee Culture",
+                hero_sub: "Skip the wait and pre-order your favorite micro-lot brews. Engineered for Riyadh's elite coffee connoisseurs.",
+                cta_skip: "Skip the Line & Pick Up",
+                cta_explore: "Explore Menu",
+                curbside_title: "Premium Curbside Pickup",
+                curbside_desc: "Drive up to our Takhassusi or Anas Ibn Malik branches. We will bring your freshly extracted coffee right to your car.",
+                menu_title: "The Curation",
+                menu_sub: "Micro-lot single origin beans, precision extraction, and signature craftsmanship.",
+                quick_add: "Quick Add",
+                added: "Added to Cart",
+                cart_title: "Your Selection",
+                cart_empty: "Your artisan basket is empty.",
+                cart_checkout: "Proceed to Secure Checkout",
+                pickup_at: "Pickup Location",
+                pickup_method: "Pickup Method",
+                branch_anas: "Anas Ibn Malik Rd (Al Malqa)",
+                branch_takhassusi: "Al Takhassusi Rd (Al Mohammadiyah)",
+                method_instore: "In-Store Pickup",
+                method_curbside: "Curbside (Car Handout)",
+                notes_placeholder: "Vehicle model, color & plate # (For curbside)",
+                footer_rights: "All rights reserved. Lines Specialty Coffee.",
+                footer_tag: "Crafting sensory landmarks across Riyadh."
+            },
+            ar: {
+                nav_order: "طلب مسبق",
+                nav_menu: "القائمة",
+                nav_experience: "التجربة",
+                nav_locations: "الفروع",
+                hero_title: "ارتقاء بثقافة القهوة في الرياض",
+                hero_sub: "تجاوز خطوط الانتظار واطلب قهوتك المفضلة مسبقاً. صُممت لتناسب ذائقة نُخبة عشاق القهوة في الرياض.",
+                cta_skip: "اطلب الآن واستلم فوراً",
+                cta_explore: "استكشف القائمة",
+                curbside_title: "خدمة الاستلام من السيارة",
+                curbside_desc: "مرّ على فرع التخصصي أو أنس بن مالك، وسيوصل إليك أحد باريستينا قهوتك الطازجة إلى سيارتك مباشرة.",
+                menu_title: "مجموعة لاينز الخاصة",
+                menu_sub: "محاصيل فاخرة ذات مصدر واحد، استخلاص دقيق، وحرفية لا تضاهى.",
+                quick_add: "إضافة سريعة",
+                added: "تمت الإضافة",
+                cart_title: "سلة اختياراتك",
+                cart_empty: "سلتك فارغة حالياً.",
+                cart_checkout: "الدفع الآمن والمباشر",
+                pickup_at: "موقع الاستلام",
+                pickup_method: "طريقة الاستلام",
+                branch_anas: "طريق أنس بن مالك (الملقا)",
+                branch_takhassusi: "طريق التخصصي (المحمدية)",
+                method_instore: "استلام من داخل الفرع",
+                method_curbside: "استلام من السيارة (الخارج)",
+                notes_placeholder: "نوع السيارة، اللون ورقم اللوحة (للاستلام الخارجي)",
+                footer_rights: "جميع الحقوق محفوظة. لاينز كافيه.",
+                footer_tag: "صياغة معالم حسية متفردة في الرياض."
+            }
+        };
+
+        let currentLang = 'en';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'ar' : 'en';
+            document.getElementById('body-root').setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+            document.getElementById('body-root').classList.toggle('font-arabic', currentLang === 'ar');
+            document.getElementById('body-root').classList.toggle('font-sans', currentLang === 'en');
+            
+            // Update Lang Flag UI
+            document.getElementById('lang-btn-text').innerText = currentLang === 'en' ? 'العربية' : 'English';
+            
+            // Apply translations
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[currentLang][key]) {
+                    element.innerText = translations[currentLang][key];
+                }
+            });
+
+            // Support placeholder translations
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+                const key = element.getAttribute('data-i18n-placeholder');
+                if (translations[currentLang][key]) {
+                    element.setAttribute('placeholder', translations[currentLang][key]);
+                }
+            });
+        }
+    </script>
+
+    <!-- Header / Navigation -->
+    <header class="sticky top-0 z-50 bg-brand-dark/95 backdrop-blur-md border-b border-brand-sand/10 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Brand Logo -->
+            <div class="flex items-center space-x-3 rtl:space-x-reverse">
+                <a href="#" class="group flex flex-col">
+                    <span class="font-playfair text-2xl font-bold tracking-[0.2em] text-brand-sand group-hover:text-brand-gold transition-colors">LINES</span>
+                    <span class="text-[9px] tracking-[0.4em] text-brand-muted uppercase -mt-1">Specialty Coffee</span>
+                </a>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center space-x-8 rtl:space-x-reverse text-sm tracking-wider font-medium">
+                <a href="#menu" class="hover:text-brand-gold transition-colors duration-200" data-i18n="nav_menu">Menu</a>
+                <a href="#experience" class="hover:text-brand-gold transition-colors duration-200" data-i18n="nav_experience">The Experience</a>
+                <a href="#locations" class="hover:text-brand-gold transition-colors duration-200" data-i18n="nav_locations">Locations</a>
+                <a href="#menu" class="gold-gradient-bg text-brand-dark font-bold px-5 py-2.5 rounded-full hover:scale-105 transition-all duration-200" data-i18n="nav_order">Order Ahead</a>
+            </nav>
+
+            <!-- Utility Actions -->
+            <div class="flex items-center space-x-4 rtl:space-x-reverse">
+                <!-- Language Toggle -->
+                <button onclick="toggleLanguage()" class="border border-brand-gold/30 hover:border-brand-gold text-brand-sand text-xs px-3 py-1.5 rounded transition-all duration-200 flex items-center gap-2">
+                    <i class="fa-solid fa-globe text-brand-gold"></i>
+                    <span id="lang-btn-text">العربية</span>
+                </button>
+
+                <!-- Mini Cart Trigger -->
+                <button onclick="toggleCartDrawer()" class="relative p-2.5 text-brand-sand hover:text-brand-gold transition-colors rounded-full bg-brand-card hover:bg-brand-sand/5">
+                    <i class="fa-solid fa-bag-shopping text-lg"></i>
+                    <span id="cart-count" class="absolute -top-1 -right-1 bg-brand-gold text-brand-dark text-[11px] font-extrabold w-5 h-5 rounded-full flex items-center justify-center shadow-lg transform scale-90 transition-all duration-300">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Hero Section -->
+    <section class="relative min-h-[85vh] flex items-center justify-center overflow-hidden py-20 px-4 sm:px-6 lg:px-8">
+        <!-- Dark Ambient Overlays -->
+        <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/80 to-transparent z-10"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(179,148,110,0.15),transparent_60%)] z-0"></div>
+        <!-- Hero Background Image (Luxurious Coffee Crafting) -->
+        <div class="absolute inset-0 bg-cover bg-center filter brightness-[0.35] contrast-[1.05] z-0" style="background-image: url('https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&q=80&w=2000');"></div>
+
+        <div class="relative z-20 max-w-4xl text-center mx-auto">
+            <!-- Riyadh Native Alert Badge -->
+            <div class="inline-flex items-center gap-2 bg-brand-gold/10 border border-brand-gold/30 text-brand-gold text-xs font-semibold px-4 py-2 rounded-full mb-8 animate-pulse">
+                <i class="fa-solid fa-bolt"></i>
+                <span>Al Malqa & Al Mohammadiyah Pickup Active</span>
+            </div>
+            
+            <h1 class="font-playfair text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-6 leading-tight" data-i18n="hero_title">
+                Elevating Riyadh's Coffee Culture
+            </h1>
+            <p class="text-brand-sand/80 max-w-2xl mx-auto text-lg sm:text-xl font-light mb-10 leading-relaxed" data-i18n="hero_sub">
+                Skip the wait and pre-order your favorite micro-lot brews. Engineered for Riyadh's elite coffee connoisseurs.
+            </p>
+
+            <!-- Action Buttons with custom design countermeasure -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#menu" class="w-full sm:w-auto gold-gradient-bg text-brand-dark font-bold text-center px-8 py-4 rounded-full shadow-xl hover:shadow-brand-gold/20 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3">
+                    <i class="fa-solid fa-mug-hot"></i>
+                    <span data-i18n="cta_skip">Skip the Line & Pick Up</span>
+                </a>
+                <a href="#menu" class="w-full sm:w-auto border border-brand-sand/30 hover:border-brand-gold text-brand-sand text-center px-8 py-4 rounded-full font-semibold hover:bg-brand-sand/5 transition-all duration-300" data-i18n="cta_explore">
+                    Explore Menu
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Highlights / Features -->
+    <section id="experience" class="py-16 bg-brand-card relative border-y border-brand-sand/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Feature 1 -->
+                <div class="p-6 rounded-2xl border border-brand-sand/5 hover:border-brand-gold/20 bg-brand-dark/50 transition-all duration-300 group">
+                    <div class="w-12 h-12 rounded-xl bg-brand-gold/10 flex items-center justify-center mb-6 text-brand-gold group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-car text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-3 font-playfair text-white" data-i18n="curbside_title">Premium Curbside Pickup</h3>
+                    <p class="text-brand-muted text-sm leading-relaxed" data-i18n="curbside_desc">
+                        Drive up to our Takhassusi or Anas Ibn Malik branches. We will bring your freshly extracted coffee right to your car.
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="p-6 rounded-2xl border border-brand-sand/5 hover:border-brand-gold/20 bg-brand-dark/50 transition-all duration-300 group">
+                    <div class="w-12 h-12 rounded-xl bg-brand-gold/10 flex items-center justify-center mb-6 text-brand-gold group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-hourglass-half text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-3 font-playfair text-white">Sub-Second Readiness</h3>
+                    <p class="text-brand-muted text-sm leading-relaxed">
+                        No long lines. No heat frustration. Order dynamically, receive real-time SMS updates, and grab your beverage at absolute peak freshness.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="p-6 rounded-2xl border border-brand-sand/5 hover:border-brand-gold/20 bg-brand-dark/50 transition-all duration-300 group">
+                    <div class="w-12 h-12 rounded-xl bg-brand-gold/10 flex items-center justify-center mb-6 text-brand-gold group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-leaf text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-3 font-playfair text-white">Direct-Trade Geisha</h3>
+                    <p class="text-brand-muted text-sm leading-relaxed">
+                        Exclusive micro-lots sourced ethically from the highlands of Colombia, Ethiopia, and El Salvador. Roast-profiled directly in Riyadh.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Interactive Menu Section -->
+    <section id="menu" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+            <h2 class="font-playfair text-3xl sm:text-5xl font-bold tracking-tight text-white mb-4" data-i18n="menu_title">The Curation</h2>
+            <p class="text-brand-muted" data-i18n="menu_sub">Micro-lot single origin beans, precision extraction, and signature craftsmanship.</p>
+        </div>
+
+        <!-- Category Tabs -->
+        <div class="flex overflow-x-auto gap-4 pb-4 mb-12 scroll-smooth no-scrollbar border-b border-brand-sand/10 justify-start md:justify-center">
+            <button onclick="filterCategory('signature')" id="btn-signature" class="category-btn px-6 py-3 rounded-full text-sm font-semibold whitespace-nowrap transition-all bg-brand-gold text-brand-dark">Signature Cold/Hot</button>
+            <button onclick="filterCategory('filter')" id="btn-filter" class="category-btn px-6 py-3 rounded-full text-sm font-semibold whitespace-nowrap transition-all text-brand-sand/60 hover:text-brand-sand">Filter Coffee (V60/Chemex)</button>
+            <button onclick="filterCategory('espresso')" id="btn-espresso" class="category-btn px-6 py-3 rounded-full text-sm font-semibold whitespace-nowrap transition-all text-brand-sand/60 hover:text-brand-sand">Classic Espresso</button>
+            <button onclick="filterCategory('pastries')" id="btn-pastries" class="category-btn px-6 py-3 rounded-full text-sm font-semibold whitespace-nowrap transition-all text-brand-sand/60 hover:text-brand-sand">Artisan Pastries</button>
+        </div>
+
+        <!-- Menu Grid Container -->
+        <div id="menu-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Dynamic injection via Javascript to allow filters and cart updates smoothly -->
+        </div>
+    </section>
+
+    <!-- Riyadh Interactive Map & Branch Selector Info -->
+    <section id="locations" class="py-20 bg-brand-card/60 border-t border-brand-sand/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-5 space-y-6">
+                    <h2 class="font-playfair text-3xl sm:text-4xl font-bold text-white">Our Riyadh Refuges</h2>
+                    <p class="text-brand-muted text-base leading-relaxed">
+                        Lines is strategically nested within Riyadh's most bustling districts, offering quick escape sanctuaries for coffee purists.
+                    </p>
+
+                    <div class="space-y-4">
+                        <!-- Branch 1 -->
+                        <div class="p-5 rounded-xl border border-brand-gold/20 bg-brand-dark/40 flex items-start gap-4">
+                            <i class="fa-solid fa-location-dot text-brand-gold text-xl mt-1"></i>
+                            <div>
+                                <h4 class="font-semibold text-white">Al Malqa District</h4>
+                                <p class="text-xs text-brand-muted mt-1">Anas Ibn Malik Road, Riyadh</p>
+                                <span class="inline-block bg-brand-gold/10 text-brand-gold text-[10px] font-bold px-2 py-0.5 rounded mt-2">Open 24/7</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Branch 2 -->
+                        <div class="p-5 rounded-xl border border-brand-sand/10 bg-brand-dark/40 flex items-start gap-4">
+                            <i class="fa-solid fa-location-dot text-brand-gold text-xl mt-1"></i>
+                            <div>
+                                <h4 class="font-semibold text-white">Al Mohammadiyah District</h4>
+                                <p class="text-xs text-brand-muted mt-1">Al Takhassusi Road, Riyadh</p>
+                                <span class="inline-block bg-brand-gold/10 text-brand-gold text-[10px] font-bold px-2 py-0.5 rounded mt-2">6:00 AM - Midnight</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Visual Map Placement Container -->
+                <div class="lg:col-span-7 h-96 relative rounded-2xl overflow-hidden shadow-2xl border border-brand-sand/10 bg-brand-dark">
+                    <!-- Google Map Embed Placeholder with high contrast skin -->
+                    <iframe class="absolute inset-0 w-full h-full opacity-70 filter invert-[0.9] hue-rotate-[180deg] grayscale-[0.3]" 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115852.19315481775!2d46.59253401562501!3d24.8516089!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2f03890d48939b%3A0x600326647a54394f!2sAnas%20Ibn%20Malik%20Rd%2C%20Riyadh%20Saudi%20Arabia!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" 
+                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                    <div class="absolute bottom-4 left-4 right-4 bg-brand-dark/95 backdrop-blur border border-brand-gold/20 p-4 rounded-xl flex items-center justify-between z-10">
+                        <div>
+                            <p class="text-xs text-brand-gold font-bold uppercase tracking-wider">Direct Contact</p>
+                            <p class="text-sm text-white font-medium">+966 11 450 1200</p>
+                        </div>
+                        <a href="https://maps.google.com" target="_blank" class="bg-brand-gold text-brand-dark px-4 py-2 rounded text-xs font-bold hover:bg-brand-gold-dark transition-colors">Get Directions</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Slider / Slide-out Sidebar Drawer -->
+    <div id="cart-drawer" class="fixed inset-y-0 right-0 max-w-md w-full bg-brand-dark/98 backdrop-blur-md shadow-2xl border-l border-brand-sand/10 z-50 transform translate-x-full transition-transform duration-300 ease-in-out">
+        <div class="p-6 h-full flex flex-col justify-between">
+            <div>
+                <div class="flex items-center justify-between border-b border-brand-sand/10 pb-6">
+                    <h3 class="font-playfair text-xl font-bold text-white flex items-center gap-3">
+                        <i class="fa-solid fa-cart-shopping text-brand-gold"></i>
+                        <span data-i18n="cart_title">Your Selection</span>
+                    </h3>
+                    <button onclick="toggleCartDrawer()" class="text-brand-sand hover:text-brand-gold p-2">
+                        <i class="fa-solid fa-xmark text-xl"></i>
+                    </button>
+                </div>
+
+                <!-- Cart Items Container -->
+                <div id="cart-items-container" class="mt-6 overflow-y-auto max-h-[40vh] space-y-4 no-scrollbar">
+                    <!-- Dynamic placement of cart products -->
+                </div>
+            </div>
+
+            <!-- Checkout Preferences -->
+            <div class="border-t border-brand-sand/10 pt-6 space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-brand-gold uppercase tracking-wider mb-2" data-i18n="pickup_at">Pickup Location</label>
+                    <select id="pickup-location-select" class="w-full bg-brand-card border border-brand-sand/20 rounded p-2.5 text-sm text-brand-sand focus:border-brand-gold outline-none">
+                        <option value="anas" data-i18n="branch_anas">Anas Ibn Malik Rd (Al Malqa)</option>
+                        <option value="takhassusi" data-i18n="branch_takhassusi">Al Takhassusi Rd (Al Mohammadiyah)</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-brand-gold uppercase tracking-wider mb-2" data-i18n="pickup_method">Pickup Method</label>
+                    <select id="pickup-method-select" onchange="handlePickupMethodChange()" class="w-full bg-brand-card border border-brand-sand/20 rounded p-2.5 text-sm text-brand-sand focus:border-brand-gold outline-none">
+                        <option value="instore" data-i18n="method_instore">In-Store Pickup</option>
+                        <option value="curbside" data-i18n="method_curbside">Curbside (Car Handout)</option>
+                    </select>
+                </div>
+
+                <!-- Curbside details -->
+                <div id="curbside-inputs" class="hidden">
+                    <input type="text" id="car-details" data-i18n-placeholder="notes_placeholder" placeholder="Vehicle model, color & plate # (For curbside)" class="w-full bg-brand-card border border-brand-gold/30 rounded p-2.5 text-xs text-brand-sand focus:border-brand-gold outline-none">
+                </div>
+
+                <!-- Cart Sum / Invoice -->
+                <div class="space-y-2 py-2">
+                    <div class="flex justify-between text-sm text-brand-muted">
+                        <span>Subtotal</span>
+                        <span id="cart-subtotal">0.00 SAR</span>
+                    </div>
+                    <div class="flex justify-between text-sm text-brand-muted">
+                        <span>VAT (15%)</span>
+                        <span id="cart-tax">0.00 SAR</span>
+                    </div>
+                    <div class="flex justify-between text-base font-bold text-white border-t border-brand-sand/10 pt-2">
+                        <span>Total</span>
+                        <span id="cart-total" class="text-brand-gold">0.00 SAR</span>
+                    </div>
+                </div>
+
+                <!-- Proceed Checkout -->
+                <button onclick="processOrder()" class="w-full gold-gradient-bg text-brand-dark font-bold py-3 rounded-full hover:scale-105 transition-transform duration-200 shadow-xl" data-i18n="cart_checkout">
+                    Proceed to Secure Checkout
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dark backdrop for cart drawer -->
+    <div id="cart-backdrop" onclick="toggleCartDrawer()" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 hidden transition-opacity duration-300"></div>
+
+    <!-- Success Notification Toast -->
+    <div id="toast-notification" class="fixed bottom-6 right-6 bg-brand-gold text-brand-dark font-bold px-6 py-4 rounded-xl shadow-2xl z-50 flex items-center gap-3 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+        <i class="fa-solid fa-circle-check text-lg"></i>
+        <span id="toast-message">Item added to cart</span>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="bg-brand-dark border-t border-brand-sand/10 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-6 border-b border-brand-sand/10 pb-8 mb-8">
+                <div>
+                    <span class="font-playfair text-2xl font-extrabold tracking-widest text-white">LINES</span>
+                    <p class="text-xs text-brand-muted mt-2 max-w-sm" data-i18n="footer_tag">Crafting sensory landmarks across Riyadh.</p>
+                </div>
+                <div class="flex gap-6 text-xl text-brand-sand/60">
+                    <a href="#" class="hover:text-brand-gold transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="hover:text-brand-gold transition-colors"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" class="hover:text-brand-gold transition-colors"><i class="fa-brands fa-snapchat"></i></a>
+                    <a href="#" class="hover:text-brand-gold transition-colors"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-brand-muted">
+                <p data-i18n="footer_rights">&copy; 2024 Lines Specialty Coffee. All rights reserved.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="hover:underline">Terms of Service</a>
+                    <a href="#" class="hover:underline">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Dynamic JavaScript Engine -->
+    <script>
+        // Menu Items Catalog
+        const menuItems = [
+            {
+                id: 1,
+                category: 'signature',
+                name_en: 'Lines Signature Cold Draft',
+                name_ar: 'لاينز كولد درافت المميز',
+                price: 28,
+                notes_en: 'Direct-trade Ethiopian beans, overnight steep, balanced floral notes of orange blossom & rich honey finish.',
+                notes_ar: 'حبوب إثيوبية فاخرة، تقطير بارد ليلة كاملة، إيحاءات زهرية غنية مع لمسة عسل طبيعي.',
+                image: 'https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&q=80&w=600'
+            },
+            {
+                id: 2,
+                category: 'signature',
+                name_en: 'The Golden Latte',
+                name_ar: 'اللاتيه الذهبي',
+                price: 26,
+                notes_en: 'Double espresso shot with our organic vanilla extraction, dusted with edible golden leaf.',
+                notes_ar: 'جرعة مزدوجة من الإسبريسو مع مستخلص الفانيليا العضوي، يعلوه رقاقة الذهب الصالحة للأكل.',
+                image: 'https://images.unsplash.com/photo-1570968915860-54d5c301fc9f?auto=format&fit=crop&q=80&w=600'
+            },
+            {
+                id: 3,
+                category: 'filter',
+                name_en: 'Colombia Geisha V60',
+                name_ar: 'كولومبيا غيشا V60',
+                price: 34,
+                notes_en: 'Anaerobic fermentation micro-lot. Spectacular profile highlighting jasmine, bergamot, and sweet peach.',
+                notes_ar: 'محصول غيشا كولومبيا تخمير لاهوائي. إيحاءات مذهلة من الياسمين، البرغموت، والخوخ الحلو.',
+                image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&q=80&w=600'
+            },
+            {
+                id: 4,
+                category: 'filter',
+                name_en: 'Ethiopia Sidamo Keramo Chemex',
+                name_ar: 'إثيوبيا سيدامو كيرامو كيمكس',
+                price: 29,
+                notes_en: 'Natural process micro-lot. Exceptionally clean, tea-like body, juicy blueberry, and lavender aroma.',
+                notes_ar: 'معالجة مجففة. قوام نظيف شبيه بالشاي، نكهة العليق الأزرق الفواحة مع رائحة اللافندر.',
+                image: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=600'
+            },
+            {
+                id: 5,
+                category: 'espresso',
+                name_en: 'Flat White (House Blend)',
+                name_ar: 'فلات وايت (خلطة لاينز الخاصة)',
+                price: 22,
+                notes_en: 'Rich Brazilian & Salvadoran blend, extracted perfectly with sweet micro-foam texturing.',
+                notes_ar: 'مزيج برازيلي وسلفادوري غني، يُستخلص بدقة عالية مع حليب رغوي متناسق.',
+                image: 'https://images.unsplash.com/photo-1577968897966-3d4325b36b61?auto=format&fit=crop&q=80&w=600'
+            },
+            {
+                id: 6,
+                category: 'pastries',
+                name_en: 'Pistachio Saffron Tart',
+                name_ar: 'تارت الفستق والزعفران',
+                price: 32,
+                notes_en: 'Freshly baked local pistachio cream layered inside a light golden crust infused with Iranian saffron.',
+                notes_ar: 'كريمة الفستق الطازج بداخل طبقة تارت هشة غنية بلمسات الزعفران الإيراني الفاخر.',
+                image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=80&w=600'
+            }
+        ];
+
+        let currentCategory = 'signature';
+        let cart = [];
+
+        // Render Menu Cards Dynamic based on locale and category selection
+        function renderMenu() {
+            const grid = document.getElementById('menu-grid');
+            grid.innerHTML = '';
+            
+            const filtered = menuItems.filter(item => item.category === currentCategory);
+            
+            filtered.forEach(item => {
+                const title = currentLang === 'en' ? item.name_en : item.name_ar;
+                const desc = currentLang === 'en' ? item.notes_en : item.notes_ar;
+                
+                const cardHtml = `
+                    <div class="group bg-brand-card rounded-2xl overflow-hidden border border-brand-sand/5 hover:border-brand-gold/30 transition-all duration-300 flex flex-col justify-between hover:shadow-2xl hover:shadow-brand-gold/5">
+                        <div class="relative overflow-hidden aspect-[4/3]">
+                            <img src="${item.image}" alt="${title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-115">
+                            <div class="absolute top-3 right-3 bg-brand-dark/90 backdrop-blur text-brand-gold font-bold px-3 py-1 rounded text-sm border border-brand-gold/20">
+                                ${item.price} SAR
+                            </div>
+                        </div>
+                        <div class="p-6 space-y-4 flex-1 flex flex-col justify-between">
+                            <div>
+                                <h3 class="text-lg font-bold text-white group-hover:text-brand-gold transition-colors font-playfair">${title}</h3>
+                                <p class="text-brand-muted text-xs leading-relaxed mt-2 line-clamp-3">${desc}</p>
+                            </div>
+                            <button onclick="addToCart(${item.id})" class="w-full bg-transparent hover:bg-brand-gold border border-brand-gold text-brand-gold hover:text-brand-dark py-2.5 rounded-lg text-xs font-bold transition-all duration-200 flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-plus-circle"></i>
+                                <span data-i18n="quick_add">${translations[currentLang].quick_add}</span>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                grid.innerHTML += cardHtml;
+            });
+        }
+
+        // Filter Categorization Navigation
+        function filterCategory(cat) {
+            currentCategory = cat;
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('bg-brand-gold', 'text-brand-dark');
+                btn.classList.add('text-brand-sand/60', 'hover:text-brand-sand');
+            });
+            
+            const activeBtn = document.getElementById(`btn-${cat}`);
+            activeBtn.classList.remove('text-brand-sand/60', 'hover:text-brand-sand');
+            activeBtn.classList.add('bg-brand-gold', 'text-brand-dark');
+            
+            renderMenu();
+        }
+
+        // Drawer Animation Controls
+        function toggleCartDrawer() {
+            const drawer = document.getElementById('cart-drawer');
+            const backdrop = document.getElementById('cart-backdrop');
+            
+            if (drawer.classList.contains('translate-x-full')) {
+                drawer.classList.remove('translate-x-full');
+                backdrop.classList.remove('hidden');
+                backdrop.classList.add('opacity-100');
+            } else {
+                drawer.classList.add('translate-x-full');
+                backdrop.classList.add('hidden');
+                backdrop.classList.remove('opacity-100');
+            }
+        }
+
+        // Cart State Engines
+        function addToCart(itemId) {
+            const item = menuItems.find(p => p.id === itemId);
+            const existing = cart.find(c => c.item.id === itemId);
+            
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                cart.push({ item, quantity: 1 });
+            }
+            
+            updateCartUI();
+            showToast(`${currentLang === 'en' ? item.name_en : item.name_ar} ${translations[currentLang].added}`);
+        }
+
+        function updateCartQty(itemId, newQty) {
+            if (newQty <= 0) {
+                cart = cart.filter(c => c.item.id !== itemId);
+            } else {
+                const cartItem = cart.find(c => c.item.id === itemId);
+                if (cartItem) cartItem.quantity = newQty;
+            }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const countSpan = document.getElementById('cart-count');
+            const cartItemsContainer = document.getElementById('cart-items-container');
+            const totalQty = cart.reduce((acc, current) => acc + current.quantity, 0);
+            
+            // Badge bounce animation trigger
+            countSpan.innerText = totalQty;
+            countSpan.classList.add('scale-125');
+            setTimeout(() => countSpan.classList.remove('scale-125'), 300);
+
+            // Render Cart Drawer items list
+            cartItemsContainer.innerHTML = '';
+            
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = `
+                    <div class="py-12 text-center text-brand-muted space-y-3">
+                        <i class="fa-solid fa-mug-hot text-3xl opacity-20"></i>
+                        <p class="text-xs" data-i18n="cart_empty">${translations[currentLang].cart_empty}</p>
+                    </div>
+                `;
+            } else {
+                cart.forEach(cartItem => {
+                    const title = currentLang === 'en' ? cartItem.item.name_en : cartItem.item.name_ar;
+                    const cartItemHtml = `
+                        <div class="flex gap-4 p-3 rounded-lg bg-brand-card border border-brand-sand/5">
+                            <img src="${cartItem.item.image}" class="w-12 h-12 object-cover rounded-lg">
+                            <div class="flex-1 flex flex-col justify-between">
+                                <div class="flex justify-between items-start">
+                                    <h5 class="text-xs font-bold text-white line-clamp-1">${title}</h5>
+                                    <span class="text-xs text-brand-gold font-bold">${cartItem.item.price * cartItem.quantity} SAR</span>
+                                </div>
+                                <div class="flex justify-between items-center mt-2">
+                                    <span class="text-[10px] text-brand-muted">${cartItem.item.price} SAR / unit</span>
+                                    <div class="flex items-center gap-2">
+                                        <button onclick="updateCartQty(${cartItem.item.id}, ${cartItem.quantity - 1})" class="w-5 h-5 bg-brand-dark border border-brand-sand/20 rounded flex items-center justify-center text-xs hover:border-brand-gold text-brand-sand">-</button>
+                                        <span class="text-xs text-white">${cartItem.quantity}</span>
+                                        <button onclick="updateCartQty(${cartItem.item.id}, ${cartItem.quantity + 1})" class="w-5 h-5 bg-brand-dark border border-brand-sand/20 rounded flex items-center justify-center text-xs hover:border-brand-gold text-brand-sand">+</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    cartItemsContainer.innerHTML += cartItemHtml;
+                });
+            }
+
+            // Calculate Invoice details
+            const subtotal = cart.reduce((acc, curr) => acc + (curr.item.price * curr.quantity), 0);
+            const tax = subtotal * 0.15;
+            const total = subtotal + tax;
+            
+            document.getElementById('cart-subtotal').innerText = `${subtotal.toFixed(2)} SAR`;
+            document.getElementById('cart-tax').innerText = `${tax.toFixed(2)} SAR`;
+            document.getElementById('cart-total').innerText = `${total.toFixed(2)} SAR`;
+        }
+
+        // Toggle Curbside Specific Fields
+        function handlePickupMethodChange() {
+            const method = document.getElementById('pickup-method-select').value;
+            const curbsideDiv = document.getElementById('curbside-inputs');
+            if (method === 'curbside') {
+                curbsideDiv.classList.remove('hidden');
+            } else {
+                curbsideDiv.classList.add('hidden');
+            }
+        }
+
+        // Order Handshake Processing Simulation
+        function processOrder() {
+            if (cart.length === 0) {
+                showToast(currentLang === 'en' ? "Your cart is empty. Please select an item." : "سلتك فارغة، يرجى ملؤها أولاً");
+                return;
+            }
+            
+            const branch = document.getElementById('pickup-location-select').value;
+            const method = document.getElementById('pickup-method-select').value;
+            
+            showToast(currentLang === 'en' 
+                ? `Preparing your order for immediate pickup at ${branch === 'anas' ? 'Anas Ibn Malik' : 'Takhassusi'}!`
+                : `نقوم الآن بتحضير طلبك للاستلام الفوري من فرع ${branch === 'anas' ? 'أنس بن مالك' : 'التخصصي'}!`
+            );
+
+            setTimeout(() => {
+                cart = [];
+                updateCartUI();
+                toggleCartDrawer();
+            }, 2500);
+        }
+
+        // Show dynamic ambient Toast messaging
+        function showToast(message) {
+            const toast = document.getElementById('toast-notification');
+            document.getElementById('toast-message').innerText = message;
+            
+            toast.classList.remove('translate-y-24', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+            
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-24', 'opacity-0');
+            }, 3000);
+        }
+
+        // On Page Load
+        window.addEventListener('DOMContentLoaded', () => {
+            renderMenu();
+            updateCartUI();
+        });
+    </script>
+</body>
+</html>
