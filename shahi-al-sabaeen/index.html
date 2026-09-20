@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شاهي السبعين | Shahi Al-Sabaeen - روح الخبر معلّى على الجمر</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        coal: {
+                            950: '#0B0A08',
+                            900: '#12100E',
+                            850: '#1A1714',
+                            800: '#231F1B',
+                            700: '#3D352E'
+                        },
+                        amberglow: {
+                            DEFAULT: '#F59E0B',
+                            light: '#FBBF24',
+                            dark: '#D97706',
+                            coaly: '#B45309'
+                        },
+                        goldbrass: '#D4AF37'
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                        jakarta: ['Plus Jakarta Sans', 'sans-serif']
+                    },
+                    animation: {
+                        'pulse-glow': 'pulseGlow 3s infinite alternate',
+                        'marquee': 'marquee 25s linear infinite'
+                    },
+                    keyframes: {
+                        pulseGlow: {
+                            '0%': { filter: 'drop-shadow(0 0 5px rgba(245, 158, 11, 0.4))' },
+                            '100%': { filter: 'drop-shadow(0 0 20px rgba(217, 119, 6, 0.8))' }
+                        },
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(100%)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Cairo', 'Plus Jakarta Sans', sans-serif;
+            background-color: #0B0A08;
+            color: #F3F4F6;
+        }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #F59E0B 0%, #D4AF37 50%, #FBBF24 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .coal-glass {
+            background: rgba(26, 23, 20, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+        }
+        .coal-glass-hover:hover {
+            border-color: rgba(245, 158, 11, 0.4);
+            background: rgba(35, 31, 27, 0.9);
+            transform: translateY(-2px);
+            transition: all 0.3s ease;
+        }
+        /* Custom scrollbar for marquee */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden selection:bg-amberglow selection:text-coal-950">
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 coal-glass border-b border-goldbrass/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-3">
+                <div class="relative w-12 h-12 flex items-center justify-center rounded-full bg-coal-800 border-2 border-goldbrass/40 shadow-lg">
+                    <span class="text-2xl text-amberglow font-bold animate-pulse-glow">٧٠</span>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-lg font-extrabold tracking-wide text-white font-cairo">شاهي السبعين</span>
+                    <span class="text-[10px] text-amberglow font-jakarta tracking-widest uppercase">Shahi Al-Sabaeen</span>
+                </div>
+            </a>
+
+            <!-- Navigation (Desktop) -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-gray-300">
+                <a href="#features" class="hover:text-amberglow transition-colors">لماذا السبعين؟</a>
+                <a href="#services" class="hover:text-amberglow transition-colors">خدماتنا</a>
+                <a href="#menu" class="hover:text-amberglow transition-colors">المنيو الرقمي</a>
+                <a href="#catering" class="hover:text-amberglow transition-colors">حجز المناسبات</a>
+                <a href="#franchise" class="hover:text-amberglow transition-colors text-goldbrass">طلب الامتياز</a>
+            </nav>
+
+            <!-- Actions (Order Fast) -->
+            <div class="flex items-center gap-3">
+                <a href="#menu" class="hidden sm:inline-flex items-center gap-2 bg-gradient-to-l from-amberglow-dark to-amberglow px-5 py-2.5 rounded-full text-coal-950 font-bold text-sm hover:brightness-110 shadow-lg shadow-amberglow/20 transition-all">
+                    <i class="fa-solid fa-car"></i>
+                    <span>اطلب سفري (استلام سيارة)</span>
+                </a>
+                <a href="tel:+966500000000" class="p-2.5 rounded-full coal-glass border border-goldbrass/20 text-amberglow hover:bg-coal-800 transition-colors" title="اتصل بنا">
+                    <i class="fa-solid fa-phone"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION (High visual appetite, atmospheric dark mode) -->
+    <section class="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden bg-gradient-to-b from-coal-950 via-coal-900 to-coal-950">
+        <!-- Dynamic Glowing Coal Background Decor -->
+        <div class="absolute inset-0 z-0 opacity-40 pointer-events-none">
+            <div class="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-amberglow-coaly/20 blur-[120px]"></div>
+            <div class="absolute bottom-1/3 right-1/4 w-[500px] h-[500px] rounded-full bg-amberglow-dark/10 blur-[150px]"></div>
+        </div>
+
+        <!-- Background Retro Geometric Accent / Authentic Saudi patterns hint -->
+        <div class="absolute inset-0 z-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#D4AF37_1px,transparent_1px)] [background-size:16px_16px]"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <!-- Hero Text Content -->
+            <div class="lg:col-span-7 text-center lg:text-right space-y-8">
+                <div class="inline-flex items-center gap-2 bg-coal-850 px-4 py-2 rounded-full border border-goldbrass/30 text-goldbrass text-xs sm:text-sm font-semibold">
+                    <span class="flex h-2 w-2 rounded-full bg-green-500 animate-ping"></span>
+                    <span>جاهز لاستقبال طلباتكم في الخبر (الثقبة & الخزامى)</span>
+                </div>
+                
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight font-cairo">
+                    روح الخبر..
+                    <span class="block mt-2 gold-gradient-text">معلّى على الجمر الأصيل</span>
+                </h1>
+                
+                <p class="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed font-light">
+                    تذوق العراقة والنكهة الخالدة لـ <strong class="text-amberglow font-semibold">شاهي السبعين</strong>. تفكيك الازدحام يبدأ من هنا؛ اطلب مسبقاً لاستلام فوري من سيارتك أو احجز عربة الضيافة الفاخرة لمناسبتك الخاصة.
+                </p>
+
+                <!-- Hero CTA Grid -->
+                <div class="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
+                    <a href="#menu" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-gradient-to-l from-amberglow-dark to-amberglow text-coal-950 text-lg font-bold px-8 py-4 rounded-xl shadow-xl shadow-amberglow/20 hover:brightness-110 transform hover:-translate-y-0.5 transition-all">
+                        <i class="fa-solid fa-bolt"></i>
+                        <span>اطلب مسبقاً (تخطي الطابور)</span>
+                    </a>
+                    <a href="#catering" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 coal-glass border border-goldbrass/30 text-white text-lg font-bold px-8 py-4 rounded-xl hover:bg-coal-800 transition-all">
+                        <i class="fa-solid fa-calendar-check text-amberglow"></i>
+                        <span>حجز عربة الضيافة للمناسبات</span>
+                    </a>
+                </div>
+
+                <!-- Ratings and Social Proof Badge -->
+                <div class="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-sm text-gray-400">
+                    <div class="flex items-center gap-1.5">
+                        <span class="text-amber-400"><i class="fa-solid fa-star"></i></span>
+                        <span class="text-amber-400"><i class="fa-solid fa-star"></i></span>
+                        <span class="text-amber-400"><i class="fa-solid fa-star"></i></span>
+                        <span class="text-amber-400"><i class="fa-solid fa-star"></i></span>
+                        <span class="text-amber-400"><i class="fa-solid fa-star-half-stroke"></i></span>
+                        <span class="text-white font-bold mr-1">4.3+</span>
+                    </div>
+                    <div class="h-4 w-px bg-gray-700 hidden sm:block"></div>
+                    <div>⭐️ تقييم من +5,000 محب للشاهي في الخبر</div>
+                </div>
+            </div>
+
+            <!-- Hero Visual Feature Container -->
+            <div class="lg:col-span-5 relative">
+                <div class="relative mx-auto max-w-[380px] sm:max-w-[420px]">
+                    <!-- Glowing back circle -->
+                    <div class="absolute inset-0 rounded-full bg-amberglow-coaly/30 filter blur-3xl animate-pulse-glow"></div>
+                    
+                    <!-- Visual Container (Retro Saudi aesthetic) -->
+                    <div class="relative rounded-3xl p-4 coal-glass border border-goldbrass/20 overflow-hidden shadow-2xl shadow-black">
+                        <div class="relative h-[420px] rounded-2xl overflow-hidden bg-coal-950">
+                            <!-- Steam effect placeholder & real product image simulated beautifully -->
+                            <img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&q=80&w=800" alt="شاي الجمر الأصيل السبعين" class="w-full h-full object-cover opacity-80 mix-blend-lighten">
+                            <div class="absolute inset-0 bg-gradient-to-t from-coal-950 via-transparent to-transparent"></div>
+                            
+                            <!-- Interactive Overlay Floating Card -->
+                            <div class="absolute bottom-4 left-4 right-4 bg-coal-900/90 backdrop-blur-md rounded-xl p-4 border border-goldbrass/30">
+                                <div class="flex items-center gap-3 justify-between">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 rounded-full bg-amberglow/20 flex items-center justify-center text-amberglow">
+                                            <i class="fa-solid fa-fire-flame-simple text-lg"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-xs text-gray-400 font-medium">الطلب الأكثر رواجاً الآن</p>
+                                            <p class="text-sm font-bold text-white">شاي جمر ملقم بالنعناع المديني</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-amberglow font-bold text-sm">5 ر.س</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES SECTION (KSPs - Why We Are Different) -->
+    <section id="features" class="py-24 bg-coal-950 border-t border-b border-goldbrass/10 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs sm:text-sm font-bold text-amberglow tracking-wider uppercase mb-3">الأصالة في كل رشفة</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-white leading-tight font-cairo">سر تميز شاهي السبعين</p>
+                <p class="text-gray-400 mt-4 text-base sm:text-lg">لا نصنع الشاي فحسب، بل نحافظ على إرث عريق نطبخه بحب وتفاني لنقدم لك تجربة تفوق توقعاتك.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1: Charcoal Brewing -->
+                <div class="coal-glass coal-glass-hover p-8 rounded-2xl transition-all duration-300 relative group">
+                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-amberglow-dark to-amberglow/20 flex items-center justify-center text-amberglow mb-6 shadow-md shadow-amberglow/10 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-fire-burner text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3 font-cairo">🔥 طبخ حقيقي على الفحم (شاي الجمر)</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed font-light">
+                        نعتمد الطريقة التقليدية البطيئة باستخدام أجود أنواع حطب السمر والفحم الطبيعي لتكتسب كل رشفة ذلك العمق والدفء المدخن الفريد الذي لا تدركه مواقد الغاز الحديثة.
+                    </p>
+                </div>
+
+                <!-- Feature 2: Premium Botanical Infusions -->
+                <div class="coal-glass coal-glass-hover p-8 rounded-2xl transition-all duration-300 relative group">
+                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-amberglow-dark to-amberglow/20 flex items-center justify-center text-amberglow mb-6 shadow-md shadow-amberglow/10 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-seedling text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3 font-cairo">🌿 إضافات عطرية منتقاة بعناية</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed font-light">
+                        نكهاتنا أصلية وتنبض بالحياة؛ نستخدم النعناع الحساوي الطازج، الحبق المديني الفاخر، ماء الورد الطائفي المقطر، والهيل الهندي ذو الدرجة الأولى المطحون طازجاً لضمان تجربة عطرية مذهلة.
+                    </p>
+                </div>
+
+                <!-- Feature 3: Late-Night Nostalgia -->
+                <div class="coal-glass coal-glass-hover p-8 rounded-2xl transition-all duration-300 relative group">
+                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-amberglow-dark to-amberglow/20 flex items-center justify-center text-amberglow mb-6 shadow-md shadow-amberglow/10 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-moon text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3 font-cairo">🌙 ملاذ ومجمع ليلي عريق</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed font-light">
+                        شعارنا العفوية واللمة الطيبة. نوفر أجواءً مريحة تفيض بعبق الماضي وأصوات الضحكات، مع تقديم الشاي الساخن والمقرمشات الطازجة حتى الساعات الأولى من الصباح (حتى 3:00 فجراً).
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE SERVICES SECTION (Addresses bottlenecks, Menu, & Catering) -->
+    <section id="services" class="py-24 bg-coal-900 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs sm:text-sm font-bold text-amberglow tracking-wider uppercase mb-3">خدمات تفوق توقعاتك</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-white leading-tight font-cairo">حلول مبتكرة لتجربة مريحة وسريعة</p>
+                <p class="text-gray-400 mt-4 text-base sm:text-lg">صممنا قنواتنا الرقمية لحل مشكلة الازدحام في فرع الثقبة، ولتوفير أرقى خدمات ضيافة لمناسباتكم البهيجة.</p>
+            </div>
+
+            <!-- TAB HEADERS -->
+            <div class="flex flex-wrap items-center justify-center gap-3 md:gap-4 mb-12">
+                <button onclick="switchTab('curbside-tab')" id="btn-curbside-tab" class="tab-btn active px-6 py-3.5 rounded-xl font-bold text-sm md:text-base flex items-center gap-2.5 transition-all bg-gradient-to-l from-amberglow-dark to-amberglow text-coal-950 shadow-md">
+                    <i class="fa-solid fa-car-side"></i>
+                    <span>🚗 خدمة استلام السيارة السريعة</span>
+                </button>
+                
+                <button onclick="switchTab('menu-tab')" id="btn-menu-tab" class="tab-btn px-6 py-3.5 rounded-xl font-bold text-sm md:text-base flex items-center gap-2.5 transition-all coal-glass text-gray-300 hover:text-white">
+                    <i class="fa-solid fa-utensils text-amberglow"></i>
+                    <span>🫖 المنيو الرقمي السريع</span>
+                </button>
+                
+                <button onclick="switchTab('catering-tab')" id="btn-catering-tab" class="tab-btn px-6 py-3.5 rounded-xl font-bold text-sm md:text-base flex items-center gap-2.5 transition-all coal-glass text-gray-300 hover:text-white">
+                    <i class="fa-solid fa-holly-berry text-amberglow"></i>
+                    <span>🎉 حجز عربات وضيافة المناسبات</span>
+                </button>
+            </div>
+
+            <!-- TAB CONTENTS -->
+            <div class="relative min-h-[500px]">
+                
+                <!-- Tab 1: Curbside Express -->
+                <div id="curbside-tab" class="tab-content block transition-all duration-300">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div class="space-y-6">
+                            <div class="inline-flex items-center gap-2 bg-amberglow/10 px-3 py-1.5 rounded-lg text-amberglow text-xs font-semibold">
+                                <i class="fa-solid fa-circle-check"></i>
+                                <span>حل أزمة زحمة مواقف الثقبة</span>
+                            </div>
+                            <h3 class="text-2xl sm:text-3xl font-bold text-white font-cairo">اطلب من سيارتك واستلم في أقل من 3 دقائق!</h3>
+                            <p class="text-gray-300 leading-relaxed font-light">
+                                لا تضيع وقتك بالوقوف المزدوج أو البحث الطويل عن مواقف في شوارع الثقبة المزدحمة. يمكنك الآن ببساطة تقديم طلبك عبر موقعنا وتحديد مواصفات سيارتك، ليقوم فريق التوصيل الخاص بنا بإيصال طلبك الساخن فور وصولك إلى باب سيارتك.
+                            </p>
+                            
+                            <!-- Flow Steps -->
+                            <div class="space-y-4 pt-4 border-t border-goldbrass/10">
+                                <div class="flex items-start gap-4">
+                                    <div class="w-8 h-8 rounded-full bg-amberglow/20 flex items-center justify-center text-amberglow font-bold shrink-0 mt-1">1</div>
+                                    <div>
+                                        <h4 class="font-bold text-white">اختر فرعك وعناصر طلبك</h4>
+                                        <p class="text-gray-400 text-sm">تصفح قائمة الطعام في التبويب التالي وحدد منتجاتك المفضلة.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div class="w-8 h-8 rounded-full bg-amberglow/20 flex items-center justify-center text-amberglow font-bold shrink-0 mt-1">2</div>
+                                    <div>
+                                        <h4 class="font-bold text-white">أدخل بيانات سيارتك</h4>
+                                        <p class="text-gray-400 text-sm">قم بتزويدنا برقم اللوحة ونوع ولون السيارة ليتعرف عليك موظف الخدمة فوراً.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div class="w-8 h-8 rounded-full bg-amberglow/20 flex items-center justify-center text-amberglow font-bold shrink-0 mt-1">3</div>
+                                    <div>
+                                        <h4 class="font-bold text-white">استلم طلبك ساخناً وطازجاً</h4>
+                                        <p class="text-gray-400 text-sm">سيقوم موظفنا المسرع بالجري وتوصيل الشاهي والوجبة الخفيفة إلى سيارتك.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="pt-4">
+                                <button onclick="switchTab('menu-tab')" class="inline-flex items-center gap-2 text-amberglow font-bold hover:underline">
+                                    <span>ابدأ اختيار عناصر طلبك الآن</span>
+                                    <i class="fa-solid fa-arrow-left"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="relative">
+                            <div class="coal-glass border border-goldbrass/20 p-8 rounded-2xl relative overflow-hidden">
+                                <div class="absolute top-0 right-0 w-32 h-32 bg-amberglow/5 rounded-full blur-2xl"></div>
+                                <div class="text-center space-y-4">
+                                    <div class="text-5xl text-amberglow mb-4"><i class="fa-solid fa-shipping-fast"></i></div>
+                                    <h4 class="text-xl font-bold text-white">لوحة تحكم ذكية للاستلام السريع</h4>
+                                    <p class="text-gray-400 text-sm max-w-xs mx-auto">بمجرد إرسال طلبك، يتلقى المطبخ إشعارًا فوريًا لضمان التحضير والتسليم المتزامن مع وصولك.</p>
+                                    <div class="bg-coal-950 p-4 rounded-xl border border-goldbrass/10 text-right space-y-2.5">
+                                        <div class="flex justify-between text-xs text-gray-500"><span>الحالة الحالية</span><span class="text-green-400 font-bold">توصيل نشط الآن</span></div>
+                                        <div class="h-1.5 w-full bg-coal-800 rounded-full overflow-hidden">
+                                            <div class="h-full w-4/5 bg-gradient-to-r from-amberglow-dark to-amberglow rounded-full animate-pulse"></div>
+                                        </div>
+                                        <p class="text-xs text-gray-300">متوسط زمن التوصيل للسيارة: <span class="text-amberglow font-bold">2 دقيقة و 45 ثانية</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 2: Retro Menu (Interactive Cart Creator) -->
+                <div id="menu-tab" class="tab-content hidden transition-all duration-300">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                        <!-- Products Grid -->
+                        <div class="lg:col-span-8 space-y-6">
+                            <div class="flex justify-between items-center">
+                                <h3 class="text-xl font-bold text-white font-cairo">قائمة طعام السبعين الأصيلة</h3>
+                                <span class="text-xs text-gray-400">حدد الأصناف المراد طلبها</span>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <!-- Item 1 -->
+                                <div class="coal-glass p-4 rounded-xl flex gap-4 items-center justify-between hover:border-amberglow/30 transition-all">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-16 h-16 rounded-lg bg-coal-950 flex items-center justify-center text-amberglow text-2xl border border-goldbrass/10 shrink-0 overflow-hidden">
+                                            <img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&q=80&w=200" class="w-full h-full object-cover" alt="شاهي جمر">
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-white text-sm sm:text-base">شاهي جمر ملقم (كوب)</h4>
+                                            <p class="text-xs text-gray-400">شاي السبعين المخدر بالفحم</p>
+                                            <span class="text-amberglow font-bold text-xs mt-1 block">5 ر.س</span>
+                                        </div>
+                                    </div>
+                                    <button onclick="addToCart('شاهي جمر ملقم', 5)" class="bg-amberglow text-coal-950 w-8 h-8 rounded-lg flex items-center justify-center hover:bg-amberglow-light transition-colors shadow-md">
+                                        <i class="fa-solid fa-plus text-xs"></i>
+                                    </button>
+                                </div>
+
+                                <!-- Item 2 -->
+                                <div class="coal-glass p-4 rounded-xl flex gap-4 items-center justify-between hover:border-amberglow/30 transition-all">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-16 h-16 rounded-lg bg-coal-950 flex items-center justify-center text-amberglow text-2xl border border-goldbrass/10 shrink-0 overflow-hidden">
+                                            <img src="https://images.unsplash.com/photo-1594911774802-8822a707cff3?auto=format&fit=crop&q=80&w=200" class="w-full h-full object-cover" alt="كرك السبعين">
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-white text-sm sm:text-base">كرك السبعين الأصلي</h4>
+                                            <p class="text-xs text-gray-400">مطبوخ بالهيل والزعفران الفاخر</p>
+                                            <span class="text-amberglow font-bold text-xs mt-1 block">7 ر.س</span>
+                                        </div>
+                                    </div>
+                                    <button onclick="addToCart('كرك السبعين الأصلي', 7)" class="bg-amberglow text-coal-950 w-8 h-8 rounded-lg flex items-center justify-center hover:bg-amberglow-light transition-colors shadow-md">
+                                        <i class="fa-solid fa-plus text-xs"></i>
+                                    </button>
+                                </div>
+
+                                <!-- Item 3 -->
+                                <div class="coal-glass p-4 rounded-xl flex gap-4 items-center justify-between hover:border-amberglow/30 transition-all">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-16 h-16 rounded-lg bg-coal-950 flex items-center justify-center text-amberglow text-2xl border border-goldbrass/10 shrink-0 overflow-hidden">
+                                            <img src="https://images.unsplash.com/photo-1601050690597-df056fb4ce78?auto=format&fit=crop&q=80&w=200" class="w-full h-full object-cover" alt="سمبوسة جبن">
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-white text-sm sm:text-base">سمبوسة جبن مقرمشة (حبة)</h4>
+                                            <p class="text-xs text-gray-400">محشية بخلطة الأجبان الغنية</p>
+                                            <span class="text-amberglow font-bold text-xs mt-1 block">2 ر.س</span>
+                                        </div>
+                                    </div>
+                                    <button onclick="addToCart('سمبوسة جبن', 2)" class="bg-amberglow text-coal-950 w-8 h-8 rounded-lg flex items-center justify-center hover:bg-amberglow-light transition-colors shadow-md">
+                                        <i class="fa-solid fa-plus text-xs"></i>
+                                    </button>
+                                </div>
+
+                                <!-- Item 4 -->
+                                <div class="coal-glass p-4 rounded-xl flex gap-4 items-center justify-between hover:border-amberglow/30 transition-all">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-16 h-16 rounded-lg bg-coal-950 flex items-center justify-center text-amberglow text-2xl border border-goldbrass/10 shrink-0 overflow-hidden">
+                                            <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&q=80&w=200" class="w-full h-full object-cover" alt="جباتي السبعين">
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-white text-sm sm:text-base">جباتي زبدة الفول السوداني</h4>
+                                            <p class="text-xs text-gray-400">جباتي ريفي دافئ ومقرمش</p>
+                                            <span class="text-amberglow font-bold text-xs mt-1 block">6 ر.س</span>
+                                        </div>
+                                    </div>
+                                    <button onclick="addToCart('جباتي زبدة الفول', 6)" class="bg-amberglow text-coal-950 w-8 h-8 rounded-lg flex items-center justify-center hover:bg-amberglow-light transition-colors shadow-md">
+                                        <i class="fa-solid fa-plus text-xs"></i>
+                                    </button>
+                                </div>
+
+                                <!-- Item 5 -->
+                                <div class="coal-glass p-4 rounded-xl flex gap-4 items-center justify-between hover:border-amberglow/30 transition-all">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-16 h-16 rounded-lg bg-coal-950 flex items-center justify-center text-amberglow text-2xl border border-goldbrass/10 shrink-0 overflow-hidden">
+                                            <img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&q=80&w=200" class="w-full h-full object-cover" alt="ترمس شاهي">
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-white text-sm sm:text-base">ترمس ضيافة السبعين (شاي جمر)</h4>
+                                            <p class="text-xs text-gray-400">يكفي لـ 8 أشخاص مع أكواب فاخرة</p>
+                                            <span class="text-amberglow font-bold text-xs mt-1 block">35 ر.س</span>
+                                        </div>
+                                    </div>
+                                    <button onclick="addToCart('ترمس شاهي جمر', 35)" class="bg-amberglow text-coal-950 w-8 h-8 rounded-lg flex items-center justify-center hover:bg-amberglow-light transition-colors shadow-md">
+                                        <i class="fa-solid fa-plus text-xs"></i>
+                                    </button>
+                                </div>
+
+                                <!-- Item 6 -->
+                                <div class="coal-glass p-4 rounded-xl flex gap-4 items-center justify-between hover:border-amberglow/30 transition-all">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-16 h-16 rounded-lg bg-coal-950 flex items-center justify-center text-amberglow text-2xl border border-goldbrass/10 shrink-0 overflow-hidden">
+                                            <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&q=80&w=200" class="w-full h-full object-cover" alt="جباتي جبن وعسل">
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-white text-sm sm:text-base">جباتي جبن مالح مع عسل سدر</h4>
+                                            <p class="text-xs text-gray-400">المزيج المثالي المقرمش</p>
+                                            <span class="text-amberglow font-bold text-xs mt-1 block">8 ر.س</span>
+                                        </div>
+                                    </div>
+                                    <button onclick="addToCart('جباتي جبن وعسل', 8)" class="bg-amberglow text-coal-950 w-8 h-8 rounded-lg flex items-center justify-center hover:bg-amberglow-light transition-colors shadow-md">
+                                        <i class="fa-solid fa-plus text-xs"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Checkout Panel (Interactive Cart) -->
+                        <div class="lg:col-span-4">
+                            <div class="coal-glass border-2 border-amberglow/30 p-6 rounded-2xl sticky top-28 space-y-6">
+                                <div class="flex justify-between items-center pb-4 border-b border-goldbrass/15">
+                                    <h4 class="font-bold text-white text-lg flex items-center gap-2">
+                                        <i class="fa-solid fa-basket-shopping text-amberglow"></i>
+                                        <span>سلة طلبك السريع</span>
+                                    </h4>
+                                    <button onclick="clearCart()" class="text-xs text-red-400 hover:underline">مسح الكل</button>
+                                </div>
+
+                                <!-- Cart Items List -->
+                                <div id="cart-container" class="space-y-3 max-h-48 overflow-y-auto pr-1">
+                                    <!-- Injected Dynamically -->
+                                    <p class="text-sm text-gray-400 text-center py-8">لم تختر أي صنف بعد. أضف بعض المنتجات لبدء الطلب!</p>
+                                </div>
+
+                                <!-- Branch Selection -->
+                                <div class="space-y-2">
+                                    <label class="text-xs font-bold text-gray-300 block">حدد فرع الاستلام</label>
+                                    <select id="order-branch" class="w-full bg-coal-950 border border-goldbrass/20 text-white rounded-lg p-2.5 text-sm focus:outline-none focus:border-amberglow">
+                                        <option value="الثقبة">شارع ٢٠، حي الثقبة، الخبر</option>
+                                        <option value="الخزامى">حي الخزامى، الخبر</option>
+                                    </select>
+                                </div>
+
+                                <!-- Car Info Inputs -->
+                                <div class="space-y-3 bg-coal-950/60 p-3 rounded-lg border border-goldbrass/10">
+                                    <span class="text-xs font-bold text-amberglow flex items-center gap-1">
+                                        <i class="fa-solid fa-car"></i>
+                                        <span>تفاصيل سيارتك للتسليم السريع</span>
+                                    </span>
+                                    <div class="grid grid-cols-2 gap-2">
+                                        <input type="text" id="car-model" placeholder="موديل السيارة (مثال: تاهو)" class="bg-coal-950 text-white border border-goldbrass/10 rounded p-2 text-xs focus:outline-none focus:border-amberglow">
+                                        <input type="text" id="car-color" placeholder="اللون (مثال: أسود)" class="bg-coal-950 text-white border border-goldbrass/10 rounded p-2 text-xs focus:outline-none focus:border-amberglow">
+                                    </div>
+                                    <input type="text" id="car-plate" placeholder="رقم اللوحة والأحرف (مثال: أ ب ج ١٢٣٤)" class="w-full bg-coal-950 text-white border border-goldbrass/10 rounded p-2 text-xs focus:outline-none focus:border-amberglow">
+                                </div>
+
+                                <!-- Pricing and Submit -->
+                                <div class="space-y-3 pt-4 border-t border-goldbrass/15">
+                                    <div class="flex justify-between text-sm text-gray-300">
+                                        <span>إجمالي الطلب:</span>
+                                        <span id="cart-total" class="font-bold text-amberglow text-base">0 ر.س</span>
+                                    </div>
+                                    <p class="text-[10px] text-gray-400">* الدفع عند الاستلام كاش أو مدى عند الشباك.</p>
+                                    <button onclick="sendWhatsAppOrder()" class="w-full bg-gradient-to-l from-amberglow-dark to-amberglow text-coal-950 font-bold py-3 rounded-xl hover:brightness-110 flex items-center justify-center gap-2 shadow-lg shadow-amberglow/15 transition-all">
+                                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                                        <span>أرسل الطلب للمطبخ وموظف التوصيل</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 3: Catering Inquiry Form -->
+                <div id="catering-tab" class="tab-content hidden transition-all duration-300">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                        <div class="lg:col-span-6 space-y-6">
+                            <div class="inline-flex items-center gap-2 bg-amberglow/10 px-3 py-1.5 rounded-lg text-amberglow text-xs font-semibold">
+                                <i class="fa-solid fa-champagne-glasses"></i>
+                                <span>الأعلى فخامة للمناسبات والجمعات</span>
+                            </div>
+                            <h3 class="text-2xl sm:text-3xl font-bold text-white font-cairo">عربة ضيافة السبعين في مناسبتك الخاصة</h3>
+                            <p class="text-gray-300 leading-relaxed font-light">
+                                انقل الأجواء التراثية الدافئة وحميمية السبعين مباشرة إلى حفل زفافك، اجتماعك العائلي، مخيمك الشتوي، أو جمعات الأصدقاء على شاطئ نصف القمر بالخبر. عربات متنقلة فاخرة ومجهزة بطواقم تحضير حية تلبي طلبات ضيوفك بالدقة والسرعة القصوى.
+                            </p>
+                            <div class="grid grid-cols-2 gap-4 text-sm text-gray-300">
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-check text-amberglow"></i>
+                                    <span>طاقم تحضير حي ومباشر</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-check text-amberglow"></i>
+                                    <span>شاي جمر وكرك ومخبوزات حية</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-check text-amberglow"></i>
+                                    <span>أكواب وديكورات تراثية أنيقة</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-check text-amberglow"></i>
+                                    <span>تغطية كاملة للمنطقة الشرقية</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Catering Booking Form -->
+                        <div class="lg:col-span-6">
+                            <form id="catering-form" onsubmit="submitCateringForm(event)" class="coal-glass p-8 rounded-2xl border border-goldbrass/30 space-y-4">
+                                <h4 class="text-lg font-bold text-white mb-2 font-cairo">طلب عرض سعر ضيافة وتجهيز عربة</h4>
+                                
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div class="space-y-1">
+                                        <label class="text-xs text-gray-300 font-medium">الاسم بالكامل</label>
+                                        <input type="text" id="cat-name" required class="w-full bg-coal-950 text-white border border-goldbrass/15 rounded-lg p-2.5 text-sm focus:outline-none focus:border-amberglow">
+                                    </div>
+                                    <div class="space-y-1">
+                                        <label class="text-xs text-gray-300 font-medium">رقم الجوال (واتساب)</label>
+                                        <input type="tel" id="cat-phone" required placeholder="05xxxxxxxx" class="w-full bg-coal-950 text-white border border-goldbrass/15 rounded-lg p-2.5 text-sm focus:outline-none focus:border-amberglow text-left" dir="ltr">
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div class="space-y-1">
+                                        <label class="text-xs text-gray-300 font-medium">نوع المناسبة</label>
+                                        <select id="cat-type" class="w-full bg-coal-950 text-white border border-goldbrass/15 rounded-lg p-2.5 text-sm focus:outline-none focus:border-amberglow">
+                                            <option value="مناسبة عائلية">مناسبة عائلية / تخرج</option>
+                                            <option value="حفل زواج">حفل زواج / ملكة</option>
+                                            <option value="فعالية شركات">فعالية شركات ومؤسسات</option>
+                                            <option value="جمعة شاطئ">مخيم / جمعة شاطئ نصف القمر</option>
+                                        </select>
+                                    </div>
+                                    <div class="space-y-1">
+                                        <label class="text-xs text-gray-300 font-medium">عدد الضيوف المتوقع</label>
+                                        <select id="cat-guests" class="w-full bg-coal-950 text-white border border-goldbrass/15 rounded-lg p-2.5 text-sm focus:outline-none focus:border-amberglow">
+                                            <option value="أقل من 30 شخص">أقل من 30 شخص</option>
+                                            <option value="30 إلى 70 شخص">30 إلى 70 شخص</option>
+                                            <option value="70 إلى 150 شخص">70 إلى 150 شخص</option>
+                                            <option value="أكثر من 150 شخص">أكثر من 150 شخص</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="space-y-1">
+                                    <label class="text-xs text-gray-300 font-medium">تاريخ المناسبة</label>
+                                    <input type="date" id="cat-date" required class="w-full bg-coal-950 text-white border border-goldbrass/15 rounded-lg p-2.5 text-sm focus:outline-none focus:border-amberglow text-right">
+                                </div>
+
+                                <div class="space-y-1">
+                                    <label class="text-xs text-gray-300 font-medium">موقع الفعالية بالتحديد</label>
+                                    <input type="text" id="cat-loc" required placeholder="مثال: الخبر، الخزامى، منزل خاص" class="w-full bg-coal-950 text-white border border-goldbrass/15 rounded-lg p-2.5 text-sm focus:outline-none focus:border-amberglow">
+                                </div>
+
+                                <button type="submit" class="w-full bg-gradient-to-l from-amberglow-dark to-amberglow text-coal-950 font-bold py-3 rounded-xl hover:brightness-110 flex items-center justify-center gap-2 transition-all mt-4">
+                                    <i class="fa-solid fa-paper-plane"></i>
+                                    <span>إرسال طلب الحجز والتنسيق المباشر</span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SOCIAL PROOF & COMMUNITY WALL (Scrolling UGC + Stats Counter) -->
+    <section class="py-24 bg-coal-950 border-t border-goldbrass/10 overflow-hidden relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div class="lg:col-span-5 text-center lg:text-right">
+                    <h2 class="text-xs sm:text-sm font-bold text-amberglow tracking-wider uppercase mb-3">نبض مجتمعنا</h2>
+                    <p class="text-3xl sm:text-4xl font-extrabold text-white leading-tight font-cairo">شهادات من عشاق الشاهي</p>
+                    <p class="text-gray-400 mt-4 font-light">
+                        نفخر بكوننا رفيق لياليكم وجلساتكم الدافئة بالخبر. شاركونا صوركم وتجاربكم عبر منصات تيك توك وإنستقرام باستخدام وسم <strong class="text-goldbrass font-semibold">#شاهي_السبعين</strong>.
+                    </p>
+                </div>
+                <div class="lg:col-span-7 grid grid-cols-3 gap-4 text-center">
+                    <div class="coal-glass p-6 rounded-2xl border border-goldbrass/10">
+                        <p class="text-3xl sm:text-4xl font-extrabold text-amberglow font-jakarta">+10k</p>
+                        <p class="text-xs sm:text-sm text-gray-400 mt-2">كوب ملقم يومياً في الخبر</p>
+                    </div>
+                    <div class="coal-glass p-6 rounded-2xl border border-goldbrass/10">
+                        <p class="text-3xl sm:text-4xl font-extrabold text-amberglow font-jakarta">4.3 / 5</p>
+                        <p class="text-xs sm:text-sm text-gray-400 mt-2">تقييم قوقل مابز العام</p>
+                    </div>
+                    <div class="coal-glass p-6 rounded-2xl border border-goldbrass/10">
+                        <p class="text-3xl sm:text-4xl font-extrabold text-amberglow font-jakarta">&lt; 3m</p>
+                        <p class="text-xs sm:text-sm text-gray-400 mt-2">زمن تسليم طلب السيارة</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scrolling UGC Marquee -->
+        <div class="relative flex overflow-x-hidden w-full">
+            <div class="py-4 animate-marquee whitespace-nowrap flex gap-6">
+                <!-- Card 1 -->
+                <div class="inline-block w-80 bg-coal-900 border border-goldbrass/10 p-6 rounded-2xl whitespace-normal shrink-0">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-coal-800 flex items-center justify-center font-bold text-amberglow">ف</div>
+                        <div>
+                            <h5 class="font-bold text-white text-sm">فهد م.</h5>
+                            <p class="text-[10px] text-gray-500">أحد سكان الثقبة بالخبر</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        "الشاهي الوحيد اللي يخليك تتحمل زحمة الثقبة عشانه. والحين بعد ما أطلقوا ميزة طلب السيارة السريع صار الموضوع خيالي يوصلني حاااار!"
+                    </p>
+                </div>
+                <!-- Card 2 -->
+                <div class="inline-block w-80 bg-coal-900 border border-goldbrass/10 p-6 rounded-2xl whitespace-normal shrink-0">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-coal-800 flex items-center justify-center font-bold text-amberglow">ن</div>
+                        <div>
+                            <h5 class="font-bold text-white text-sm">نورة س.</h5>
+                            <p class="text-[10px] text-gray-500">منظمة حفلات تخرج</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        "حجزنا عربة شاهي السبعين المتنقلة لحفلة تخرج العائلة على البحر بنصف القمر، الضيوف انهبلوا على نكهة شاي الجمر وتفاصيل الديكور الفاخرة!"
+                    </p>
+                </div>
+                <!-- Card 3 -->
+                <div class="inline-block w-80 bg-coal-900 border border-goldbrass/10 p-6 rounded-2xl whitespace-normal shrink-0">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-coal-800 flex items-center justify-center font-bold text-amberglow">م</div>
+                        <div>
+                            <h5 class="font-bold text-white text-sm">ماجد العتيبي</h5>
+                            <p class="text-[10px] text-gray-500">عاشق شاي وكرك</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        "الكرك حقهم لا يعلى عليه نكهة موزونة وسكرها خفيف والجباتي مع العسل خيااااال. صار مجمعنا الليلي بعد الدوام عافاكم الله يا شباب السبعين."
+                    </p>
+                </div>
+                <!-- Card 4 -->
+                <div class="inline-block w-80 bg-coal-900 border border-goldbrass/10 p-6 rounded-2xl whitespace-normal shrink-0">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-coal-800 flex items-center justify-center font-bold text-amberglow">س</div>
+                        <div>
+                            <h5 class="font-bold text-white text-sm">سارة العبدالله</h5>
+                            <p class="text-[10px] text-gray-500">مؤثرة طبخ بالشرقية</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        "طعم شاي الجمر حقيقي ومدخن بنكهة السمر، التلقيم والنعناع المديني نظافة تامة وتجربة استلام السيارة سريعة ومحترمة جداً."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HIGH-CONVERTING CALL-TO-ACTION (The Crave Section) -->
+    <section class="py-24 bg-gradient-to-b from-coal-900 to-coal-950 relative overflow-hidden">
+        <!-- Dynamic Coal Fire Light overlay -->
+        <div class="absolute bottom-0 inset-x-0 h-48 bg-gradient-to-t from-amberglow-coaly/15 to-transparent pointer-events-none"></div>
+        
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="coal-glass border-2 border-goldbrass/40 p-8 sm:p-12 rounded-3xl text-center space-y-6 relative overflow-hidden">
+                <!-- Glowing inner border effect -->
+                <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(245,158,11,0.08),transparent_70%)] pointer-events-none"></div>
+                
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white leading-tight font-cairo">
+                    تبغى تجرّب شاهي الأساطير؟
+                    <span class="block mt-2 gold-gradient-text">لا تنتظر في الطابور بعد اليوم</span>
+                </h2>
+                <p class="text-gray-300 max-w-xl mx-auto text-sm sm:text-base font-light">
+                    اختر فرعك القريب بالخبر، اضغط على زر إطلاق المنيو، وقدم طلبك الفوري الآن لتستلمه حاراً طازجاً من نافذة سيارتك.
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto pt-4">
+                    <button onclick="scrollToMenuWithBranch('الثقبة')" class="w-full sm:w-auto bg-gradient-to-l from-amberglow-dark to-amberglow text-coal-950 font-bold px-6 py-3.5 rounded-xl flex items-center justify-center gap-2 hover:brightness-110 transition-all">
+                        <i class="fa-solid fa-map-pin"></i>
+                        <span>اطلب فرع الثقبة 📍</span>
+                    </button>
+                    <button onclick="scrollToMenuWithBranch('الخزامى')" class="w-full sm:w-auto coal-glass border border-goldbrass/30 text-white font-bold px-6 py-3.5 rounded-xl flex items-center justify-center gap-2 hover:bg-coal-800 transition-all">
+                        <i class="fa-solid fa-map-pin text-amberglow"></i>
+                        <span>اطلب فرع الخزامى 📍</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER & REGIONAL EXPANSION LINKS -->
+    <footer class="bg-coal-950 border-t border-goldbrass/15 pt-16 pb-8 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-12 gap-12 pb-12 border-b border-goldbrass/10">
+            
+            <!-- Brand Bio -->
+            <div class="md:col-span-5 space-y-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-coal-800 border border-goldbrass/30 flex items-center justify-center text-amberglow font-bold">٧٠</div>
+                    <span class="text-xl font-extrabold text-white font-cairo">شاهي السبعين</span>
+                </div>
+                <p class="text-xs sm:text-sm text-gray-400 leading-relaxed font-light">
+                    نحن نسعى لنقل ثقافة شاي الجمر والكرك السعودي التقليدي إلى آفاق رقمية عصرية وذكية. فخورون بجذورنا العريقة بالخبر، ونتوسع بحب وشغف لنغطي كافة مدن ومناطق مملكتنا الحبيبة.
+                </p>
+                <div class="flex gap-3 text-lg pt-2">
+                    <a href="https://instagram.com/shahialsabaeen" target="_blank" class="w-10 h-10 rounded-full bg-coal-900 flex items-center justify-center text-amberglow hover:bg-amberglow hover:text-coal-950 transition-all border border-goldbrass/10"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-coal-900 flex items-center justify-center text-amberglow hover:bg-amberglow hover:text-coal-950 transition-all border border-goldbrass/10"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-coal-900 flex items-center justify-center text-amberglow hover:bg-amberglow hover:text-coal-950 transition-all border border-goldbrass/10"><i class="fa-brands fa-snapchat"></i></a>
+                </div>
+            </div>
+
+            <!-- Quick Navigation -->
+            <div class="md:col-span-3 space-y-4">
+                <h4 class="text-sm font-bold text-white uppercase tracking-wider font-cairo">الوصول السريع</h4>
+                <ul class="space-y-2 text-xs sm:text-sm text-gray-400">
+                    <li><a href="#features" class="hover:text-amberglow transition-colors">لماذا السبعين؟</a></li>
+                    <li><a href="#services" class="hover:text-amberglow transition-colors">خدمات استلام السيارة</a></li>
+                    <li><a href="#menu" class="hover:text-amberglow transition-colors">المنيو الرقمي</a></li>
+                    <li><a href="#catering" class="hover:text-amberglow transition-colors">ضيافة الحفلات والمناسبات</a></li>
+                </ul>
+            </div>
+
+            <!-- Locations & Regional expansion -->
+            <div class="md:col-span-4 space-y-4">
+                <h4 class="text-sm font-bold text-white uppercase tracking-wider font-cairo">فروعنا وحقوق الامتياز</h4>
+                <ul class="space-y-3 text-xs sm:text-sm text-gray-400">
+                    <li class="flex items-start gap-2">
+                        <i class="fa-solid fa-location-dot text-amberglow shrink-0 mt-1"></i>
+                        <span>📍 فرع الثقبة: شارع ٢٠ تقاطع شارع مكة، الخبر.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i class="fa-solid fa-location-dot text-amberglow shrink-0 mt-1"></i>
+                        <span>📍 فرع الخزامى: طريق الملك خالد، حي الخزامى، الخبر.</span>
+                    </li>
+                    <li class="pt-2 border-t border-goldbrass/10">
+                        <a href="#franchise" onclick="openFranchiseModal()" class="text-goldbrass font-bold hover:underline flex items-center gap-1">
+                            <i class="fa-solid fa-store"></i>
+                            <span>فرص الامتياز التجاري بالرياض وجدة 🚀</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Legal & MCI Compliance -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-gray-500">
+            <p>© 2026 شاهي السبعين (Shahi Al-Sabaeen). جميع الحقوق محفوظة.</p>
+            <p class="flex items-center gap-2">
+                <span>مرخص ومتوافق بالكامل مع وزارة التجارة السعودية (MCI)</span>
+                <span class="h-4 w-px bg-gray-700"></span>
+                <a href="#" class="hover:text-amberglow">سياسة الخصوصية</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- FRANCHISE MODAL (Popup Overlay) -->
+    <div id="franchise-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md hidden">
+        <div class="coal-glass border-2 border-goldbrass/50 rounded-3xl max-w-lg w-full p-6 sm:p-8 relative space-y-4">
+            <button onclick="closeFranchiseModal()" class="absolute top-4 left-4 text-gray-400 hover:text-white text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            
+            <div class="text-center space-y-2">
+                <div class="w-12 h-12 rounded-full bg-goldbrass/10 flex items-center justify-center text-goldbrass mx-auto text-xl">
+                    <i class="fa-solid fa-award"></i>
+                </div>
+                <h4 class="text-2xl font-bold text-white font-cairo">طلب الامتياز التجاري لمجموعة السبعين</h4>
+                <p class="text-gray-400 text-xs sm:text-sm">كن شريك النجاح وانقل علامة شاهي السبعين المميزة إلى مدينتك (الرياض، جدة، الأحساء، وغيرها)</p>
+            </div>
+
+            <form onsubmit="submitFranchiseForm(event)" class="space-y-3">
+                <div class="space-y-1">
+                    <label class="text-xs text-gray-300">اسم المستثمر / الشركة</label>
+                    <input type="text" id="fran-name" required class="w-full bg-coal-950 text-white border border-goldbrass/15 rounded-lg p-2 text-sm focus:outline-none focus:border-amberglow">
+                </div>
+                <div class="space-y-1">
+                    <label class="text-xs text-gray-300">رقم التواصل الفوري</label>
+                    <input type="tel" id="fran-phone" required placeholder="05xxxxxxxx" class="w-full bg-coal-950 text-white border border-goldbrass/15 rounded-lg p-2 text-sm focus:outline-none focus:border-amberglow text-left" dir="ltr">
+                </div>
+                <div class="space-y-1">
+                    <label class="text-xs text-gray-300">المدينة المستهدفة للتوسع</label>
+                    <input type="text" id="fran-city" required placeholder="مثال: الرياض، حي الياسمين" class="w-full bg-coal-950 text-white border border-goldbrass/15 rounded-lg p-2 text-sm focus:outline-none focus:border-amberglow">
+                </div>
+                <div class="space-y-1">
+                    <label class="text-xs text-gray-300">القدرة الاستثمارية المتوقعة</label>
+                    <select id="fran-cap" class="w-full bg-coal-950 text-white border border-goldbrass/15 rounded-lg p-2 text-sm focus:outline-none focus:border-amberglow">
+                        <option value="150k-300k">150,000 إلى 300,000 ريال</option>
+                        <option value="300k-600k">300,000 إلى 600,000 ريال</option>
+                        <option value="above-600k">أكثر من 600,000 ريال</option>
+                    </select>
+                </div>
+                <button type="submit" class="w-full bg-gradient-to-l from-amberglow-dark to-amberglow text-coal-950 font-bold py-3 rounded-xl hover:brightness-110 transition-all mt-4">
+                    إرسال طلب الاستثمار والامتياز
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- INTERACTIVE SCRIPT (Tab switcher, Cart & WhatsApp compiler) -->
+    <script>
+        // Interactive Cart State
+        let cart = [];
+
+        function switchTab(tabId) {
+            // Hide all contents
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden');
+                content.classList.remove('block');
+            });
+            
+            // Remove active classes from buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-gradient-to-l', 'from-amberglow-dark', 'to-amberglow', 'text-coal-950', 'shadow-md');
+                btn.classList.add('coal-glass', 'text-gray-300');
+            });
+
+            // Show target content
+            document.getElementById(tabId).classList.remove('hidden');
+            document.getElementById(tabId).classList.add('block');
+
+            // Accent current button
+            const activeBtn = document.getElementById('btn-' + tabId);
+            activeBtn.classList.remove('coal-glass', 'text-gray-300');
+            activeBtn.classList.add('bg-gradient-to-l', 'from-amberglow-dark', 'to-amberglow', 'text-coal-950', 'shadow-md');
+        }
+
+        function addToCart(name, price) {
+            const existingItem = cart.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.qty += 1;
+            } else {
+                cart.push({ name, price, qty: 1 });
+            }
+            renderCart();
+        }
+
+        function removeFromCart(name) {
+            cart = cart.filter(item => item.name !== name);
+            renderCart();
+        }
+
+        function clearCart() {
+            cart = [];
+            renderCart();
+        }
+
+        function renderCart() {
+            const container = document.getElementById('cart-container');
+            const totalEl = document.getElementById('cart-total');
+            
+            if (cart.length === 0) {
+                container.innerHTML = '<p class="text-sm text-gray-400 text-center py-8">لم تختر أي صنف بعد. أضف بعض المنتجات لبدء الطلب!</p>';
+                totalEl.innerText = '0 ر.س';
+                return;
+            }
+
+            let total = 0;
+            container.innerHTML = '';
+            
+            cart.forEach(item => {
+                const subtotal = item.price * item.qty;
+                total += subtotal;
+                
+                container.innerHTML += `
+                    <div class="flex justify-between items-center bg-coal-950/80 p-2.5 rounded-lg border border-goldbrass/10 text-xs sm:text-sm">
+                        <div>
+                            <span class="font-bold text-white">${item.name}</span>
+                            <span class="text-amberglow ml-1">x${item.qty}</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="text-gray-300 font-semibold">${subtotal} ر.س</span>
+                            <button onclick="removeFromCart('${item.name}')" class="text-red-400 hover:text-red-300">
+                                <i class="fa-solid fa-trash-can text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            totalEl.innerText = `${total} ر.س`;
+        }
+
+        // Interactive ordering via WhatsApp
+        function sendWhatsAppOrder() {
+            if (cart.length === 0) {
+                alert('فضلاً أضف بعض الأصناف إلى سلتك أولاً لإتمام الطلب السريع.');
+                return;
+            }
+
+            const branch = document.getElementById('order-branch').value;
+            const carModel = document.getElementById('car-model').value.trim();
+            const carColor = document.getElementById('car-color').value.trim();
+            const carPlate = document.getElementById('car-plate').value.trim();
+
+            if (!carModel || !carColor || !carPlate) {
+                alert('فضلاً املأ كافة بيانات سيارتك لتسهيل وصول الموظف وتخطي الازدحام.');
+                return;
+            }
+
+            let itemsText = '';
+            let grandTotal = 0;
+            cart.forEach(item => {
+                itemsText += `- ${item.name} (عدد ${item.qty})\n`;
+                grandTotal += item.price * item.qty;
+            });
+
+            const text = `السلام عليكم ورحمة الله، أريد طلب استلام سيارة مسبق من فرع شاهي السبعين بالخبر (فرع: ${branch}).\n\n💡 تفاصيل الطلب:\n${itemsText}\n💵 الإجمالي: ${grandTotal} ريال سعودي.\n\n🚗 معلومات السيارة للتوصيل السريع:\n- الموديل: ${carModel}\n- اللون: ${carColor}\n- رقم اللوحة: ${carPlate}\n\nأرجو البدء بالتجهيز فوراً لضمان سرعة الاستلام!`;
+            const whatsappUrl = `https://wa.me/966500000000?text=${encodeURIComponent(text)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Simulated Event Catering Submission
+        function submitCateringForm(e) {
+            e.preventDefault();
+            const name = document.getElementById('cat-name').value;
+            const phone = document.getElementById('cat-phone').value;
+            const type = document.getElementById('cat-type').value;
+            const guests = document.getElementById('cat-guests').value;
+            const date = document.getElementById('cat-date').value;
+            const location = document.getElementById('cat-loc').value;
+
+            const text = `مرحباً فريق شاهي السبعين للمناسبات، أرغب بطلب عرض سعر ضيافة:\n\n- العميل: ${name}\n- الجوال: ${phone}\n- المناسبة: ${type}\n- عدد الضيوف: ${guests}\n- التاريخ: ${date}\n- الموقع: ${location}`;
+            const whatsappUrl = `https://wa.me/966500000000?text=${encodeURIComponent(text)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Simulated Franchise Submission
+        function submitFranchiseForm(e) {
+            e.preventDefault();
+            const name = document.getElementById('fran-name').value;
+            const phone = document.getElementById('fran-phone').value;
+            const city = document.getElementById('fran-city').value;
+            const cap = document.getElementById('fran-cap').value;
+
+            const text = `طلب امتياز تجاري - شاهي السبعين:\n\n- المستثمر: ${name}\n- الجوال: ${phone}\n- المدينة: ${city}\n- القدرة المالية: ${cap}`;
+            const whatsappUrl = `https://wa.me/966500000000?text=${encodeURIComponent(text)}`;
+            window.open(whatsappUrl, '_blank');
+            closeFranchiseModal();
+        }
+
+        // Helper to trigger specific branch selection and auto scroll
+        function scrollToMenuWithBranch(branchName) {
+            const branchSelect = document.getElementById('order-branch');
+            branchSelect.value = branchName;
+            switchTab('menu-tab');
+            document.getElementById('services').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Modal Controls
+        function openFranchiseModal() {
+            document.getElementById('franchise-modal').classList.remove('hidden');
+        }
+
+        function closeFranchiseModal() {
+            document.getElementById('franchise-modal').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
