@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Dot. | Minimalist Luxury Coffee & Pastries - Seef District, Bahrain</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Syne & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@500;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind Custom Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        alabaster: '#FAF8F5',
+                        obsidian: '#121212',
+                        gold: '#C19A6B',
+                        olive: '#8E9F85',
+                    },
+                    fontFamily: {
+                        syne: ['Syne', 'sans-serif'],
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                    transitionTimingFunction: {
+                        'custom-ease': 'cubic-bezier(0.16, 1, 0.3, 1)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Custom scrollbar to keep layout premium and minimalist */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FAF8F5;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #C19A6B;
+            border-radius: 3px;
+        }
+        /* Smooth animations */
+        .smooth-transition {
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        /* Review slider animation */
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-scroll {
+            display: flex;
+            width: max-content;
+            animation: scroll 40s linear infinite;
+        }
+        .animate-scroll:hover {
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+<body class="bg-alabaster text-obsidian font-inter selection:bg-gold selection:text-white overflow-x-hidden">
+
+    <!-- Persistent Header / Navigation -->
+    <header class="sticky top-0 z-40 bg-alabaster/80 backdrop-blur-xl border-b border-obsidian/5 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Left: Brand Logo -->
+                <a href="#" class="flex items-center space-x-1 group">
+                    <span class="font-syne text-2xl font-extrabold tracking-wider text-obsidian uppercase">The Dot</span>
+                    <span class="w-2 h-2 rounded-full bg-gold group-hover:scale-150 smooth-transition"></span>
+                </a>
+
+                <!-- Center: Navigation Links -->
+                <nav class="hidden md:flex space-x-8 font-medium text-sm tracking-wide uppercase">
+                    <a href="#menu" class="hover:text-gold smooth-transition relative group py-2">
+                        Menu
+                        <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-gold smooth-transition group-hover:w-full"></span>
+                    </a>
+                    <a href="#catering" class="hover:text-gold smooth-transition relative group py-2">
+                        Catering
+                        <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-gold smooth-transition group-hover:w-full"></span>
+                    </a>
+                    <a href="#story" class="hover:text-gold smooth-transition relative group py-2">
+                        Our Story
+                        <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-gold smooth-transition group-hover:w-full"></span>
+                    </a>
+                    <a href="#find-us" class="hover:text-gold smooth-transition relative group py-2">
+                        Find Us
+                        <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-gold smooth-transition group-hover:w-full"></span>
+                    </a>
+                </nav>
+
+                <!-- Right: Anchor CTA with Local Live Indicator -->
+                <div class="flex items-center space-x-4">
+                    <div class="hidden lg:flex flex-col text-right">
+                        <div class="flex items-center justify-end space-x-2 text-xs font-semibold uppercase tracking-wider">
+                            <span class="relative flex h-2 w-2">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-olive opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2 w-2 bg-olive"></span>
+                            </span>
+                            <span id="live-status-nav">Open Now</span>
+                        </div>
+                        <p class="text-[10px] text-obsidian/60 tracking-tight mt-0.5">Wait Time: 8-12 Mins</p>
+                    </div>
+                    
+                    <a href="#menu" class="bg-obsidian hover:bg-gold text-alabaster hover:text-obsidian px-5 py-3 rounded-[8px] text-xs font-bold uppercase tracking-wider smooth-transition flex items-center space-x-2 shadow-sm">
+                        <span>Click & Collect</span>
+                        <span class="text-gold hover:text-obsidian">⚡</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Canvas (Immediate Conversion Hook) -->
+    <section class="relative min-h-[calc(100vh-80px)] flex items-center justify-center overflow-hidden bg-[#1A1816] text-white">
+        <!-- Dark Overlay over background image -->
+        <div class="absolute inset-0 bg-gradient-to-r from-obsidian/90 via-obsidian/75 to-transparent z-10"></div>
+        <img src="https://images.unsplash.com/photo-1498804103079-a6351b050096?auto=format&fit=crop&q=80&w=1920" alt="Cinematic pour over coffee and minimalist espresso bar" class="absolute inset-0 w-full h-full object-cover object-center opacity-65 scale-105 filter saturate-[0.85]">
+        
+        <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
+            <div class="max-w-3xl space-y-8">
+                
+                <!-- Live Deliver/Pickup Badge -->
+                <div class="inline-flex items-center space-x-2 bg-alabaster/10 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10 text-xs font-medium tracking-wide">
+                    <span class="w-2 h-2 rounded-full bg-olive animate-pulse"></span>
+                    <span>Delivering to Seef District Towers & Surrounding Areas</span>
+                </div>
+
+                <!-- Main Value Prop Statement -->
+                <h1 class="font-syne text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-tight uppercase">
+                    Crisp Flat Whites <br>
+                    <span class="text-gold font-light italic font-serif lowercase">&amp;</span> Fresh Pastries.
+                </h1>
+                
+                <p class="font-inter text-lg sm:text-xl text-alabaster/80 max-w-xl font-light leading-relaxed">
+                    Elevating your daily workspace ritual in the heart of Seef. Skip third-party delays and collect directly in minutes.
+                </p>
+
+                <!-- Dual Conversion CTA Panel -->
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center space-y-4 sm:space-y-0 sm:space-x-4 pt-4">
+                    <a href="#menu" class="bg-gold text-obsidian hover:bg-alabaster hover:text-obsidian px-8 py-4 rounded-[8px] text-sm font-bold uppercase tracking-wider text-center smooth-transition shadow-lg">
+                        ⚡ Order Pick-Up Now
+                    </a>
+                    <a href="#catering" class="bg-transparent text-white border border-white/20 hover:border-gold hover:text-gold px-8 py-4 rounded-[8px] text-sm font-bold uppercase tracking-wider text-center smooth-transition backdrop-blur-sm">
+                        💼 Corporate Catering Portal
+                    </a>
+                </div>
+
+                <!-- Trust Anchors -->
+                <div class="flex flex-wrap items-center gap-6 pt-6 border-t border-white/10 text-xs sm:text-sm tracking-wide text-alabaster/70">
+                    <div class="flex items-center space-x-2">
+                        <div class="flex text-gold">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span class="opacity-50">★</span>
+                        </div>
+                        <span><strong>4.5/5</strong> (600+ Google Reviews)</span>
+                    </div>
+                    <div class="hidden sm:block w-1.5 h-1.5 rounded-full bg-white/20"></div>
+                    <div class="flex items-center space-x-2">
+                        <span class="text-gold">⏱️</span>
+                        <span>10-Minute Ready Guarantee</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Quick-Action Matrix (Features) -->
+    <section class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <!-- Quick Action: Skip Queue -->
+            <div onclick="scrollToSection('menu', 'all')" class="group bg-white p-8 rounded-[8px] border border-obsidian/5 hover:border-gold/30 hover:shadow-xl hover:-translate-y-1 smooth-transition cursor-pointer flex flex-col justify-between min-h-[250px]">
+                <div>
+                    <div class="w-12 h-12 bg-gold/10 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 smooth-transition">
+                        <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-syne text-xl font-bold uppercase tracking-wide mb-2">Skip the Seef Queue</h3>
+                    <p class="text-obsidian/60 text-sm leading-relaxed">Order online with direct precision, select your custom pick-up time slot, and collect effortlessly without wait.</p>
+                </div>
+                <span class="text-gold font-bold text-xs uppercase tracking-widest mt-6 inline-flex items-center group-hover:translate-x-2 smooth-transition">
+                    View Menu <span class="ml-2">→</span>
+                </span>
+            </div>
+
+            <!-- Quick Action: Artisanal Roasts -->
+            <div onclick="scrollToSection('menu', 'beans')" class="group bg-white p-8 rounded-[8px] border border-obsidian/5 hover:border-gold/30 hover:shadow-xl hover:-translate-y-1 smooth-transition cursor-pointer flex flex-col justify-between min-h-[250px]">
+                <div>
+                    <div class="w-12 h-12 bg-gold/10 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 smooth-transition">
+                        <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m11.314 11.314l.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-syne text-xl font-bold uppercase tracking-wide mb-2">Artisanal Roasts</h3>
+                    <p class="text-obsidian/60 text-sm leading-relaxed">Explore single-origin micro-lots, roasted locally in small batches. Sourced ethically from world-class growers.</p>
+                </div>
+                <span class="text-gold font-bold text-xs uppercase tracking-widest mt-6 inline-flex items-center group-hover:translate-x-2 smooth-transition">
+                    Shop Beans <span class="ml-2">→</span>
+                </span>
+            </div>
+
+            <!-- Quick Action: Baked Fresh Daily -->
+            <div onclick="scrollToSection('menu', 'bakery')" class="group bg-white p-8 rounded-[8px] border border-obsidian/5 hover:border-gold/30 hover:shadow-xl hover:-translate-y-1 smooth-transition cursor-pointer flex flex-col justify-between min-h-[250px]">
+                <div>
+                    <div class="w-12 h-12 bg-gold/10 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 smooth-transition">
+                        <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5a3 3 0 10-3 3h3zm0 0h4a2 2 0 012 2v11H8V10a2 2 0 012-2h2z"></path>
+                        </svg> 
+                    </div>
+                    <h3 class="font-syne text-xl font-bold uppercase tracking-wide mb-2">Baked Fresh Daily</h3>
+                    <p class="text-obsidian/60 text-sm leading-relaxed">Flaky, golden-crusted signature pastries crafted on-site 24 hours a day by our master pastry chefs.</p>
+                </div>
+                <span class="text-gold font-bold text-xs uppercase tracking-widest mt-6 inline-flex items-center group-hover:translate-x-2 smooth-transition">
+                    Explore Kitchen <span class="ml-2">→</span>
+                </span>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Section 3: Interactive Visual Menu & Direct Ordering (Core KSP) -->
+    <section id="menu" class="py-20 bg-white border-y border-obsidian/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Section Header -->
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-gold font-bold text-xs uppercase tracking-widest">DIRECT CONVENIENCE</span>
+                <h2 class="font-syne text-3xl sm:text-4xl font-extrabold uppercase tracking-tight mt-2">Curated for the Connoisseur</h2>
+                <p class="text-obsidian/60 mt-4 text-sm sm:text-base">Browse our curated daily selections and place your order directly here to skip commission platforms and delivery delays.</p>
+            </div>
+
+            <!-- Category Pill Filter -->
+            <div class="flex justify-center mb-12 overflow-x-auto pb-4 -mx-4 px-4 scrollbar-none">
+                <div class="flex space-x-2 bg-alabaster p-1.5 rounded-full border border-obsidian/5 max-w-full">
+                    <button onclick="filterMenu('all')" id="btn-filter-all" class="filter-btn px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider smooth-transition bg-obsidian text-alabaster shadow-sm">All Curations</button>
+                    <button onclick="filterMenu('coffee')" id="btn-filter-coffee" class="filter-btn px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider smooth-transition text-obsidian/60 hover:text-obsidian">Specialty Coffee</button>
+                    <button onclick="filterMenu('bakery')" id="btn-filter-bakery" class="filter-btn px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider smooth-transition text-obsidian/60 hover:text-obsidian">Signature Bakery</button>
+                    <button onclick="filterMenu('beans')" id="btn-filter-beans" class="filter-btn px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider smooth-transition text-obsidian/60 hover:text-obsidian">Beans &amp; Merch</button>
+                </div>
+            </div>
+
+            <!-- Menu Grid -->
+            <div id="menu-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Inject Dynamic Menu Items -->
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Section 4: "Seef Office" Corporate Catering Portal (B2B) -->
+    <section id="catering" class="py-24 bg-alabaster relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Headline -->
+            <div class="max-w-3xl mb-16">
+                <span class="text-olive font-bold text-xs uppercase tracking-widest flex items-center space-x-1">
+                    <span>💼</span>
+                    <span>Corporate Accounts &amp; Gatherings</span>
+                </span>
+                <h2 class="font-syne text-3xl sm:text-4xl font-extrabold uppercase tracking-tight mt-2">Elevate Your Seef Office Meetings</h2>
+                <p class="text-obsidian/60 mt-3 text-sm sm:text-base max-w-2xl">Impress clients and energize your corporate teams with our premium catering packages delivered directly with professional billing support.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                
+                <!-- Left Side: Instant Box Order -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="bg-white p-8 rounded-[8px] border border-obsidian/5 shadow-sm relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-gold text-white text-[10px] uppercase tracking-widest font-bold py-1 px-3 rounded-bl-[8px]">
+                            Most Popular
+                        </div>
+                        <span class="text-xs font-bold text-gold uppercase tracking-widest">Convenient Quick Box</span>
+                        <h3 class="font-syne text-2xl font-bold uppercase tracking-wide mt-2">The Meeting Box</h3>
+                        <p class="text-obsidian/60 text-xs mt-1">Perfect for instant morning brief sessions and client presentations.</p>
+                        
+                        <div class="my-6 border-y border-obsidian/5 py-4 space-y-3">
+                            <div class="flex items-center text-xs text-obsidian/85">
+                                <span class="text-gold mr-2.5">✓</span>
+                                <span>1x 96oz Freshly Brewed Coffee Carafe (8-10 Cups)</span>
+                            </div>
+                            <div class="flex items-center text-xs text-obsidian/85">
+                                <span class="text-gold mr-2.5">✓</span>
+                                <span>10x Fresh Assorted Mini Pastries</span>
+                            </div>
+                            <div class="flex items-center text-xs text-obsidian/85">
+                                <span class="text-gold mr-2.5">✓</span>
+                                <span>Premium cups, single-origin brown sugar, eco-stirrers</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-xs text-obsidian/40 block">Fixed Pricing</span>
+                                <span class="font-syne text-xl font-bold text-obsidian">BHD 18.000</span>
+                            </div>
+                            <button onclick="addMeetingBox()" class="bg-obsidian hover:bg-gold text-white hover:text-obsidian px-5 py-3 rounded-[8px] text-xs font-bold uppercase tracking-wider smooth-transition">
+                                + Quick Add Box
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Side: Custom Booking Quote Engine -->
+                <div class="lg:col-span-7 bg-white p-8 rounded-[8px] border border-obsidian/5 shadow-sm">
+                    <h3 class="font-syne text-xl font-bold uppercase tracking-wide mb-6">Reserve Corporate Event Catering</h3>
+                    
+                    <form id="catering-quote-form" onsubmit="generateCateringQuote(event)" class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-[11px] font-bold text-obsidian/60 uppercase tracking-wider mb-2">Company Name</label>
+                                <input type="text" id="quote-company" required placeholder="e.g. Seef Corporate Tower" class="w-full bg-alabaster border border-obsidian/5 focus:border-gold rounded-[8px] px-4 py-3 text-xs outline-none smooth-transition text-obsidian">
+                            </div>
+                            <div>
+                                <label class="block text-[11px] font-bold text-obsidian/60 uppercase tracking-wider mb-2">Date &amp; Time</label>
+                                <input type="datetime-local" id="quote-datetime" required class="w-full bg-alabaster border border-obsidian/5 focus:border-gold rounded-[8px] px-4 py-3 text-xs outline-none smooth-transition text-obsidian">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-[11px] font-bold text-obsidian/60 uppercase tracking-wider mb-2">Estimated Guest Count</label>
+                            <select id="quote-guests" required class="w-full bg-alabaster border border-obsidian/5 focus:border-gold rounded-[8px] px-4 py-3 text-xs outline-none smooth-transition text-obsidian">
+                                <option value="15">10 - 20 Guests</option>
+                                <option value="35">20 - 50 Guests</option>
+                                <option value="75">50 - 100 Guests</option>
+                                <option value="150">100 - 150+ Guests</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-[11px] font-bold text-obsidian/60 uppercase tracking-wider mb-2">Select Package Preference</label>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                <label class="relative flex items-center p-3 rounded-[8px] border border-obsidian/5 bg-alabaster cursor-pointer">
+                                    <input type="radio" name="package" value="Premium" checked class="accent-gold">
+                                    <span class="ml-3 text-xs font-semibold">Premium Coffee &amp; Sweets</span>
+                                </label>
+                                <label class="relative flex items-center p-3 rounded-[8px] border border-obsidian/5 bg-alabaster cursor-pointer">
+                                    <input type="radio" name="package" value="Grand" class="accent-gold">
+                                    <span class="ml-3 text-xs font-semibold">Grand Coffee &amp; Savory Board</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="w-full bg-gold hover:bg-obsidian text-obsidian hover:text-white py-4 rounded-[8px] text-xs font-bold uppercase tracking-wider smooth-transition">
+                            💼 Request Booking Quote
+                        </button>
+                        <p class="text-[10px] text-obsidian/40 text-center mt-2">*Compliant tax invoice provided automatically upon booking confirmation.</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: "Bean to Cup" Brand Storytelling -->
+    <section id="story" class="py-24 bg-[#121212] text-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                
+                <!-- Left Side Text Content -->
+                <div class="lg:col-span-7 space-y-8">
+                    <span class="text-gold font-bold text-xs uppercase tracking-widest block">OUR PHILOSOPHY</span>
+                    <h2 class="font-syne text-4xl sm:text-5xl font-extrabold uppercase tracking-tight leading-tight">
+                        The Science of Coffee,<br>The Art of Baking.
+                    </h2>
+                    <div class="space-y-6 text-alabaster/80 text-sm sm:text-base leading-relaxed max-w-xl font-light">
+                        <p>
+                            Every single origin bean in our espresso bar is ethically sourced from high-altitude micro-farms in Colombia, Ethiopia, and El Salvador. Our beans are roasted locally in small batches to preserve delicate flavor notes, then brewed precisely down to the micro-gram.
+                        </p>
+                        <p>
+                            In parallel, our temperature-controlled pastry kitchen operates 24 hours a day. Using strictly imported Normandy French butter, we spend 3 days laminating dough to guarantee an unparalleled level of light, structured flakiness.
+                        </p>
+                    </div>
+                    <div>
+                        <a href="#menu" class="inline-flex items-center space-x-2 text-gold font-bold text-xs uppercase tracking-widest hover:text-white smooth-transition">
+                            <span>Explore Our Story Craft</span>
+                            <span>→</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Side Asymmetric Image -->
+                <div class="lg:col-span-5 relative">
+                    <div class="absolute -inset-4 bg-gold/10 rounded-[8px] transform rotate-2"></div>
+                    <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&q=80&w=800" alt="Precision brewing over-pour coffee" class="relative z-10 w-full h-[450px] object-cover rounded-[8px] shadow-2xl filter brightness-[0.85] contrast-[1.15]">
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: Social Proof & Neighborhood Connection -->
+    <section class="py-20 bg-alabaster overflow-hidden border-b border-obsidian/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-gold font-bold text-xs uppercase tracking-widest">LOCAL TRUST</span>
+                <h2 class="font-syne text-2xl sm:text-3xl font-extrabold uppercase tracking-tight mt-2">Recommended by the Seef Community</h2>
+                <div class="flex items-center justify-center space-x-2 text-sm mt-3">
+                    <div class="flex text-gold font-bold">★★★★★</div>
+                    <span class="text-obsidian/60">4.5/5 Stars (620 Google Reviews)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Infinite Rolling Reviews Carousel -->
+        <div class="w-full flex overflow-x-hidden relative">
+            <div class="absolute left-0 inset-y-0 w-24 bg-gradient-to-r from-alabaster to-transparent z-10"></div>
+            <div class="absolute right-0 inset-y-0 w-24 bg-gradient-to-l from-alabaster to-transparent z-10"></div>
+            
+            <div class="animate-scroll py-4">
+                
+                <!-- Review Card 1 -->
+                <div class="bg-white p-8 rounded-[8px] border border-obsidian/5 shadow-sm w-[350px] mx-4 flex flex-col justify-between shrink-0">
+                    <p class="text-obsidian/85 text-xs sm:text-sm leading-relaxed italic">"The best flat white in Seef. The direct pickup web app is an absolute game-changer for my daily morning corporate run."</p>
+                    <div class="mt-6 flex items-center space-x-3">
+                        <div class="w-8 h-8 rounded-full bg-gold/20 flex items-center justify-center font-bold text-xs text-gold">FA</div>
+                        <div>
+                            <h4 class="font-bold text-xs text-obsidian">Fatima A.</h4>
+                            <p class="text-[10px] text-obsidian/40">Corporate Lawyer</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review Card 2 -->
+                <div class="bg-white p-8 rounded-[8px] border border-obsidian/5 shadow-sm w-[350px] mx-4 flex flex-col justify-between shrink-0">
+                    <p class="text-obsidian/85 text-xs sm:text-sm leading-relaxed italic">"An office essential. Our operations team orders the Meeting Box every Tuesday morning. Flawless pastries and packaging."</p>
+                    <div class="mt-6 flex items-center space-x-3">
+                        <div class="w-8 h-8 rounded-full bg-olive/20 flex items-center justify-center font-bold text-xs text-olive">MT</div>
+                        <div>
+                            <h4 class="font-bold text-xs text-obsidian">Marcus T.</h4>
+                            <p class="text-[10px] text-obsidian/40">Tech Executive</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review Card 3 -->
+                <div class="bg-white p-8 rounded-[8px] border border-obsidian/5 shadow-sm w-[350px] mx-4 flex flex-col justify-between shrink-0">
+                    <p class="text-obsidian/85 text-xs sm:text-sm leading-relaxed italic">"Stunning design, pristine minimal space, and world-class premium croissants. A mandatory stop for tourists."</p>
+                    <div class="mt-6 flex items-center space-x-3">
+                        <div class="w-8 h-8 rounded-full bg-gold/20 flex items-center justify-center font-bold text-xs text-gold">SM</div>
+                        <div>
+                            <h4 class="font-bold text-xs text-obsidian">Sarah M.</h4>
+                            <p class="text-[10px] text-obsidian/40">Travel Journalist</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review Card 4 -->
+                <div class="bg-white p-8 rounded-[8px] border border-obsidian/5 shadow-sm w-[350px] mx-4 flex flex-col justify-between shrink-0">
+                    <p class="text-obsidian/85 text-xs sm:text-sm leading-relaxed italic">"Quick, smooth payment checkout. Seamless. No hassle. Perfect morning pastries to impress global delegates."</p>
+                    <div class="mt-6 flex items-center space-x-3">
+                        <div class="w-8 h-8 rounded-full bg-olive/20 flex items-center justify-center font-bold text-xs text-olive">KA</div>
+                        <div>
+                            <h4 class="font-bold text-xs text-obsidian">Khalid A.</h4>
+                            <p class="text-[10px] text-obsidian/40">Financial Advisor</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Duplicate Reviews for Infinite Scrolling Effect -->
+                <!-- Review Card 1 Dupe -->
+                <div class="bg-white p-8 rounded-[8px] border border-obsidian/5 shadow-sm w-[350px] mx-4 flex flex-col justify-between shrink-0">
+                    <p class="text-obsidian/85 text-xs sm:text-sm leading-relaxed italic">"The best flat white in Seef. The direct pickup web app is an absolute game-changer for my daily morning corporate run."</p>
+                    <div class="mt-6 flex items-center space-x-3">
+                        <div class="w-8 h-8 rounded-full bg-gold/20 flex items-center justify-center font-bold text-xs text-gold">FA</div>
+                        <div>
+                            <h4 class="font-bold text-xs text-obsidian">Fatima A.</h4>
+                            <p class="text-[10px] text-obsidian/40">Corporate Lawyer</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review Card 2 Dupe -->
+                <div class="bg-white p-8 rounded-[8px] border border-obsidian/5 shadow-sm w-[350px] mx-4 flex flex-col justify-between shrink-0">
+                    <p class="text-obsidian/85 text-xs sm:text-sm leading-relaxed italic">"An office essential. Our operations team orders the Meeting Box every Tuesday morning. Flawless pastries and packaging."</p>
+                    <div class="mt-6 flex items-center space-x-3">
+                        <div class="w-8 h-8 rounded-full bg-olive/20 flex items-center justify-center font-bold text-xs text-olive">MT</div>
+                        <div>
+                            <h4 class="font-bold text-xs text-obsidian">Marcus T.</h4>
+                            <p class="text-[10px] text-obsidian/40">Tech Executive</p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="text-center mt-12">
+            <a href="https://instagram.com" target="_blank" class="inline-flex items-center space-x-2 bg-obsidian text-alabaster hover:bg-gold hover:text-obsidian px-6 py-3 rounded-[8px] text-xs font-bold uppercase tracking-wider smooth-transition">
+                <span>Follow us on Instagram @thedot.bh</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Section 7: Conversational Footer & High-Conversion Local Signals -->
+    <footer id="find-us" class="bg-obsidian text-white pt-20 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-16">
+                
+                <!-- Column 1: Info Brand Block -->
+                <div class="lg:col-span-4 space-y-6">
+                    <a href="#" class="flex items-center space-x-1">
+                        <span class="font-syne text-3xl font-extrabold tracking-wider text-white uppercase">The Dot</span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-gold"></span>
+                    </a>
+                    <p class="text-alabaster/60 text-xs sm:text-sm leading-relaxed max-w-sm font-light">
+                        Delivering frictionless gourmet coffee and artisan pastries to high-income workspace professionals, tourists, and upscale entities across Seef District, Bahrain.
+                    </p>
+                    <div class="text-xs tracking-wider font-semibold">
+                        STATUS: <span id="live-status-footer" class="text-olive">● OPEN NOW</span>
+                    </div>
+                </div>
+
+                <!-- Column 2: Visitus Details -->
+                <div class="lg:col-span-4 space-y-4">
+                    <h4 class="text-gold font-bold text-xs uppercase tracking-widest">Visit Us</h4>
+                    <div class="space-y-2 text-xs sm:text-sm text-alabaster/80">
+                        <p class="font-medium">The Courtyard, Seef District, Manama, Kingdom of Bahrain</p>
+                        <p class="text-alabaster/40">Direct link to maps:</p>
+                        <a href="https://maps.google.com" target="_blank" class="inline-flex items-center space-x-1.5 text-gold hover:text-white smooth-transition font-semibold">
+                            <span>📍 Open in Google Maps</span>
+                        </a>
+                    </div>
+                    <div class="pt-4">
+                        <h4 class="text-gold font-bold text-[10px] uppercase tracking-widest mb-2">Operating Hours</h4>
+                        <div class="grid grid-cols-2 gap-2 text-xs text-alabaster/60">
+                            <div>Mon - Thu:</div><div>7:00 AM - 11:00 PM</div>
+                            <div>Fri - Sat:</div><div>8:00 AM - 12:00 AM</div>
+                            <div>Sun:</div><div>7:00 AM - 11:00 PM</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Column 3: Contact Details -->
+                <div class="lg:col-span-4 space-y-4">
+                    <h4 class="text-gold font-bold text-xs uppercase tracking-widest">Get in Touch</h4>
+                    <div class="space-y-2 text-xs sm:text-sm text-alabaster/80">
+                        <p><strong>Phone:</strong> +973 1700 0000</p>
+                        <p><strong>Email:</strong> hello@thedot.bh</p>
+                    </div>
+                    <div class="flex space-x-3 pt-4">
+                        <!-- Instagram -->
+                        <a href="#" class="w-9 h-9 bg-white/5 hover:bg-gold rounded-full flex items-center justify-center smooth-transition text-white hover:text-obsidian">
+                            IG
+                        </a>
+                        <!-- WhatsApp -->
+                        <a href="#" class="w-9 h-9 bg-white/5 hover:bg-gold rounded-full flex items-center justify-center smooth-transition text-white hover:text-obsidian">
+                            WA
+                        </a>
+                        <!-- LinkedIn -->
+                        <a href="#" class="w-9 h-9 bg-white/5 hover:bg-gold rounded-full flex items-center justify-center smooth-transition text-white hover:text-obsidian">
+                            IN
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Interactive Google Maps Iframe Sandbox -->
+            <div class="w-full h-72 rounded-[8px] overflow-hidden border border-white/10 shadow-2xl relative mb-12">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3578.8596646879895!2d50.536128!3d26.233261!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e49af664eb27b13%3A0xe54dbe92ec8cc0c7!2sSeef%20District%2C%20Manama%2C%20Bahrain!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s" class="w-full h-full border-0 filter invert-[0.9] hue-rotate-[180deg] opacity-80" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+
+            <!-- Copyright Footnotes -->
+            <div class="border-t border-white/5 pt-8 text-center sm:flex sm:justify-between sm:text-left text-xs text-alabaster/40 space-y-4 sm:space-y-0">
+                <p>© 2024 The Dot Coffee. All Rights Reserved. Private Enterprise.</p>
+                <p>Tailored exclusively for absolute corporate speed &amp; premium utility in Seef, Bahrain.</p>
+            </div>
+            
+        </div>
+    </footer>
+
+    <!-- Cart Slide-out Panel / Drawer -->
+    <div id="cart-drawer" class="fixed inset-0 z-50 overflow-hidden hidden">
+        <div class="absolute inset-0 bg-obsidian/70 backdrop-blur-sm transition-opacity" onclick="toggleCart()"></div>
+        <div class="absolute inset-y-0 right-0 max-w-full flex pl-10">
+            <div class="w-screen max-w-md bg-alabaster text-obsidian shadow-2xl flex flex-col">
+                
+                <!-- Cart Drawer Header -->
+                <div class="p-6 border-b border-obsidian/5 flex items-center justify-between">
+                    <h3 class="font-syne text-lg font-bold uppercase tracking-wider">Your Pick-up Bag</h3>
+                    <button onclick="toggleCart()" class="p-2 text-obsidian/60 hover:text-obsidian smooth-transition text-xl">&times;</button>
+                </div>
+
+                <!-- Cart Item Content (Dynamic) -->
+                <div id="cart-items-container" class="flex-1 overflow-y-auto p-6 space-y-6">
+                    <!-- items dynamic markup -->
+                    <div id="empty-cart-state" class="text-center py-12 space-y-4">
+                        <span class="text-4xl">☕</span>
+                        <p class="text-obsidian/60 text-sm">Your bag is currently empty. Add fresh brews to get started!</p>
+                    </div>
+                </div>
+
+                <!-- Payment & Totals Summary Footer -->
+                <div class="p-6 border-t border-obsidian/10 bg-white space-y-4">
+                    <div class="flex justify-between font-bold text-sm uppercase tracking-wider">
+                        <span>Subtotal</span>
+                        <span id="cart-subtotal">BHD 0.000</span>
+                    </div>
+                    <p class="text-[11px] text-obsidian/40">Zero-commission ordering platform direct checkout. Pick up inside local Seef shop in 8-12 minutes.</p>
+                    
+                    <!-- Checkout Action Buttons -->
+                    <div class="space-y-3 pt-2">
+                        <button onclick="initiateInstantCheckout()" class="w-full bg-obsidian hover:bg-gold text-white hover:text-obsidian py-4 rounded-[8px] text-xs font-bold uppercase tracking-wider smooth-transition flex items-center justify-center space-x-2">
+                            <span>Proceed with Order</span>
+                            <span>⚡</span>
+                        </button>
+                        
+                        <!-- Mobile regional express payment integration visual tags -->
+                        <div class="grid grid-cols-2 gap-2">
+                            <button onclick="alert('Apple Pay checkout successfully simulated!')" class="bg-black text-white py-2.5 rounded-[8px] text-[11px] font-bold tracking-wide flex items-center justify-center hover:opacity-85 transition-opacity">
+                                 Pay
+                            </button>
+                            <button onclick="alert('BenefitPay checkout successfully simulated!')" class="bg-emerald-600 text-white py-2.5 rounded-[8px] text-[11px] font-bold tracking-wide flex items-center justify-center hover:opacity-85 transition-opacity">
+                                BenefitPay
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- Dynamic Bottom Checkout Action Sticky Bar (Mobile Context Only) -->
+    <div id="mobile-action-bar" class="fixed bottom-0 inset-x-0 bg-obsidian text-alabaster p-4 z-40 md:hidden flex items-center justify-between border-t border-white/10 hidden">
+        <div>
+            <p id="mobile-item-count" class="text-xs text-gold font-bold uppercase tracking-widest">0 Items In Bag</p>
+            <p id="mobile-total-price" class="text-sm font-semibold">BHD 0.000</p>
+        </div>
+        <button onclick="toggleCart()" class="bg-gold text-obsidian px-6 py-3 rounded-[8px] text-xs font-bold uppercase tracking-widest flex items-center space-x-1.5">
+            <span>Checkout Now</span>
+            <span>⚡</span>
+        </button>
+    </div>
+
+    <!-- Corporate Custom Event Quote Modal Simulation Output -->
+    <div id="quote-modal" class="fixed inset-0 z-50 overflow-y-auto hidden">
+        <div class="absolute inset-0 bg-obsidian/85 backdrop-blur-md" onclick="toggleQuoteModal()"></div>
+        <div class="relative min-h-screen flex items-center justify-center p-4">
+            <div class="bg-white text-obsidian max-w-lg w-full rounded-[8px] p-8 relative shadow-2xl border border-gold/30">
+                
+                <!-- Close -->
+                <button onclick="toggleQuoteModal()" class="absolute top-4 right-4 text-obsidian/60 hover:text-obsidian text-2xl">&times;</button>
+
+                <!-- Header -->
+                <div class="text-center border-b border-obsidian/5 pb-6">
+                    <span class="text-[10px] font-bold bg-gold/15 text-gold px-3 py-1 rounded-full uppercase tracking-widest">PDF Quote Proposal Generated</span>
+                    <h3 class="font-syne text-2xl font-extrabold uppercase tracking-tight mt-3">The Dot Catering</h3>
+                    <p class="text-xs text-obsidian/40 mt-1">Reference: #DOT-QT-2024</p>
+                </div>
+
+                <!-- Quote Output Sheet Details -->
+                <div class="py-6 space-y-4 text-xs">
+                    <div class="flex justify-between">
+                        <span class="text-obsidian/40">Client Entity:</span>
+                        <strong id="out-company">-</strong>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-obsidian/40">Scheduled Date:</span>
+                        <strong id="out-datetime">-</strong>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-obsidian/40">Guests Counted:</span>
+                        <strong id="out-guests">-</strong>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-obsidian/40">Package Selected:</span>
+                        <strong id="out-package" class="text-gold">-</strong>
+                    </div>
+                    
+                    <div class="border-t border-obsidian/5 pt-4 space-y-2">
+                        <div class="flex justify-between text-obsidian/80">
+                            <span>Standard Base Sourcing</span>
+                            <span id="out-base">BHD 0.000</span>
+                        </div>
+                        <div class="flex justify-between text-obsidian/80">
+                            <span>Staff Servicing &amp; Setup (10%)</span>
+                            <span id="out-service">BHD 0.000</span>
+                        </div>
+                        <div class="flex justify-between font-bold text-sm text-obsidian border-t border-dashed border-obsidian/10 pt-2">
+                            <span>Grand Est. Total Invoice</span>
+                            <span id="out-grand">BHD 0.000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Print or Confirm Options -->
+                <div class="space-y-3">
+                    <button onclick="window.print()" class="w-full bg-obsidian text-alabaster py-3.5 rounded-[8px] text-xs font-bold uppercase tracking-wider hover:bg-gold hover:text-obsidian smooth-transition flex items-center justify-center space-x-2">
+                        <span>📥 Download Official PDF</span>
+                    </button>
+                    <button onclick="toggleQuoteModal(); alert('Our Corporate Account Representative will reach out via email immediately.');" class="w-full bg-transparent border border-obsidian/20 text-obsidian/80 py-3.5 rounded-[8px] text-xs font-bold uppercase tracking-wider hover:bg-alabaster smooth-transition">
+                        Looks Perfect, Book Event
+                    </button>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- Core Custom Operations Engine & Cart Logic -->
+    <script>
+        // Menu Database Matrix
+        const MENU_DATA = [
+            {
+                id: 'coffee-1',
+                category: 'coffee',
+                name: 'Iced Spanish Latte',
+                price: 2.800,
+                desc: 'Artisanal balanced espresso, creamy organic sweetened milk, organic dynamic extraction.',
+                img: 'https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&q=80&w=400'
+            },
+            {
+                id: 'coffee-2',
+                category: 'coffee',
+                name: 'V60 Ethiopian Micro-lot',
+                price: 3.000,
+                desc: 'Single-origin washed process beans with brilliant clean notes of white peach & bergamot.',
+                img: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&q=80&w=400'
+            },
+            {
+                id: 'coffee-3',
+                category: 'coffee',
+                name: 'Signature Flat White',
+                price: 2.200,
+                desc: 'Double shot espresso combined with thin, glossy layer of premium micro-foamed milk.',
+                img: 'https://images.unsplash.com/photo-1577968897966-3d4325b36b61?auto=format&fit=crop&q=80&w=400'
+            },
+            {
+                id: 'bakery-1',
+                category: 'bakery',
+                name: 'Pistachio Croissant',
+                price: 2.400,
+                desc: 'Richly laminated pastry layered with premium Normandy butter & premium house-ground pistachio cream.',
+                img: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&q=80&w=400'
+            },
+            {
+                id: 'bakery-2',
+                category: 'bakery',
+                name: 'Almond Pain au Chocolat',
+                price: 2.600,
+                desc: 'Double-baked croissant pastry coated with toasted almonds and stuffed with dark Belgian chocolate.',
+                img: 'https://images.unsplash.com/photo-1608686207856-001b95cf60ca?auto=format&fit=crop&q=80&w=400'
+            },
+            {
+                id: 'beans-1',
+                category: 'beans',
+                name: 'Huila Colombia Beans (250g)',
+                price: 7.500,
+                desc: 'Medium-light roast with sweet notes of honeycomb, dark plum, and premium smooth cacao finish.',
+                img: 'https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&q=80&w=400'
+            }
+        ];
+
+        // Core Cart State
+        let CART = [];
+
+        // Render Interactive Visual Menu
+        function renderMenu(itemsToRender) {
+            const grid = document.getElementById('menu-grid');
+            grid.innerHTML = '';
+
+            itemsToRender.forEach(item => {
+                const cardHtml = `
+                    <div class="group bg-white rounded-[8px] border border-obsidian/5 overflow-hidden hover:shadow-lg transition-all duration-500 ease-custom-ease">
+                        <div class="h-64 overflow-hidden relative bg-alabaster">
+                            <img src="${item.img}" alt="${item.name}" class="w-full h-full object-cover group-hover:scale-105 smooth-transition filter brightness-[0.93]">
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <div class="flex justify-between items-start">
+                                <h4 class="font-syne text-lg font-bold uppercase tracking-wide">${item.name}</h4>
+                                <span class="font-syne text-sm font-semibold text-gold shrink-0">BHD ${item.price.toFixed(3)}</span>
+                            </div>
+                            <p class="text-xs text-obsidian/60 leading-relaxed min-h-[48px]">${item.desc}</p>
+                            <button onclick="addToCart('${item.id}')" class="w-full mt-4 bg-alabaster hover:bg-gold border border-obsidian/5 hover:border-transparent text-obsidian text-xs font-bold uppercase tracking-widest py-3.5 rounded-[8px] smooth-transition">
+                                + Add to Pick-up Bag
+                            </button>
+                        </div>
+                    </div>
+                `;
+                grid.innerHTML += cardHtml;
+            });
+        }
+
+        // Direct Category Filter Control
+        function filterMenu(category) {
+            // Update Active Buttons styles
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-obsidian', 'text-alabaster', 'shadow-sm');
+                btn.classList.add('text-obsidian/60', 'hover:text-obsidian');
+            });
+
+            const activeBtn = document.getElementById(`btn-filter-${category}`);
+            if (activeBtn) {
+                activeBtn.classList.remove('text-obsidian/60', 'hover:text-obsidian');
+                activeBtn.classList.add('bg-obsidian', 'text-alabaster', 'shadow-sm');
+            }
+
+            // Filter content
+            if (category === 'all') {
+                renderMenu(MENU_DATA);
+            } else {
+                const filtered = MENU_DATA.filter(item => item.category === category);
+                renderMenu(filtered);
+            }
+        }
+
+        // Helper scroll menu and direct filter from Home Matrix Cards
+        function scrollToSection(sectionId, filterCategory) {
+            const target = document.getElementById(sectionId);
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+                if (filterCategory) {
+                    filterMenu(filterCategory);
+                }
+            }
+        }
+
+        // Add to Cart Logic
+        function addToCart(itemId) {
+            const item = MENU_DATA.find(i => i.id === itemId);
+            if (!item) return;
+
+            const existing = CART.find(cartItem => cartItem.id === itemId);
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                CART.push({ ...item, quantity: 1 });
+            }
+
+            updateCartUI();
+            openCartDrawer();
+        }
+
+        // Add Corporate Quick Box
+        function addMeetingBox() {
+            const existing = CART.find(cartItem => cartItem.id === 'meeting-box');
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                CART.push({
+                    id: 'meeting-box',
+                    category: 'catering',
+                    name: 'The Meeting Box (Catering)',
+                    price: 18.000,
+                    desc: '1x 96oz Coffee Carafe + 10x Assorted Mini Pastries with absolute accessories.',
+                    img: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=400',
+                    quantity: 1
+                });
+            }
+            updateCartUI();
+            openCartDrawer();
+        }
+
+        // Remove Item / Decr Quantity
+        function changeQty(itemId, change) {
+            const item = CART.find(i => i.id === itemId);
+            if (!item) return;
+
+            item.quantity += change;
+            if (item.quantity <= 0) {
+                CART = CART.filter(i => i.id !== itemId);
+            }
+            updateCartUI();
+        }
+
+        // Update Cart Drawer GUI & Calculations
+        function updateCartUI() {
+            const container = document.getElementById('cart-items-container');
+            container.innerHTML = '';
+
+            if (CART.length === 0) {
+                container.innerHTML = `
+                    <div id="empty-cart-state" class="text-center py-12 space-y-4">
+                        <span class="text-4xl">☕</span>
+                        <p class="text-obsidian/60 text-sm">Your bag is currently empty. Add fresh brews to get started!</p>
+                    </div>
+                `;
+                document.getElementById('cart-subtotal').innerText = 'BHD 0.000';
+                
+                // Hide mobile sticky bar if empty
+                document.getElementById('mobile-action-bar').classList.add('hidden');
+                return;
+            }
+
+            let subtotal = 0;
+            let totalCount = 0;
+
+            CART.forEach(item => {
+                const lineTotal = item.price * item.quantity;
+                subtotal += lineTotal;
+                totalCount += item.quantity;
+
+                const cartItemHtml = `
+                    <div class="flex items-center justify-between border-b border-obsidian/5 pb-4">
+                        <div class="flex items-center space-x-3">
+                            <img src="${item.img}" alt="${item.name}" class="w-12 h-12 rounded-[8px] object-cover bg-alabaster">
+                            <div>
+                                <h5 class="text-xs font-bold uppercase tracking-wider text-obsidian">${item.name}</h5>
+                                <p class="text-[10px] text-obsidian/40 mt-0.5">BHD ${item.price.toFixed(3)}</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="flex items-center space-x-2 border border-obsidian/5 bg-alabaster rounded-[8px] p-1">
+                                <button onclick="changeQty('${item.id}', -1)" class="px-1.5 text-xs font-bold text-obsidian/50 hover:text-obsidian smooth-transition">-</button>
+                                <span class="text-xs font-bold px-1">${item.quantity}</span>
+                                <button onclick="changeQty('${item.id}', 1)" class="px-1.5 text-xs font-bold text-obsidian/50 hover:text-obsidian smooth-transition">+</button>
+                            </div>
+                            <span class="text-xs font-bold text-obsidian min-w-[50px] text-right">BHD ${lineTotal.toFixed(3)}</span>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += cartItemHtml;
+            });
+
+            document.getElementById('cart-subtotal').innerText = `BHD ${subtotal.toFixed(3)}`;
+
+            // Update Mobile Bottom Bar
+            document.getElementById('mobile-action-bar').classList.remove('hidden');
+            document.getElementById('mobile-item-count').innerText = `${totalCount} Item${totalCount > 1 ? 's' : ''} In Bag`;
+            document.getElementById('mobile-total-price').innerText = `BHD ${subtotal.toFixed(3)}`;
+        }
+
+        // Toggle Cart Panel Visibility
+        function toggleCart() {
+            const drawer = document.getElementById('cart-drawer');
+            drawer.classList.toggle('hidden');
+        }
+
+        function openCartDrawer() {
+            const drawer = document.getElementById('cart-drawer');
+            drawer.classList.remove('hidden');
+        }
+
+        // Simulated direct checkout success trigger
+        function initiateInstantCheckout() {
+            alert('Connecting securely to local BenefitPay & payment services...\nYour order has been sent directly to The Dot Seef Baristas! Pick-up ready in exactly 10 minutes.');
+            CART = [];
+            updateCartUI();
+            toggleCart();
+        }
+
+        // Corporate Catering Quote Logic
+        function generateCateringQuote(e) {
+            e.preventDefault();
+            
+            const company = document.getElementById('quote-company').value;
+            const datetime = new Date(document.getElementById('quote-datetime').value).toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' });
+            const guests = parseInt(document.getElementById('quote-guests').value);
+            
+            const packageElements = document.getElementsByName('package');
+            let packageVal = 'Premium';
+            for (let radio of packageElements) {
+                if (radio.checked) packageVal = radio.value;
+            }
+
+            // Sourcing Calculations
+            const costPerGuest = packageVal === 'Premium' ? 1.800 : 2.600;
+            const baseCost = costPerGuest * guests;
+            const serviceCost = baseCost * 0.10;
+            const grandTotal = baseCost + serviceCost;
+
+            // Inject into PDF visual receipt modal
+            document.getElementById('out-company').innerText = company;
+            document.getElementById('out-datetime').innerText = datetime;
+            document.getElementById('out-guests').innerText = `${guests} Guests`;
+            document.getElementById('out-package').innerText = packageVal === 'Premium' ? 'Premium Coffee & Sweets' : 'Grand Coffee & Savory';
+            document.getElementById('out-base').innerText = `BHD ${baseCost.toFixed(3)}`;
+            document.getElementById('out-service').innerText = `BHD ${serviceCost.toFixed(3)}`;
+            document.getElementById('out-grand').innerText = `BHD ${grandTotal.toFixed(3)}`;
+
+            toggleQuoteModal();
+        }
+
+        function toggleQuoteModal() {
+            const modal = document.getElementById('quote-modal');
+            modal.classList.toggle('hidden');
+        }
+
+        // Real-Time Local Bahrain Timezone Check for Live Store Open/Closed indicators
+        function updateLocalStoreStatus() {
+            // Bahrain is UTC +3
+            const now = new Date();
+            const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+            const bahrainTime = new Date(utc + (3600000 * 3));
+            
+            const day = bahrainTime.getDay(); // 0: Sun, 1: Mon, ..., 5: Fri, 6: Sat
+            const hour = bahrainTime.getHours();
+
+            let isOpen = false;
+            
+            if (day === 5 || day === 6) { // Fri - Sat: 8:00 AM - 12:00 AM
+                if (hour >= 8 && hour < 24) isOpen = true;
+            } else { // Sun - Thu: 7:00 AM - 11:00 PM
+                if (hour >= 7 && hour < 23) isOpen = true;
+            }
+
+            const statusTextNav = document.getElementById('live-status-nav');
+            const statusTextFooter = document.getElementById('live-status-footer');
+
+            if (isOpen) {
+                statusTextNav.innerHTML = `<span class="text-olive">🟢 Open Now</span>`;
+                statusTextFooter.innerHTML = `<span class="text-olive">● OPEN NOW</span>`;
+            } else {
+                statusTextNav.innerHTML = `<span class="text-amber-500">🟠 Closed Now</span>`;
+                statusTextFooter.innerHTML = `<span class="text-amber-500">● CLOSED NOW</span>`;
+            }
+        }
+
+        // Page Load Initializer
+        window.addEventListener('DOMContentLoaded', () => {
+            renderMenu(MENU_DATA);
+            updateLocalStoreStatus();
+            setInterval(updateLocalStoreStatus, 60000); // Check every minute
+        });
+    </script>
+</body>
+</html>
