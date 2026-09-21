@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sculpt & Ash | Riyadh Specialty Coffee</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        travertine: '#F7F5F0',
+                        obsidian: '#121212',
+                        gold: '#D4AF37',
+                        clay: '#E6DFD3',
+                    },
+                    fontFamily: {
+                        serif: ['Cormorant Garamond', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        cairo: ['Cairo', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Alpine.js CDN for interactive components -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- Custom CSS for Premium aesthetics -->
+    <style>
+        [x-cloak] { display: none !important; }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #121212;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 3px;
+        }
+        /* Smooth transitions */
+        .transition-all {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+    </style>
+</head>
+<body x-data="{
+        isRtl: false,
+        cart: [],
+        isCartOpen: false,
+        activeTab: 'menu',
+        selectedBranch: 'almalga',
+        bookingDate: '',
+        bookingTime: '',
+        bookingSubmitted: false,
+        smsSent: false,
+        phoneNum: '',
+        checkoutSuccess: false,
+        checkoutLoading: false,
+        get cartTotal() {
+            return this.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        },
+        addToCart(nameEn, nameAr, price, image) {
+            let existing = this.cart.find(item => item.nameEn === nameEn);
+            if (existing) {
+                existing.quantity++;
+            } else {
+                this.cart.push({ nameEn, nameAr, price, image, quantity: 1 });
+            }
+            this.isCartOpen = true;
+        },
+        removeFromCart(index) {
+            this.cart.splice(index, 1);
+        },
+        get totalItems() {
+            return this.cart.reduce((sum, item) => sum + item.quantity, 0);
+        }
+    }"
+    :dir="isRtl ? 'rtl' : 'ltr'"
+    :class="isRtl ? 'font-cairo' : 'font-sans'"
+    class="bg-travertine text-obsidian overflow-x-hidden">
+
+    <!-- ================= HEADER / NAVIGATION ================= -->
+    <header class="fixed w-full top-0 z-50 bg-obsidian/95 backdrop-blur-md border-b border-white/10 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <div class="w-10 h-10 rounded-full border border-gold flex items-center justify-center">
+                    <span class="text-gold font-serif text-xl font-bold">S</span>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-serif text-lg tracking-wider font-bold leading-none">SCULPT &amp; ASH</span>
+                    <span class="text-[9px] text-gold tracking-[0.2em] uppercase font-sans">Riyadh Flagship</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex space-x-8 rtl:space-x-reverse text-sm font-medium tracking-wide">
+                <a href="#" class="hover:text-gold transition-all duration-300" x-text="isRtl ? 'الرئيسية' : 'Home'"></a>
+                <a href="#features" class="hover:text-gold transition-all duration-300" x-text="isRtl ? 'المزايا' : 'Advantages'"></a>
+                <a href="#interactive-hub" class="hover:text-gold transition-all duration-300" x-text="isRtl ? 'التجربة التفاعلية' : 'The Experience'"></a>
+                <a href="#social-wall" class="hover:text-gold transition-all duration-300" x-text="isRtl ? 'مجتمعنا' : 'Community'"></a>
+            </nav>
+
+            <!-- Utility Actions -->
+            <div class="flex items-center space-x-4 rtl:space-x-reverse">
+                <!-- Language Switcher Button -->
+                <button 
+                    @click="isRtl = !isRtl"
+                    class="px-3 py-1.5 rounded border border-white/20 text-xs font-semibold tracking-wider hover:bg-gold hover:text-obsidian hover:border-gold transition-all">
+                    <span x-text="isRtl ? 'English' : 'العربية'"></span>
+                </button>
+
+                <!-- Cart Trigger -->
+                <button 
+                    @click="isCartOpen = true"
+                    class="relative p-2 text-white hover:text-gold transition-all">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                    </svg>
+                    <span 
+                        x-show="totalItems > 0"
+                        x-text="totalItems"
+                        class="absolute -top-1 -right-1 bg-gold text-obsidian text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center animate-bounce">
+                    </span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Spacer for Header -->
+    <div class="h-20"></div>
+
+    <!-- ================= HERO SECTION (THE DIGITAL FLAGSHIP) ================= -->
+    <section class="relative min-h-[90vh] flex items-center bg-obsidian text-white overflow-hidden">
+        <!-- Dynamic overlay background -->
+        <div class="absolute inset-0 z-0 opacity-40">
+            <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1920&q=80" class="w-full h-full object-cover filter grayscale blur-[1px]" alt="Minimalist Cafe Interior">
+            <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/80 to-transparent"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
+            <div class="max-w-3xl">
+                <!-- Real-time Status Badge -->
+                <div class="inline-flex items-center space-x-2 rtl:space-x-reverse bg-white/5 border border-white/10 px-4 py-2 rounded-full mb-8 backdrop-blur-sm">
+                    <span class="flex h-2.5 w-2.5 relative">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                    </span>
+                    <span class="text-xs tracking-wider text-neutral-300 font-medium" x-text="isRtl ? '🟢 مفتوح الآن • فرع الملقا (يغلق في 2:00 صباحاً)' : '🟢 Open Now • Al Malga Branch (Closes at 2:00 AM)'"></span>
+                </div>
+
+                <!-- Hero Headers -->
+                <h1 class="text-5xl md:text-7xl font-serif font-semibold tracking-tight leading-[1.1] mb-6">
+                    <span x-show="!isRtl">Art in Every Pour.<br><span class="text-gold italic font-light">The Pulse</span> of Riyadh Nights.</span>
+                    <span x-show="isRtl">فلسفة الفن والتقطير.<br><span class="text-gold italic font-light">نبض ليالي</span> الرياض المعاصرة.</span>
+                </h1>
+
+                <p class="text-lg md:text-xl text-neutral-300 font-light leading-relaxed mb-10 max-w-2xl">
+                    <span x-show="!isRtl">Experience curated single-origin roasts, signature cold brews, and premium ceremonial matchas tailored for Riyadh's discerning design-forward community.</span>
+                    <span x-show="isRtl">استكشف محاصيلنا الحصرية الفاخرة، ومشروبات الماتشا الاحتفالية المحضّرة بمثالية، في بيئة هندسية تلهم شغفك اليومي.</span>
+                </p>
+
+                <!-- Responsive CTAs -->
+                <div class="flex flex-col sm:flex-row gap-4 sm:items-center">
+                    <a href="#interactive-hub" @click="activeTab = 'menu'" class="px-8 py-4 bg-gold text-obsidian text-sm tracking-wider font-bold rounded-sm uppercase text-center hover:bg-white hover:text-obsidian transition-all shadow-lg">
+                        <span x-text="isRtl ? 'اطلب مسبقاً (تجاوز الانتظار)' : 'Order Ahead (Skip the Line)'"></span>
+                    </a>
+                    <a href="#interactive-hub" @click="activeTab = 'branches'" class="px-8 py-4 border border-white/20 text-white text-sm tracking-wider font-semibold rounded-sm uppercase text-center hover:bg-white/10 transition-all">
+                        <span x-text="isRtl ? 'استكشف الفروع والحجز' : 'Explore Menu & Reserve'"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FEATURES SECTION (THE D2C ADVANTAGE) ================= -->
+    <section id="features" class="py-24 bg-obsidian text-white border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Title -->
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="font-serif text-3xl md:text-5xl text-gold mb-4" x-text="isRtl ? 'التجربة الرقمية المباشرة' : 'The Digital Advantage'"></h2>
+                <p class="text-neutral-400 font-light" x-text="isRtl ? 'تخطى تطبيقات التوصيل الخارجية واحصل على مزايا حصرية مباشرة من مصادرنا' : 'Skip third-party intermediaries and enjoy a friction-free, bespoke service standard.'"></p>
+            </div>
+
+            <!-- Dynamic Features Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1: Fast Pickup -->
+                <div class="bg-white/[0.02] border border-white/10 p-8 hover:border-gold/50 transition-all group">
+                    <div class="w-12 h-12 bg-gold/10 flex items-center justify-center mb-6 group-hover:bg-gold/20 transition-all">
+                        <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold mb-3 text-gold" x-text="isRtl ? '⚡ استلام فائق السرعة' : '⚡ Lightning-Fast Pickup'"></h3>
+                    <p class="text-neutral-400 font-light text-sm leading-relaxed">
+                        <span x-show="!isRtl">Order in 3 simple taps. Your signature iced Matcha or V60 single-origin roast is prepared right as you pull up to our curbside.</span>
+                        <span x-show="isRtl">اطلب بـ 3 نقرات فقط. نوفر مشروب الماتشا المثلج أو كوب التقطير الفاخر فور وصولك لمواقف الخدمة الخاصة بنا دون الحاجة للانتظار.</span>
+                    </p>
+                </div>
+
+                <!-- Feature 2: Digital Loyalty -->
+                <div class="bg-white/[0.02] border border-white/10 p-8 hover:border-gold/50 transition-all group">
+                    <div class="w-12 h-12 bg-gold/10 flex items-center justify-center mb-6 group-hover:bg-gold/20 transition-all">
+                        <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5a2 2 0 10-2 2h2zm0 0h4m-4 0H8m12 3a2 2 0 10-2-2v2h2zm-2 0H8m12 0a2 2 0 00-2 2v-2h2zm-2 0H12m-8 0a2 2 0 012-2v2H6zm2 0V8a2 2 0 012-2h-2zm0 0H4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold mb-3 text-gold" x-text="isRtl ? '🎁 برنامج ولاء حبوب القهوة' : '🎁 Exclusive Loyalty'"></h3>
+                    <p class="text-neutral-400 font-light text-sm leading-relaxed">
+                        <span x-show="!isRtl">Collect digital beans with every sip. Redeem for hidden off-menu test drinks, bespoke apparel, and reservation priority.</span>
+                        <span x-show="isRtl">اجمع حبوب القهوة الرقمية مع كل رشفة. استبدلها بمشروبات سرية وحصرية، منتجات خاصة بالهوية، وأولوية في حجز الجلسات.</span>
+                    </p>
+                </div>
+
+                <!-- Feature 3: At-Home Barista Hub -->
+                <div class="bg-white/[0.02] border border-white/10 p-8 hover:border-gold/50 transition-all group">
+                    <div class="w-12 h-12 bg-gold/10 flex items-center justify-center mb-6 group-hover:bg-gold/20 transition-all">
+                        <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold mb-3 text-gold" x-text="isRtl ? '🛍️ متجر الباريستا المنزلي' : '🛍️ At-Home Barista Hub'"></h3>
+                    <p class="text-neutral-400 font-light text-sm leading-relaxed">
+                        <span x-show="!isRtl">Bring the sensory gallery space home. Order freshly roasted single-origins, handcrafted ceramic cups, and premium tools across KSA.</span>
+                        <span x-show="isRtl">احصل على تجربة المقهى في منزلك. تسوق حبوب القهوة المحمصة طازجة، الأكواب السيراميكية المصنوعة يدوياً، وأدوات التحضير الفاخرة لكافة مدن المملكة.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= INTERACTIVE CORE SECTION ================= -->
+    <section id="interactive-hub" class="py-24 bg-travertine text-obsidian relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Navigation Tabs -->
+            <div class="flex flex-wrap border-b border-obsidian/10 mb-12 justify-center gap-4 md:gap-8">
+                <button 
+                    @click="activeTab = 'menu'"
+                    :class="activeTab === 'menu' ? 'border-gold text-gold font-bold' : 'border-transparent text-obsidian/60'"
+                    class="pb-4 px-2 border-b-2 font-serif text-lg md:text-2xl transition-all">
+                    <span x-text="isRtl ? 'قائمة الطعام الرقمية' : 'Interactive Menu'"></span>
+                </button>
+                <button 
+                    @click="activeTab = 'branches'"
+                    :class="activeTab === 'branches' ? 'border-gold text-gold font-bold' : 'border-transparent text-obsidian/60'"
+                    class="pb-4 px-2 border-b-2 font-serif text-lg md:text-2xl transition-all">
+                    <span x-text="isRtl ? 'فروعنا في الرياض' : 'Riyadh Branches'"></span>
+                </button>
+                <button 
+                    @click="activeTab = 'booking'"
+                    :class="activeTab === 'booking' ? 'border-gold text-gold font-bold' : 'border-transparent text-obsidian/60'"
+                    class="pb-4 px-2 border-b-2 font-serif text-lg md:text-2xl transition-all">
+                    <span x-text="isRtl ? 'حجز مساحة خاصة' : 'Private Space Booking'"></span>
+                </button>
+            </div>
+
+            <!-- Tab A: Interactive Digital Menu -->
+            <div x-show="activeTab === 'menu'" x-transition class="space-y-12">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Product Item 1 -->
+                    <div class="bg-white rounded-lg shadow-sm border border-obsidian/5 overflow-hidden group">
+                        <div class="h-64 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500" alt="Ceremonial Matcha Latte">
+                            <span class="absolute top-4 right-4 bg-obsidian text-white text-[10px] tracking-widest font-bold px-3 py-1 rounded-sm uppercase">
+                                Matcha Series
+                            </span>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif text-xl font-bold text-obsidian" x-text="isRtl ? 'ماتشا احتفالية مثلجة' : 'Iced Ceremonial Matcha'"></h3>
+                                <span class="font-serif font-semibold text-lg text-gold">28 SAR</span>
+                            </div>
+                            <p class="text-xs text-neutral-500 mb-4" x-text="isRtl ? 'ماتشا يوجي يابانية نقية بنكهة خفيفة وحليب الشوفان العضوي' : 'Pure Uji ceremonial grade matcha whisked with organic oat milk & subtle sweet notes.'"></p>
+                            <div class="flex justify-between items-center text-xs text-neutral-400 mb-6">
+                                <span>145 Cal</span>
+                                <span x-text="isRtl ? '🌿 خيار نباتي' : '🌿 Vegan friendly'"></span>
+                            </div>
+                            <button 
+                                @click="addToCart('Iced Ceremonial Matcha', 'ماتشا احتفالية مثلجة', 28, 'https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&w=600&q=80')"
+                                class="w-full py-3 bg-obsidian text-white text-xs tracking-wider font-bold hover:bg-gold hover:text-obsidian transition-all">
+                                <span x-text="isRtl ? 'أضف للطلب' : 'Add to Order'"></span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Product Item 2 -->
+                    <div class="bg-white rounded-lg shadow-sm border border-obsidian/5 overflow-hidden group">
+                        <div class="h-64 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500" alt="Spanish Latte">
+                            <span class="absolute top-4 right-4 bg-obsidian text-white text-[10px] tracking-widest font-bold px-3 py-1 rounded-sm uppercase">
+                                Signature Cold
+                            </span>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif text-xl font-bold text-obsidian" x-text="isRtl ? 'لاتيه إسباني مميز' : 'Sculpt Spanish Latte'"></h3>
+                                <span class="font-serif font-semibold text-lg text-gold">26 SAR</span>
+                            </div>
+                            <p class="text-xs text-neutral-500 mb-4" x-text="isRtl ? 'إسبريسو غني ممزوج بخلطتنا الخاصة والمكثفة لمذاق مثالي' : 'Double espresso pull layered with our house artisanal cream base over dense clear ice.'"></p>
+                            <div class="flex justify-between items-center text-xs text-neutral-400 mb-6">
+                                <span>210 Cal</span>
+                                <span x-text="isRtl ? '🔥 المشروب الأكثر طلباً' : '🔥 Bestseller'"></span>
+                            </div>
+                            <button 
+                                @click="addToCart('Sculpt Spanish Latte', 'لاتيه إسباني مميز', 26, 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80')"
+                                class="w-full py-3 bg-obsidian text-white text-xs tracking-wider font-bold hover:bg-gold hover:text-obsidian transition-all">
+                                <span x-text="isRtl ? 'أضف للطلب' : 'Add to Order'"></span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Product Item 3 -->
+                    <div class="bg-white rounded-lg shadow-sm border border-obsidian/5 overflow-hidden group">
+                        <div class="h-64 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1497515114629-f71d768fd07c?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500" alt="Single Origin V60">
+                            <span class="absolute top-4 right-4 bg-obsidian text-white text-[10px] tracking-widest font-bold px-3 py-1 rounded-sm uppercase">
+                                Hand Drip
+                            </span>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif text-xl font-bold text-obsidian" x-text="isRtl ? 'كوب تقطير إثيوبي V60' : 'Ethiopian Sidama V60'"></h3>
+                                <span class="font-serif font-semibold text-lg text-gold">30 SAR</span>
+                            </div>
+                            <p class="text-xs text-neutral-500 mb-4" x-text="isRtl ? 'محصول إثيوبي مجفف فاخر، بإيحاءات الفراولة والياسمين وحلوى الكرز' : 'Carefully hand-poured single origin roast featuring floral notes of jasmine, and red berries.'"></p>
+                            <div class="flex justify-between items-center text-xs text-neutral-400 mb-6">
+                                <span>4 Cal</span>
+                                <span x-text="isRtl ? '☕ محصول مختص' : '☕ Single Origin'"></span>
+                            </div>
+                            <button 
+                                @click="addToCart('Ethiopian Sidama V60', 'كوب تقطير إثيوبي V60', 30, 'https://images.unsplash.com/photo-1497515114629-f71d768fd07c?auto=format&fit=crop&w=600&q=80')"
+                                class="w-full py-3 bg-obsidian text-white text-xs tracking-wider font-bold hover:bg-gold hover:text-obsidian transition-all">
+                                <span x-text="isRtl ? 'أضف للطلب' : 'Add to Order'"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab B: Riyadh Branch Locator & Status -->
+            <div x-show="activeTab === 'branches'" x-transition>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Branch 1 -->
+                    <div 
+                        @click="selectedBranch = 'almalga'"
+                        :class="selectedBranch === 'almalga' ? 'border-gold ring-1 ring-gold bg-white' : 'border-obsidian/10 bg-white/40'"
+                        class="p-8 border cursor-pointer hover:shadow-md transition-all rounded-lg">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="font-serif text-2xl font-bold" x-text="isRtl ? 'فرع الملقا' : 'Al Malga Branch'"></h3>
+                            <span class="px-2 py-1 bg-emerald-100 text-emerald-800 text-[10px] font-bold rounded uppercase" x-text="isRtl ? 'مفتوح' : 'Open'"></span>
+                        </div>
+                        <p class="text-sm text-neutral-500 mb-6" x-text="isRtl ? 'طريق أنس بن مالك، الملقا، الرياض' : 'Anas Bin Malik Road, Al Malga, Riyadh'"></p>
+                        <div class="space-y-2 text-xs text-neutral-600 mb-6">
+                            <div class="flex justify-between"><span>⏰ Hours:</span><span class="font-medium">6:00 AM - 2:00 AM</span></div>
+                            <div class="flex justify-between"><span>🚗 Drive-Thru:</span><span class="font-medium text-emerald-600">Available</span></div>
+                            <div class="flex justify-between"><span>☕ Current Vibe:</span><span class="font-medium text-gold">Vibrant Crowd</span></div>
+                        </div>
+                        <a href="https://maps.google.com" target="_blank" class="inline-flex items-center text-xs tracking-wider font-bold text-gold hover:text-obsidian transition-all">
+                            <span x-text="isRtl ? 'الاتجاهات (خرائط جوجل)' : 'GET DIRECTIONS (GOOGLE MAPS)'"></span>
+                            <svg class="w-4 h-4 ml-1 rtl:mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </a>
+                    </div>
+
+                    <!-- Branch 2 -->
+                    <div 
+                        @click="selectedBranch = 'laysen'"
+                        :class="selectedBranch === 'laysen' ? 'border-gold ring-1 ring-gold bg-white' : 'border-obsidian/10 bg-white/40'"
+                        class="p-8 border cursor-pointer hover:shadow-md transition-all rounded-lg">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="font-serif text-2xl font-bold" x-text="isRtl ? 'فرع ليسن فالي' : 'Laysen Valley Branch'"></h3>
+                            <span class="px-2 py-1 bg-emerald-100 text-emerald-800 text-[10px] font-bold rounded uppercase" x-text="isRtl ? 'مفتوح' : 'Open'"></span>
+                        </div>
+                        <p class="text-sm text-neutral-500 mb-6" x-text="isRtl ? 'ليسن فالي، غرب الرياض، طريق الملك خالد' : 'Laysen Valley, Western Ring, King Khalid Road'"></p>
+                        <div class="space-y-2 text-xs text-neutral-600 mb-6">
+                            <div class="flex justify-between"><span>⏰ Hours:</span><span class="font-medium">7:00 AM - Midnight</span></div>
+                            <div class="flex justify-between"><span>🚗 Drive-Thru:</span><span class="font-medium text-neutral-400">Indoor Only</span></div>
+                            <div class="flex justify-between"><span>☕ Current Vibe:</span><span class="font-medium text-emerald-600">Quiet Study</span></div>
+                        </div>
+                        <a href="https://maps.google.com" target="_blank" class="inline-flex items-center text-xs tracking-wider font-bold text-gold hover:text-obsidian transition-all">
+                            <span x-text="isRtl ? 'الاتجاهات (خرائط جوجل)' : 'GET DIRECTIONS (GOOGLE MAPS)'"></span>
+                            <svg class="w-4 h-4 ml-1 rtl:mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </a>
+                    </div>
+
+                    <!-- Branch 3 -->
+                    <div 
+                        @click="selectedBranch = 'sulimaniyah'"
+                        :class="selectedBranch === 'sulimaniyah' ? 'border-gold ring-1 ring-gold bg-white' : 'border-obsidian/10 bg-white/40'"
+                        class="p-8 border cursor-pointer hover:shadow-md transition-all rounded-lg">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="font-serif text-2xl font-bold" x-text="isRtl ? 'فرع السليمانية' : 'As-Sulimaniyah'"></h3>
+                            <span class="px-2 py-1 bg-emerald-100 text-emerald-800 text-[10px] font-bold rounded uppercase" x-text="isRtl ? 'مفتوح' : 'Open'"></span>
+                        </div>
+                        <p class="text-sm text-neutral-500 mb-6" x-text="isRtl ? 'شارع عبد الله بن حمدان، السليمانية' : 'Abdullah Bin Hamdan St, Sulimaniyah'"></p>
+                        <div class="space-y-2 text-xs text-neutral-600 mb-6">
+                            <div class="flex justify-between"><span>⏰ Hours:</span><span class="font-medium">24 Hours</span></div>
+                            <div class="flex justify-between"><span>🚗 Drive-Thru:</span><span class="font-medium text-emerald-600">Available</span></div>
+                            <div class="flex justify-between"><span>☕ Current Vibe:</span><span class="font-medium text-gold">Social Nightlife</span></div>
+                        </div>
+                        <a href="https://maps.google.com" target="_blank" class="inline-flex items-center text-xs tracking-wider font-bold text-gold hover:text-obsidian transition-all">
+                            <span x-text="isRtl ? 'الاتجاهات (خرائط جوجل)' : 'GET DIRECTIONS (GOOGLE MAPS)'"></span>
+                            <svg class="w-4 h-4 ml-1 rtl:mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab C: Private Space & Corporate Booking -->
+            <div x-show="activeTab === 'booking'" x-transition class="max-w-3xl mx-auto bg-white p-8 md:p-12 border border-obsidian/10 shadow-lg rounded-lg">
+                <div class="text-center mb-8">
+                    <h3 class="font-serif text-3xl font-bold text-obsidian mb-2" x-text="isRtl ? 'حجز مساحات إبداعية واجتماعات' : 'Creative Space Reservations'"></h3>
+                    <p class="text-sm text-neutral-500" x-text="isRtl ? 'استضف فوتوشوت، اجتماعات شركات، أو تجمع إبداعي خاص في صالة المعرض الفنية لدينا.' : 'Reserve our design-forward private gallery rooms for creators, brand meetups, or custom workspace sessions.'"></p>
+                </div>
+
+                <form @submit.prevent="bookingSubmitted = true" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-obsidian/70 mb-2" x-text="isRtl ? 'الاسم الكامل' : 'Full Name'"></label>
+                            <input required type="text" class="w-full px-4 py-3 border border-obsidian/10 rounded-sm text-sm focus:outline-none focus:border-gold bg-travertine/50">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-obsidian/70 mb-2" x-text="isRtl ? 'رقم الهاتف (الواتساب)' : 'WhatsApp Number'"></label>
+                            <input required type="tel" placeholder="+966 5x xxx xxxx" class="w-full px-4 py-3 border border-obsidian/10 rounded-sm text-sm focus:outline-none focus:border-gold bg-travertine/50">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-obsidian/70 mb-2" x-text="isRtl ? 'التاريخ المطلوب' : 'Preferred Date'"></label>
+                            <input required x-model="bookingDate" type="date" class="w-full px-4 py-3 border border-obsidian/10 rounded-sm text-sm focus:outline-none focus:border-gold bg-travertine/50">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-obsidian/70 mb-2" x-text="isRtl ? 'الفترة الزمنية' : 'Select Time Slot'"></label>
+                            <select required x-model="bookingTime" class="w-full px-4 py-3 border border-obsidian/10 rounded-sm text-sm focus:outline-none focus:border-gold bg-travertine/50">
+                                <option value="" x-text="isRtl ? 'اختر الوقت' : 'Select time'"></option>
+                                <option value="morning" x-text="isRtl ? 'صباحي (8:00 ص - 12:00 م)' : 'Morning (8:00 AM - 12:00 PM)'"></option>
+                                <option value="afternoon" x-text="isRtl ? 'مسائي مبكر (12:00 م - 4:00 م)' : 'Afternoon (12:00 PM - 4:00 PM)'"></option>
+                                <option value="evening" x-text="isRtl ? 'مسائي (4:00 م - 9:00 م)' : 'Evening (4:00 PM - 9:00 PM)'"></option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-8">
+                        <button type="submit" class="px-8 py-4 bg-obsidian text-white text-xs font-bold uppercase tracking-widest hover:bg-gold hover:text-obsidian transition-all w-full md:w-auto">
+                            <span x-text="isRtl ? 'تقديم طلب الحجز المباشر' : 'Submit Reservation Request'"></span>
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Success Notification -->
+                <div x-show="bookingSubmitted" x-transition class="mt-6 p-4 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded text-center">
+                    <span class="font-bold" x-text="isRtl ? '🎉 تم استلام طلب الحجز الخاص بك!' : '🎉 Reservation Request Submitted Successfully!'"></span>
+                    <p class="text-xs mt-1" x-text="isRtl ? 'سيقوم فريق علاقات الضيوف بالتواصل معك عبر الواتساب لتأكيد الموعد.' : 'Our guest relations team will contact you via WhatsApp shortly to finalize your custom layout preference.'"></p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= SOCIAL PROOF (RIYADH COMMUNITY WALL) ================= -->
+    <section id="social-wall" class="py-24 bg-obsidian text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-xs tracking-[0.2em] uppercase text-gold font-bold" x-text="isRtl ? 'انضم إلى مجتمعنا المعاصر' : 'As Seen on Riyadh TikTok & Snapchat'"></span>
+                <h2 class="font-serif text-3xl md:text-5xl text-white mt-2" x-text="isRtl ? 'تجربة يرويها مجتمعنا' : 'The Social Standard'"></h2>
+            </div>
+
+            <!-- Shoppable Dynamic Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <!-- UGC 1 -->
+                <div class="relative overflow-hidden group aspect-[3/4]">
+                    <img src="https://images.unsplash.com/photo-1507133750040-4a8f57021571?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" alt="Riyadh Creator Vibe">
+                    <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-4">
+                        <span class="text-xs text-gold font-bold">@sarah.riyadh</span>
+                        <p class="text-[10px] text-neutral-300 mb-3">"The aesthetic here is unmatched. Absolute masterpiece!"</p>
+                        <button 
+                            @click="addToCart('Iced Ceremonial Matcha', 'ماتشا احتفالية مثلجة', 28, 'https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&w=600&q=80')"
+                            class="py-1.5 px-3 bg-gold text-obsidian text-[10px] font-bold rounded-sm uppercase tracking-wide hover:bg-white transition-all">
+                            + Order Sarah's Drink
+                        </button>
+                    </div>
+                </div>
+                <!-- UGC 2 -->
+                <div class="relative overflow-hidden group aspect-[3/4]">
+                    <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" alt="Pastry Aesthetic">
+                    <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-4">
+                        <span class="text-xs text-gold font-bold">@foodie.ksa</span>
+                        <p class="text-[10px] text-neutral-300 mb-3">"Croissants imported daily, crispness is otherworldly!"</p>
+                        <button 
+                            @click="addToCart('Ethiopian Sidama V60', 'كوب تقطير إثيوبي V60', 30, 'https://images.unsplash.com/photo-1497515114629-f71d768fd07c?auto=format&fit=crop&w=600&q=80')"
+                            class="py-1.5 px-3 bg-gold text-obsidian text-[10px] font-bold rounded-sm uppercase tracking-wide hover:bg-white transition-all">
+                            + Order Aesthetic V60
+                        </button>
+                    </div>
+                </div>
+                <!-- UGC 3 -->
+                <div class="relative overflow-hidden group aspect-[3/4]">
+                    <img src="https://images.unsplash.com/photo-1497515114629-f71d768fd07c?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" alt="Brewing Art">
+                    <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-4">
+                        <span class="text-xs text-gold font-bold">@riyadh.lifestyle</span>
+                        <p class="text-[10px] text-neutral-300 mb-3">"Best mid-night work spot in Al Malga."</p>
+                        <button 
+                            @click="addToCart('Sculpt Spanish Latte', 'لاتيه إسباني مميز', 26, 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80')"
+                            class="py-1.5 px-3 bg-gold text-obsidian text-[10px] font-bold rounded-sm uppercase tracking-wide hover:bg-white transition-all">
+                            + Order Double Espresso
+                        </button>
+                    </div>
+                </div>
+                <!-- UGC 4 -->
+                <div class="relative overflow-hidden group aspect-[3/4]">
+                    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" alt="Interior Gallery">
+                    <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-4">
+                        <span class="text-xs text-gold font-bold">@arch.riyadh</span>
+                        <p class="text-[10px] text-neutral-300 mb-3">"Minimalism in design perfectly echoes their clean coffee flavors."</p>
+                        <button 
+                            @click="addToCart('Iced Ceremonial Matcha', 'ماتشا احتفالية مثلجة', 28, 'https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&w=600&q=80')"
+                            class="py-1.5 px-3 bg-gold text-obsidian text-[10px] font-bold rounded-sm uppercase tracking-wide hover:bg-white transition-all">
+                            + Order Iconic Matcha
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= CONVERSION (CTA) SECTION ================= -->
+    <section class="py-24 bg-travertine text-obsidian relative border-t border-obsidian/10 overflow-hidden">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <h2 class="font-serif text-4xl md:text-6xl font-bold tracking-tight mb-4">
+                <span x-text="isRtl ? 'طقوسك اليومية، بمستوى أرقى.' : 'Your Daily Ritual, Elevated.'"></span>
+            </h2>
+            <p class="text-neutral-600 font-light max-w-xl mx-auto mb-10">
+                <span x-show="!isRtl">Enter your mobile number to instantly receive our Web-App link for seamless order pickup and premium member bean drops.</span>
+                <span x-show="isRtl">أدخل رقم جوالك لتصلك فوراً رابط طلب الخدمات الرقمية والاستفادة من عروض الأعضاء الحصرية والطلب المسبق.</span>
+            </p>
+
+            <!-- Phone input for SMS app link -->
+            <form @submit.prevent="smsSent = true" class="max-w-md mx-auto flex flex-col sm:flex-row gap-3 mb-8">
+                <input 
+                    required 
+                    type="tel" 
+                    x-model="phoneNum" 
+                    placeholder="+966 5x xxx xxxx" 
+                    class="flex-1 px-5 py-4 bg-white border border-obsidian/10 rounded-sm text-sm focus:outline-none focus:border-gold">
+                <button 
+                    type="submit" 
+                    class="px-8 py-4 bg-obsidian text-white text-xs font-bold uppercase tracking-wider hover:bg-gold hover:text-obsidian transition-all">
+                    <span x-text="isRtl ? 'أرسل رابط التطبيق' : 'Get App Link'"></span>
+                </button>
+            </form>
+
+            <!-- Status notification -->
+            <div x-show="smsSent" x-transition class="text-emerald-700 text-xs font-semibold mb-8">
+                <span x-text="isRtl ? '✔️ تم إرسال رابط تطبيق الطلب بنجاح إلى هاتفك!' : '✔️ Order App Link sent successfully to your device!'"></span>
+            </div>
+
+            <!-- Express Payment Badges -->
+            <div class="flex justify-center items-center space-x-6 rtl:space-x-reverse opacity-70">
+                <span class="text-xs text-neutral-500 uppercase tracking-widest" x-text="isRtl ? 'الدفع الآمن السريع' : 'Express Secure Checkout'"></span>
+                <!-- Apple Pay Mock Badge -->
+                <div class="h-8 w-12 bg-white border border-neutral-200 rounded flex items-center justify-center font-bold text-xs shadow-sm">
+                     Pay
+                </div>
+                <!-- Mada Mock Badge -->
+                <div class="h-8 w-12 bg-white border border-neutral-200 rounded flex items-center justify-center font-bold text-[10px] text-blue-800 italic shadow-sm">
+                    mada
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="bg-obsidian text-neutral-400 py-16 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <!-- Column 1: Brand -->
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-3 rtl:space-x-reverse">
+                        <div class="w-8 h-8 rounded-full border border-gold flex items-center justify-center">
+                            <span class="text-gold font-serif text-sm font-bold">S</span>
+                        </div>
+                        <span class="font-serif text-white tracking-wider font-bold">SCULPT &amp; ASH</span>
+                    </div>
+                    <p class="text-xs font-light leading-relaxed">
+                        <span x-show="!isRtl">Merging Riyadh's high-end gallery aesthetic with direct-to-consumer technology to elevate the daily specialty coffee standard.</span>
+                        <span x-show="isRtl">دمج بيئة المعارض الفنية في الرياض بالتقنية الرقمية المباشرة لتطوير طقوسك اليومية في تناول القهوة المختصة.</span>
+                    </p>
+                </div>
+
+                <!-- Column 2: Quick Links -->
+                <div>
+                    <h4 class="text-white text-xs font-bold uppercase tracking-wider mb-4" x-text="isRtl ? 'روابط سريعة' : 'Quick Navigation'"></h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#" class="hover:text-gold transition-all" x-text="isRtl ? 'قائمة الطعام التفاعلية' : 'Interactive Menu'"></a></li>
+                        <li><a href="#interactive-hub" @click="activeTab = 'branches'" class="hover:text-gold transition-all" x-text="isRtl ? 'الفروع وساعات العمل' : 'Branches &amp; Hours'"></a></li>
+                        <li><a href="#" class="hover:text-gold transition-all" x-text="isRtl ? 'بوابة التوظيف' : 'Careers'"></a></li>
+                        <li><a href="#" class="hover:text-gold transition-all" x-text="isRtl ? 'الامتياز التجاري' : 'Franchise Inquiries'"></a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Legal & Saudi Compliance -->
+                <div>
+                    <h4 class="text-white text-xs font-bold uppercase tracking-wider mb-4" x-text="isRtl ? 'الامتثال القانوني' : 'Saudi Compliance'"></h4>
+                    <div class="space-y-2 text-[11px] font-light leading-relaxed">
+                        <div>Commercial Registration: <span class="text-white">1010729384</span></div>
+                        <div>VAT Registration: <span class="text-white">310293847500003</span></div>
+                        <div>ZATCA Certified e-Invoice Standard</div>
+                    </div>
+                </div>
+
+                <!-- Column 4: Contact & Social -->
+                <div>
+                    <h4 class="text-white text-xs font-bold uppercase tracking-wider mb-4" x-text="isRtl ? 'تواصل معنا' : 'Contact Us'"></h4>
+                    <div class="space-y-2 text-xs">
+                        <div>Email: <span class="text-white">experience@sculptash.com</span></div>
+                        <div>WhatsApp: <span class="text-white">+966 50 338 2291</span></div>
+                        <div class="flex space-x-3 rtl:space-x-reverse mt-4">
+                            <a href="#" class="w-8 h-8 rounded-full border border-white/10 hover:border-gold hover:text-gold flex items-center justify-center transition-all">
+                                <span>Inst</span>
+                            </a>
+                            <a href="#" class="w-8 h-8 rounded-full border border-white/10 hover:border-gold hover:text-gold flex items-center justify-center transition-all">
+                                <span>Snap</span>
+                            </a>
+                            <a href="#" class="w-8 h-8 rounded-full border border-white/10 hover:border-gold hover:text-gold flex items-center justify-center transition-all">
+                                <span>TikTok</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Footer and Security badging -->
+            <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center text-xs">
+                <p x-text="isRtl ? '© 2026 سكولبت آند آش. صنعت بشغف لثقافة القهوة في الرياض.' : '© 2026 Sculpt & Ash. Crafted for Riyadh’s Elite Coffee Culture.'"></p>
+                <div class="flex items-center space-x-4 rtl:space-x-reverse mt-4 md:mt-0 opacity-60">
+                    <span>Mada</span>
+                    <span>Apple Pay</span>
+                    <span>Tabby</span>
+                    <span>Tamara</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================= SLIDE-OUT CART / CHECKOUT DRAWER ================= -->
+    <div 
+        x-show="isCartOpen" 
+        x-cloak
+        class="fixed inset-0 z-50 overflow-hidden" 
+        aria-labelledby="slide-over-title" 
+        role="dialog" 
+        aria-modal="true">
+        <div class="absolute inset-0 overflow-hidden">
+            <!-- Overlay background -->
+            <div 
+                @click="isCartOpen = false" 
+                class="absolute inset-0 bg-obsidian/75 backdrop-blur-sm transition-opacity" 
+                aria-hidden="true"></div>
+
+            <div class="fixed inset-y-0 right-0 max-w-full flex pl-10 rtl:pl-0 rtl:pr-10">
+                <div class="w-screen max-w-md">
+                    <div class="h-full flex flex-col bg-white shadow-2xl overflow-y-scroll text-obsidian">
+                        <!-- Cart Header -->
+                        <div class="px-6 py-6 border-b border-obsidian/10 flex items-center justify-between bg-travertine">
+                            <h2 class="font-serif text-2xl font-bold" x-text="isRtl ? 'سلة الطلب السريع' : 'Quick Order Cart'"></h2>
+                            <button @click="isCartOpen = false" class="p-2 hover:text-gold transition-all">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <!-- Cart Items -->
+                        <div class="flex-1 py-6 overflow-y-auto px-6 space-y-6">
+                            <template x-if="cart.length === 0">
+                                <div class="text-center py-20">
+                                    <svg class="w-16 h-16 mx-auto text-neutral-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                                    </svg>
+                                    <p class="text-neutral-500 font-light" x-text="isRtl ? 'سلتك فارغة تماماً.' : 'Your cart is completely empty.'"></p>
+                                    <button @click="isCartOpen = false" class="text-gold font-bold text-sm mt-4 uppercase" x-text="isRtl ? 'تصفح القائمة' : 'Browse Menu'"></button>
+                                </div>
+                            </template>
+
+                            <template x-for="(item, index) in cart" :key="index">
+                                <div class="flex items-center justify-between pb-6 border-b border-obsidian/5">
+                                    <div class="flex items-center space-x-4 rtl:space-x-reverse">
+                                        <img :src="item.image" class="w-16 h-16 object-cover rounded" alt="Product Image">
+                                        <div>
+                                            <h4 class="font-serif font-bold text-sm" x-text="isRtl ? item.nameAr : item.nameEn"></h4>
+                                            <p class="text-xs text-neutral-500" x-text="'QTY: ' + item.quantity"></p>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <span class="font-serif text-sm font-bold" x-text="(item.price * item.quantity) + ' SAR'"></span>
+                                        <button 
+                                            @click="removeFromCart(index)"
+                                            class="block text-[10px] text-red-500 hover:underline mt-1" x-text="isRtl ? 'إزالة' : 'Remove'"></button>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+
+                        <!-- Cart Checkout Actions -->
+                        <div class="border-t border-obsidian/10 px-6 py-6 bg-travertine space-y-4">
+                            <div class="flex justify-between font-serif text-lg font-bold">
+                                <span x-text="isRtl ? 'الإجمالي الفرعي' : 'Subtotal'"></span>
+                                <span x-text="cartTotal + ' SAR'"></span>
+                            </div>
+                            <p class="text-[11px] text-neutral-500" x-text="isRtl ? '* السعر يشمل ضريبة القيمة المضافة ومعد للاستلام المباشر' : '* Price includes VAT. Prepared for instantaneous pickup.'"></p>
+
+                            <!-- Apple Pay One-click checkout mock -->
+                            <button 
+                                x-show="cart.length > 0"
+                                @click="checkoutLoading = true; setTimeout(() => { checkoutLoading = false; checkoutSuccess = true; cart = []; }, 1500)"
+                                class="w-full py-4 bg-obsidian text-white text-xs font-bold uppercase tracking-wider rounded-sm flex items-center justify-center space-x-2 rtl:space-x-reverse hover:bg-gold hover:text-obsidian transition-all">
+                                <span x-show="!checkoutLoading" x-text="isRtl ? 'الدفع السريع بـ Apple Pay' : 'Pay Express with Apple Pay'"></span>
+                                <span x-show="checkoutLoading" class="animate-pulse" x-text="isRtl ? 'جاري الاتصال البنكي الآمن...' : 'Securing instant connection...'"></span>
+                            </button>
+
+                            <!-- Success State -->
+                            <div x-show="checkoutSuccess" x-transition class="p-4 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded text-center text-xs">
+                                <span class="font-bold block" x-text="isRtl ? '🎉 تم الدفع والاستلام للتحضير!' : '🎉 Payment Processed Successfully!'"></span>
+                                <p class="mt-1" x-text="isRtl ? 'طلبك الآن تحت التحضير في فرع الملقا. يرجى التوجه لموقف التسليم.' : 'Your order is currently brewing at the Al Malga flagship. Head to the pickup zone.'"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
