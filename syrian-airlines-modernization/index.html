@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syrian Airlines - Connecting Damascus with the GCC</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Alpine.js for Interactive UI Components -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        airlineBlue: '#0B2545',
+                        airlineLightBlue: '#134074',
+                        airlineGold: '#E0A96D',
+                        airlinePlatinum: '#EEF4F8',
+                        airlineDarkGold: '#C28C4F'
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glassmorphism {
+            background: rgba(11, 37, 69, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        [x-cloak] { display: none !important; }
+    </style>
+</head>
+<body class="font-sans bg-slate-50 text-slate-800 antialiased overflow-x-hidden" x-data="{ bookingModal: false, activeTab: 'book', flightResults: null, loadingStatus: false, statusMessage: '' }">
+
+    <!-- 1. Header / Navigation Bar -->
+    <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300 glassmorphism border-b border-white/10" x-data="{ mobileMenu: false }">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Left: Syrian Airlines Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-md p-1.5">
+                        <!-- Styled Clean Vector/SVG Bird Logo representing Syrian Airlines Heritage -->
+                        <svg class="w-full h-full text-airlineBlue" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 50 C20 45, 35 45, 50 35 C65 25, 75 10, 90 20 C85 35, 70 45, 55 50 C40 55, 25 60, 10 50 Z" fill="currentColor"/>
+                            <path d="M15 55 C25 58, 45 62, 60 55 C70 50, 80 40, 85 45 C75 52, 60 62, 45 65 C30 68, 20 62, 15 55 Z" fill="currentColor" opacity="0.7"/>
+                            <circle cx="80" cy="28" r="4" fill="#E0A96D"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="block text-white font-extrabold text-lg tracking-wider font-serif uppercase">Syrian Airlines</span>
+                        <span class="block text-[10px] text-airlineGold tracking-[0.2em] font-medium uppercase">الخطوط الجوية السورية</span>
+                    </div>
+                </div>
+
+                <!-- Center Links (Desktop) -->
+                <nav class="hidden md:flex space-x-8 text-sm font-medium text-white/90">
+                    <a href="#destinations" class="hover:text-airlineGold transition-colors duration-200">Destinations</a>
+                    <a href="#why-us" class="hover:text-airlineGold transition-colors duration-200">Why Choose Us</a>
+                    <a href="#flight-status" class="hover:text-airlineGold transition-colors duration-200">Flight Status</a>
+                    <a href="#offices" class="hover:text-airlineGold transition-colors duration-200">GCC Support</a>
+                </nav>
+
+                <!-- Right Actions -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <div class="flex border border-white/20 rounded-lg overflow-hidden text-xs text-white">
+                        <button class="px-2.5 py-1.5 bg-airlineGold text-airlineBlue font-semibold">EN</button>
+                        <button class="px-2.5 py-1.5 hover:bg-white/10 transition-colors">AR</button>
+                    </div>
+                    <a href="#booking-engine" class="bg-airlineBlue border border-airlineGold/60 hover:bg-airlineLightBlue text-white font-semibold px-5 py-2.5 rounded-lg text-sm transition-all duration-200 hover:border-airlineGold shadow-lg">
+                        Manage Booking / Login
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center space-x-2">
+                    <div class="flex border border-white/20 rounded-lg overflow-hidden text-xs text-white mr-2">
+                        <button class="px-2 py-1 bg-airlineGold text-airlineBlue font-semibold">EN</button>
+                        <button class="px-2 py-1 hover:bg-white/10 transition-colors">AR</button>
+                    </div>
+                    <button @click="mobileMenu = !mobileMenu" class="text-white hover:text-airlineGold focus:outline-none p-1.5">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path x-show="!mobileMenu" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            <path x-show="mobileMenu" x-cloak stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div x-show="mobileMenu" x-cloak class="md:hidden glassmorphism border-t border-white/10 px-4 pt-4 pb-6 space-y-3">
+            <a href="#destinations" @click="mobileMenu = false" class="block text-white hover:text-airlineGold text-base font-medium py-2">Destinations</a>
+            <a href="#why-us" @click="mobileMenu = false" class="block text-white hover:text-airlineGold text-base font-medium py-2">Why Choose Us</a>
+            <a href="#flight-status" @click="mobileMenu = false" class="block text-white hover:text-airlineGold text-base font-medium py-2">Flight Status</a>
+            <a href="#offices" @click="mobileMenu = false" class="block text-white hover:text-airlineGold text-base font-medium py-2">GCC Support</a>
+            <div class="pt-4 border-t border-white/10">
+                <a href="#booking-engine" @click="mobileMenu = false" class="block text-center bg-airlineGold hover:bg-airlineDarkGold text-airlineBlue font-bold py-3 rounded-lg text-sm shadow-md transition-all">
+                    Manage Booking / Login
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. Hero Section (The Conversion Engine) -->
+    <section class="relative min-h-screen pt-20 flex flex-col justify-between bg-airlineBlue overflow-hidden">
+        <!-- Background Layer -->
+        <div class="absolute inset-0 z-0 opacity-40 mix-blend-overlay">
+            <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1920&q=80" class="w-full h-full object-cover" alt="Syrian Airlines Cruising Sunset">
+        </div>
+        <!-- Elegant blue & gold gradient mesh overlay -->
+        <div class="absolute inset-0 bg-gradient-to-b from-airlineBlue/85 via-airlineBlue/90 to-airlineBlue z-0"></div>
+
+        <!-- Hero Content + Search Widget Area -->
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-12 md:pt-16 pb-12 flex-grow flex flex-col justify-center">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <!-- Headline Content -->
+                <div class="lg:col-span-5 text-center lg:text-left text-white space-y-6">
+                    <span class="inline-flex items-center space-x-2 bg-airlineGold/15 border border-airlineGold/45 px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wider text-airlineGold uppercase">
+                        <span class="w-2 h-2 rounded-full bg-airlineGold animate-pulse"></span>
+                        <span>Direct Regional Booking Online</span>
+                    </span>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold leading-tight">
+                        Connecting <span class="text-airlineGold">Damascus</span> with the Heart of the GCC
+                    </h1>
+                    <p class="text-white/80 text-base sm:text-lg leading-relaxed font-light">
+                        Experience authentic hospitality, generous baggage allowances, and direct, cost-effective flights connecting Damascus to Bahrain, UAE, and Qatar. Book directly online—no agency required.
+                    </p>
+                </div>
+
+                <!-- Interactive Widget (The Core Flight Booking Fix) -->
+                <div id="booking-engine" class="lg:col-span-7 bg-white rounded-2xl shadow-2xl p-4 sm:p-6 text-slate-800 border border-slate-100">
+                    <!-- Tab Controllers -->
+                    <div class="flex space-x-2 border-b border-slate-200 pb-3 mb-5">
+                        <button @click="activeTab = 'book'" 
+                                :class="activeTab === 'book' ? 'bg-airlineBlue text-white shadow-md' : 'text-slate-500 hover:text-airlineBlue bg-slate-100 hover:bg-slate-200'" 
+                                class="flex-1 flex items-center justify-center space-x-2 py-2.5 rounded-lg text-sm font-semibold transition-all duration-150">
+                            <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"></path></svg>
+                            <span>Book Flight</span>
+                        </button>
+                        <button @click="activeTab = 'status'" 
+                                :class="activeTab === 'status' ? 'bg-airlineBlue text-white shadow-md' : 'text-slate-500 hover:text-airlineBlue bg-slate-100 hover:bg-slate-200'" 
+                                class="flex-1 flex items-center justify-center space-x-2 py-2.5 rounded-lg text-sm font-semibold transition-all duration-150">
+                            <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span>Flight Status</span>
+                        </button>
+                        <button @click="activeTab = 'checkin'" 
+                                :class="activeTab === 'checkin' ? 'bg-airlineBlue text-white shadow-md' : 'text-slate-500 hover:text-airlineBlue bg-slate-100 hover:bg-slate-200'" 
+                                class="flex-1 flex items-center justify-center space-x-2 py-2.5 rounded-lg text-sm font-semibold transition-all duration-150">
+                            <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                            <span>Check-In</span>
+                        </button>
+                    </div>
+
+                    <!-- Form Switchable Contents -->
+
+                    <!-- Tab 1: Book Flight -->
+                    <div x-show="activeTab === 'book'" class="space-y-4" x-data="{
+                        flightType: 'round-trip',
+                        origin: 'DAM',
+                        destination: 'DXB',
+                        departDate: '',
+                        returnDate: '',
+                        passengers: '1',
+                        triggerSearch() {
+                            loadingStatus = true;
+                            flightResults = null;
+                            setTimeout(() => {
+                                loadingStatus = false;
+                                flightResults = [
+                                    { flight: 'RB401', origin: this.origin, dest: this.destination, time: '08:30', duration: '3h 15m', stops: 'Direct', price: '$290' },
+                                    { flight: 'RB405', origin: this.origin, dest: this.destination, time: '16:45', duration: '3h 15m', stops: 'Direct', price: '$315' }
+                                ];
+                            }, 1500);
+                        }
+                    }">
+                        <div class="flex space-x-4 mb-2">
+                            <label class="flex items-center space-x-2 text-xs font-semibold uppercase tracking-wider text-slate-500 cursor-pointer">
+                                <input type="radio" name="flight-type" value="round-trip" x-model="flightType" class="text-airlineBlue focus:ring-airlineBlue">
+                                <span>Round Trip</span>
+                            </label>
+                            <label class="flex items-center space-x-2 text-xs font-semibold uppercase tracking-wider text-slate-500 cursor-pointer">
+                                <input type="radio" name="flight-type" value="one-way" x-model="flightType" class="text-airlineBlue focus:ring-airlineBlue">
+                                <span>One Way</span>
+                            </label>
+                        </div>
+
+                        <!-- Route Pickers -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5">From (Origin)</label>
+                                <div class="relative">
+                                    <select x-model="origin" class="w-full bg-slate-50 border border-slate-200 rounded-lg py-3 px-4 text-slate-800 font-semibold focus:outline-none focus:ring-2 focus:ring-airlineBlue transition-all">
+                                        <option value="DAM">Damascus (DAM) - Int'l Airport</option>
+                                        <option value="DXB">Dubai (DXB) - Int'l Airport</option>
+                                        <option value="BAH">Bahrain (BAH) - Int'l Airport</option>
+                                        <option value="DOH">Doha (DOH) - Hamad Int'l</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5">To (Destination)</label>
+                                <div class="relative">
+                                    <select x-model="destination" class="w-full bg-slate-50 border border-slate-200 rounded-lg py-3 px-4 text-slate-800 font-semibold focus:outline-none focus:ring-2 focus:ring-airlineBlue transition-all">
+                                        <option value="DXB">Dubai (DXB) - Int'l Airport</option>
+                                        <option value="DAM">Damascus (DAM) - Int'l Airport</option>
+                                        <option value="BAH">Bahrain (BAH) - Int'l Airport</option>
+                                        <option value="DOH">Doha (DOH) - Hamad Int'l</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Dates & Passengers -->
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5">Departure Date</label>
+                                <input type="date" x-model="departDate" class="w-full bg-slate-50 border border-slate-200 rounded-lg py-3 px-4 text-slate-800 focus:outline-none focus:ring-2 focus:ring-airlineBlue transition-all">
+                            </div>
+                            <div :class="flightType === 'one-way' ? 'opacity-40 pointer-events-none' : ''">
+                                <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5">Return Date</label>
+                                <input type="date" x-model="returnDate" :disabled="flightType === 'one-way'" class="w-full bg-slate-50 border border-slate-200 rounded-lg py-3 px-4 text-slate-800 focus:outline-none focus:ring-2 focus:ring-airlineBlue transition-all">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5">Passengers</label>
+                                <select x-model="passengers" class="w-full bg-slate-50 border border-slate-200 rounded-lg py-3 px-4 text-slate-800 font-semibold focus:outline-none focus:ring-2 focus:ring-airlineBlue transition-all">
+                                    <option value="1">1 Passenger (Economy)</option>
+                                    <option value="2">2 Passengers (Economy)</option>
+                                    <option value="3">3 Passengers (Economy)</option>
+                                    <option value="4">4+ Passengers (Economy)</option>
+                                    <option value="biz-1">1 Passenger (Business Class)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- CTA Button -->
+                        <button @click="triggerSearch" class="w-full bg-gradient-to-r from-airlineGold to-airlineDarkGold text-airlineBlue hover:brightness-110 font-bold py-4 rounded-xl text-base shadow-lg transition-all flex items-center justify-center space-x-3 mt-4 text-center cursor-pointer">
+                            <span>Search Available Flights</span>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.637 10.637z"></path></svg>
+                        </button>
+
+                        <!-- Mock Live Flight Availability Display Area -->
+                        <div x-show="loadingStatus" x-cloak class="mt-4 flex flex-col items-center justify-center py-6 space-y-2">
+                            <svg class="animate-spin h-8 w-8 text-airlineGold" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                            <span class="text-sm text-slate-500 font-medium">Searching direct regional fares...</span>
+                        </div>
+
+                        <div x-show="flightResults" x-cloak class="mt-4 p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-3">
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Available Direct Flights Today</span>
+                                <span class="text-xs bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-bold">Best Price Found</span>
+                            </div>
+                            <template x-for="f in flightResults" :key="f.flight">
+                                <div class="bg-white p-3 rounded-lg border border-slate-100 shadow-sm flex flex-col sm:flex-row justify-between items-center gap-4">
+                                    <div class="flex items-center space-x-4">
+                                        <div class="bg-airlineBlue/5 p-2.5 rounded-lg text-airlineBlue font-bold text-sm tracking-wide" x-text="f.flight"></div>
+                                        <div>
+                                            <div class="text-sm font-extrabold text-slate-800" x-text="f.time"></div>
+                                            <div class="text-xs text-slate-400"><span x-text="f.origin"></span> ➔ <span x-text="f.dest"></span></div>
+                                        </div>
+                                    </div>
+                                    <div class="text-center sm:text-right">
+                                        <span class="block text-xs text-slate-400">Duration: <strong x-text="f.duration"></strong></span>
+                                        <span class="block text-xs text-emerald-600 font-semibold">Baggage Allowance Included</span>
+                                    </div>
+                                    <div class="flex items-center space-x-3 w-full sm:w-auto justify-between sm:justify-end border-t sm:border-0 pt-3 sm:pt-0">
+                                        <div class="text-lg font-extrabold text-slate-800" x-text="f.price"></div>
+                                        <button @click="bookingModal = true" class="bg-airlineBlue text-white hover:bg-airlineLightBlue px-4 py-2 rounded-lg text-xs font-bold shadow-sm transition-all">
+                                            Select Fare
+                                        </button>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+
+                    <!-- Tab 2: Flight Status Tracking -->
+                    <div x-show="activeTab === 'status'" x-cloak class="space-y-4" x-data="{
+                        flightNo: '',
+                        statusMessage: '',
+                        checkStatus() {
+                            if(!this.flightNo) {
+                                alert('Please input a flight number');
+                                return;
+                            }
+                            this.statusMessage = 'Searching status for ' + this.flightNo.toUpperCase() + '...';
+                            setTimeout(() => {
+                                this.statusMessage = '🟢 ' + this.flightNo.toUpperCase() + ' | Damascus (DAM) ➔ Dubai (DXB) is ON TIME. Departure: 16:45 Damascus local time. Gate 4.';
+                            }, 1000);
+                        }
+                    }">
+                        <p class="text-xs text-slate-500">Enter flight code to view reliable scheduling & live regional tracking.</p>
+                        <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3">
+                            <input type="text" x-model="flightNo" placeholder="e.g. RB401 or RB405" class="flex-grow bg-slate-50 border border-slate-200 rounded-lg py-3 px-4 text-slate-800 font-bold focus:outline-none focus:ring-2 focus:ring-airlineBlue transition-all uppercase">
+                            <button @click="checkStatus" class="bg-airlineBlue hover:bg-airlineLightBlue text-white font-semibold py-3 px-6 rounded-lg text-sm shadow-md transition-all whitespace-nowrap">
+                                Check Flight Status
+                            </button>
+                        </div>
+                        <div x-show="statusMessage" class="p-4 rounded-lg bg-slate-50 border border-slate-200 text-sm font-semibold text-slate-700" x-text="statusMessage"></div>
+                    </div>
+
+                    <!-- Tab 3: Online Check-In -->
+                    <div x-show="activeTab === 'checkin'" x-cloak class="space-y-4" x-data="{
+                        bookingRef: '',
+                        lastName: '',
+                        checkinResult: '',
+                        startCheckin() {
+                            if(!this.bookingRef || !this.lastName) {
+                                alert('Please fill in both fields');
+                                return;
+                            }
+                            this.checkinResult = 'Retreiving reservation...';
+                            setTimeout(() => {
+                                this.checkinResult = '✅ Booking found under ' + this.lastName.toUpperCase() + '. Online Check-In is available for Flight RB401 starting 24 hours prior to departure.';
+                            }, 1200);
+                        }
+                    }">
+                        <p class="text-xs text-slate-500">Access boarding pass instantly. Avoid airport agency lines.</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5">Booking Reference (PNR)</label>
+                                <input type="text" x-model="bookingRef" placeholder="e.g. AM218" class="w-full bg-slate-50 border border-slate-200 rounded-lg py-3 px-4 text-slate-800 font-bold uppercase focus:outline-none focus:ring-2 focus:ring-airlineBlue">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5">Passenger Last Name</label>
+                                <input type="text" x-model="lastName" placeholder="e.g. Al-Shaar" class="w-full bg-slate-50 border border-slate-200 rounded-lg py-3 px-4 text-slate-800 font-bold focus:outline-none focus:ring-2 focus:ring-airlineBlue">
+                            </div>
+                        </div>
+                        <button @click="startCheckin" class="w-full bg-airlineBlue hover:bg-airlineLightBlue text-white font-bold py-3.5 rounded-lg text-sm transition-all shadow-md mt-2">
+                            Retrieve Ticket & Begin Check-In
+                        </button>
+                        <div x-show="checkinResult" class="p-4 rounded-lg bg-slate-50 border border-slate-200 text-sm font-semibold text-slate-700" x-text="checkinResult"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trust Micro-Bar (Below Widget) -->
+        <div class="relative z-10 w-full bg-airlineBlue/90 border-t border-white/10 py-5">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center divide-y md:divide-y-0 md:divide-x divide-white/10">
+                    <div class="flex items-center justify-center space-x-3 py-3 md:py-0">
+                        <svg class="w-6 h-6 text-airlineGold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                        <div class="text-left">
+                            <span class="block text-sm font-bold text-white">Secure Online Payment</span>
+                            <span class="block text-xs text-white/60">Visa, Mastercard & Local Gateways Accepted</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-center space-x-3 py-3 md:py-0">
+                        <svg class="w-6 h-6 text-airlineGold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071a10.5 10.5 0 0114.142 0M1.414 8.414a16.25 16.25 0 0121.172 0"></path></svg>
+                        <div class="text-left">
+                            <span class="block text-sm font-bold text-white">Direct Regional Routes</span>
+                            <span class="block text-xs text-white/60">To UAE (DXB), Bahrain (BAH) & Qatar (DOH)</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-center space-x-3 py-3 md:py-0">
+                        <svg class="w-6 h-6 text-airlineGold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                        <div class="text-left">
+                            <span class="block text-sm font-bold text-white">Generous Baggage Allowance</span>
+                            <span class="block text-xs text-white/60">Checked piece plus generous cabin baggage free</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Features / Value Proposition Grid ("Why Fly With Us") -->
+    <section id="why-us" class="py-20 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-extrabold text-airlineGold uppercase tracking-widest">The National Carrier Advantage</span>
+                <h2 class="text-3xl sm:text-4xl font-serif font-bold text-airlineBlue mt-2">Engineered for Reliability & Modern Passenger Comfort</h2>
+                <p class="text-slate-500 mt-4">Say goodbye to expensive third-party booking systems and unconfirmed schedule data. Access immediate, official Syrian Airlines services.</p>
+            </div>
+
+            <!-- 3-Column Modern Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:border-airlineGold/30 hover:shadow-xl transition-all duration-300 group">
+                    <div class="w-12 h-12 bg-airlineBlue text-airlineGold rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-md">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-airlineBlue mb-3">Direct Regional Connections</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Seamless, cost-effective direct routes connecting Damascus International Airport with major GCC hubs including Bahrain, Dubai, and Doha. Keep travel time short and avoid lengthy layovers.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:border-airlineGold/30 hover:shadow-xl transition-all duration-300 group">
+                    <div class="w-12 h-12 bg-airlineBlue text-airlineGold rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-md">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-airlineBlue mb-3">Generous Baggage Allowance</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Travel without compromise. Enjoy generous checked and cabin baggage allowances designed for families, business travelers, and expatriates bringing gifts back to the Levant.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:border-airlineGold/30 hover:shadow-xl transition-all duration-300 group">
+                    <div class="w-12 h-12 bg-airlineBlue text-airlineGold rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-md">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-airlineBlue mb-3">Direct & Secure Booking</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Skip the third-party agency queues and price markups. Book instantly, pay securely using mainstream international cards, and access real-time boarding verification details.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Popular Destinations / Routes Showcase -->
+    <section id="destinations" class="py-20 bg-airlinePlatinum/40 border-y border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <span class="text-xs font-extrabold text-airlineGold uppercase tracking-widest">Popular Direct Routes</span>
+                    <h2 class="text-3xl sm:text-4xl font-serif font-bold text-airlineBlue mt-2">Explore Our GCC & Regional Network</h2>
+                </div>
+                <p class="text-slate-500 max-w-md mt-4 md:mt-0">
+                    Discover our current direct scheduled pathways. Fast travel times and competitive online-only pricing.
+                </p>
+            </div>
+
+            <!-- Route Card Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1: Bahrain Route -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 group hover:-translate-y-1 transition-all duration-300">
+                    <div class="relative h-56">
+                        <img src="https://images.unsplash.com/photo-1547483238-f400e65ccd56?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Damascus to Bahrain">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                        <span class="absolute top-4 left-4 bg-airlineGold text-airlineBlue font-bold text-xs px-3 py-1.5 rounded-full uppercase shadow">Direct Connection</span>
+                        <div class="absolute bottom-4 left-4 right-4 text-white">
+                            <h3 class="text-lg font-bold font-serif">Damascus (DAM) ⇄ Bahrain (BAH)</h3>
+                        </div>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Providing the primary transportation link between Syrian residents and the Kingdom of Bahrain. Scheduled multiple times weekly.
+                        </p>
+                        <div class="flex items-center justify-between pt-2 border-t border-slate-100">
+                            <div>
+                                <span class="block text-[10px] text-slate-400 uppercase tracking-wider">Average Fare From</span>
+                                <span class="text-lg font-extrabold text-airlineBlue">$290 <span class="text-xs font-normal text-slate-400">/ One-Way</span></span>
+                            </div>
+                            <a href="#booking-engine" class="inline-flex items-center space-x-2 text-xs font-bold text-airlineGold hover:text-airlineDarkGold uppercase tracking-wider transition-colors">
+                                <span>Book Route</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: UAE Route -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 group hover:-translate-y-1 transition-all duration-300">
+                    <div class="relative h-56">
+                        <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Damascus to Dubai">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                        <span class="absolute top-4 left-4 bg-airlineGold text-airlineBlue font-bold text-xs px-3 py-1.5 rounded-full uppercase shadow">Frequent Weekly</span>
+                        <div class="absolute bottom-4 left-4 right-4 text-white">
+                            <h3 class="text-lg font-bold font-serif">Damascus (DAM) ⇄ UAE (DXB)</h3>
+                        </div>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            The essential connection to the commercial center of Dubai. Designed to ease physical booking headaches with transparent online tracking.
+                        </p>
+                        <div class="flex items-center justify-between pt-2 border-t border-slate-100">
+                            <div>
+                                <span class="block text-[10px] text-slate-400 uppercase tracking-wider">Average Fare From</span>
+                                <span class="text-lg font-extrabold text-airlineBlue">$315 <span class="text-xs font-normal text-slate-400">/ One-Way</span></span>
+                            </div>
+                            <a href="#booking-engine" class="inline-flex items-center space-x-2 text-xs font-bold text-airlineGold hover:text-airlineDarkGold uppercase tracking-wider transition-colors">
+                                <span>Book Route</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Qatar Route -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 group hover:-translate-y-1 transition-all duration-300">
+                    <div class="relative h-56">
+                        <img src="https://images.unsplash.com/photo-1590001155093-a3c66ab0c3ff?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Damascus to Qatar">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                        <span class="absolute top-4 left-4 bg-airlineGold text-airlineBlue font-bold text-xs px-3 py-1.5 rounded-full uppercase shadow">Reliable Flights</span>
+                        <div class="absolute bottom-4 left-4 right-4 text-white">
+                            <h3 class="text-lg font-bold font-serif">Damascus (DAM) ⇄ Qatar (DOH)</h3>
+                        </div>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Enjoy fast, comfortable regional travel on board our primary fleet. Direct connections with easy checkout and flexible dates.
+                        </p>
+                        <div class="flex items-center justify-between pt-2 border-t border-slate-100">
+                            <div>
+                                <span class="block text-[10px] text-slate-400 uppercase tracking-wider">Average Fare From</span>
+                                <span class="text-lg font-extrabold text-airlineBlue">$340 <span class="text-xs font-normal text-slate-400">/ One-Way</span></span>
+                            </div>
+                            <a href="#booking-engine" class="inline-flex items-center space-x-2 text-xs font-bold text-airlineGold hover:text-airlineDarkGold uppercase tracking-wider transition-colors">
+                                <span>Book Route</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Social Proof & Passenger Trust -->
+    <section class="py-20 bg-airlineBlue text-white relative overflow-hidden">
+        <!-- Subtle grid art -->
+        <div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:4rem_4rem] z-0"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Left Side: Metrics & Heritage -->
+                <div class="lg:col-span-5 space-y-6 text-center lg:text-left">
+                    <span class="text-xs font-extrabold text-airlineGold uppercase tracking-widest">Over Seven Decades Of Quality Service</span>
+                    <h2 class="text-3xl sm:text-4xl font-serif font-bold leading-tight">Trusted by Generations of Regional Travelers</h2>
+                    <p class="text-white/75 font-light leading-relaxed">
+                        As Syria's national carrier, we take pride in bridging gaps across borders. Syrian Airlines has consistently prioritized safety, hospitality, and direct regional connection.
+                    </p>
+
+                    <!-- Metric Grid -->
+                    <div class="grid grid-cols-3 gap-4 pt-6 border-t border-white/10">
+                        <div>
+                            <span class="block text-3xl font-extrabold text-airlineGold">70+</span>
+                            <span class="block text-xs text-white/60 mt-1 uppercase tracking-wider">Years of Heritage</span>
+                        </div>
+                        <div>
+                            <span class="block text-3xl font-extrabold text-airlineGold">100k+</span>
+                            <span class="block text-xs text-white/60 mt-1 uppercase tracking-wider">Annual Passengers</span>
+                        </div>
+                        <div>
+                            <span class="block text-3xl font-extrabold text-airlineGold">3+</span>
+                            <span class="block text-xs text-white/60 mt-1 uppercase tracking-wider">Major GCC Hubs</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Side: Testimonials Display -->
+                <div class="lg:col-span-7">
+                    <div class="bg-white/5 rounded-2xl p-8 border border-white/10 space-y-8 relative backdrop-blur-sm">
+                        <!-- Testimonial Item 1 -->
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-1 text-airlineGold">
+                                <span class="text-xl">★★★★★</span>
+                            </div>
+                            <p class="text-white/90 text-base leading-relaxed italic">
+                                "Booking my family's trip back to Damascus used to require calling multiple physical agencies and checking sketchy schedules. Now, seeing direct updates and securing flights easily online makes all the difference!"
+                            </p>
+                            <div>
+                                <strong class="block text-white text-sm">Yousef Al-Hajj</strong>
+                                <span class="block text-xs text-airlineGold">Bahrain-Based Professional (Travels 4x Annually)</span>
+                            </div>
+                        </div>
+
+                        <hr class="border-white/10">
+
+                        <!-- Testimonial Item 2 -->
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-1 text-airlineGold">
+                                <span class="text-xl">★★★★★</span>
+                            </div>
+                            <p class="text-white/90 text-base leading-relaxed italic">
+                                "Direct Flights with Syrian Airlines are incredibly convenient. The baggage policy is extremely generous, meaning I don't have to worry about additional fees for my children's packages."
+                            </p>
+                            <div>
+                                <strong class="block text-white text-sm">Fatima Al-Khatib</strong>
+                                <span class="block text-xs text-airlineGold">UAE Resident & Business Entrepreneur</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Interactive Flight Status & Support Section (Addressing Pain Points) -->
+    <section id="flight-status" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-extrabold text-airlineGold uppercase tracking-widest">Real-Time Support</span>
+                <h2 class="text-3xl sm:text-4xl font-serif font-bold text-airlineBlue mt-2">Interactive Route Tracker & Regional Offices Directory</h2>
+                <p class="text-slate-500 mt-4">Direct communications bypass the physical agency bottleneck. Verify your flights and contact our localized teams directly.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+                <!-- Left Column: Flight status search module -->
+                <div class="lg:col-span-5 bg-slate-50 rounded-2xl p-6 sm:p-8 border border-slate-100 flex flex-col justify-between" x-data="{
+                    officeFlight: '',
+                    officeStatus: '',
+                    runOfficeCheck() {
+                        if(!this.officeFlight) {
+                            alert('Please type a flight code.');
+                            return;
+                        }
+                        this.officeStatus = 'Querying system...';
+                        setTimeout(() => {
+                            this.officeStatus = 'Flight ' + this.officeFlight.toUpperCase() + ' status: On Time. Aircraft at Damascus Terminal. Expected Gate: 2A.';
+                        }, 800);
+                    }
+                }">
+                    <div class="space-y-4">
+                        <h3 class="text-xl font-bold text-airlineBlue font-serif">Check Flight Status</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Get accurate flight status directly from the control tower database. No guesswork required.
+                        </p>
+                        <div class="space-y-3">
+                            <input type="text" x-model="officeFlight" placeholder="Flight Code (e.g. RB401)" class="w-full bg-white border border-slate-200 rounded-xl py-3 px-4 text-slate-800 font-bold focus:outline-none focus:ring-2 focus:ring-airlineBlue transition-all uppercase">
+                            <button @click="runOfficeCheck" class="w-full bg-airlineBlue text-white hover:bg-airlineLightBlue font-bold py-3 rounded-xl text-sm transition-all shadow-sm">
+                                Retrieve Live Status
+                            </button>
+                        </div>
+                    </div>
+                    <div x-show="officeStatus" x-cloak class="mt-4 p-4 rounded-xl bg-airlinePlatinum text-airlineBlue text-xs font-bold leading-relaxed border border-slate-200" x-text="officeStatus"></div>
+                </div>
+
+                <!-- Right Column: GCC Directory -->
+                <div id="offices" class="lg:col-span-7 bg-slate-50 rounded-2xl p-6 sm:p-8 border border-slate-100 space-y-6">
+                    <h3 class="text-xl font-bold text-airlineBlue font-serif">GCC & Regional Offices</h3>
+                    <p class="text-slate-600 text-sm">
+                        Our customer service teams are available directly for ticketing issues, date changes, and offline assistance.
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <!-- Damascus HQ -->
+                        <div class="bg-white rounded-xl p-4 border border-slate-100 hover:border-airlineGold/30 transition-all">
+                            <strong class="block text-sm text-airlineBlue">Damascus Headquarters</strong>
+                            <span class="block text-xs text-slate-400 mt-1">Hedjaz Square, Damascus</span>
+                            <a href="tel:+963112229000" class="inline-block text-xs font-bold text-airlineGold hover:underline mt-2">+963 11 222 9000</a>
+                        </div>
+                        <!-- Dubai Office -->
+                        <div class="bg-white rounded-xl p-4 border border-slate-100 hover:border-airlineGold/30 transition-all">
+                            <strong class="block text-sm text-airlineBlue">Dubai (UAE) Branch</strong>
+                            <span class="block text-xs text-slate-400 mt-1">Al Maktoum Rd, Deira</span>
+                            <a href="tel:+97142232300" class="inline-block text-xs font-bold text-airlineGold hover:underline mt-2">+971 4 223 2300</a>
+                        </div>
+                        <!-- Bahrain Office -->
+                        <div class="bg-white rounded-xl p-4 border border-slate-100 hover:border-airlineGold/30 transition-all">
+                            <strong class="block text-sm text-airlineBlue">Manama (Bahrain) Branch</strong>
+                            <span class="block text-xs text-slate-400 mt-1">Government Avenue, Manama</span>
+                            <a href="tel:+97317228222" class="inline-block text-xs font-bold text-airlineGold hover:underline mt-2">+973 1722 8222</a>
+                        </div>
+                        <!-- Qatar Office -->
+                        <div class="bg-white rounded-xl p-4 border border-slate-100 hover:border-airlineGold/30 transition-all">
+                            <strong class="block text-sm text-airlineBlue">Doha (Qatar) Branch</strong>
+                            <span class="block text-xs text-slate-400 mt-1">Grand Hamad Street, Doha</span>
+                            <a href="tel:+97444431444" class="inline-block text-xs font-bold text-airlineGold hover:underline mt-2">+974 4443 1444</a>
+                        </div>
+                    </div>
+                    <div class="pt-4 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <span class="text-xs text-slate-500">Global General Queries Email:</span>
+                        <a href="mailto:info@syrianair.com" class="inline-flex items-center space-x-2 text-sm font-bold text-airlineBlue hover:text-airlineGold transition-colors">
+                            <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                            <span>info@syrianair.com</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Global Call-to-Action (CTA) Banner -->
+    <section class="py-24 bg-gradient-to-r from-airlineBlue via-airlineLightBlue to-airlineBlue text-white text-center relative overflow-hidden">
+        <!-- Gold spotlight/ellipse decoration -->
+        <div class="absolute -left-1/4 -bottom-1/2 w-3/4 h-3/4 bg-airlineGold/5 rounded-full blur-3xl"></div>
+        <div class="absolute -right-1/4 -top-1/2 w-3/4 h-3/4 bg-airlineGold/5 rounded-full blur-3xl"></div>
+
+        <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+            <span class="inline-block text-xs font-extrabold text-airlineGold uppercase tracking-widest bg-white/5 border border-white/10 px-4 py-1.5 rounded-full">Ready To Book?</span>
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-serif font-bold leading-tight">Ready to Experience Authentic Syrian Hospitality?</h2>
+            <p class="text-white/80 max-w-xl mx-auto text-base sm:text-lg font-light leading-relaxed">
+                Skip traditional travel agencies. Secure your flight directly through our certified digital platform and benefit from exclusive lowest online fares.
+            </p>
+            <div class="pt-4 flex flex-col sm:flex-row justify-center items-center gap-4">
+                <a href="#booking-engine" class="w-full sm:w-auto bg-airlineGold hover:bg-airlineDarkGold text-airlineBlue font-bold px-8 py-4 rounded-xl text-base shadow-lg transition-all transform hover:scale-[1.02]">
+                    Book Your Flight Now
+                </a>
+                <a href="#flight-status" class="w-full sm:w-auto bg-transparent border border-white/30 hover:bg-white/10 text-white font-semibold px-8 py-4 rounded-xl text-base transition-all">
+                    Check Flight Schedule
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-16 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-12">
+            <!-- Column 1: Brand & Socials -->
+            <div class="space-y-4">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center p-1.5">
+                        <svg class="w-full h-full text-airlineBlue" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 50 C20 45, 35 45, 50 35 C65 25, 75 10, 90 20 C85 35, 70 45, 55 50 C40 55, 25 60, 10 50 Z" fill="currentColor"/>
+                            <circle cx="80" cy="28" r="4" fill="#E0A96D"/>
+                        </svg>
+                    </div>
+                    <span class="text-white font-bold tracking-wider font-serif uppercase text-sm">Syrian Airlines</span>
+                </div>
+                <p class="text-xs leading-relaxed">
+                    Syrian Arab Airlines (Syrianair) is the state-owned national carrier of Syria, offering key passenger and cargo aviation connections internationally.
+                </p>
+                <!-- Social links (Facebook Official) -->
+                <div class="flex space-x-3 pt-2">
+                    <a href="https://facebook.com" target="_blank" class="w-8 h-8 bg-slate-800 rounded-lg flex items-center justify-center text-slate-300 hover:text-airlineGold transition-colors">
+                        <span class="sr-only">Facebook</span>
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"></path></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Column 2: Quick links -->
+            <div class="space-y-4">
+                <h4 class="text-white font-bold text-sm tracking-wider uppercase">Quick Links</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="#destinations" class="hover:text-white transition-colors">Our GCC Routes</a></li>
+                    <li><a href="#why-us" class="hover:text-white transition-colors">Luggage Limits & Baggage Policies</a></li>
+                    <li><a href="#flight-status" class="hover:text-white transition-colors">Verify Travel Requirements</a></li>
+                    <li><a href="#booking-engine" class="hover:text-white transition-colors">Fare Class Information</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Regional Offices -->
+            <div class="space-y-4">
+                <h4 class="text-white font-bold text-sm tracking-wider uppercase">Key Contacts</h4>
+                <ul class="space-y-2 text-xs">
+                    <li>Damascus HQ: <span class="text-white">+963 11 222 9000</span></li>
+                    <li>Dubai Office: <span class="text-white">+971 4 223 2300</span></li>
+                    <li>Bahrain Office: <span class="text-white">+973 1722 8222</span></li>
+                    <li>Qatar Office: <span class="text-white">+974 4443 1444</span></li>
+                </ul>
+            </div>
+
+            <!-- Column 4: Trust & Payments -->
+            <div class="space-y-4">
+                <h4 class="text-white font-bold text-sm tracking-wider uppercase">Secure Online Gateways</h4>
+                <p class="text-xs leading-relaxed">
+                    Secure transaction system integrated directly with local and international financial systems for instant flight validation.
+                </p>
+                <!-- Payment Badges -->
+                <div class="flex items-center space-x-2 pt-2">
+                    <div class="bg-slate-800 px-2.5 py-1 rounded text-[10px] font-bold text-white">VISA</div>
+                    <div class="bg-slate-800 px-2.5 py-1 rounded text-[10px] font-bold text-white">MASTERCARD</div>
+                    <div class="bg-slate-800 px-2.5 py-1 rounded text-[10px] font-bold text-white">LOCAL PAY</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom bar -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
+            <span>Copyright © 2024 Syrian Arab Airlines. All Rights Reserved.</span>
+            <div class="flex space-x-4">
+                <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                <a href="#" class="hover:text-white transition-colors">Schedules & Regulations</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mock Booking Confirmation Modal (Pure JS/Alpine interaction trigger) -->
+    <div x-show="bookingModal" x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-sm">
+        <div @click.away="bookingModal = false" class="bg-white rounded-2xl p-6 sm:p-8 max-w-md w-full shadow-2xl border border-slate-100 text-slate-800 space-y-4">
+            <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path></svg>
+            </div>
+            <div class="text-center space-y-2">
+                <h3 class="text-xl font-bold text-airlineBlue font-serif">Confirm Simulated Booking Selection</h3>
+                <p class="text-sm text-slate-500">
+                    You have selected a flight route. In the production system, this triggers payment authorization for instant ticket issuance.
+                </p>
+            </div>
+            <div class="bg-slate-50 rounded-xl p-4 space-y-2 text-xs border border-slate-100">
+                <div class="flex justify-between"><span>Routing:</span><strong class="text-airlineBlue">Damascus (DAM) ⇄ Dubai (DXB)</strong></div>
+                <div class="flex justify-between"><span>Flight Status:</span><strong class="text-emerald-600">Direct / Active Booking</strong></div>
+                <div class="flex justify-between"><span>Checked Allowance:</span><strong class="text-airlineBlue">Included in standard tariff</strong></div>
+            </div>
+            <div class="flex space-x-3">
+                <button @click="bookingModal = false" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 py-3 rounded-xl text-sm font-semibold transition-all">Cancel</button>
+                <button @click="alert('In production, this initiates the payment process and issues your live boarding pass.'); bookingModal = false" class="flex-1 bg-airlineGold hover:bg-airlineDarkGold text-airlineBlue font-bold py-3 rounded-xl text-sm transition-all shadow-md">Proceed to Secure Pay</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
