@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#2a0716">
+<title>A Date Night for Looz</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0" rel="stylesheet">
+
+<style>
+  /* ============ COLOR PALETTE ============ */
+  :root{
+    --midnight:#1a0612;   /* deep night */
+    --wine:#3b0a1e;       /* burgundy */
+    --rose:#c9184a;       /* rose red */
+    --blush:#ffccd5;      /* soft blush */
+    --gold:#e8b86a;       /* candle gold */
+    --cream:#fff5ef;      /* warm cream */
+    --glass:rgba(255,245,239,.08);
+    --glass-line:rgba(232,184,106,.35);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  html,body{min-height:100%}
+  body{
+    font-family:'Jost',sans-serif;
+    color:var(--cream);
+    background:var(--midnight);
+    overflow-x:hidden;
+    padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
+  }
+
+  /* Background: public HD photo with gradient fallback if it fails to load */
+  .bg{
+    position:fixed;inset:0;z-index:-2;
+    background:
+      linear-gradient(180deg,rgba(26,6,18,.78) 0%,rgba(59,10,30,.72) 55%,rgba(26,6,18,.92) 100%),
+      url("https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1920&q=80") center/cover no-repeat,
+      radial-gradient(circle at 50% 20%,#5a1030 0%,#1a0612 70%);
+  }
+
+  /* Twinkling stars */
+  .stars{position:fixed;inset:0;z-index:-1;pointer-events:none}
+  .star{position:absolute;width:3px;height:3px;border-radius:50%;background:var(--gold);opacity:.2;animation:twinkle 3s infinite ease-in-out}
+  @keyframes twinkle{0%,100%{opacity:.1;transform:scale(.6)}50%{opacity:.9;transform:scale(1.3)}}
+
+  /* Floating hearts */
+  .hearts{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+  .heart{position:absolute;bottom:-40px;color:var(--rose);opacity:0;animation:floatUp linear forwards}
+  @keyframes floatUp{
+    0%{transform:translateY(0) rotate(0);opacity:0}
+    10%{opacity:.75}
+    100%{transform:translateY(-110vh) rotate(25deg);opacity:0}
+  }
+
+  /* ============ LAYOUT ============ */
+  main{
+    position:relative;z-index:1;
+    min-height:100svh;
+    display:flex;align-items:center;justify-content:center;
+    padding:20px 16px;
+  }
+
+  .card{
+    width:100%;max-width:440px;
+    padding:30px 22px 26px;
+    text-align:center;
+    border-radius:28px;
+    background:linear-gradient(160deg,rgba(255,245,239,.12),rgba(255,245,239,.04));
+    border:1px solid var(--glass-line);
+    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    box-shadow:0 20px 60px rgba(0,0,0,.55),inset 0 0 40px rgba(232,184,106,.05);
+    position:relative;
+    animation:rise 1s ease both;
+  }
+  @keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+
+  .corner{position:absolute;color:var(--gold);opacity:.8;font-size:22px}
+  .corner.tl{top:12px;left:14px}
+  .corner.tr{top:12px;right:14px}
+
+  .eyebrow{
+    font-size:11px;letter-spacing:.35em;text-transform:uppercase;
+    color:var(--gold);margin-top:6px;
+  }
+
+  h1{
+    font-family:'Great Vibes',cursive;
+    font-weight:400;
+    font-size:clamp(46px,15vw,64px);
+    line-height:1.05;
+    margin:10px 0 2px;
+    background:linear-gradient(90deg,var(--blush),var(--gold),var(--blush));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    text-shadow:0 0 30px rgba(201,24,74,.25);
+  }
+  .sub{
+    font-family:'Cormorant Garamond',serif;font-style:italic;
+    font-size:19px;color:var(--blush);margin-bottom:16px;
+  }
+
+  /* GIF frame */
+  .gif-wrap{
+    width:100%;aspect-ratio:16/10;
+    border-radius:20px;overflow:hidden;
+    border:2px solid var(--glass-line);
+    box-shadow:0 10px 30px rgba(0,0,0,.45);
+    position:relative;
+    background:radial-gradient(circle at 50% 40%,#7a1840,#2a0716);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .gif-wrap img{width:100%;height:100%;object-fit:cover;display:block}
+  .gif-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:6px}
+  .gif-fallback .material-symbols-rounded{font-size:64px;color:var(--rose);animation:beat 1.2s infinite}
+  .gif-fallback .candle{font-size:44px;color:var(--gold);animation:flicker 1.6s infinite}
+  @keyframes beat{0%,100%{transform:scale(1)}30%{transform:scale(1.25)}60%{transform:scale(1.05)}}
+  @keyframes flicker{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.7;transform:scale(.95)}}
+
+  .message{
+    font-family:'Cormorant Garamond',serif;
+    font-size:20px;line-height:1.5;
+    margin:20px 4px 6px;color:var(--cream);
+  }
+  .message em{color:var(--gold);font-style:italic}
+
+  .divider{display:flex;align-items:center;gap:10px;margin:16px 0;color:var(--gold)}
+  .divider::before,.divider::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+  .divider .material-symbols-rounded{font-size:18px}
+
+  /* Details */
+  .details{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .detail{
+    padding:14px 8px;border-radius:16px;
+    background:var(--glass);border:1px solid var(--glass-line);
+  }
+  .detail .material-symbols-rounded{color:var(--gold);font-size:26px}
+  .detail .label{font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--blush);margin-top:4px;opacity:.85}
+  .detail .value{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:600;margin-top:2px}
+  .detail.wide{grid-column:1/-1}
+
+  .countdown{
+    margin-top:14px;font-size:13px;letter-spacing:.08em;color:var(--blush);
+    display:flex;align-items:center;justify-content:center;gap:6px;
+  }
+  .countdown .material-symbols-rounded{font-size:18px;color:var(--gold)}
+  #timer{font-variant-numeric:tabular-nums;color:var(--gold);font-weight:500}
+
+  /* Accept button */
+  .btn{
+    margin-top:22px;width:100%;
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    padding:18px 20px;border:0;border-radius:60px;
+    font-family:'Jost',sans-serif;font-size:17px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
+    color:#fff;cursor:pointer;
+    background:linear-gradient(135deg,var(--rose),#ff4d6d);
+    box-shadow:0 10px 30px rgba(201,24,74,.55);
+    animation:pulse 2s infinite;
+    transition:transform .15s ease;
+  }
+  .btn:active{transform:scale(.97)}
+  .btn .material-symbols-rounded{font-size:26px}
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(255,77,109,.6),0 10px 30px rgba(201,24,74,.55)}
+    70%{box-shadow:0 0 0 18px rgba(255,77,109,0),0 10px 30px rgba(201,24,74,.55)}
+    100%{box-shadow:0 0 0 0 rgba(255,77,109,0),0 10px 30px rgba(201,24,74,.55)}
+  }
+  .btn:disabled{animation:none;opacity:.85;cursor:default}
+
+  .signoff{
+    font-family:'Great Vibes',cursive;font-size:30px;color:var(--gold);margin-top:20px;
+  }
+  .signoff small{display:block;font-family:'Jost',sans-serif;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--blush);opacity:.75;margin-top:2px}
+
+  /* Accepted seal (hidden until accept) */
+  .seal{
+    display:none;margin-top:18px;padding:14px;border-radius:18px;
+    border:1px dashed var(--gold);background:rgba(232,184,106,.1);
+  }
+  .seal.show{display:block;animation:rise .6s ease both}
+  .seal .big{font-family:'Great Vibes',cursive;font-size:36px;color:var(--gold)}
+  .seal .when{font-size:12px;letter-spacing:.15em;color:var(--blush);margin-top:2px}
+
+  .toast{
+    position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(30px);
+    background:var(--cream);color:var(--wine);
+    padding:12px 18px;border-radius:30px;font-size:14px;font-weight:500;
+    box-shadow:0 10px 30px rgba(0,0,0,.4);
+    opacity:0;pointer-events:none;transition:.4s;z-index:20;
+    max-width:92vw;text-align:center;
+  }
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+
+<div class="bg"></div>
+<div class="stars" id="stars"></div>
+<div class="hearts" id="hearts"></div>
+
+<main>
+  <section class="card" id="card">
+    <span class="material-symbols-rounded corner tl">auto_awesome</span>
+    <span class="material-symbols-rounded corner tr">auto_awesome</span>
+
+    <div class="eyebrow">You are cordially invited</div>
+    <h1>My Dearest Looz</h1>
+    <p class="sub">to an enchanted evening for two</p>
+
+    <div class="gif-wrap">
+      <div class="gif-fallback" aria-hidden="true">
+        <span class="material-symbols-rounded candle">local_fire_department</span>
+        <span class="material-symbols-rounded">favorite</span>
+        <span class="material-symbols-rounded candle">local_fire_department</span>
+      </div>
+      <!-- Swap GIF_URL in the script below for any greeting GIF you like -->
+      <img id="greetGif" alt="A lovely night to be" crossorigin="anonymous" referrerpolicy="no-referrer">
+    </div>
+
+    <p class="message">
+      Under the stars, with candlelight and your smile,<br>
+      <em>tonight is a lovely night to be with you.</em><br>
+      Will you give me the honor of your company?
+    </p>
+
+    <div class="divider"><span class="material-symbols-rounded">favorite</span></div>
+
+    <div class="details">
+      <div class="detail wide">
+        <span class="material-symbols-rounded">calendar_month</span>
+        <div class="label">Tonight</div>
+        <div class="value">Wednesday, 21 October 2026</div>
+      </div>
+      <div class="detail">
+        <span class="material-symbols-rounded">schedule</span>
+        <div class="label">From</div>
+        <div class="value">9:00 PM</div>
+      </div>
+      <div class="detail">
+        <span class="material-symbols-rounded">nightlight</span>
+        <div class="label">Until</div>
+        <div class="value">10:00 PM</div>
+      </div>
+      <div class="detail wide">
+        <span class="material-symbols-rounded">public</span>
+        <div class="label">Time zone</div>
+        <div class="value">Bahrain Time (BH)</div>
+      </div>
+    </div>
+
+    <div class="countdown">
+      <span class="material-symbols-rounded">hourglass_top</span>
+      <span id="timer">--</span>
+    </div>
+
+    <div class="seal" id="seal">
+      <div class="big">She said YES!</div>
+      <div class="when" id="sealWhen"></div>
+    </div>
+
+    <button class="btn" id="acceptBtn" type="button">
+      <span class="material-symbols-rounded">favorite</span>
+      <span id="btnText">I Accept</span>
+    </button>
+
+    <div class="signoff">Forever yours
+      <small>with all my love</small>
+    </div>
+  </section>
+</main>
+
+<div class="toast" id="toast"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+  /* ================= CONFIG ================= */
+  // Greeting GIF (swap with any public GIF URL). If it fails, an animated fallback shows.
+  const GIF_URL = "https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif";
+  // Fallback WhatsApp number (international format, no +). Used only if the share sheet isn't supported.
+  const WHATSAPP_NUMBER = "97366348822";
+  // 9:00 PM Bahrain (UTC+3) on 21 Oct 2026 = 18:00 UTC
+  const START_UTC = Date.UTC(2026, 9, 21, 18, 0, 0);
+  const END_UTC   = Date.UTC(2026, 9, 21, 19, 0, 0);
+
+  const $ = id => document.getElementById(id);
+
+  /* ---------- Greeting GIF with graceful fallback ---------- */
+  const gif = $('greetGif');
+  gif.onerror = () => { gif.style.display = 'none'; };
+  gif.src = GIF_URL;
+
+  /* ---------- Stars ---------- */
+  (function(){
+    const box = $('stars');
+    for (let i = 0; i < 60; i++){
+      const s = document.createElement('span');
+      s.className = 'star';
+      s.style.left = Math.random()*100 + '%';
+      s.style.top = Math.random()*100 + '%';
+      s.style.animationDelay = (Math.random()*3) + 's';
+      s.style.animationDuration = (2 + Math.random()*3) + 's';
+      box.appendChild(s);
+    }
+  })();
+
+  /* ---------- Floating hearts ---------- */
+  function spawnHeart(burst){
+    const h = document.createElement('span');
+    h.className = 'heart material-symbols-rounded';
+    h.textContent = 'favorite';
+    h.style.left = Math.random()*100 + '%';
+    h.style.fontSize = (14 + Math.random()*(burst ? 30 : 18)) + 'px';
+    h.style.animationDuration = (6 + Math.random()*6) + 's';
+    h.style.color = ['#c9184a','#ff4d6d','#ffccd5','#e8b86a'][Math.floor(Math.random()*4)];
+    $('hearts').appendChild(h);
+    setTimeout(() => h.remove(), 13000);
+  }
+  setInterval(() => spawnHeart(false), 900);
+
+  /* ---------- Countdown ---------- */
+  function tick(){
+    const now = Date.now();
+    const t = $('timer');
+    if (now < START_UTC){
+      const d = START_UTC - now;
+      const h = Math.floor(d/3600000), m = Math.floor(d%3600000/60000), s = Math.floor(d%60000/1000);
+      t.textContent = `Our evening begins in ${h}h ${String(m).padStart(2,'0')}m ${String(s).padStart(2,'0')}s`;
+    } else if (now <= END_UTC){
+      t.textContent = 'Our evening is happening right now';
+    } else {
+      t.textContent = 'What a beautiful night it was';
+    }
+  }
+  tick(); setInterval(tick, 1000);
+
+  /* ---------- Toast ---------- */
+  function toast(msg, ms = 3500){
+    const el = $('toast');
+    el.textContent = msg;
+    el.classList.add('show');
+    clearTimeout(toast._t);
+    toast._t = setTimeout(() => el.classList.remove('show'), ms);
+  }
+
+  /* ---------- Accept → screenshot → WhatsApp ---------- */
+  const btn = $('acceptBtn');
+
+  btn.addEventListener('click', async () => {
+    btn.disabled = true;
+    $('btnText').textContent = 'Accepted';
+    btn.querySelector('.material-symbols-rounded').textContent = 'check_circle';
+
+    // Celebration
+    for (let i = 0; i < 40; i++) setTimeout(() => spawnHeart(true), i*60);
+
+    // Stamp the acceptance time (Bahrain time)
+    const nowBH = new Intl.DateTimeFormat('en-GB', {
+      timeZone: 'Asia/Bahrain', weekday: 'short', day: '2-digit', month: 'short',
+      hour: '2-digit', minute: '2-digit', hour12: true
+    }).format(new Date());
+    $('sealWhen').textContent = `ACCEPTED · ${nowBH.toUpperCase()}`;
+    $('seal').classList.add('show');
+
+    // Hide button while capturing so the screenshot looks clean
+    btn.style.visibility = 'hidden';
+    await new Promise(r => setTimeout(r, 450));
+
+    try {
+      const canvas = await html2canvas($('card'), {
+        useCORS: true,
+        backgroundColor: '#2a0716',
+        scale: Math.min(window.devicePixelRatio || 2, 3),
+        logging: false
+      });
+      btn.style.visibility = 'visible';
+      const blob = await new Promise(res => canvas.toBlob(res, 'image/png'));
+      await shareToWhatsApp(blob);
+    } catch (err) {
+      console.error(err);
+      btn.style.visibility = 'visible';
+      openWhatsAppText();
+    }
+  });
+
+  async function shareToWhatsApp(blob){
+    const text = "Yes, my love! I accept your invitation. See you tonight at 9 PM 💕";
+    const file = new File([blob], 'date-night-accepted.png', { type: 'image/png' });
+
+    // Best path on phones: native share sheet with the screenshot → choose WhatsApp
+    if (navigator.canShare && navigator.canShare({ files: [file] })){
+      try{
+        await navigator.share({ files: [file], text, title: 'Date Night Accepted' });
+        toast('Sent with love 💕');
+        return;
+      }catch(e){
+        if (e && e.name === 'AbortError'){ toast('Tap the heart again anytime to share'); btn.disabled = false; $('btnText').textContent = 'Share my YES'; btn.onclick = null; btn.addEventListener('click', () => shareToWhatsApp(blob), { once:true }); return; }
+      }
+    }
+
+    // Fallback: save the screenshot, then open WhatsApp with a message
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'date-night-accepted.png';
+    document.body.appendChild(a); a.click(); a.remove();
+    toast('Screenshot saved. Opening WhatsApp, attach it to send 💌', 4500);
+    setTimeout(() => openWhatsAppText(text), 1200);
+  }
+
+  function openWhatsAppText(text){
+    const msg = encodeURIComponent(text || "Yes, my love! I accept your invitation. See you tonight at 9 PM 💕");
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, '_blank');
+  }
+</script>
+</body>
+</html>
